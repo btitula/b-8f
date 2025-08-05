@@ -1,0 +1,162 @@
+[
+  {
+    "question": "He ____ to work by bus every day.",
+    "choice1": "go",
+    "choice2": "goes",
+    "choice3": "going",
+    "choice4": "gone",
+    "answer": 2
+  },
+  {
+    "question": "Please call me ____ you arrive.",
+    "choice1": "if",
+    "choice2": "until",
+    "choice3": "because",
+    "choice4": "so",
+    "answer": 1
+  },
+  {
+    "question": "The meeting will start at ____.",
+    "choice1": "8 o’clock",
+    "choice2": "on 8",
+    "choice3": "in 8 hours",
+    "choice4": "to 8",
+    "answer": 1
+  },
+  {
+    "question": "She is ____ than her sister.",
+    "choice1": "tall",
+    "choice2": "taller",
+    "choice3": "tallest",
+    "choice4": "as tall",
+    "answer": 2
+  },
+  {
+    "question": "I am looking forward ____ from you.",
+    "choice1": "hear",
+    "choice2": "hearing",
+    "choice3": "to hear",
+    "choice4": "heard",
+    "answer": 2
+  },
+  {
+    "question": "We need to finish this project ____ Friday.",
+    "choice1": "in",
+    "choice2": "on",
+    "choice3": "at",
+    "choice4": "by",
+    "answer": 4
+  },
+  {
+    "question": "Where ____ you born?",
+    "choice1": "was",
+    "choice2": "are",
+    "choice3": "were",
+    "choice4": "be",
+    "answer": 3
+  },
+  {
+    "question": "He has worked here ____ 2015.",
+    "choice1": "for",
+    "choice2": "since",
+    "choice3": "from",
+    "choice4": "by",
+    "answer": 2
+  },
+  {
+    "question": "I ____ TV when you called.",
+    "choice1": "watched",
+    "choice2": "watching",
+    "choice3": "was watching",
+    "choice4": "am watching",
+    "answer": 3
+  },
+  {
+    "question": "They ____ to the office right now.",
+    "choice1": "go",
+    "choice2": "went",
+    "choice3": "are going",
+    "choice4": "goes",
+    "answer": 3
+  },
+  {
+    "question": "Could you please ____ the window?",
+    "choice1": "close",
+    "choice2": "closed",
+    "choice3": "closing",
+    "choice4": "closes",
+    "answer": 1
+  },
+  {
+    "question": "She is the ____ employee in our team.",
+    "choice1": "good",
+    "choice2": "better",
+    "choice3": "best",
+    "choice4": "more good",
+    "answer": 3
+  },
+  {
+    "question": "There are ____ people in the room.",
+    "choice1": "much",
+    "choice2": "many",
+    "choice3": "a lot",
+    "choice4": "more",
+    "answer": 2
+  },
+  {
+    "question": "He is responsible ____ sales.",
+    "choice1": "for",
+    "choice2": "of",
+    "choice3": "with",
+    "choice4": "at",
+    "answer": 1
+  },
+  {
+    "question": "The report was sent ____ email.",
+    "choice1": "at",
+    "choice2": "on",
+    "choice3": "by",
+    "choice4": "in",
+    "answer": 3
+  },
+  {
+    "question": "I’m not interested ____ that movie.",
+    "choice1": "in",
+    "choice2": "on",
+    "choice3": "about",
+    "choice4": "with",
+    "answer": 1
+  },
+  {
+    "question": "He doesn’t have ____ money.",
+    "choice1": "some",
+    "choice2": "any",
+    "choice3": "many",
+    "choice4": "no",
+    "answer": 2
+  },
+  {
+    "question": "The manager asked us to be ____.",
+    "choice1": "punctual",
+    "choice2": "late",
+    "choice3": "angry",
+    "choice4": "happy",
+    "answer": 1
+  },
+  {
+    "question": "I have a meeting ____ 2 PM.",
+    "choice1": "at",
+    "choice2": "on",
+    "choice3": "in",
+    "choice4": "by",
+    "answer": 1
+  },
+  {
+    "question": "We ____ lunch when she arrived.",
+    "choice1": "had",
+    "choice2": "have",
+    "choice3": "were having",
+    "choice4": "are having",
+    "answer": 3
+  }
+]

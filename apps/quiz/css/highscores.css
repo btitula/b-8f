@@ -1,0 +1,37 @@
+#highScores {
+  width: 100%;
+  padding: 2rem;
+  /* background-color: red; */
+  border: 1px solid #56a5eb;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.2);
+}
+
+ul {
+  list-style: none;
+  padding-left: 20rem;
+  padding-right: 20rem;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+
+.high-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed #56a6eb00;;
+
+}
+
+.high-score:hover {
+  /* font-weight: bold; */
+  /* transform: scale(1.025); */
+  /* background-color: #56a5eb; */
+  color: white;
+  border-bottom: 1px dashed #333;
+  /* border: 1px solid #56a5eb; */
+  /* box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5); */
+}

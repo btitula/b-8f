@@ -1,0 +1,314 @@
+[
+  {
+    "question": "She ____ to school every day.",
+    "choice1": "go",
+    "choice2": "goes",
+    "choice3": "gone",
+    "choice4": "going",
+    "answer": 2
+  },
+  {
+    "question": "I ____ my homework at the moment.",
+    "choice1": "am doing",
+    "choice2": "do",
+    "choice3": "did",
+    "choice4": "doing",
+    "answer": 1
+  },
+  {
+    "question": "They ____ a movie now.",
+    "choice1": "watch",
+    "choice2": "are watching",
+    "choice3": "watched",
+    "choice4": "have watched",
+    "answer": 2
+  },
+  {
+    "question": "He ____ to the office yesterday.",
+    "choice1": "go",
+    "choice2": "goes",
+    "choice3": "went",
+    "choice4": "gone",
+    "answer": 3
+  },
+  {
+    "question": "The sun ____ in the east.",
+    "choice1": "rise",
+    "choice2": "rises",
+    "choice3": "rose",
+    "choice4": "raising",
+    "answer": 2
+  },
+  {
+    "question": "They ____ football on weekends.",
+    "choice1": "play",
+    "choice2": "plays",
+    "choice3": "played",
+    "choice4": "playing",
+    "answer": 1
+  },
+  {
+    "question": "I ____ when you called.",
+    "choice1": "was sleeping",
+    "choice2": "sleep",
+    "choice3": "slept",
+    "choice4": "am sleeping",
+    "answer": 1
+  },
+  {
+    "question": "He ____ not like vegetables.",
+    "choice1": "do",
+    "choice2": "did",
+    "choice3": "does",
+    "choice4": "is",
+    "answer": 3
+  },
+  {
+    "question": "She ____ tea every morning.",
+    "choice1": "drink",
+    "choice2": "drinks",
+    "choice3": "drank",
+    "choice4": "drinking",
+    "answer": 2
+  },
+  {
+    "question": "The students ____ when the teacher entered.",
+    "choice1": "talked",
+    "choice2": "were talking",
+    "choice3": "talk",
+    "choice4": "are talking",
+    "answer": 2
+  },
+  {
+    "question": "He ____ TV while eating dinner.",
+    "choice1": "is watch",
+    "choice2": "watches",
+    "choice3": "is watching",
+    "choice4": "was watching",
+    "answer": 3
+  },
+  {
+    "question": "They ____ dinner at 7 PM last night.",
+    "choice1": "have",
+    "choice2": "has",
+    "choice3": "had",
+    "choice4": "having",
+    "answer": 3
+  },
+  {
+    "question": "What time ____ the train leave?",
+    "choice1": "does",
+    "choice2": "do",
+    "choice3": "did",
+    "choice4": "is",
+    "answer": 1
+  },
+  {
+    "question": "It usually ____ a lot in November.",
+    "choice1": "rains",
+    "choice2": "rain",
+    "choice3": "rained",
+    "choice4": "raining",
+    "answer": 1
+  },
+  {
+    "question": "We ____ in New York last summer.",
+    "choice1": "be",
+    "choice2": "is",
+    "choice3": "was",
+    "choice4": "were",
+    "answer": 4
+  },
+  {
+    "question": "She ____ her homework before dinner.",
+    "choice1": "finish",
+    "choice2": "finishing",
+    "choice3": "finished",
+    "choice4": "finishes",
+    "answer": 3
+  },
+  {
+    "question": "They ____ to the office right now.",
+    "choice1": "go",
+    "choice2": "went",
+    "choice3": "are going",
+    "choice4": "goes",
+    "answer": 3
+  },
+  {
+    "question": "We usually ____ lunch at noon.",
+    "choice1": "has",
+    "choice2": "have",
+    "choice3": "having",
+    "choice4": "had",
+    "answer": 2
+  },
+  {
+    "question": "She ____ a shower when the lights went out.",
+    "choice1": "was taking",
+    "choice2": "takes",
+    "choice3": "took",
+    "choice4": "taking",
+    "answer": 1
+  },
+  {
+    "question": "Where ____ you live?",
+    "choice1": "does",
+    "choice2": "did",
+    "choice3": "are",
+    "choice4": "do",
+    "answer": 4
+  },
+  {
+    "question": "He ____ to music all night.",
+    "choice1": "is listening",
+    "choice2": "listens",
+    "choice3": "was listening",
+    "choice4": "listened",
+    "answer": 3
+  },
+  {
+    "question": "We ____ a movie last weekend.",
+    "choice1": "watch",
+    "choice2": "watched",
+    "choice3": "watches",
+    "choice4": "watching",
+    "answer": 2
+  },
+  {
+    "question": "What ____ you doing at 9 PM?",
+    "choice1": "was",
+    "choice2": "were",
+    "choice3": "are",
+    "choice4": "did",
+    "answer": 2
+  },
+  {
+    "question": "The report ____ finished yesterday.",
+    "choice1": "was",
+    "choice2": "is",
+    "choice3": "be",
+    "choice4": "are",
+    "answer": 1
+  },
+  {
+    "question": "You ____ too fast!",
+    "choice1": "drive",
+    "choice2": "drives",
+    "choice3": "are driving",
+    "choice4": "driving",
+    "answer": 3
+  },
+  {
+    "question": "He ____ his phone last night.",
+    "choice1": "lose",
+    "choice2": "loses",
+    "choice3": "lost",
+    "choice4": "losing",
+    "answer": 3
+  },
+  {
+    "question": "They ____ in the garden.",
+    "choice1": "played",
+    "choice2": "were playing",
+    "choice3": "playing",
+    "choice4": "play",
+    "answer": 2
+  },
+  {
+    "question": "I ____ a book when he came in.",
+    "choice1": "was reading",
+    "choice2": "read",
+    "choice3": "reading",
+    "choice4": "reads",
+    "answer": 1
+  },
+  {
+    "question": "My brother ____ a book right now.",
+    "choice1": "reads",
+    "choice2": "read",
+    "choice3": "is reading",
+    "choice4": "reading",
+    "answer": 3
+  },
+  {
+    "question": "It ____ outside.",
+    "choice1": "rains",
+    "choice2": "is raining",
+    "choice3": "was raining",
+    "choice4": "rain",
+    "answer": 2
+  },
+  {
+    "question": "We ____ dinner when the phone rang.",
+    "choice1": "have",
+    "choice2": "was having",
+    "choice3": "were having",
+    "choice4": "had",
+    "answer": 3
+  },
+  {
+    "question": "I ____ a coffee every morning.",
+    "choice1": "drink",
+    "choice2": "drinks",
+    "choice3": "drank",
+    "choice4": "drinking",
+    "answer": 1
+  },
+  {
+    "question": "He ____ to the gym last night.",
+    "choice1": "go",
+    "choice2": "went",
+    "choice3": "goes",
+    "choice4": "gone",
+    "answer": 2
+  },
+  {
+    "question": "The company ____ a new product in 2020.",
+    "choice1": "launch",
+    "choice2": "launched",
+    "choice3": "launches",
+    "choice4": "launching",
+    "answer": 2
+  },
+  {
+    "question": "I ____ him at the store.",
+    "choice1": "see",
+    "choice2": "saw",
+    "choice3": "seen",
+    "choice4": "seeing",
+    "answer": 2
+  },
+  {
+    "question": "Look! The dog ____ after the cat.",
+    "choice1": "runs",
+    "choice2": "run",
+    "choice3": "is running",
+    "choice4": "was running",
+    "answer": 3
+  },
+  {
+    "question": "We ____ at a restaurant now.",
+    "choice1": "are eating",
+    "choice2": "eat",
+    "choice3": "ate",
+    "choice4": "eating",
+    "answer": 1
+  },
+  {
+    "question": "She ____ me a message this morning.",
+    "choice1": "send",
+    "choice2": "sends",
+    "choice3": "sent",
+    "choice4": "sending",
+    "answer": 3
+  },
+  {
+    "question": "He ____ TV at 8 PM.",
+    "choice1": "watch",
+    "choice2": "watched",
+    "choice3": "were watching",
+    "choice4": "was watching",
+    "answer": 4
+  }
+]
