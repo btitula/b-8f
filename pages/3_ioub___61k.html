@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyHy - Exercise 03 - HTML Is What</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    div {
+      padding: 10px;
+    }
+    .div_gray {
+      background-color: #f0f0f0;
+    }
+    a {
+      color: black;
+    }
+
+    ._00 table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    ._00 th,
+    ._00 td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    ._00 th {
+      font-weight: bold;
+    }
+
+    ._01 section img {
+      width: 100%;
+      height: auto;
+    }
+
+    ._05 table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    ._05 th,
+    ._05 td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <!-- 0 -->
+    <div class="_00 div_gray">
+      <table>
+        <tr>
+          <th colspan="2">Thông Tin Sản Phẩm</th>
+          <th rowspan="2">SL</th>
+          <th rowspan="2">Đơn giá</th>
+          <th rowspan="2">Thành Tiền</th>
+        </tr>
+        <tr>
+          <th>Hình ảnh</th>
+          <th>Tên sản phẩm</th>
+        </tr>
+        <tr>
+          <td>ảnh</td>
+          <td>Tên sản phẩm<br />Mã: 001</td>
+          <td>1</td>
+          <td>2,800,000</td>
+          <td>2,800,000</td>
+        </tr>
+        <tr>
+          <td>ảnh</td>
+          <td>Tên sản phẩm<br />Mã: 001</td>
+          <td>1</td>
+          <td>2,800,000</td>
+          <td>2,800,000</td>
+        </tr>
+        <tr>
+          <td>ảnh</td>
+          <td>Tên sản phẩm<br />Mã: 001</td>
+          <td>1</td>
+          <td>2,800,000</td>
+          <td>2,800,000</td>
+        </tr>
+        <tr>
+          <td colspan="2">Cộng</td>
+          <td>1</td>
+          <td></td>
+          <td>2,800,000</td>
+        </tr>
+        <tr>
+          <td colspan="4"><b>Tổng cộng</b></td>
+          <td>2,800,000</td>
+        </tr>
+        <tr>
+          <td colspan="4"><b>Tiền sau giảm giá</b></td>
+          <td>2,800,000</td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <b>Số tiền cần thanh toán</b>
+          </td>
+          <td>2,800,000</td>
+        </tr>
+        <tr>
+          <td colspan="4"><b>Phí ship</b></td>
+          <td>Miễn Phí</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 1 -->
+    <div class="_01" style="padding: 10px">
+      <h1>Giới thiệu sản phẩm</h1>
+      <h2>Điện thoại iPhone 15 Pro Max</h2>
+      <img src="https://picsum.photos/800/600" alt="Hình sản phẩm ngẫu nhiên" />
+      <p><a href="#">Mua ngay tại đây</a></p>
+    </div>
+
+    <!-- 2 -->
+    <div class="_02 div_gray">
+      <h1>Tầm quan trọng của học lập trình</h1>
+      <p>
+        <strong>Lập trình</strong> là kỹ năng quan trọng trong thời đại số.
+        <em>Việc học mỗi ngày</em> giúp bạn tiến bộ. Từ
+        <q><em>Hello World</em></q> là câu quen thuộc cho người mới học.
+        <a href="#">Hãy bắt đầu ngay hôm nay!</a>
+      </p>
+    </div>
+
+    <!-- 3 -->
+    <div class="_03">
+      <h1>Lịch sử chỉnh sửa</h1>
+      <p>
+        Giá sản phẩm ban đầu là <del>20.000.000₫</del>, sau đó giảm còn
+        <ins>18.000.000₫</ins>. <del>Không còn hàng</del> → <ins>Còn hàng</ins>
+      </p>
+    </div>
+
+    <!-- 4 -->
+    <div class="_04 div_gray">
+      <h1>Công thức</h1>
+      <p>Nước: H<sub>2</sub>O</p>
+      <p>Phương trình: x<sup>2</sup> + y<sup>2</sup> = z<sup>2</sup></p>
+    </div>
+
+    <!-- 5 -->
+    <div class="_05">
+      <h1>Bảng sản phẩm</h1>
+      <table>
+        <tr>
+          <th>Tên sản phẩm</th>
+          <th>Giá</th>
+          <th>Tình trạng</th>
+        </tr>
+        <tr>
+          <td>Laptop A</td>
+          <td>15.000.000₫</td>
+          <td>Còn hàng</td>
+        </tr>
+        <tr>
+          <td>Chuột không dây</td>
+          <td>500.000₫</td>
+          <td>Hết hàng</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 6 -->
+    <div class="_06 div_gray">
+      <h1>Bài thơ</h1>
+      <p>
+        Học hành chăm chỉ<br />
+        Không ngại gian nan<br />
+        Vượt qua thử thách<br />
+        Tương lai huy hoàng
+      </p>
+    </div>
+  </body>
+</html>
