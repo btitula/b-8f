@@ -54,7 +54,7 @@ let availableQuesions = [];
 // ];
 let questions = [];
 
-fetch("../../quiz/questions/english_tense_simple_present_pass.json")
+fetch("../../quiz/questions/scratch.json")
   .then(res => {
     return res.json();
   })
