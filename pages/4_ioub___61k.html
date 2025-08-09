@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HyHy - Exercise 04 - HTML Form</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .div_gray {
+    background-color: #f0f0f0;
+  }
+</style>
+
+<body>
+  <!-- 1 -->
+  <div class="div_gray">
+    <h1>Form đăng ký tài khoản</h1>
+    <form>
+      <!-- Họ tên -->
+      <div>
+        <label for="fullname">Họ tên</label>
+        <input id="fullname" name="fullname" type="text" />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" />
+      </div>
+
+      <!-- Mật khẩu -->
+      <div>
+        <label for="password">Mật khẩu</label>
+        <input id="password" name="password" type="password" />
+      </div>
+
+      <!-- Ngày sinh -->
+      <div>
+        <label for="dob">Ngày sinh</label>
+        <input id="dob" name="dob" type="date" />
+      </div>
+
+      <!-- Giới tính -->
+      <div class="choices">
+        <label id="sex-label">Giới tính:</label>
+        <label class="choice"><input type="radio" name="sex" value="male"> Nam</label>
+        <label class="choice"><input type="radio" name="sex" value="female">Nữ</label>
+        <label class="choice"><input type="radio" name="sex" value="other">Khác</label>
+      </div>
+
+      <!-- Sở thích -->
+      <div class="choices">
+        <label id="hobbies-label">Sở thích:</label>
+        <label class="choice"><input type="checkbox" value="reading" />Đọc sách</label>
+        <label class="choice"><input type="checkbox" value="travel" />Du lịch</label>
+        <label class="choice"><input type="checkbox" value="sports" />Thể thao</label>
+      </div>
+
+      <!-- Mô tả bản thân -->
+      <label for="bio">Mô tả bản thân</label>
+      <div>
+        <textarea id="bio" name="bio" maxlength="1000"></textarea>
+      </div>
+
+      <!-- Actions -->
+      <div>
+        <button type="submit">Đăng ký</button>
+        <button type="reset">Xóa</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 2 -->
+  <div>
+    <h1>Form đặt hàng sản phẩm</h1>
+
+    <form>
+      <fieldset>
+        <legend>Thông tin đơn hàng</legend>
+
+        <!-- Tên sản phẩm -->
+        <div>
+          <label for="product">Tên sản phẩm:</label>
+          <select id="product" name="product">
+            <option value="iphone-15">iPhone 15</option>
+            <option value="iphone-15-plus">iPhone 15 Plus</option>
+            <option value="iphone-15-pro">iPhone 15 Pro</option>
+            <option value="iphone-15-pro-max">iPhone 15 Pro Max</option>
+          </select>
+        </div>
+
+        <!-- Số lượng -->
+        <div>
+          <label for="quantity">Số lượng:</label>
+          <input id="quantity" name="quantity" type="number" />
+        </div>
+
+        <!-- Ảnh thanh toán -->
+        <div>
+          <label for="payment-proof">Upload ảnh thanh toán:</label>
+          <input id="payment-proof" name="payment_proof" type="file" accept="image/*" />
+        </div>
+
+        <!-- Actions -->
+        <div>
+          <button type="submit">Đặt hàng</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- 3 -->
+  <div class="div_gray">
+    <h1>Form khảo sát ý kiến</h1>
+    <form>
+      <!-- Họ tên -->
+      <div>
+        <label for="full-name">Họ tên:</label>
+        <input id="full-name" name="full_name" type="text" />
+      </div>
+
+      <!-- Mức độ hài lòng -->
+      <div>
+        <label for="satisfaction">Mức độ hài lòng:</label>
+        <input id="satisfaction" name="satisfaction" type="range" />
+      </div>
+
+      <!-- Thời gian liên hệ -->
+      <div>
+        <label for="contact-time">Thời gian liên hệ:</label>
+        <input id="contact-time" name="contact_time" type="time" />
+      </div>
+
+      <!-- Kênh thông tin -->
+      <div>
+        <label id="channels-label">Kênh thông tin:</label>
+        <label class="inline"><input id="channel-facebook" type="checkbox" />
+          Facebook</label>
+        <label class="inline"><input id="channel-youtube" type="checkbox" />
+          YouTube</label>
+        <label class="inline"><input id="channel-website" type="checkbox" />
+          Website</label>
+      </div>
+
+      <!-- Góp ý khác -->
+      <div>
+        <label for="other-feedback">Góp ý khác:</label>
+        <div>
+          <textarea id="other-feedback" name="other_feedback"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div>
+        <button type="submit">Gửi</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 4 -->
+  <div>
+    <h1>Form đăng nhập + 2FA</h1>
+    <form>
+      <!-- Email -->
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" name="email" type="email">
+      </div>
+
+      <!-- Mật khẩu -->
+      <div>
+        <label for="password">Mật khẩu:</label>
+        <input id="password" name="password" type="password">
+      </div>
+
+      <!-- OTP -->
+      <div>
+        <label for="otp">Mã OTP:</label>
+        <input id="otp" name="otp_code" type="text">
+      </div>
+
+      <!-- Actions -->
+      <div>
+        <button type="submit">Đăng nhập</button>
+        <button type="reset">Hủy</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 5 -->
+  <div class="div_gray">
+    <h1>Form liên hệ nhiều bước</h1>
+
+    <form>
+      <!-- Thông tin cá nhân -->
+      <fieldset>
+        <legend>Thông tin cá nhân</legend>
+
+        <div>
+          <label for="full-name">Họ tên:</label>
+          <input id="full-name" name="full_name" type="text">
+        </div>
+
+
+        <div>
+          <label for="email">Email:</label>
+          <input id="email" name="email" type="email">
+        </div>
+
+        <div>
+          <label for="phone">Số điện thoại:</label>
+          <input id="phone" name="phone" type="tel">
+        </div>
+      </fieldset>
+      <br>
+
+      <!-- Thông tin yêu cầu -->
+      <fieldset>
+        <legend>Thông tin yêu cầu</legend>
+        <div>
+          <label for="request-type">Loại yêu cầu:</label>
+          <select id="request-type" name="request_type">
+            <option value="technical">Hỗ trợ kỹ thuật</option>
+            <option value="other">Khác</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="description">Mô tả:</label>
+          <textarea id="description" name="description" rows="5" cols="50"></textarea>
+        </div>
+      </fieldset>
+      <br>
+
+      <!-- Thông tin bổ sung -->
+      <fieldset>
+        <legend>Thông tin bổ sung</legend>
+        <div>
+          <label>
+            <input type="checkbox" name="subscribe">
+            Nhận email khuyến mãi
+          </label>
+        </div>
+
+        <div>
+          <label>Cách liên hệ:</label>
+          <label>
+            <input type="radio" name="contact_method"> Email
+          </label>
+          <label>
+            <input type="radio" name="contact_method"> Điện thoại
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Submit -->
+      <div>
+        <button type="submit">Gửi thông tin</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 6 -->
+  <div>
+    <h1>Novell Services Login</h1>
+
+    <form>
+      <table>
+        <tr>
+          <td><label for="user-name">Username:</label></td>
+          <td><input id="user-name" name="user_name" type="text" </td>
+        </tr>
+        <tr>
+          <td><label for="password">Password:</label></td>
+          <td><input id="password" name="password" type="password"></td>
+        </tr>
+        <tr>
+          <td><label for="city">City of Employment:</label></td>
+          <td><input id="city" name="city_of_employment" type="text"></td>
+        </tr>
+        <tr>
+          <td><label for="web-server">Web server:</label></td>
+          <td>
+            <select id="web-server" name="web_server">
+              <option>— Choose a server —</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Please specify your role:</td>
+          <td>
+            <label><input type="radio"> Admin</label>
+            <label><input type="radio"> Engineer</label>
+            <label><input type="radio"> Manager</label>
+            <label><input type="radio"> Guest</label>
+          </td>
+        </tr>
+        <tr>
+          <td>Single Sign-on to the following:</td>
+          <td>
+            <label><input type="checkbox"> Mail</label>
+            <label><input type="checkbox"> Payroll</label>
+            <label><input type="checkbox"> Self-service</label>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button type="submit">Login</button>
+            <button type="reset">Reset</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <!-- 7 -->
+  <div class="div_gray">
+    <form>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <th colspan="2">ĐĂNG KÝ</th>
+        </tr>
+        <tr>
+          <td>Full name</td>
+          <td><input type="text" name="full_name" placeholder="Nhập fullname" required></td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><input type="text" name="username" placeholder="Nhập tên" required></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" placeholder="Nhập mật khẩu" required></td>
+        </tr>
+        <tr>
+          <td>Nhập lại Password</td>
+          <td><input type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required></td>
+        </tr>
+        <tr>
+          <td>Giới tính</td>
+          <td>
+            <label><input type="radio"> Nam</label>
+            <label><input type="radio"> Nữ</label>
+          </td>
+        </tr>
+        <tr>
+          <td>Ngày sinh</td>
+          <td>
+            <select name="day" required>
+              <option>Ngày</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </select>
+            <select name="month" required>
+              <option>Tháng</option>
+              <option>Tháng 1</option>
+              <option>Tháng 2</option>
+              <option>Tháng 3</option>
+              <option>Tháng 4</option>
+              <option>Tháng 5</option>
+            </select>
+            <select name="year" required>
+              <option>Năm</option>
+              <option>2025</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Địa chỉ</td>
+          <td><textarea name="address" rows="3" cols="30"></textarea></td>
+        </tr>
+        <tr>
+          <td>Avatar</td>
+          <td><input type="file" name="avatar" accept="image/*"></td>
+        </tr>
+        <tr>
+          <td>Sở thích</td>
+          <td>
+            <label><input type="checkbox"> Xem Phim</label>
+            <label><input type="checkbox"> Thể Thao</label>
+            <label><input type="checkbox"> Web</label>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button type="reset">Reset</button>
+            <button type="submit">OK</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</body>
+</html>
