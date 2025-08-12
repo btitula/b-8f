@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyHy - Exercise 05 - HTML Selector</title>
+  <style>
+    /* Bài 1 */
+    h1 {
+      color: red;
+    }
+
+    .highlight {
+      color: green;
+    }
+
+    #special {
+      text-decoration: underline;
+    }
+
+    .box > p {
+      background-color: yellow;
+    }
+
+    ul > li {
+      border: 2px solid black;
+    }
+
+    /* Bài 2 */
+    a:hover {
+      color: orange;
+    }
+
+    button:active {
+      background-color: green;
+    }
+
+    ul li:first-child {
+      color: blue;
+    }
+
+    ol li:last-child {
+      color: red;
+    }
+
+    li:nth-child(2n+1) {
+      background-color: lightgray;
+    }
+
+    /* Bài 3 */
+    h2::before {
+      content: "👉";
+    }
+
+    li::after {
+      content: "✔";
+    }
+
+    p::first-letter {
+      font-size: 20px;
+      color: red;
+    }
+
+    p::first-line {
+      background-color: yellow;
+    }
+
+    p::selection {
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>F8 - Học lập trình để đi làm</h1>
+  <h2 class="highlight">Học lập trình không khó</h2>
+  <p id="special">
+    loremLorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+    voluptates aperiam voluptas adipisci officia vero porro alias aspernatur atque
+    eos dolor rem qui ex optio modi, maiores molestias assumenda hic!
+  </p>
+  <div class="box">
+    <p>Chào mừng bạn đến với khóa học lập trình tại F8</p>
+    <p>Cơ bản cho bạn bứt phá tương lai với nghề lập trình</p>
+  </div>
+  <ul>
+    <li>Mục 1</li>
+    <li>Mục 2</li>
+    <li>Mục 3</li>
+  </ul>
+  <ol>
+    <li>Mục A</li>
+    <li>Mục B</li>
+    <li>Mục C</li>
+  </ol>
+  <a href="#">Link thử</a>
+  <button>Bấm thử</button>
+  <p>
+    loremLorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+    voluptates aperiam voluptas adipisci officia vero porro alias aspernatur atque
+    eos dolor rem qui ex optio modi, maiores molestias assumenda hic!
+  </p>
+</body>
+
+</html>
