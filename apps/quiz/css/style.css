@@ -83,7 +83,7 @@ h3 {
   display: none;
 }
 
-#tester {
+/* #tester {
   background-color: #56a6eb;
   width: 100%;
   height: 40rem;
@@ -93,6 +93,20 @@ h3 {
   margin: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+} */
+
+#tester {
+  position: relative; /* required for overlay positioning */
+  background-color: #56a6eb;
+  width: 100%;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  overflow: hidden; /* ensures overlay stays inside rounded corners */
 }
 
 #tester p {

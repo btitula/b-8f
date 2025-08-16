@@ -9,52 +9,9 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
-
-// let questions = [
-//   {
-//     question: "What does HTML stand for?",
-//     choice1: "Hyper Text Markup Language",
-//     choice2: "High Text Machine Language",
-//     choice3: "Hyperlink and Text Markup Language",
-//     choice4: "Home Tool Markup Language",
-//     answer: 1,
-//   },
-//   {
-//     question: "Which HTML tag is used to define an internal style sheet?",
-//     choice1: "<style>",
-//     choice2: "<script>",
-//     choice3: "<css>",
-//     choice4: "<link>",
-//     answer: 1,
-//   },
-//   {
-//     question: "Which HTML attribute is used to define inline styles?",
-//     choice1: "class",
-//     choice2: "style",
-//     choice3: "font",
-//     choice4: "styles",
-//     answer: 2,
-//   },
-//   {
-//     question: "Which is the correct HTML element for inserting a line break?",
-//     choice1: "<break>",
-//     choice2: "<lb>",
-//     choice3: "<br>",
-//     choice4: "<line>",
-//     answer: 3,
-//   },
-//   {
-//     question: "Which HTML element is used to specify a footer for a document or section?",
-//     choice1: "<bottom>",
-//     choice2: "<footer>",
-//     choice3: "<foot>",
-//     choice4: "<section>",
-//     answer: 2,
-//   },
-// ];
 let questions = [];
 
-fetch("../../quiz/questions/english_tense_simple_present_pass.json")
+fetch("../../quiz/questions/scratch.json")
   .then(res => {
     return res.json();
   })
@@ -65,8 +22,6 @@ fetch("../../quiz/questions/english_tense_simple_present_pass.json")
 
 const CORRECT_BONUS = 2.5;
 const MAX_QUESTIONS = 40;
-
-
 
 startGame = () => {
   questionCounter = 0;
@@ -151,5 +106,3 @@ incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
 }
-
-// startGame();
