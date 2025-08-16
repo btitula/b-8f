@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>B Quiz</title>
     <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/login.css" />
+
   </head>
   <body>
     <div class="container">
-      <div id="tester"><p>Chan Mike Hy</p></div>
-      <div id="home" class="flex-center flex-column">
-        <h1>Quick Quiz</h1>
-        <h3>Scratch Essential</h3>
-        <a href="./pages/game.html" class="btn">Start Quiz</a>
-        <a href="./pages/highscores.html" class="btn">High Scores</a>
+      <div id="login" class="flex-center flex-column">
+        <h1 id="finalScore">Login Quiz</h1>
+        <form>
+          <input type="text" name="username" id="username" placeholder="Enter Your Username" />
+          <input type="password" name="password" id="password" placeholder="Enter Your Password" />
+          <button type="submit" class="btn" id="loginBtn" disabled onclick="loginQuiz(event)">Login</button>
+        </form>
       </div>
     </div>
+    <script src="js/login.js"></script>
   </body>
 </html>
