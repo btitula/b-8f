@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyHy - Exercise 06 - Pseudo Elements</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ------------------ 1 ------------------ */
+    .bg_ex01 {
+      background-color: #f5efe8;
+    }
+
+    .ex01 {
+      background-color: #f5efe8;
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: auto;
+      max-width: 25rem;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .ex01 h1 {
+      color: #9c581f;
+      margin-bottom: 1.25rem;
+    }
+
+    .ex01 table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .ex01 th {
+      padding: 0.625rem;
+      text-align: left;
+    }
+
+    .ex01 td {
+      font-size: 1.2rem;
+      padding: 0.75rem 0.625rem;
+    }
+
+    .ex01 td:first-child {
+      text-align: left;
+    }
+
+    .ex01 td:first-child::before {
+      content: "☕";
+      margin-right: 0.3125rem;
+    }
+
+    .ex01 td:last-child {
+      color: #9c581f;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .ex01 tr {
+      border-bottom: 0.0625rem solid #d9b382;
+    }
+
+    .ex01 tr:hover {
+      background-color: #ffeedb;
+      cursor: pointer;
+      transition: 0.5s ease;
+    }
+
+    /* ------------------ 2 ------------------ */
+    .bg_ex02 {
+      background-color: white;
+    }
+
+    .ex02 {
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: auto;
+      max-width: 50rem;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .ex02 header h1{
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+    }
+
+    .ex02 .table-wrap{
+      overflow-x:auto;
+      background: #fff;
+      border-radius: 10px;
+    }
+
+    .ex02 table{
+      border-collapse: collapse;
+      font-size: 1.2rem;
+      min-width: 40rem;
+      width: 100%;
+    }
+
+    .ex02 thead th{
+      background: #333333;
+      color: lightgray;
+      padding: 0.75rem 0.625rem;
+      text-transform: uppercase;
+    }
+
+    .ex02 tbody td{
+      border-bottom: 1px solid #333333;
+      padding: 0.75rem 0.625rem;
+    }
+
+    .ex02 tbody tr:nth-child(odd){
+      background: #f0f0f0;
+    }
+
+    .ex02 tbody tr:hover{
+      background: gray;
+      color: lightgray;
+      cursor: pointer;
+      transition: 0.5s ease;
+    }
+
+    /* ------------------ 3 ------------------ */
+    .bg_ex03 {
+      background-color: #FAFAFA;
+    }
+
+    .ex03 {
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: auto;
+      max-width: 50rem;
+      padding: 1.25rem;
+    }
+
+    .ex03 header h1{
+      color: #BD382E;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .ex03 section p {
+      margin-bottom: 1.5rem;
+    }
+
+    .ex03 section p:first-letter{
+      font-size: 2rem;
+      font-weight: 600;
+      color: #BD382E;
+    }
+  </style>
+</head>
+
+<body>
+  <!------------------ 1 ------------------>
+  <div class="bg_ex01">
+    <div class="ex01">
+      <header>
+        <h1>Menu Cà Phê</h1>
+      </header>
+      <section>
+        <table>
+          <tbody>
+            <tr>
+              <td>Đen đá</td>
+              <td>25k</td>
+            </tr>
+            <tr>
+              <td>Bạc xỉu</td>
+              <td>30k</td>
+            </tr>
+            <tr>
+              <td>Cappuccino</td>
+              <td>40k</td>
+            </tr>
+            <tr>
+              <td>Latte</td>
+              <td>45k</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <!-- ------------------ 2 ------------------ -->
+  <div class="bg_ex02">
+    <div class="ex02">
+      <header>
+        <h1>Bảng Giá Vé Xem Phim</h1>
+      </header>
+
+      <section>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Loại vé</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Khuyến mãi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Vé thường</td>
+                <td>70,000đ</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Vé VIP</td>
+                <td>120,000đ</td>
+                <td>Tặng bắp</td>
+              </tr>
+              <tr>
+                <td>Vé đôi</td>
+                <td>200,000đ</td>
+                <td>Tặng bắp + nước</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!------------------ 3 ------------------>
+  <div class="bg_ex03">
+    <div class="ex03">
+      <header>
+        <h1>Lễ hội âm nhạc mùa hè</h1>
+      </header>
+
+      <section>
+        <p>Lễ hội âm nhạc sẽ diễn ra vào ngày 20/08 tại công viên trung tâm.</p>
+        <p>Chương trình có sự góp mặt của nhiều ca sĩ nổi tiếng, cùng các gian hàng ẩm thực đa dạng.</p>
+        <p>Vé vào cửa hiện đã được mở bán tại các quầy vé trên toàn thành phố.</p>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
