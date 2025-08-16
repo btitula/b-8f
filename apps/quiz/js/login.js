@@ -32,6 +32,25 @@ const checkLoginWithFixCredentials = (username, password) => {
   }
 }
 
+const showAlert = (message, duration = 3000) => {
+  // Create alert element
+  const alertBox = document.createElement("div");
+  alertBox.className = "custom-alert";
+  alertBox.textContent = message;
+
+  // Append to body
+  document.body.appendChild(alertBox);
+
+  // Trigger animation
+  setTimeout(() => alertBox.classList.add("show"), 10);
+
+  // Auto-remove after duration
+  setTimeout(() => {
+    alertBox.classList.remove("show");
+    setTimeout(() => alertBox.remove(), 300);
+  }, duration);
+}
+
 loginQuiz = (e) => {
   e.preventDefault();
   const username = document.getElementById("username").value;
@@ -43,6 +62,6 @@ loginQuiz = (e) => {
     const fullname = users.find(user => user.username === username).fullname;
     window.location.assign(`../quiz/pages/start.html?username=${encodeURIComponent(fullname)}`);
   } else {
-    alert("Invalid Username or Password");
+    showAlert("Invalid Username or Password");
   }
 }
