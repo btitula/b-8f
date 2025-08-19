@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyHy - Exercise 07 - HTML Background Color</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ------------------ 1 ------------------ */
+    .bg-menu {
+      background-color: #2e3e4d;
+      font-family: Arial, sans-serif;
+      min-height: 20rem;
+      padding: 5rem 10rem 0 10rem;
+    }
+
+    .menu {
+      background-color: #204859;
+      border-radius: 0.4rem;
+    }
+
+    .menu nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu nav li {
+      display: inline-block;
+    }
+
+    .menu nav a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .menu nav a:hover {
+      background-color: #ea4d3e;
+      border-radius: 0.4rem;
+      transition: 0.2s ease;
+    }
+
+    /* ------------------ 2 ------------------ */
+    .special-services {
+      margin: 5rem;
+      max-width: 60rem;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .special-services header h2 {
+      font-size: 3rem;
+      margin: 0 0 .5rem;
+      font-weight: 800;
+    }
+
+    .special-services header p {
+      margin: 0 0 2rem;
+    }
+
+    .service-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+
+    .service-list li {
+      margin: 1rem;
+    }
+
+    .service {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+      min-height: 20rem;
+    }
+
+    .service:hover {
+      box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
+      border-radius: 0.4rem;
+      transition: 0.4s ease;
+    }
+
+    .service figure {
+      margin: 0 0 1rem;
+      text-align: center;
+    }
+
+    .service img {
+      display: inline-block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .service h3 {
+      margin: .25rem 0 .5rem;
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .service p {
+      margin: 0 0 1.25rem;
+      min-height: 6rem;
+      color: var(--muted);
+    }
+
+    .service a.button {
+      background: #233992;
+      border-radius: 0.2rem;
+      color: #fff;
+      display: inline-block;
+      font-weight: 600;
+      padding: .75rem 1.25rem;
+      text-decoration: none;
+    }
+
+    .service a.button:hover {
+      background: #ea4d3e;
+      transition: 0.2s ease;
+    }
+
+    /* ------------------ 3 ------------------ */
+    .bg-blog {
+      background-color: #f5f5f5;
+    }
+
+    .blog {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 4vw, 4rem) 1rem;
+    }
+
+    .blog>header {
+      text-align: center;
+    }
+
+    .blog h2 {
+      margin: 0 0 .25rem;
+      font-size: 3rem;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .blog header p {
+      margin: 0;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .post-list {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .post-list li {
+      display: inline-block;
+      vertical-align: top;
+      width: 30%;
+      margin: 0 1% 2rem;
+    }
+
+    .post {
+      position: relative;
+      padding-bottom: 5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.4rem;
+      background: #fff;
+    }
+
+    .post figure {
+      margin: 0;
+      line-height: 0;
+      background: #f3f4f6;
+    }
+
+    .post img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      overflow: hidden;
+    }
+
+    .post .content {
+      padding: 1rem 1rem 0;
+    }
+
+    .post h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+      line-height: 1.35;
+    }
+
+    .post h3 a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .meta {
+      margin: 0 0 .75rem;
+      font-size: .9375rem;
+    }
+
+    .meta em {
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .excerpt {
+      margin: 0;
+      color: #666;
+    }
+
+    .post footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1rem;
+      padding: 0 1rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: .8rem 1.4rem;
+      text-decoration: none;
+      background: #233992;
+      color: #fff;
+      border-radius: 0.2rem;
+      font-weight: 600;
+    }
+
+    .button:hover {
+      background: #ea4d3e;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!------------------ 1 ------------------>
+  <div class="bg-menu">
+    <div class="menu">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!------------------ 2 ------------------>
+  <div class="bg-special-services">
+    <div class="special-services">
+      <header>
+        <h2 id="services-title">Our Special Services</h2>
+        <p>Join our community and explore what we can do for you.</p>
+      </header>
+
+      <ul class="service-list">
+        <li>
+          <div class="service">
+            <figure>
+              <img src="../images/7_ioub___61k/engine_overhaul.png" alt="Engine overhaul icon" width="84" height="84" />
+            </figure>
+            <h3>Engine Overhaul</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas atque mollitia vero tempore laborum
+              quod optio quis nesciunt aspernatur officia.</p>
+            <a class="button" href="#" aria-label="Read more about Engine Overhaul">Read More</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="service">
+            <figure>
+              <img src="../images/7_ioub___61k/power_steering.png" alt="Power steering icon" width="84" height="84" />
+            </figure>
+            <h3>Power Steering</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, earum!</p>
+            <a class="button" href="#" aria-label="Read more about Power Steering">Read More</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="service">
+            <figure>
+              <img src="../images/7_ioub___61k/oil_change.png" alt="Oil can icon" width="84" height="84" />
+            </figure>
+            <h3>Oil Change</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque accusamus voluptatum sed alias sequi
+              iusto maiores quasi aliquam ratione voluptate.</p>
+            <a class="button" href="#" aria-label="Read more about Oil Change">Read More</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="service">
+            <figure>
+              <img src="../images/7_ioub___61k/smog_check.png" alt="Car inspection icon" width="84" height="84" />
+            </figure>
+            <h3>Smog Check</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, rerum.</p>
+            <a class="button" href="#" aria-label="Read more about Smog Check">Read More</a>
+          </div>
+        </li>
+        <li>
+          <div class="service">
+            <figure>
+              <img src="../images/7_ioub___61k/type_balancing.png" alt="Tyre balancing machine icon" width="84"
+                height="84" />
+            </figure>
+            <h3>Tyre Balancing</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur temporibus, placeat et maiores dolorem
+              voluptas saepe distinctio assumenda sed error.</p>
+            <a class="button" href="#" aria-label="Read more about Tyre Balancing">Read More</a>
+          </div>
+        </li>
+        <li>
+          <div class="service">
+            <figure>
+              <img src="../images/7_ioub___61k/fleet_service.png" alt="Wheel wrench icon" width="84" height="84" />
+            </figure>
+            <h3>Fleet Service</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+            <a class="button" href="#" aria-label="Read more about Fleet Service">Read More</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!------------------ 3 ------------------>
+  <div class="bg-blog">
+    <div class="blog">
+      <header>
+        <h2 id="blog-title">From The Blog</h2>
+        <p>Latest event & news</p>
+      </header>
+      <ul class="post-list">
+        <li>
+          <article class="post">
+            <figure>
+              <img src="https://picsum.photos/id/1074/960/540" alt="White sports car on an open road" loading="lazy" />
+            </figure>
+            <div class="content">
+              <header>
+                <h3><a href="#">Handful Of Model Sentence Of Model Sentence Of Model Structures</a></h3>
+                <p class="meta">By <em>mark grage</em> · <span aria-label="3 comments">3 Comments</span></p>
+              </header>
+              <p class="excerpt">There are many variations of passages of Lorem Ipsum available, but the majority have
+                suffered alteration in some look even slightly believable.</p>
+            </div>
+            <footer>
+              <a class="button" href="#" aria-label="Read more: Handful Of Model Sentence">Read more</a>
+            </footer>
+          </article>
+        </li>
+
+        <li>
+          <article class="post">
+            <figure>
+              <img src="https://picsum.photos/id/1040/960/540" alt="Blue vintage motorcycle in a courtyard"
+                loading="lazy" />
+            </figure>
+            <div class="content">
+              <header>
+                <h3><a href="#">Handful Of Model Sentence Of Model Sentence Of Model Structures</a></h3>
+                <p class="meta">By <em>mark grage</em> · <span aria-label="3 comments">3 Comments</span></p>
+              </header>
+              <p class="excerpt">There are many variations of passages of Lorem Ipsum available, but the majority have
+                suffered alteration in some look even slightly believable.</p>
+            </div>
+            <footer>
+              <a class="button" href="#" aria-label="Read more about the motorcycle article">Read more</a>
+            </footer>
+          </article>
+        </li>
+
+        <li>
+          <article class="post">
+            <figure>
+              <img src="https://picsum.photos/id/1011/960/540" alt="Blue race car on track" loading="lazy" />
+            </figure>
+            <div class="content">
+              <header>
+                <h3><a href="#">Handful Of Model Sentence Of Model Sentence Of Model Structures</a></h3>
+                <p class="meta">By <em>mark grage</em> · <span aria-label="3 comments">3 Comments</span></p>
+              </header>
+              <p class="excerpt">There are many variations of passages of Lorem Ipsum available, but the majority have
+                suffered alteration in some look even slightly believable.</p>
+            </div>
+            <footer>
+              <a class="button" href="#" aria-label="Read more about the race car article">Read more</a>
+            </footer>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
