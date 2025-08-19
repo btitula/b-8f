@@ -53,6 +53,8 @@ const showAlert = (message, duration = 3000) => {
 
 loginQuiz = (e) => {
   e.preventDefault();
+  checkAlreadyLogin();
+
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
