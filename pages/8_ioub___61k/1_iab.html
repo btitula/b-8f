@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyHy - Exercise 08 - Flexbox</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .nav_ex {
+      display: flex;
+      gap: .5rem;
+      background: #2563eb;
+    }
+
+    .nav_ex a {
+      padding: .2rem .5rem;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 300;
+    }
+
+    .nav_ex a:hover {
+      color: lightgray;
+      cursor: pointer;
+    }
+
+    :root {
+      --maxw: 1180px;
+      --gap: 1rem;
+      --border: #eaeaea;
+      --text: #0f0f0f;
+      --muted: #6b7280;
+      --bg: #fff;
+      --pill: #f3f4f6;
+      --accent: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.5
+    }
+
+    /* Top promo bar */
+    .promo {
+      background: #0f0f0f;
+      color: #fff;
+      font-size: .95rem
+    }
+
+    .promo .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: .6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+    }
+
+    .promo a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: underline
+    }
+
+    .promo img {
+      width: 16px;
+      height: 16px;
+      color: #fff
+    }
+
+    /* Header */
+    .header-ex {
+      background: #fff;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .header-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Brand left, nav center, right actions right */
+    .brand {
+      font-size: 1.6rem;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+
+    /* Center nav */
+    nav.primary {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav.primary a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 300;
+      border-bottom: 2px solid #11111100;
+    }
+
+    nav.primary a:hover {
+      border-bottom: 2px solid #111;
+      transition: 0.5s;
+    }
+
+    /* Right side */
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 0 0 auto;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background: #f5f5f5;
+      border-radius: 3px;
+    }
+
+    .search {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      padding: .4rem .7rem;
+    }
+
+    .search input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 1rem;
+      width: 200px;
+      line-height: 22px;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .promo .icon {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Main area */
+    .main-wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      gap: var(--gap);
+      align-items: flex-start
+    }
+
+    aside.categories {
+      flex: 0 0 320px;
+      border-right: 1px solid var(--border);
+      padding-right: 1.25rem;
+    }
+
+    .cat-list {
+      list-style: none;
+      margin: 0;
+      padding: .5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem
+    }
+
+    .cat-list a {
+      color: #111;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.05rem;
+      padding: .25rem 0;
+    }
+
+    .cat-list a span.chev {
+      color: #111;
+      opacity: .6
+    }
+
+    .cat-list a:hover {
+      color: #000
+    }
+
+    main {
+      flex: 1 1 0%;
+      min-width: 0
+    }
+
+    /* Hero */
+    .hero {
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero .copy {
+      color: #fff;
+      flex: 1 1 54%;
+      padding: 2.2rem 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center
+    }
+
+    .cap {
+      opacity: .8
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      line-height: 1.05;
+      margin: .25rem 0
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border-bottom: 2px solid #fff;
+      width: max-content;
+      padding-bottom: .15rem
+    }
+
+    .hero figure {
+      flex: 1 1 46%;
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      background: #000
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center
+    }
+
+    /* Slider dots */
+    .dots {
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      margin-top: .75rem
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #d1d5db;
+      display: inline-block
+    }
+
+    .dot[aria-current="true"] {
+      background: #ef4444;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px #d1d5db;
+      border-radius: 50%
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav_ex">
+    <a href="index.html">Trang chủ</a>
+    <a href="1_iab.html">Bài 1</a>
+    <a href="2_iab.html">Bài 2</a>
+    <a href="3_iab.html">Bài 3</a>
+  </nav>
+
+
+  <div class="promo">
+    <div class="wrap">
+      <span>Summer Sale For All Swim Suits And Free Express Delivery – OFF 50%!</span>
+      <a href="#" role="link">ShopNow</a>
+      <div class="spacer"></div>
+      <div class="lang" aria-label="Ngôn ngữ">English <img src="icons/down-arrow-5-svgrepo-com.svg" alt="Chevron down"
+          class="icon"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header-ex">
+    <div class="header-wrap">
+      <div class="brand">Exclusive</div>
+
+      <!-- Centered nav -->
+      <nav class="primary" aria-label="Chính">
+        <a href="#" aria-current="page">Home</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+        <a href="#">Sign Up</a>
+      </nav>
+
+      <!-- Right side: search + icons -->
+      <div class="right">
+        <div class="search-container">
+          <form class="search" role="search" aria-label="Tìm kiếm">
+            <input type="search" placeholder="What are you looking for?" />
+            <img src="icons/search-svgrepo-com.svg" alt="Search" class="icon">
+          </form>
+        </div>
+
+        <div class="icons">
+          <img src="icons/heart-svgrepo-com.svg" alt="Wishlist" class="icon">
+          <img src="icons/cart-shopping-svgrepo-com.svg" alt="Cart" class="icon">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="main-wrap">
+    <!-- Categories rail -->
+    <aside class="categories" aria-label="Danh mục">
+      <ul class="cat-list">
+        <li><a href="#"><span>Woman’s Fashion</span> <span class="chev">›</span></a></li>
+        <li><a href="#"><span>Men’s Fashion</span> <span class="chev">›</span></a></li>
+        <li><a href="#"><span>Electronics</span></a></li>
+        <li><a href="#"><span>Home & Lifestyle</span></a></li>
+        <li><a href="#"><span>Medicine</span></a></li>
+        <li><a href="#"><span>Sports & Outdoor</span></a></li>
+        <li><a href="#"><span>Baby’s & Toys</span></a></li>
+        <li><a href="#"><span>Groceries & Pets</span></a></li>
+        <li><a href="#"><span>Health & Beauty</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero" aria-label="Khuyến mãi iPhone">
+        <div class="copy">
+          <div class="cap"> iPhone 14 Series</div>
+          <h1>Up to 10%<br>off Voucher</h1>
+          <a class="cta" href="#">Shop Now →
+          </a>
+          <div class="dots" aria-label="Trình chiếu">
+            <span class="dot"></span>
+            <span class="dot" aria-current="true"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <figure>
+          <img src="https://picsum.photos/seed/iphone/1000/640" alt="Ảnh sản phẩm điện thoại" width="1000" height="640">
+        </figure>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
