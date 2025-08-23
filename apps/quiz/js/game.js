@@ -11,7 +11,7 @@ let questionCounter = 0;
 let availableQuesions = [];
 let questions = [];
 
-fetch("../../quiz/questions/scratch.json")
+fetch("../../quiz/questions/english_toeic_400.json")
   .then(res => {
     return res.json();
   })
@@ -78,6 +78,8 @@ getNewQuestion = () => {
   acceptingAnswers = true;
 }
 
+
+let updateQuestionWithUserAnswer = [];
 choices.forEach(choice => {
   choice.addEventListener("click", e => {
     if (!acceptingAnswers) return;
@@ -94,6 +96,13 @@ choices.forEach(choice => {
       incrementScore(CORRECT_BONUS);
     }
 
+    updateQuestionWithUserAnswer.push({
+      ...currentQuestion,
+      userAnswer: selectedAnswer
+    });
+    localStorage.setItem("listQuestionsWithUserAnswer", JSON.stringify(updateQuestionWithUserAnswer));
+    // console.log(updateQuestionWithUserAnswer);
+    
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(classToApply);
       getNewQuestion();
