@@ -11,7 +11,7 @@ let questionCounter = 0;
 let availableQuesions = [];
 let questions = [];
 
-fetch("../../quiz/questions/english_toeic_400.json")
+fetch("../../quiz/questions/english_tense_simple_present_pass.json")
   .then(res => {
     return res.json();
   })
