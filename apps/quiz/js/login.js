@@ -26,9 +26,15 @@ username.addEventListener("keyup", () => {
 const checkLoginWithFixCredentials = (username, password) => {
   const user = users.find(user => user.username === username && user.password === password);
   if (user) {
-    return true;
+    return {
+      success: true,
+      fullname: user.fullname
+    };
   } else {
-    return false;
+    return {
+      success: false,
+      fullname: null
+    };
   }
 }
 
@@ -59,10 +65,11 @@ loginQuiz = (e) => {
   const password = document.getElementById("password").value;
 
   const user = checkLoginWithFixCredentials(username, password);
-  if (user) {
+  if (user.success) {
     localStorage.setItem("secretKey", "b@tin@quiz@2025");
-    const fullname = users.find(user => user.username === username).fullname;
-    window.location.assign(`../quiz/pages/start.html?username=${encodeURIComponent(fullname)}`);
+    localStorage.setItem("fullName", user.fullname);
+    // window.location.assign(`../quiz/pages/start.html?username=${encodeURIComponent(user.fullname)}`);
+    window.location.assign(`../quiz/pages/start.html`);
   } else {
     showAlert("Invalid Username or Password");
   }
