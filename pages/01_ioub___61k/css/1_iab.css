@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav_ex {
+  display: flex;
+  gap: .5rem;
+  background: #2563eb;
+}
+
+.nav_ex a {
+  padding: .2rem .5rem;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.nav_ex a:hover {
+  color: lightgray;
+  cursor: pointer;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #11182786;
+  --muted: #6b7280;
+  --border: #cbd5e1;
+  --focus: #6f008d;
+  --ring: 0 0 0 1px #6e008d23;
+  --radius: 12px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Layout */
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.page #login-title {
+  position: absolute;
+  left: -9999px;
+}
+
+.field {
+  position: relative;
+  width: min(100%, 360px);
+  margin-inline: 0.5rem;
+}
+
+.field input {
+  width: 100%;
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1rem 0.9rem;
+  background: var(--bg);
+  color: var(--muted);
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.field input:focus {
+  color: var(--focus);
+  border-color: var(--focus);
+  box-shadow: var(--ring);
+}
+
+.field label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  translate: 0 -50%;
+  padding: 0 0.25rem;
+  color: var(--muted);
+  background: var(--bg);
+  pointer-events: none;
+  transition: transform 120ms ease, color 120ms ease, top 120ms ease, font-size 120ms ease;
+}
+
+.field input:focus+label {
+  top: 0;
+  translate: 0 -50%;
+  font-size: 0.875rem;
+  color: var(--focus);
+}
+
+.field input:not(:placeholder-shown)+label {
+  top: 0;
+  translate: 0 -50%;
+  font-size: 0.875rem;
+  color: var(--focus);
+}
+
+.field input:not(:focus)+label {
+  color: var(--muted);
+}
