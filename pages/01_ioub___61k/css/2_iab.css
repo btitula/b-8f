@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav_ex {
+  display: flex;
+  gap: .5rem;
+  background: #2563eb;
+}
+
+.nav_ex a {
+  padding: .2rem .5rem;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.nav_ex a:hover {
+  color: lightgray;
+  cursor: pointer;
+}
+
+:root {
+  --red: #dc2626;
+  --gray: #e5e7eb;
+  --text: #111827;
+  --radius: 12px;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+}
+
+main {
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.btn {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--gray);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color .3s ease;
+  isolation: isolate;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  z-index: -1;
+  transform: scale(0);
+  transform-origin: top left;
+  transition: transform .3s ease-in-out;
+  border-radius: var(--radius);
+}
+
+.btn:hover::before {
+  transform: scale(1);
+  transform-origin: top left;
+}
+
+.btn:not(:hover)::before {
+  transform: scale(0);
+  transform-origin: bottom right;
+}
