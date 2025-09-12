@@ -107,29 +107,10 @@ h6 {
   padding: var(--section-padding) 0;
 }
 
-.section-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  padding-bottom: 70px;
-  text-align: center;
-}
-
-.section-header .kicker {
-  color: var(--grey);
-}
-
 .section-header h2 {
   font-family: var(--font-heading);
   font-size: var(--fs-2xl);
   font-weight: 700;
-}
-
-.section-header p:last-of-type {
-  width: 470px;
-  font-size: var(--fs-base);
-  font-weight: 300;
 }
 
 .kicker {
@@ -148,7 +129,6 @@ h6 {
   font-family: var(--font-body);
   font-size: var(--fs-base);
   font-weight: 700;
-  /* remove duplicate 300 */
   line-height: var(--lh-base);
 }
 
@@ -1058,15 +1038,80 @@ details>summary {
   background: var(--white);
   width: 100%;
   padding-bottom: var(--section-padding);
+  padding-top: var(--section-padding);
 }
 
-.blog .section-header {
+.section-header {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  /* allow wrapping on smaller screens */
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 6px;
+  gap: 16px;
+  margin-bottom: 1.5rem;
   text-align: left;
+  padding-bottom: 70px;
 }
+
+/* Left text block grows, right button hugs its size */
+/* .section-header>div:first-child {
+  flex: 1 1 420px;
+  min-width: 260px;
+} */
+
+/* .section-header>div:last-child {
+  flex: 0 0 auto;
+} */
+
+/* Kicker */
+/* .kicker {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .8;
+} */
+
+/* Title: fluid size + safer wrapping */
+/* .blog-title {
+  margin: 0 0 8px;
+  font-weight: 800;
+  font-size: clamp(24px, 6vw, 48px);
+  line-height: 1.15;
+  max-width: 22ch;
+  overflow-wrap: anywhere;
+} */
+
+/* Subtitle paragraph */
+/* .section-header>div:first-child p {
+  margin: 0;
+  font-size: clamp(15px, 2.4vw, 18px);
+  line-height: 1.7;
+  max-width: 60ch;
+  opacity: .95;
+} */
+
+/* Button */
+/* .section-header .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 2px;
+  background: #F05A33;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+} */
+
+@media (max-width: 480px) {
+  .section-header .btn {
+    display: none;
+  }
+}
+/**/
 
 .blog ul {
   list-style: none;
@@ -1075,13 +1120,26 @@ details>summary {
 }
 
 ul.blog-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 30px;
+}
+
+/* Each card takes: min 260px, prefers 33.333%, max ~360px */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 clamp(260px, 33.333%, 360px);
 }
 
 .blog-meta {
   margin-bottom: 20px;
+}
+
+.blog-meta .avatar {
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .blog-info {
@@ -1089,6 +1147,12 @@ ul.blog-list {
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
+}
+
+.blog-info img {
+  width: 40px;
+  height: 40px;
+  display: block;
 }
 
 .blog-rules {
@@ -1466,8 +1530,7 @@ ul.blog-list {
   }
 }
 
-/* <= 1024px: 2-up grid, center the header */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .blog .section-header {
     align-items: center;
     text-align: center;
@@ -1483,7 +1546,6 @@ ul.blog-list {
   }
 }
 
-/* <= 640px: 1-up grid, smaller spacing & type */
 @media (max-width: 640px) {
   ul.blog-list {
     grid-template-columns: 1fr;
@@ -1508,5 +1570,5 @@ ul.blog-list {
   .blog .section-header {
     padding-bottom: 40px;
   }
-}
+} */
 
