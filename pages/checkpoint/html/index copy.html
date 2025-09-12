@@ -11,13 +11,13 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="css/index-copy.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -50,9 +50,9 @@
 
 
   <main class="main-content">
-    <!-- ============= HERO ============= -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero__grid">
+        <!-- Left: copy -->
         <div class="hero__copy">
           <p class="kicker">#1 Law Firm in New York</p>
           <h1 id="hero-title" class="hero__title">
@@ -70,7 +70,6 @@
         <!-- Right: media composition -->
         <figure class="hero__media">
           <div class="media-composition">
-            <!-- spinning circular text -->
             <svg class="video-ring-text">
               <defs>
                 <path id="circlePath" d="M100,100 m-65,0 a65,65 0 1,1 130,0 a65,65 0 1,1 -130,0" />
@@ -80,33 +79,31 @@
                   Watch Our Video Watch Our Video&nbsp;
               </text>
             </svg>
-
-            <!-- play circle / ring image -->
             <div class="video-ring">
               <img src="./images/menu-play.svg" alt="Video ring" width="170" height="170" />
             </div>
             <div class="media-composition-inner">
             </div>
-
-            <!-- main image card -->
+            <!-- Media card -->
             <div class="media-card">
               <img src="./images/menu-image.png" alt="Attorney consulting a client at a desk" width="800"
                 height="520" />
             </div>
-
-            <!-- decorative mask -->
             <div class="video-mash">
               <img src="./images/menu-mask.png" alt="Video ring" width="170" height="170" />
             </div>
+
+            <!-- Decorative brush -->
+            <!-- <img class="media-brush" src="./images/abstract-brush.png" alt="" aria-hidden="true" /> -->
           </div>
         </figure>
       </div>
     </section>
   </main>
 
-  <!-- ============= ABOUT ============= -->
   <section class="about" aria-labelledby="about-title">
     <div class="container about__grid">
+      <!-- Left: image -->
       <div class="about__media">
         <img src="./images/about-image.png" alt="Lawyer reviewing case documents" />
         <div class="about__mash">
@@ -114,6 +111,7 @@
         </div>
       </div>
 
+      <!-- Right: content -->
       <div class="about__content">
         <p class="kicker" id="about-kicker">#About Us</p>
         <h2 id="about-title">Get the Guidance,<br> Support, and Counsel</h2>
@@ -121,6 +119,7 @@
           Every year hundreds of clients choose our firm because of our dedication to
           advocating for our clients before, during and after closing.
         </p>
+
         <dl class="about__stats">
           <div>
             <dt>1782</dt>
@@ -135,6 +134,7 @@
             <dd>Happy Clients</dd>
           </div>
         </dl>
+
         <p>
           <a class="btn" href="#more">Learn More</a>
         </p>
@@ -142,8 +142,7 @@
     </div>
   </section>
 
-  <!-- ============= SERVICES ============= -->
-  <!-- <section class="services" aria-labelledby="services-title">
+  <section class="services" aria-labelledby="services-title">
     <header>
       <p class="kicker">#Services</p>
       <h2 id="services-title">Our Practice Areas</h2>
@@ -165,51 +164,77 @@
 
       <li>
         <article class="service-card">
-          <img src="./images/services-image-01.png" alt="Paramedics assisting an injured person" width="640"
-            height="420" loading="lazy">
-          <div class="service-card-title">
-            <a href="#">Personal Injury Law</a>
-          </div>
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Employment Law</a>
+              </div>
+              <img src="./images/services-image-02.png" alt="Construction worker holding wooden beams" width="640"
+                height="420" loading="lazy">
+
+            </figure>
+          </a>
         </article>
       </li>
 
       <li>
         <article class="service-card">
-          <img src="./images/services-image-01.png" alt="Paramedics assisting an injured person" width="640"
-            height="420" loading="lazy">
-          <div class="service-card-title">
-            <a href="#">Personal Injury Law</a>
-          </div>
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Immigration Law</a>
+              </div>
+              <img src="./images/services-image-03.png" alt="Smiling professional in an office" width="640" height="420"
+                loading="lazy">
+
+            </figure>
+          </a>
         </article>
       </li>
 
       <li>
         <article class="service-card">
-          <img src="./images/services-image-01.png" alt="Paramedics assisting an injured person" width="640"
-            height="420" loading="lazy">
-          <div class="service-card-title">
-            <a href="#">Personal Injury Law</a>
-          </div>
+          <a href="#">
+            <figure>
+
+              <img src="./images/services-image-04.png" alt="Person working on a laptop in a home office" width="640"
+                height="420" loading="lazy">
+              <div class="service-card-title">
+                <a href="#">Family Law</a>
+              </div>
+            </figure>
+          </a>
+        </article>
+
+      </li>
+
+      <li>
+        <article class="service-card">
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Divorce Law</a>
+              </div>
+              <img src="./images/services-image-05.png" alt="Person thinking while looking at a laptop" width="640"
+                height="420" loading="lazy">
+
+            </figure>
+          </a>
         </article>
       </li>
 
       <li>
         <article class="service-card">
-          <img src="./images/services-image-01.png" alt="Paramedics assisting an injured person" width="640"
-            height="420" loading="lazy">
-          <div class="service-card-title">
-            <a href="#">Personal Injury Law</a>
-          </div>
-        </article>
-      </li>
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Property Law</a>
+              </div>
+              <img src="./images/services-image-06.png" alt="Hand pointing to a small model house" width="640"
+                height="420" loading="lazy">
 
-      <li>
-        <article class="service-card">
-          <img src="./images/services-image-01.png" alt="Paramedics assisting an injured person" width="640"
-            height="420" loading="lazy">
-          <div class="service-card-title">
-            <a href="#">Personal Injury Law</a>
-          </div>
+            </figure>
+          </a>
         </article>
       </li>
     </ul>
@@ -217,90 +242,10 @@
     <p class="actions">
       <a class="btn" href="/practice">View All</a>
     </p>
-  </section> -->
-
-  <section class="service" aria-labelledby="service-title">
-    <div class="service__inner">
-
-      <header>
-        <p class="kicker">#Services</p>
-        <h2 class="service-title">Our Practice Areas</h2>
-        <p>Our Law Office provides a professional experience for all our clients, helping them navigate their legal
-          rights.
-        </p>
-      </header>
-
-      <ul class="service-cards">
-        <li>
-          <article class="service-card">
-            <img src="./images/services-image-01.png" alt="Paramedics assisting an injured person" width="640"
-              height="420" loading="lazy">
-            <div class="service-card-title active">
-              <a href="#">Personal Injury Law</a>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="service-card">
-            <img src="./images/services-image-02.png" alt="Paramedics assisting an injured person" width="640"
-              height="420" loading="lazy">
-            <div class="service-card-title">
-              <a href="#">Employment Law</a>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="service-card">
-            <img src="./images/services-image-03.png" alt="Paramedics assisting an injured person" width="640"
-              height="420" loading="lazy">
-            <div class="service-card-title">
-              <a href="#">Immigration Law</a>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="service-card">
-            <img src="./images/services-image-04.png" alt="Paramedics assisting an injured person" width="640"
-              height="420" loading="lazy">
-            <div class="service-card-title">
-              <a href="#">Family Law</a>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="service-card">
-            <img src="./images/services-image-05.png" alt="Paramedics assisting an injured person" width="640"
-              height="420" loading="lazy">
-            <div class="service-card-title">
-              <a href="#">Divorce Law</a>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="service-card">
-            <img src="./images/services-image-06.png" alt="Paramedics assisting an injured person" width="640"
-              height="420" loading="lazy">
-            <div class="service-card-title">
-              <a href="#">Property Law</a>
-            </div>
-          </article>
-        </li>
-      </ul>
-
-      <p class="actions">
-        <a class="btn" href="#">View All</a>
-      </p>
-    </div>
   </section>
 
-  <!-- ============= FEATURES ============= -->
   <section class="features" aria-labelledby="features-title">
-    <!-- Feature Block 1 -->
+    <!-- Feature Block 1: image left, content right -->
     <div class="container feature__grid">
       <div class="feature__media">
         <img src="./images/feature-image-01.png" alt="Attorney working on a laptop by a window">
@@ -325,7 +270,7 @@
       </div>
     </div>
 
-    <!-- Feature Block 2 -->
+    <!-- Feature Block 2: content left, image right -->
     <div class="container feature__grid_green">
       <div class="feature__content_green">
         <p class="kicker">#Features</p>
@@ -346,7 +291,7 @@
     </div>
   </section>
 
-  <!-- ============= TEAM ============= -->
+
   <section class="team" aria-labelledby="team-title">
     <div class="team__inner">
 
