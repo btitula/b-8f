@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyHy -Justice Law Firm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/index-copy.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ================== HEADER ================== -->
+  <header class="site-header">
+    <div class="container header__bar" role="navigation" aria-label="Site header">
+      <a class="brand" href="#" aria-label="Justice Law Firm">
+        <img src="./images/logo.svg" alt="Justice Law Firm Logo" />
+        <span class="brand-text">
+          <span class="brand-name">Justice</span>
+          <span class="brand-tagline">Law Firm</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li class="has-submenu open"><a href="#">Home</a></li>
+          <li class="has-submenu"><a href="#about">About</a></li>
+          <li class="has-submenu"><a href="#practice">Practice Areas</a></li>
+          <li><a href="#attorneys">Attorneys</a></li>
+          <li class="has-submenu"><a href="#pages">Pages</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__cta">Call: <a href="tel:000123456789" aria-label="Call 000 123 456 789">(000) 123 456
+          789</a>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <!-- Left: copy -->
+        <div class="hero__copy">
+          <p class="kicker">#1 Law Firm in New York</p>
+          <h1 id="hero-title" class="hero__title">
+            Where People<br />Meets Personalized<br />Support.
+          </h1>
+          <p class="hero__lead">
+            Where every injury is personal. We are a different kind of law firm.
+            Let our small, passionate group of trial lawyers fight for your rights!
+          </p>
+          <p>
+            <a class="btn" href="#consult" role="button">Get a Consultations</a>
+          </p>
+        </div>
+
+        <!-- Right: media composition -->
+        <figure class="hero__media">
+          <div class="media-composition">
+            <svg class="video-ring-text">
+              <defs>
+                <path id="circlePath" d="M100,100 m-65,0 a65,65 0 1,1 130,0 a65,65 0 1,1 -130,0" />
+              </defs>
+              <text font-size="12" letter-spacing="2">
+                <textPath href="#circlePath" textLength="500">
+                  Watch Our Video Watch Our Video&nbsp;
+              </text>
+            </svg>
+            <div class="video-ring">
+              <img src="./images/menu-play.svg" alt="Video ring" width="170" height="170" />
+            </div>
+            <div class="media-composition-inner">
+            </div>
+            <!-- Media card -->
+            <div class="media-card">
+              <img src="./images/menu-image.png" alt="Attorney consulting a client at a desk" width="800"
+                height="520" />
+            </div>
+            <div class="video-mash">
+              <img src="./images/menu-mask.png" alt="Video ring" width="170" height="170" />
+            </div>
+
+            <!-- Decorative brush -->
+            <!-- <img class="media-brush" src="./images/abstract-brush.png" alt="" aria-hidden="true" /> -->
+          </div>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <section class="about" aria-labelledby="about-title">
+    <div class="container about__grid">
+      <!-- Left: image -->
+      <div class="about__media">
+        <img src="./images/about-image.png" alt="Lawyer reviewing case documents" />
+        <div class="about__mash">
+          <img src="./images/about-mask.png" alt="About mask" />
+        </div>
+      </div>
+
+      <!-- Right: content -->
+      <div class="about__content">
+        <p class="kicker" id="about-kicker">#About Us</p>
+        <h2 id="about-title">Get the Guidance,<br> Support, and Counsel</h2>
+        <p class="about__lead">
+          Every year hundreds of clients choose our firm because of our dedication to
+          advocating for our clients before, during and after closing.
+        </p>
+
+        <dl class="about__stats">
+          <div>
+            <dt>1782</dt>
+            <dd>Law Cases</dd>
+          </div>
+          <div>
+            <dt>10+</dt>
+            <dd>Lawyer</dd>
+          </div>
+          <div>
+            <dt>98%</dt>
+            <dd>Happy Clients</dd>
+          </div>
+        </dl>
+
+        <p>
+          <a class="btn" href="#more">Learn More</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" aria-labelledby="services-title">
+    <header>
+      <p class="kicker">#Services</p>
+      <h2 id="services-title">Our Practice Areas</h2>
+      <p>Our Law Office provides a professional experience for all our clients, helping them navigate their legal
+        rights.
+      </p>
+    </header>
+
+    <ul class="service-cards">
+      <li>
+        <article class="service-card">
+          <img src="./images/services-image-01.png" alt="Paramedics assisting an injured person" width="640"
+            height="420" loading="lazy">
+          <div class="service-card-title active">
+            <a href="#">Personal Injury Law</a>
+          </div>
+        </article>
+      </li>
+
+      <li>
+        <article class="service-card">
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Employment Law</a>
+              </div>
+              <img src="./images/services-image-02.png" alt="Construction worker holding wooden beams" width="640"
+                height="420" loading="lazy">
+
+            </figure>
+          </a>
+        </article>
+      </li>
+
+      <li>
+        <article class="service-card">
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Immigration Law</a>
+              </div>
+              <img src="./images/services-image-03.png" alt="Smiling professional in an office" width="640" height="420"
+                loading="lazy">
+
+            </figure>
+          </a>
+        </article>
+      </li>
+
+      <li>
+        <article class="service-card">
+          <a href="#">
+            <figure>
+
+              <img src="./images/services-image-04.png" alt="Person working on a laptop in a home office" width="640"
+                height="420" loading="lazy">
+              <div class="service-card-title">
+                <a href="#">Family Law</a>
+              </div>
+            </figure>
+          </a>
+        </article>
+
+      </li>
+
+      <li>
+        <article class="service-card">
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Divorce Law</a>
+              </div>
+              <img src="./images/services-image-05.png" alt="Person thinking while looking at a laptop" width="640"
+                height="420" loading="lazy">
+
+            </figure>
+          </a>
+        </article>
+      </li>
+
+      <li>
+        <article class="service-card">
+          <a href="#">
+            <figure>
+              <div class="service-card-title">
+                <a href="#">Property Law</a>
+              </div>
+              <img src="./images/services-image-06.png" alt="Hand pointing to a small model house" width="640"
+                height="420" loading="lazy">
+
+            </figure>
+          </a>
+        </article>
+      </li>
+    </ul>
+
+    <p class="actions">
+      <a class="btn" href="/practice">View All</a>
+    </p>
+  </section>
+
+  <section class="features" aria-labelledby="features-title">
+    <!-- Feature Block 1: image left, content right -->
+    <div class="container feature__grid">
+      <div class="feature__media">
+        <img src="./images/feature-image-01.png" alt="Attorney working on a laptop by a window">
+        <div class="feature__mask">
+          <img src="./images/feature-mask-orange.png" alt="" aria-hidden="true">
+        </div>
+        <div class="feature__mask_col_orange">
+        </div>
+      </div>
+
+      <div class="feature__content">
+        <p class="kicker">#Features</p>
+        <h3>A Heritage of Legal Talent in the US</h3>
+        <p>When you are seeking the services of a nationally recognized law firm, you have every right to expect an
+          extra
+          measure of expertise.</p>
+        <ul>
+          <li>Fast and Responsive</li>
+          <li>Top Notch Communication</li>
+          <li>Emotional Intelligence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature Block 2: content left, image right -->
+    <div class="container feature__grid_green">
+      <div class="feature__content_green">
+        <p class="kicker">#Features</p>
+        <h3>Exceptional Scope and<br> Diverse Practices</h3>
+        <p>Our attorneys provide clients with extensive knowledge and experience in each specialized area of practice we
+          offer. We are providing the best.</p>
+        <p><a class="btn" href="#">Our Services</a></p>
+      </div>
+
+      <div class="feature__media_green">
+        <img src="./images/feature-image-02.png" alt="Client consulting with a lawyer at home office">
+        <div class="feature__mask_green">
+          <img src="./images/feature-mask-green.png" alt="" aria-hidden="true">
+        </div>
+        <div class="feature__mask_col_green">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="team" aria-labelledby="team-title">
+    <div class="team__inner">
+
+      <header>
+        <p class="kicker">#Team</p>
+        <h2 id="team-title">Meet With Lawyers</h2>
+        <p>Our team of experienced team more than $150 Million in Settlements and Judgments for Our Clients
+        </p>
+      </header>
+
+      <ul class="team-cards">
+        <li>
+          <article class="team-card">
+            <img src="./images/team-image-01.png" alt="Paramedics assisting an injured person" width="640" height="420"
+              loading="lazy">
+            <div class="team-card-title active">
+              <a href="#">View Profile</a>
+            </div>
+          </article>
+          <div class="team-meta">
+            <h3 class="team-name">David Warner</h3>
+            <p class="team-role">Attorney at Law</p>
+          </div>
+        </li>
+
+        <li>
+          <article class="team-card">
+            <img src="./images/team-image-02.png" alt="Smiling professional in an office" width="640" height="420"
+              loading="lazy">
+          </article>
+          <div class="team-meta">
+            <h3 class="team-name">David Warner</h3>
+            <p class="team-role">Attorney at Law</p>
+          </div>
+        </li>
+
+        <li>
+          <article class="team-card">
+            <img src="./images/team-image-03.png" alt="Smiling professional in an office" width="640" height="420"
+              loading="lazy">
+          </article>
+          <div class="team-meta">
+            <h3 class="team-name">David Warner</h3>
+            <p class="team-role">Attorney at Law</p>
+          </div>
+        </li>
+
+        <li>
+          <article class="team-card">
+            <img src="./images/team-image-04.png" alt="Smiling professional in an office" width="640" height="420"
+              loading="lazy">
+          </article>
+          <div class="team-meta">
+            <h3 class="team-name">David Warner</h3>
+            <p class="team-role">Attorney at Law</p>
+          </div>
+        </li>
+
+        <li>
+          <article class="team-card">
+            <img src="./images/team-image-05.png" alt="Smiling professional in an office" width="640" height="420"
+              loading="lazy">
+          </article>
+          <div class="team-meta">
+            <h3 class="team-name">David Warner</h3>
+            <p class="team-role">Attorney at Law</p>
+          </div>
+        </li>
+
+        <li>
+          <article class="team-card">
+            <img src="./images/team-image-06.png" alt="Smiling professional in an office" width="640" height="420"
+              loading="lazy">
+          </article>
+          <div class="team-meta">
+            <h3 class="team-name">David Warner</h3>
+            <p class="team-role">Attorney at Law</p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="actions">
+        <a class="btn" href="/practice">All Attorneys</a>
+      </p>
+    </div>
+  </section>
+
+</body>
+
+</html>
