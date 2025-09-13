@@ -106,18 +106,18 @@ h6 {
 .section-padding {
   padding: var(--section-padding) 0;
 }
-
+/* 
 .section-header h2 {
   font-family: var(--font-heading);
   font-size: var(--fs-2xl);
   font-weight: 700;
-}
+} */
 
-.kicker {
+/* .kicker {
   font-family: var(--font-heading);
   font-size: var(--fs-base);
   font-weight: 400;
-}
+} */
 
 .btn {
   display: inline-block;
@@ -671,13 +671,13 @@ h6 {
 /* ============================================================
   TEAM
 ============================================================ */
-.team {
+/* .team {
   background: var(--dark);
   padding: var(--section-padding) 0;
   width: 100%;
 }
 
-.team .team__inner {
+.team .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
@@ -719,6 +719,7 @@ h6 {
   padding: 0;
   margin: 0;
 }
+
 
 .team .team-cards li {
   width: var(--card-w);
@@ -786,7 +787,7 @@ h6 {
   display: flex;
   justify-content: center;
   padding-top: 60px;
-}
+} */
 
 /* ============================================================
   AWARDS
@@ -1113,6 +1114,7 @@ ul.testimonial-pagination li.active {
   display: flex;
   flex-direction: row;
   gap: 30px;
+  padding-bottom: 70px;
 }
 
 .faq nav.faq-tabs a.active {
@@ -1590,10 +1592,10 @@ ul.blog-list {
     height: auto;
   }
 
-  .service .service-cards,
+  /* .service .service-cards,
   .team .team-cards {
     grid-template-columns: repeat(2, minmax(280px, 1fr));
-  }
+  } */
 
   /* .awards ul.award-cards {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
