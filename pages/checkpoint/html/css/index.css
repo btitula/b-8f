@@ -533,7 +533,7 @@ h6 {
 /* ============================================================
   FEATURES
 ============================================================ */
-.features {
+/* .features {
   background: #fff;
   padding: 0 var(--section-padding) var(--section-padding);
 }
@@ -666,7 +666,7 @@ h6 {
 .feature__content ul li::before {
   content: "•";
   margin-right: 10px;
-}
+} */
 
 /* ============================================================
   TEAM
@@ -1577,7 +1577,7 @@ ul.blog-list {
     align-items: center;
     gap: var(--space-4);
   }
-
+/* 
   .feature__grid,
   .feature__grid_green {
     flex-direction: column;
@@ -1590,7 +1590,7 @@ ul.blog-list {
     padding: var(--space-2);
     width: 100%;
     height: auto;
-  }
+  } */
 
   /* .service .service-cards,
   .team .team-cards {

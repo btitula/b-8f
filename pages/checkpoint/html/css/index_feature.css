@@ -1,0 +1,229 @@
+/* ============================================================
+  FEATURES
+============================================================ */
+.feature {
+  background: var(--white);
+  color: var(--white);
+  width: 100%;
+  padding-bottom: var(--section-padding);
+  padding-top: var(--section-padding);
+}
+
+/* ============================================================
+  FEATURES ORANGE
+============================================================ */
+.feature-media-orange {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+}
+
+.feature-media-orange .section-media,
+.feature-media-orange .section-header {
+  flex: 1 1 480px;
+  min-width: 300px;
+}
+
+.feature-media-orange .section-media {
+  width: 100%;
+  position: relative;
+  /* overflow: hidden; */
+  /* z-index: 0; */
+}
+
+.feature-media-orange .section-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.feature-media-orange .feature-mask-icon-orange {
+  position: absolute;
+  width: 117px;
+  height: 129px;
+  top: 30%;
+  left: -10%;
+}
+
+.feature-media-orange .feature-mask-icon-orange img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-media-orange .feature-mask-col-orange {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 40%;
+  background: var(--accent-orange);
+  z-index: 1;
+}
+
+.feature-media-orange .section-header {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.feature-media-orange .section-header .kicker {
+  color: var(--grey);
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.feature-media-orange .section-header .feature-title {
+  color: var(--dark);
+
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 52px;
+}
+
+.feature-media-orange .section-header p:last-of-type {
+  color: var(--grey);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.feature-media-orange .section-header ul {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-media-orange .section-header ul li {
+  color: var(--dark);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+  gap: 12px;
+}
+
+.feature-media-orange .section-header ul li::before {
+  content: "•";
+  color: var(--dark);
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+
+/* ============================================================
+  FEATURES GREEN
+============================================================ */
+.feature-media-green {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+}
+
+.feature-media-green .section-media,
+.feature-media-green .section-header {
+  flex: 1 1 480px;
+  min-width: 300px;
+}
+
+.feature-media-green .section-media {
+  width: 100%;
+  position: relative;
+  /* overflow: hidden;
+  z-index: 0; */
+}
+
+.feature-media-green .section-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.feature-media-green .feature-mask-icon-green {
+  position: absolute;
+  width: 117px;
+  height: 129px;
+  top: 30%;
+  left: -10%;
+}
+
+
+.feature-media-green .feature-mask-icon-green img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-media-green .feature-mask-col-green {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 40%;
+  background: var(--green);
+  z-index: 1;
+}
+
+.feature-media-green .section-header {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.feature-media-green .section-header .kicker {
+  color: var(--grey);
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.feature-media-green .section-header .feature-title {
+  color: var(--dark);
+
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 52px;
+}
+
+.feature-media-green .section-header p:last-of-type {
+  color: var(--grey);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+
+
+@media (max-width: 900px) {
+  .feature-media-orange {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .feature-media-orange .section-header {
+    order: -1;
+    margin-bottom: 8px;
+  }
+
+  .feature-media-orange .section-media {
+    order: 0;
+  }
+}
