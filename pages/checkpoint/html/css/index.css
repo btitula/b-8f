@@ -956,6 +956,57 @@ ul.testimonial-pagination li.active {
   background: var(--accent-orange);
 }
 
+/* <= 1024px: 2-up grid, center the header */
+@media (max-width: 1024px) {
+  .testimonials .section-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  ul.testimonial-list {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  li.testimonial-slide {
+    padding: 24px;
+  }
+}
+
+/* <= 640px: 1-up grid, smaller spacing & type */
+@media (max-width: 640px) {
+  ul.testimonial-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  li.testimonial-slide {
+    padding: 20px;
+  }
+
+  p.testimonial-quote {
+    margin: 16px 0 24px;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  ul.testimonial-author .name {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .testimonials .section-header {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials .testimonial-arrows {
+    display: none;
+    /* hide arrows on small screens */
+  }
+}
+
 /* ============================================================
   FAQ
 ============================================================ */
@@ -1480,56 +1531,7 @@ ul.blog-list {
   }
 }
 
-/* <= 1024px: 2-up grid, center the header */
-@media (max-width: 1024px) {
-  .testimonials .section-header {
-    align-items: center;
-    text-align: center;
-  }
 
-  ul.testimonial-list {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-    gap: 24px;
-  }
-
-  li.testimonial-slide {
-    padding: 24px;
-  }
-}
-
-/* <= 640px: 1-up grid, smaller spacing & type */
-@media (max-width: 640px) {
-  ul.testimonial-list {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  li.testimonial-slide {
-    padding: 20px;
-  }
-
-  p.testimonial-quote {
-    margin: 16px 0 24px;
-    font-size: 16px;
-    line-height: 26px;
-  }
-
-  ul.testimonial-author .name {
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .testimonials .section-header {
-    padding-bottom: 40px;
-  }
-}
-
-@media (max-width: 640px) {
-  .testimonials .testimonial-arrows {
-    display: none;
-    /* hide arrows on small screens */
-  }
-}
 
 
 /* @media (max-width: 1024px) {
