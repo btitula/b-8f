@@ -74,6 +74,7 @@
   left: -15%;
   z-index: 100;
   /* background-color: orange; */
+  font-weight: 100;
 }
 
 .hero-media .section-media .circle-container svg {
@@ -352,8 +353,10 @@ text {
     top: -30%;
     left: -30%;
     scale: 0.6;
+    font-weight: 100;
   }
-/* 
+
+  /* 
   .hero-media .section-media .circle-container svg {
     position: absolute;
     top: 0;
