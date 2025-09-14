@@ -177,6 +177,10 @@ text {
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding-top: 30px;
+  }
+
   .hero-media {
     flex-direction: column;
     align-items: stretch;
@@ -211,6 +215,7 @@ text {
     max-width: 260px;
     max-height: 260px;
     background: var(--green);
+    margin-top: 70px;
   }
 
   .hero-media .section-media .media-composition-inner {
