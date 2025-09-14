@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Rotating Circular Text with Image</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #34364a;
+      font-family: Impact, sans-serif;
+    }
+
+    .circle-container {
+      position: relative;
+      /* width: 450px;
+      height: 450px; */
+      width: 150px;
+      height: 150px;
+    }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: center;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    text {
+      animation: rotate 60s linear infinite;
+      transform-origin: 50% 50%;
+    
+    }
+
+    .image-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* width: 300px;
+      height: 300px; */
+       width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #3498db;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="circle-container">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <path id="circle" d="
+          M 50, 50
+          m -37, 0
+          a 37,37 0 1,1 74,0
+          a 37,37 0 1,1 -74,0" />
+      </defs>
+
+      <text font-size="10.2">
+        <textPath xlink:href="#circle">
+          CODE INSTINCT - SINCE 2017 - LIKE AND SUBSCRIBE NOW!! -
+        </textPath>
+      </text>
+    </svg>
+
+    <div class="image-container">
+      <img src="./images/menu-play.svg" alt="">
+    </div>
+  </div>
+</body>
