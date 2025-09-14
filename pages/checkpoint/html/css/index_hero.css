@@ -57,7 +57,6 @@
 }
 
 .hero-media .section-media {
-  /* position: relative; */
   position: relative;
   isolation: isolate;
   max-width: 470px;
@@ -73,7 +72,6 @@
   top: -15%;
   left: -15%;
   z-index: 100;
-  /* background-color: orange; */
   font-weight: 100;
 }
 
@@ -100,7 +98,6 @@ text {
   animation: rotate 60s linear infinite;
   transform-origin: 50% 50%;
 }
-
 
 .hero-media .section-media .circle-container .play-image-container {
   position: absolute;
@@ -179,86 +176,6 @@ text {
   object-fit: cover;
 }
 
-/*
-@media (max-width: 768px) {
-  .hero-media {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-  }
-
-  .hero-media .section-header {
-    text-align: left;
-    width: 100%;
-  }
-
-  .hero-media .section-header .hero-title {
-    font-size: 36px;
-    line-height: 44px;
-  }
-
-  .hero-media .section-header p:last-of-type {
-    font-size: 16px;
-    line-height: 26px;
-  }
-
-  .hero-media .section-media {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-media .section-media .media-card img {
-    width: 100%;
-    height: auto;
-    max-width: 360px;
-  } 
-
-   .hero-media .section-media .video-ring-text {
-    inset-block-start: -10%;
-    inset-inline-start: -10%;
-    width: 120px;
-    height: 120px;
-  }
-
-  .hero-media .section-media .video-ring-button {
-    width: 60px;
-    top: -8%;
-    left: -8%;
-  }
-
-  .hero-media .section-media .video-mash-icon {
-    width: 100px;
-    height: auto;
-    right: -10%;
-    top: 20%;
-  }
-} */
-
-
-
-
-/* ----------------------------------
-   SMALL SCREENS (stack + scale)
----------------------------------- */
-@media (max-width: 768px) {
-  .hero-media {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-media .section-media {
-    margin-top: 100px;
-  }
-
-}
-
-
-
 @media (max-width: 480px) {
   .hero-media {
     flex-direction: column;
@@ -323,8 +240,6 @@ text {
     top: 30%;
   }
 
-
-
   .hero-media .section-media .video-mash-icon img {
     width: 60%;
     object-fit: cover;
@@ -355,14 +270,4 @@ text {
     scale: 0.6;
     font-weight: 100;
   }
-
-  /* 
-  .hero-media .section-media .circle-container svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform-origin: center;
-  } */
 }
