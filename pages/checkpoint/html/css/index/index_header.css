@@ -130,11 +130,11 @@
   background: var(--bg);
 }
 
-main,
+/* main,
 .page,
 body>*:not(.header) {
   margin-top: var(--header-h);
-}
+} */
 /* End fix static menu */
 
 .header-media {
