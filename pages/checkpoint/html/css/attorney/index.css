@@ -11,7 +11,8 @@
   color: var(--dark);
   width: 100%;
   padding-bottom: var(--section-padding);
-  padding-top: var(--section-padding);
+  /* padding-top: var(--section-padding); */
+  padding-top: calc(var(--section-padding) * 2);
 }
 
 .attorney-media {
@@ -132,5 +133,11 @@
   .attorney-media {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .attorney {
+    padding-top: var(--section-padding);
   }
 }
