@@ -111,12 +111,31 @@
 
 
 /* Base */
-.header {
+/* .header {
   background: var(--bg);
   position: relative;
   z-index: 5;
   padding-top: 10px;
+} */
+
+/* Fix static menu */
+:root {
+  --header-h: 86px;
 }
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  background: var(--bg);
+}
+
+main,
+.page,
+body>*:not(.header) {
+  margin-top: var(--header-h);
+}
+/* End fix static menu */
 
 .header-media {
   display: flex;
