@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 :root {
   /* Colors */
   --bg: #f7e9c8;
