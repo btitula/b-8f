@@ -295,11 +295,15 @@
   min-width: 160px;
   list-style: none;
   z-index: 1000;
+  border-radius: 4px;
+}
+
+.header-nav .submenu li:first-child {
+  border-bottom: 0.5px solid var(--light-grey);
 }
 
 .header-nav .submenu li {
   padding: 0;
-  border-bottom: 1px solid var(--light-grey);
 }
 
 .header-nav .submenu a {
