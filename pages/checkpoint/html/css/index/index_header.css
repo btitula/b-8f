@@ -195,7 +195,7 @@
   inset-inline-end: 0;
   width: 10px;
   height: 10px;
-  background: url("../images/menu-arrow-down.svg") no-repeat center/contain;
+  background: url("./../../images/index/menu-arrow-down.svg") no-repeat center/contain;
   transform: translateY(-50%);
 }
 
@@ -205,7 +205,7 @@
 }
 
 .header-nav li.has-submenu.open>a::after {
-  background-image: url("../images/menu-arrow-up.svg");
+  background-image: url("./../../images/index/menu-arrow-up.svg");
 }
 
 /* Call block */
