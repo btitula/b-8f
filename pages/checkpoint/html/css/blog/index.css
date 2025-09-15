@@ -1,6 +1,11 @@
 /* ============================================================
   BLOG
 ============================================================ */
+.header-nav li.open>a {
+  color: var(--accent-orange);
+  font-weight: 600;
+}
+
 .blog-page {
   background: var(--white);
   width: 100%;
