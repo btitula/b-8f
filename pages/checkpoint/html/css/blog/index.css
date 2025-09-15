@@ -1,0 +1,136 @@
+/* ============================================================
+  BLOG
+============================================================ */
+.blog-page {
+  background: var(--white);
+  width: 100%;
+  padding-bottom: var(--section-padding);
+  padding-top: var(--section-padding);
+}
+
+.blog-page .section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+.blog-page .section-header .blog-title {
+  color: var(--dark);
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 70px;
+}
+
+.blog-page .section-header p {
+  color: var(--grey);
+  font-family: var(--font-body);
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.blog-page ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-page ul.blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.blog-card {
+  list-style: none;
+  background: var(--white, #fff);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+  flex: 1 1 clamp(260px, 33.333%, 360px);
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .10);
+}
+
+.blog-card .blog-meta .avatar {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  padding: 8px;
+}
+
+.blog-card .blog-info {
+  padding: 30px;
+}
+
+.blog-card .blog-info ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  row-gap: 15px;
+}
+
+.blog-card .blog-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--grey, #66737b);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.blog-card .blog-date img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.blog-card .blog-name {
+  color: var(--dark, #0E1412);
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.blog-card .blog-role {
+  color: var(--grey, #586863);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.blog-card .blog-link a {
+  text-transform: uppercase;
+  color: var(--accent-orange, #FD6038);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.blog-page .actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.blog-page .actions {
+  margin-top: 70px;
+}
