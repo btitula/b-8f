@@ -1,6 +1,11 @@
 /* ============================================================
   CONTACT US
 ============================================================ */
+.header-nav li.open>a {
+  color: var(--accent-orange);
+  font-weight: 600;
+}
+
 .contact {
   background: var(--white);
   color: var(--white);
