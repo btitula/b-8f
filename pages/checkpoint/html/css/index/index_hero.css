@@ -191,6 +191,7 @@ text {
   .hero-media .section-header {
     width: 100%;
     height: 50%;
+    padding-top: 30px;
   }
 
   .hero-media .section-header .hero-title {
