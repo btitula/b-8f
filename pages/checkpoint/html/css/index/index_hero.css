@@ -109,8 +109,13 @@ text {
   height: 90px;
   border-radius: 50%;
   overflow: hidden;
-  /* border: 2px solid #3498db; */
-  /* background-color: blue; */
+  border: 2px solid transparent;
+  transition: all 0.5s linear;
+}
+
+.hero-media .section-media .circle-container .play-image-container:hover {
+  border: 10px solid var(--dark);
+  cursor: pointer;
 }
 
 .hero-media .section-media .circle-container .play-image-container img {

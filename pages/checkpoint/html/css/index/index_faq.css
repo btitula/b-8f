@@ -76,55 +76,102 @@ li.faq-item {
   padding: 30px;
 }
 
-li.faq-item.active {
+/* li.faq-item details[open] {
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+} */
+
+li.faq-item {
+  border-bottom: 0.5px solid var(--light-grey);
+}
+
+li.faq-item h3 {
+  color: var(--dark);
+font-family: var(--font-body);
+font-size: 22px;
+font-weight: 600;
+line-height: 32px; /* 145.455% */
+}
+
+li.faq-item .answer {
+    color: var(--grey);
+
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+  }
+
+  details[open] .faq-arrow-down {
+    display: none;
+  }
+
+  details[open] .faq-arrow-up {
+    display: block;
+  }
+
+  details .faq-arrow-down {
+    display: block;
+  }
+
+  details .faq-arrow-up {
+    display: none;
+  }
+
+  .faq-item:has(details[open]) {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .06);
+  }
+
+  /* li.faq-item.active {
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
 }
 
 li.faq-item.inactive {
   border-top: 1px solid var(--light-grey);
-}
-
-li.faq-item summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-/* Remove default ::marker from summary details */
-details>summary::-webkit-details-marker {
-  display: none;
-}
-
-details>summary::marker {
-  content: "";
-}
-
-details>summary {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .faq nav.faq-tabs {
-    gap: 18px;
-    font-size: 16px;
-    line-height: 26px;
-    flex-wrap: wrap;
-  }
+} */
 
   li.faq-item summary {
-    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
   }
 
-  li.faq-item .answer {
-    padding: 0 18px 18px 18px;
+  /* Remove default ::marker from summary details */
+  details>summary::-webkit-details-marker {
+    display: none;
   }
-}
 
-@media (max-width: 480px) {
-  .faq .section-header .faq-title {
-    font-size: 24px;
+  details>summary::marker {
+    content: "";
   }
-}
+
+  details>summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .faq nav.faq-tabs {
+      gap: 18px;
+      font-size: 16px;
+      line-height: 26px;
+      flex-wrap: wrap;
+    }
+
+    li.faq-item summary {
+      padding: 18px;
+    }
+
+    li.faq-item .answer {
+      padding: 0 18px 18px 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq .section-header .faq-title {
+      font-size: 24px;
+    }
+  }
