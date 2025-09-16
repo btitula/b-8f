@@ -122,8 +122,12 @@ h6 {
   font-family: var(--font-body);
   font-weight: 700;
   line-height: var(--lh-base);
+  transition: all .3s ease;
 }
 
+.btn:hover {
+  background: var(--accent-orange);
+}
 
 .no-copy-button {
   -webkit-touch-callout: none; /* iOS Safari */

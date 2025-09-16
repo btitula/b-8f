@@ -71,7 +71,10 @@ ul.service-list {
 .service-meta {
   margin: 0;
   position: relative;
-  /* so child anchors to this */
+}
+
+.service-meta:hover img {
+  transform: scale(1.05);
 }
 
 .service-meta img {
@@ -79,6 +82,7 @@ ul.service-list {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: all 0.3s ease;
 }
  
 .service-profile {
@@ -104,11 +108,18 @@ ul.service-list {
   padding: 12px 16px;
   border-radius: 2px;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
-
+/* 
 .service-profile .btn.active {
   background: var(--accent);
   color: var(--white);
+} */
+
+.service-profile .btn:hover {
+  background: var(--accent-orange);
+  color: var(--white);
+
 }
 
 .service .actions {

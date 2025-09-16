@@ -21,6 +21,20 @@
   justify-content: center;
 }
 
+.award-card:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.award-card img {
+  transition: all 0.3s ease;
+}
+
+.award-card:hover img {
+  transform: scale(1.05);
+}
+
 /* Default = 4 per row */
 .awards .award-cards li {
   flex: 1 1 calc(25% - var(--space-6));
