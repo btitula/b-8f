@@ -3,12 +3,11 @@
 ============================================================ */
 .about {
   background: var(--white);
-  color: var(--white);
   width: 100%;
   padding-bottom: var(--section-padding);
-  /* padding-top: var(--section-padding); */
   padding-top: calc(var(--section-padding) * 2);
   color: var(--dark);
+  font-family: var(--font-heading);
 }
 
 .about-media .section-header {
@@ -19,10 +18,9 @@
 
 .about-media .section-header .about-title {
   color: var(--dark);
-  font-family: var(--font-heading);
-  font-size: 60px;
-  font-weight: 800;
-  line-height: 70px;
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  line-height: var(--space-6);
   padding-bottom: var(--section-padding);
 }
 
@@ -30,7 +28,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: var(--space-4);
 }
 
 .about-card {
@@ -66,16 +64,36 @@
 }
 
 .about-info {
-  padding: 25px;
+  padding: var(--space-3);
   background: var(--accent-orange);
   color: var(--white);
+  font-family: var(--font-body);
+  gap: var(--space-1);
+  display: flex;
+  flex-direction: column;
 }
 
+.about-info .about-subtitle {
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-style: normal;
+  font-weight: 700;
+  line-height: var(--space-4);
+}
+
+
 .about-info .about-summary {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-style: normal;
+  font-weight: 200;
+  line-height: var(--space-4);
+}
+
+.about-info h3:hover {
+  cursor: pointer;
 }
 
 .about-history {
@@ -83,10 +101,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.about-history .section-header:first-child {
-  padding-right: 130px;
 }
 
 .about-history .section-header {
@@ -97,44 +111,48 @@
   text-align: left !important;
   z-index: 0;
   position: relative;
+  gap: var(--space-2);
+  padding-right: var(--space-6);
 }
 
 .about-history .section-header .kicker {
   color: var(--grey);
-  font-family: var(--font-heading);
+  /* font-family: var(--font-heading);
   font-size: 18px;
   font-weight: 400;
-  line-height: 30px;
+  line-height: 30px; */
+  font-size: var(--fs-base);
+  font-weight: 400;
+  line-height: var(--space-4);
 }
 
 .about-history .section-header .about-history-title {
   color: var(--dark);
-  font-family: var(--font-heading);
-  font-size: 42px;
+  font-size: var(--fs-2xl);
   font-weight: 700;
-  line-height: 52px;
+  line-height: var(--space-6);
 }
 
 .about-history .section-header p {
   color: var(--grey);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: var(--fs-base);
   font-weight: 400;
-  line-height: 30px;
+  line-height: var(--space-4);
 }
 
 .section-media {
   position: relative;
   width: 800px;
   height: 570px;
-  margin-left: -30px;
+  margin-left: -var(--space-4);
 }
 
 .section-media .mask-color {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 60px;
+  width: var(--space-8);
   height: 40%;
   background-color: var(--accent-orange);
   z-index: 1;
@@ -149,85 +167,116 @@
 }
 
 
-
-
 /* ============================================================
   EXPERIENCE
 ============================================================ */
 .experience {
   background: var(--bg);
-  color: var(--white);
   width: 100%;
   padding-bottom: var(--section-padding);
   padding-top: var(--section-padding);
   color: var(--dark);
+  font-family: var(--font-heading);
 }
 
 .experience-media .section-header {
   display: flex;
   flex-direction: column;
-  text-align: center;
   justify-content: center;
+  text-align: center;
+  gap: var(--space-2);
 }
 
 .experience-media .section-header .kicker {
   color: var(--dark);
-  font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: var(--fs-base);
   font-weight: 400;
-  line-height: 30px;
+  line-height: var(--space-4);
   text-transform: uppercase;
 }
 
 .experience-media .section-header .experience-title {
   color: var(--dark);
-  font-family: var(--font-heading);
-  font-size: 42px;
+  font-size: var(--fs-2xl);
   font-weight: 700;
-  line-height: 52px;
+  line-height: var(--space-6);
 }
 
 .experience-media p:last-of-type {
   color: var(--grey);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: var(--fs-base);
   font-weight: 400;
-  line-height: 30px;
+  line-height: var(--space-4);
 }
 
 
 @media (max-width: 480px) {
   .about {
-    padding-top: 0;
+    padding: calc(var(--section-padding) / 2) 0;
   }
 
   .about-media .section-header .about-title {
-    font-size: 22px;
+    font-size: var(--fs-base);
     font-weight: 700;
-    line-height: 32px;
-    padding-bottom: 30px;
-    padding-top: 30px;
+    line-height: var(--space-4);
+    padding-bottom: var(--space-4);
+    padding-top: var(--space-4);
   }
 
   .about-history .section-header:first-child {
     padding-right: 0;
+    gap: var(--space-2);
+    line-height: var(--space-3);
   }
 
   .about-history .section-header .about-history-title {
-    font-size: 22px;
-    line-height: 32px;
+    font-size: var(--fs-base);
+    line-height: var(--space-4);
   }
 
   .about-history .section-header p {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: var(--fs-base);
+    line-height: var(--space-4);
+  }
+
+  .about-info {
+    padding: var(--space-2);
+  }
+
+  .about-info .about-subtitle {
+    font-size: calc(var(--fs-base) / 1.3);
+
+    line-height: var(--space-2);
+  }
+
+
+  .about-info .about-summary {
+    font-size: calc(var(--fs-base) / 1.3);
+    line-height: var(--space-2);
+  }
+
+
+  .about-history {
+    padding-top: calc(var(--section-padding) / 2);
+  }
+
+  .about-history .section-header {
+    padding-right: 0;
+  }
+
+  .about-history .section-header:first-child p:last-of-type {
+
+    font-size: calc(var(--fs-base) / 1.3);
+    line-height: var(--space-3);
+
   }
 
   .section-media {
     width: 100%;
     height: 300px;
     margin-left: 0;
-    margin-top: 30px;
+    margin-top: var(--space-4);
   }
 
   .section-media .main-image {
@@ -243,17 +292,26 @@
     bottom: 0;
   }
 
+  .experience {
+    padding: calc(var(--section-padding) / 2);
+  }
+
+
+  .experience-media .section-header .kicker {
+    font-size: calc(var(--fs-base) / 1.3);
+    line-height: var(--space-3);
+
+  }
+
+
   .experience-media .section-header p:last-of-type {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: calc(var(--fs-base) / 1.3);
+    line-height: var(--space-3);
   }
 
   .experience-media .section-header .experience-title {
-    font-size: 22px;
-    line-height: 32px;
+    font-size: var(--fs-base);
+    line-height: var(--space-3);
   }
 
-  .about {
-    padding-top: var(--section-padding);
-  }
 }
