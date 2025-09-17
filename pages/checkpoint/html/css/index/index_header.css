@@ -30,6 +30,200 @@ body>*:not(.header) {
   padding: var(--space-2) 0;
 }
 
+
+/* Mobile menu */
+/* ===== Theme knobs (tweak to match the black example) ===== */
+:root {
+  --mobile-menu-bg: #000;
+  /* overlay background */
+  --mobile-menu-fg: #fff;
+  /* text color */
+  --mobile-menu-dim: rgba(0, 0, 0, .6);
+  --mobile-menu-accent: var(--accent-orange, #f4a237);
+  --mobile-menu-gap: 18px;
+}
+
+/* ===== Hidden checkbox (controller) ===== */
+.nav-toggle {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===== Overlay container ===== */
+.menu-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background: var(--mobile-menu-bg);
+  color: var(--mobile-menu-fg);
+
+  /* hidden by default; becomes visible when checkbox checked */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .28s ease, visibility .28s ease;
+}
+
+/* open state */
+#nav-toggle:checked~.menu-mobile {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* optional dark backdrop glow under header (if needed) */
+#nav-toggle:checked~.header::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--mobile-menu-dim);
+}
+
+/* ===== inner layout ===== */
+.menu-mobile-inner {
+  display: grid;
+  justify-items: center;
+  gap: clamp(24px, 4vh, 48px);
+  transform: translateY(8px) scale(.98);
+  transition: transform .28s ease;
+}
+
+/* subtle zoom-in when opening */
+#nav-toggle:checked~.menu-mobile .menu-mobile-inner {
+  transform: translateY(0) scale(1);
+}
+
+/* ===== brand (centered like the mock) ===== */
+.menu-brand {
+  display: grid;
+  justify-items: center;
+  text-decoration: none;
+  color: inherit;
+  gap: 10px;
+}
+
+.menu-brand img {
+  width: 42px;
+  height: 42px;
+}
+
+.menu-brand .brand-text {
+  text-align: center;
+  line-height: 1.05;
+}
+
+.menu-brand .brand-name {
+  font-family: var(--font-heading, inherit);
+  font-size: clamp(22px, 5.4vw, 44px);
+  letter-spacing: .08em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.menu-brand .brand-tagline {
+  font-size: clamp(11px, 2.6vw, 14px);
+  opacity: .85;
+}
+
+/* ===== link list ===== */
+.menu-mobile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.menu-mobile-list a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--bg);
+  font-size: clamp(16px, 4.6vw, 22px);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 6px 10px;
+  transition: opacity .2s ease, color .2s ease, transform .2s ease;
+  will-change: transform;
+}
+
+/* active/hover accent like the example */
+.menu-mobile-list a.is-active,
+.menu-mobile-list a:hover,
+.menu-mobile-list a:focus-visible {
+  color: var(--accent-orange);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* tiny underline dot (optional, feel like the mock) */
+.menu-mobile-list a.is-active::after,
+.menu-mobile-list a:hover::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+
+/* ===== hamburger icon (optional styling if you use it) ===== */
+.menu-toggle {
+  position: relative;
+  z-index: 2100;
+}
+
+.menu-icon,
+.menu-icon::before,
+.menu-icon::after {
+  display: none;
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+/* .menu-icon::before {
+  top: -7px;
+}
+
+.menu-icon::after {
+  top: 7px;
+} */
+
+/* turn hamburger into “X” when open */
+/* #nav-toggle:checked+.menu-toggle .menu-icon {
+  background: transparent;
+}
+
+#nav-toggle:checked + .menu-toggle .menu-icon::before {
+  transform: rotate(45deg) translate(3px, 3px);
+}
+#nav-toggle:checked + .menu-toggle .menu-icon::after {
+  transform: rotate(-45deg) translate(3px, -3px);
+} */
+/* End Mobile menu */
+
+
 /* Brand */
 .header-brand {
   display: flex;
@@ -320,6 +514,7 @@ body>*:not(.header) {
     font-size: var(--fs-lg);
   }
 }
+
 
 @media (max-width: 380px) {
   .header-call span {
