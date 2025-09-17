@@ -57,9 +57,39 @@
   <!-- ================== HEADER ================== -->
   <header class="header">
     <div class="container header-media">
-      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">
+      <!-- <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">
         <span class="menu-icon"></span>
-      </button>
+      </button> -->
+
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+
+      <!-- your existing hamburger button can be this label -->
+      <label class="menu-toggle" for="nav-toggle" aria-label="Open menu">
+        <span class="menu-icon"></span>
+      </label>
+
+      <div class="menu-mobile" aria-modal="true" role="dialog">
+        <!-- <label class="menu-close" for="nav-toggle" aria-label="Close menu"></label> -->
+
+        <div class="menu-mobile-inner">
+          <!-- <a class="menu-brand" href="./">
+      <img src="./images/index/logo.svg" alt="" />
+      <span class="brand-text">
+        <span class="brand-name">Justice</span>
+        <span class="brand-tagline">Law Firm</span>
+      </span>
+    </a> -->
+
+          <ul class="menu-mobile-list">
+            <li><a href="./" class="is-active">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="#">Practice Areas</a></li>
+            <li><a href="./attorney.html">Attorneys</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
 
       <a class="header-brand" href="./">
         <img src="./images/index/logo.svg" alt="Justice Law Firm Logo" />
