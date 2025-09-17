@@ -3,50 +3,75 @@
 ============================================================ */
 .testimonial {
   background: var(--white);
-  padding: var(--section-padding) 0;
+  color: var(--dark);
   width: 100%;
+  padding: var(--section-padding) 0;
+  font-family: var(--font-heading);
 }
 
 .testimonial .section-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 6px;
-  padding-bottom: 70px;
-  text-align: left;
   align-items: center;
+  text-align: left;
+  padding-bottom: var(--space-6);
+  gap: var(--space-2);
+}
+
+.testimonial .section-header div:first-of-type {
+  gap: var(--space-2);
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonial .section-header .kicker {
-color: var(--grey);
+  /* color: var(--grey);
 
   font-family: var(--font-heading);
   font-size: 18px;
   font-weight: 400;
   line-height: 30px;
-  margin: 0;
+  margin: 0; */
+
+  color: var(--grey);
+  font-size: var(--fs-base);
+  font-weight: 400;
+  line-height: var(--space-4);
 }
 
 .testimonial .section-header .testimonial-title {
-color: var(--dark);
+  /* color: var(--dark);
   font-family: var(--font-heading);
   font-size: 42px;
   font-weight: 700;
-  line-height: 52px;
+  line-height: 52px; */
+
+  color: var(--dark);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  line-height: var(--space-6);
 }
 
 .testimonial .section-header p:last-of-type {
-  color: var(--grey);
+  /* color: var(--grey);
   font-family: var(--font-body);
   font-size: 18px;
+  font-weight: 400; */
+
+  color: var(--grey);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
   font-weight: 400;
+  line-height: var(--space-4);
+  max-width: 50ch;
 }
 
 .testimonial .testimonial-arrows {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
+  gap: var(--space-1);
+  margin-top: var(--space-4);
 }
 
 .testimonial .testimonial-arrows button {
@@ -55,7 +80,7 @@ color: var(--dark);
   border: none;
   width: 40px;
   height: 40px;
-  font-size: 20px;
+  font-size: var(--fs-base);
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -70,17 +95,23 @@ ul.testimonial-list {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(280px, 1fr));
-  gap: 30px;
+  gap: var(--space-4);
 }
 
 li.testimonial-slide {
   border: 1px solid #E6EFEC;
   background: var(--white);
-  padding: 30px;
+  padding: var(--space-4);
   border-radius: 2px;
   width: 100%;
   height: auto;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-card {
+  gap: var(--space-2);
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonial-card .avatar {
@@ -91,9 +122,11 @@ li.testimonial-slide {
 }
 
 p.testimonial-quote {
-  margin: 20px 0 30px;
   color: var(--grey);
-  line-height: var(--line-height-base);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: 300;
+  line-height: var(--space-4);
 }
 
 ul.testimonial-author {
@@ -112,18 +145,18 @@ ul.testimonial-author .name {
   margin: 0 0 4px;
   color: var(--dark);
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--fs-base);
   font-weight: 700;
-  line-height: 30px;
+  line-height: var(--space-2);
 }
 
 ul.testimonial-author .role {
   margin: 0;
   color: var(--grey);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: calc(var(--fs-base) / 1.3);
   font-weight: 400;
-  line-height: 24px;
+  line-height: var(--space-2);
 }
 
 ul.testimonial-pagination {
@@ -197,4 +230,34 @@ ul.testimonial-pagination li.active {
     display: none;
     /* hide arrows on small screens */
   }
+}
+
+@media (max-width: 480px) {
+  .testimonial {
+    padding: calc(var(--section-padding) / 2) 0;
+  }
+
+  .testimonial .section-header {
+    padding-bottom: calc(var(--space-3) * 2);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .testimonial .section-header .kicker {
+    font-size: calc(var(--fs-base) / 1.3);
+    line-height: var(--space-4);
+  }
+
+  .testimonial .section-header .testimonial-title {
+    font-size: calc(var(--fs-2xl) / 2);
+    line-height: var(--space-4);
+  }
+
+  .testimonial .section-header p:last-of-type {
+    line-height: var(--space-3);
+    font-size: calc(var(--fs-base) / 1.3);
+    font-weight: 300;
+  }
+
 }
