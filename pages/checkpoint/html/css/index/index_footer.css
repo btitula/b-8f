@@ -95,7 +95,7 @@
 .footer-map-title {
   position: absolute;
   margin: 3%;
-  padding: var(--space-2) var(--space-4);
+  /* padding: var(--space-2) var(--space-4); */
   border-radius: 2px;
   background: #fff;
   color: var(--dark);
