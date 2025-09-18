@@ -1,6 +1,10 @@
 /* ============================================================
   ATTORNEY
 ============================================================ */
+body {
+  background: var(--white);
+}
+
 .header-nav li.open>a {
   color: var(--accent-orange);
   font-weight: 600;
@@ -181,6 +185,10 @@
 }
 
 @media (max-width: 480px) {
+  body {
+    background: var(--white);
+  }
+
   .attorney {
     padding-top: var(--section-padding);
     padding-bottom: calc(var(--section-padding) / 2);

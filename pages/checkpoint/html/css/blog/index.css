@@ -1,6 +1,10 @@
 /* ============================================================
   BLOG
 ============================================================ */
+body {
+  background: var(--white);
+}
+
 .header-nav li.open>a {
   color: var(--accent-orange);
   font-weight: 600;
@@ -151,6 +155,10 @@
 }
 
 @media (max-width: 480px) {
+  body {
+      background: var(--white);
+    }
+
   .blog-page {
     padding: calc(var(--section-padding) / 2) 0;
     padding-top: var(--section-padding);
