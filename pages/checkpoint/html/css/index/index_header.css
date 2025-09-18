@@ -508,6 +508,7 @@ body>*:not(.header) {
   .header-call {
     margin-left: auto;
     font-size: var(--fs-sm);
+    padding-right: var(--space-1);
   }
 
   .header-call a {
