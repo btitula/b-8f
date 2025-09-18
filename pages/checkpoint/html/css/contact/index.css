@@ -93,6 +93,16 @@ body {
   border-radius: 6px;
   background: var(--accent);
   box-shadow: 0 14px 35px 0 rgba(129, 127, 253, 0.28);
+  transition: all .3s ease;
+}
+
+.contact-form .actions:hover {
+  background: var(--accent-orange);
+  cursor: pointer;
+}
+
+.contact-form .actions:hover .btn {
+  background: var(--accent-orange);
 }
 
 .contact-form .actions .btn {
