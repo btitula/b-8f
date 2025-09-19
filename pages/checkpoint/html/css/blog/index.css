@@ -73,6 +73,14 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, .10);
 }
 
+.blog-card .blog-meta a {
+  transition: all 0.3s ease;
+}
+
+.blog-card .blog-meta a:hover {
+  opacity: 0.9;
+}
+
 .blog-card .blog-meta .avatar {
   display: block;
   width: 100%;
@@ -118,8 +126,13 @@ body {
   transition: all 0.3s ease;
 }
 
-.blog-card .blog-name:hover {
+.blog-card .blog-name a {
+  transition: all 0.3s ease;
+}
+
+.blog-card .blog-name a:hover {
   cursor: pointer;
+  color: var(--accent-orange);
 }
 
 .blog-card .blog-role {
