@@ -27,7 +27,7 @@ body>*:not(.header) {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
-  padding: var(--space-2) 0;
+  padding: var(--space-2);
 }
 
 
@@ -339,7 +339,7 @@ body>*:not(.header) {
   appearance: none;
   border: 0;
   background: transparent;
-  padding: var(--space-1);
+  /* padding: var(--space-1); */
   cursor: pointer;
 }
 
@@ -508,7 +508,7 @@ body>*:not(.header) {
   .header-call {
     margin-left: auto;
     font-size: var(--fs-sm);
-    padding-right: var(--space-1);
+    /* padding-right: var(--space-1); */
   }
 
   .header-call a {

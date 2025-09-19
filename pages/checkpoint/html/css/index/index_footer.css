@@ -206,6 +206,15 @@
   object-fit: fill;
 }
 
+.footer-map .actions .btn {
+  padding: var(--btn-pad-sm);
+}
+
+.footer-map .actions .btn:hover {
+  background-color: var(--accent-orange);
+  color: var(--white);
+}
+
 @media (max-width: 720px) {
   .footer-bottom {
     flex-direction: column;
