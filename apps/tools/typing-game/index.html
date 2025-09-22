@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Game . Not Easy With Me</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- pragma: allowlist secret -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="container bg-danger">
+    <h1 class="text-center text-light">
+      Typing Game . Not Easy With Me
+    </h1>
+    <div class="pg-5">
+      <div class="game-board before">
+        <h1 class="game-title">World Game!</h1>
+        <p>Score 10 To Complete This Level!</p>
+        <button class="btn start-game">Start Game</button>
+      </div>
+      <div class="game-board after">
+        <h1 class="game-title">Game Over!</h1>
+        <p class="score-board">
+          Level Score
+        <h3 class="digit">0</h3>
+        </p>
+        <span class="btn reset-game" onclick="location.reload(true)">Reset Game</span>
+      </div>
+    </div>
+    <p class="mainscore-board">
+      Score <strong class="digit">0</strong>
+    </p>
+    <div class="message-text animate-me"></div>
+    <div class="words-block bg-warning" id="words-block">
+
+    </div>
+    <div class="fire-block">
+      <input type="text" class="input-field" id="match-field" autocomplete="off" autofocus
+        placeholder="Type Correct Word Here!">
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>

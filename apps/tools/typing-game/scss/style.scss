@@ -1,0 +1,145 @@
+body {
+  background: linear-gradient(to right, rgb(160, 100, 100), rgb(44, 44, 80));
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  margin: auto;
+  position: relative;
+  padding-bottom: 15px;
+
+  .pg-5 {
+    .game-board {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      z-index: 2;
+      text-align: center;
+      border-radius: 5px;
+      padding-top: 10%;
+
+      .digit {
+        font-size: 32px;
+        margin: 15px 0;
+      }
+
+      .score-board span {
+        font-size: 18px;
+      }
+
+      .btn {
+        padding: 12px 18px;
+        background-color: yellow;
+        color: black;
+        font-size: 18px;
+        border: 0;
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, 50%);
+
+      }
+    }
+
+    .game-board.after {
+      display: none;
+    }
+  }
+
+  .mainscore-board {
+    margin: auto;
+    background: #b1dcbe;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  .message-text {
+    font-size: 24px;
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-align: center;
+    width: 80%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .words-block {
+    background: #f3ffba;
+    height: 320px;
+    border: 1px dotted #e0e0e0;
+    position: relative;
+    border-radius: 0;
+    margin-top: 5px;
+    padding: 2%;
+    border-bottom: 0;
+
+    height: 400px;
+    /* pick a height you like */
+    overflow: hidden;
+
+    .game-words {
+      position: absolute;
+      top: -40px;
+      /* starting above the block is safer than top:0 */
+      left: 0;
+      display: inline-block;
+      padding: 5px;
+      border-radius: 5px;
+      transition: opacity linear 0.2s;
+      /* ok to keep a small fade */
+    }
+
+    // .game-words {
+    //   display: inline-block;
+    //   padding: 5px;
+    //   border-radius: 5px;
+    //   position: absolute;
+    //   transition: opacity linear 2s;
+    //   top: 0;
+    // }
+
+    @keyframes fadeAndScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8, 0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+    }
+  }
+
+  .fire-block {
+    background: #2d80d4;
+    text-align: center;
+    height: 20%;
+    border-radius: 0 0 15px 15px;
+
+    .input-field,
+    .input-field:focus {
+      border-radius: 10px;
+      border: 1px solid #e0e0e0;
+      padding: 15px;
+      background: white;
+      width: 80%;
+      outline: none;
+      margin: 10px;
+    }
+  }
+}
