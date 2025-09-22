@@ -9,8 +9,34 @@ let gameOverThreshold = 0;  // Vertical position (Y) that triggers game over whe
 
 // List of words to spawn
 let words = [
-  "apple", "banana", "cherry", "date", "elderberry",
-  "fig", "grape", "honeydew", "kiwi", "lemon"
+  "aardvark", "alligator", "alpaca", "antelope", "armadillo",
+  "baboon", "badger", "bat", "beaver", "bison",
+  "buffalo", "butterfly", "camel", "capybara", "caribou",
+  "chameleon", "cheetah", "chimpanzee", "chinchilla", "chipmunk",
+  "cobra", "cougar", "coyote", "crocodile", "crow",
+  "deer", "dingo", "dolphin", "donkey", "dove",
+  "eagle", "echidna", "elephant", "emu", "falcon",
+  "ferret", "flamingo", "fox", "frog", "gazelle",
+  "gecko", "giraffe", "gnu", "goat", "gorilla",
+  "hamster", "hedgehog", "hippopotamus", "hyena", "ibex"
+]
+
+let colors = [
+  "#b39cd0",
+  "#fbeaff",
+  "#00c9a7",
+  "#00c9a7",
+  "#c4fcef",
+  "#4d8076",
+  "#4b4453",
+  "#b0a8b9",
+  "#c34a36",
+  "#ff8066",
+  "#4e8397",
+  "#d5cabd",
+  "#4ffbdf",
+  "#00c2a8",
+  "#008b74"
 ]
 
 // -------------------------------
@@ -52,7 +78,7 @@ function printWords() {
   $('.words-block').append(`<div id="${id}" class="game-words">${text}</div>`);
 
   // Step 3: Style the new word (random color + random horizontal position)
-  const colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5', '#F5FF33'];
+  // const colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5', '#F5FF33'];
   const randomColor = Math.floor(Math.random() * colors.length);
   const $block = $('.words-block');
   const $w = $(`#${id}`);
@@ -107,7 +133,7 @@ function printWords() {
 
   // Step 7: Keep spawning words until game ends
   if (!gameOver) {
-    setTimeout(printWords, 3000); // spawn new word every 3s
+    setTimeout(printWords, 4000); // spawn new word every 5s
   }
 }
 
