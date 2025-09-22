@@ -22,21 +22,28 @@ let words = [
 ]
 
 let colors = [
-  "#b39cd0",
-  "#fbeaff",
+
+  "#c197ff",
   "#00c9a7",
-  "#00c9a7",
-  "#c4fcef",
-  "#4d8076",
+  "#005b44",
+  "#4b4453",
+  "#b0a8b9",
+  "#ff8066",
+  "#296073",
+  "#3596b5",
+  "#adc5cf",
+  "#b0a8b9",
+  "#c34a36",
+  "#bea6a0",
+  "#4b4453",
+  "#00896f",
+  "#00c0a3",
+  "#3088a4",
+  "#d5cabd",
   "#4b4453",
   "#b0a8b9",
   "#c34a36",
-  "#ff8066",
-  "#4e8397",
-  "#d5cabd",
-  "#4ffbdf",
-  "#00c2a8",
-  "#008b74"
+  "#ff8066"
 ]
 
 // -------------------------------
@@ -213,8 +220,9 @@ function matchWords() {
     score += 1;
     $('.mainscore-board .digit').text(String(score));
 
-    // Win condition: 10 points
-    if (score >= 10) {
+    // Win condition: 20 points
+    let winScore = 20;
+    if (score >= winScore) {
       gameOver = true;
       $('.message-text').text('Level Complete! 🎉').show().delay(600).fadeOut();
       $('.game-board.after .game-title').text('You Win! 🎉');
