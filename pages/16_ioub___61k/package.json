@@ -1,0 +1,16 @@
+{
+  "name": "typing-game",
+  "version": "1.0.0",
+  "description": "* [https://www.youtube.com/watch?v=fG7OcMzOhNc](https://www.youtube.com/watch?v=fG7OcMzOhNc)",
+  "main": "index.js",
+  "scripts": {
+    "watch:scss": "node-sass -w scss/ -o css/ --recursive",
+    "build:scss": "node-sass scss/ -o css/ --recursive",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
