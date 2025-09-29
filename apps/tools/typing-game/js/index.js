@@ -210,6 +210,7 @@ function matchWords() {
   console.log(`target: ${$target.text().trim()}`)
   console.log(`target length: ${$target.length}`)
 
+
   if ($target.length) {
     // MATCH SUCCESS
     console.log("Word matched! Removing target word.");
