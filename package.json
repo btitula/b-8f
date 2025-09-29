@@ -9,6 +9,9 @@
   "private": true,
   "dependencies": {
     "node-sass": "^9.0.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "typescript": "^5.9.2"
   }
 }
