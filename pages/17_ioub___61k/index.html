@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyHy - Exercise 17 - Primitive And Reference Types</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="exercise-one">
+        <h1>Bài 1: Xây dựng chức năng highlight</h1>
+        <form action="">
+            <div class="eo-input-group">
+                <label for="eo-text">Nhập văn bản:</label>
+                <textarea id="eo-text" name="eo-text" rows="4" required>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+            </div>
+            <div class="eo-input-group">
+                <label for="eo-keyword">Từ khóa cần highlight:</label>
+                <input type="text" id="eo-keyword" name="eo-keyword" required placeholder="Nhập từ khóa, ví dụ: dolor">
+            </div>
+            <div>
+                <button type="button" id="eo-btn">Highlight</button>
+            </div>
+        </form>
+        <div class="eo-result" id="eo-result">
+        </div>
+        <!--        <div class="eo-result success has-content" id="eo-result">lorem ipsum d<span class="highlight">olor</span> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et d<span class="highlight">olor</span>e magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d<span class="highlight">olor</span> in reprehenderit in voluptate velit esse cillum d<span class="highlight">olor</span>e eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>-->
+
+        <!--        <div class="eo-count">Số lần xuất hiện: 4</div>-->
+    </div>
+
+    <div class="exercise-two">
+        <h1>Bài 2: Kiểm tra độ mạnh yếu mật khẩu, đáp ứng tiêu chí</h1>
+        <form action="">
+            <div class="et-input-group">
+                <label for="et-password">Nhập mật khẩu:</label>
+                <input type="password" id="et-password" name="et-password" required>
+            </div>
+            <div>
+                <button type="button" id="et-btn">Kiểm tra</button>
+            </div>
+            <div class="et-result" id="et-result">
+                <!-- Mật khẩu mạnh!-->
+                <!-- Mật khẩu yếu. Yêu cầu:<ul><li>Độ dài >= 8</li><li>Ít nhất 2 chữ HOA</li><li>Ít nhất 2 chữ thường</li><li>Ít nhất 1 số</li><li>Ít nhất 1 ký tự đặc biệt (!@#$%^&*())</li></ul>-->
+            </div>
+        </form>
+    </div>
+</div>
+<script type="module" src="./dist/index.js"></script>
+</body>
+</html>

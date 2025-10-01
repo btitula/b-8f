@@ -1,0 +1,320 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background: var(--bg);
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  background: #f5f5f5;
+}
+
+.container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.container .exercise-one {
+  width: 800px;
+  background: lightgray;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  gap: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.container .exercise-one .eo-count {
+  width: 100%;
+  font-size: 14px;
+  color: gray;
+  display: flex;
+  align-items: center;
+}
+.container .exercise-one .eo-count span:last-child {
+  font-weight: 600;
+  margin: 0 2px;
+}
+.container .exercise-one .eo-count span:first-child {
+  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: darkblue;
+  color: lightblue;
+  padding: 5px;
+  border-radius: 50%;
+}
+.container .exercise-one .eo-result {
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  border-radius: 5px;
+  transition: 0.2s ease;
+  padding: 5px;
+}
+.container .exercise-one .eo-result.success {
+  background: lightblue;
+  color: darkblue;
+}
+.container .exercise-one .eo-result.fail {
+  background: rgba(240, 128, 128, 0.5);
+  color: darkred;
+}
+.container .exercise-one .eo-result.has-content {
+  white-space: pre-wrap;
+  padding: 5px;
+}
+.container .exercise-one .eo-result .highlight {
+  font-size: 16px;
+  background-color: yellow;
+  color: coral;
+  display: inline;
+  border-bottom: 1px solid coral;
+  border-radius: 2px;
+  font-weight: 400;
+}
+.container .exercise-one form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.container .exercise-one form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.container .exercise-one form div textarea {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 300px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  font-weight: 100;
+  color: darkslategray;
+}
+.container .exercise-one form input {
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+}
+.container .exercise-one form button {
+  background: black;
+  outline: none;
+  color: lightgray;
+  border: none;
+  padding: 5px;
+  border-radius: 2px;
+  transition: 0.1s linear;
+}
+.container .exercise-one form button:hover {
+  cursor: pointer;
+  background: darkred;
+}
+.container .exercise-two {
+  width: 800px;
+  background: lightgray;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  gap: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.container .exercise-two form {
+  display: flex;
+  gap: 10px;
+}
+.container .exercise-two form input {
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+}
+.container .exercise-two form button {
+  background: black;
+  outline: none;
+  color: lightgray;
+  border: none;
+  padding: 5px;
+  border-radius: 2px;
+  transition: 0.1s linear;
+}
+.container .exercise-two form button:hover {
+  cursor: pointer;
+  background: darkred;
+}
+.container .exercise-two form .et-result.success {
+  background: lightblue;
+  color: darkblue;
+}
+.container .exercise-two form .et-result.fail {
+  background: rgba(240, 128, 128, 0.5);
+  color: darkred;
+}
+.container .exercise-two form .et-result {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 5px;
+}
+.container .exercise-two form .et-result ul {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.container .exercise-two form .et-result li {
+  font-size: 14px;
+}
+.container .exercise-two form .et-result li::before {
+  content: "⚠";
+  margin-right: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */
