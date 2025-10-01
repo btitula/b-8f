@@ -1,0 +1,19 @@
+{
+  "name": "17_ioub___61k",
+  "version": "1.0.0",
+  "description": "```shell tsc --init ```",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:scss": "sass --watch scss:css"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2"
+  },
+  "dependencies": {
+    "sass": "^1.93.2"
+  }
+}
