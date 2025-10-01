@@ -4,6 +4,23 @@
  * - Không phân biệt hoa thường
  * - Nếu ô input rỗng, đoạn văn bản không có từ nào được bôi đậm
  */
+function highlightKeyword(text, keyword) {
+    const lowerText = text.toLowerCase();
+    const lowerKeyword = keyword.toLowerCase();
+    let result = '';
+    let start = 0;
+    let count = 0;
+    let index = lowerText.indexOf(lowerKeyword, start);
+    while (index !== -1) {
+        result += text.substring(start, index);
+        result += `<span class="highlight">${text.substring(index, index + keyword.length)}</span>`;
+        count++;
+        start = index + keyword.length;
+        index = lowerText.indexOf(lowerKeyword, start);
+    }
+    result += text.substring(start);
+    return { html: result, count };
+}
 function highlightText() {
     const textArea = document.getElementById('eo-text');
     const keywordInput = document.getElementById('eo-keyword');
@@ -22,25 +39,25 @@ function highlightText() {
         resultDiv.className = "eo-result fail";
         return;
     }
-    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`(${escapedKeyword})`, 'gi');
-    const matches = text.match(regex) || [];
-    console.log(matches.length);
-    //   const newDiv = document.createElement('div');
-    //   newDiv.className = 'eo-extra';
-    //   newDiv.textContent = 'I am a new sibling div';
+    // const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // const regex = new RegExp(`(${escapedKeyword})`, 'gi');
+    // const matches = text.match(regex) || [];
+    // // console.log(matches.length)
     //
-    // // insert right after eo-result
-    //   resultDiv.insertAdjacentElement('afterend', newDiv);
-    //
-    const highlightedText = text.replace(regex, '<span class="highlight">$1</span>');
-    resultDiv.innerHTML = highlightedText;
+    // const highlightedText = text.replace(regex, '<span class="highlight">$1</span>');
+    // resultDiv.innerHTML = highlightedText;
+    // const countDiv = document.createElement('div');
+    // countDiv.className = 'eo-count';
+    // countDiv.innerHTML = `<span> ${matches.length} </span> lần từ khoá <span> ${keyword} </span> xuất hiện`;
+    // resultDiv.insertAdjacentElement('afterend', countDiv);
+    const { html, count } = highlightKeyword(text, keyword);
+    resultDiv.innerHTML = html;
     resultDiv.className = "eo-result";
     resultDiv.classList.add("success");
     resultDiv.classList.add("has-content");
     const countDiv = document.createElement('div');
     countDiv.className = 'eo-count';
-    countDiv.innerHTML = `<span> ${matches.length} </span> lần từ khoá <span> ${keyword} </span> xuất hiện`;
+    countDiv.innerHTML = `<span> ${count} </span> lần từ khoá <span> ${keyword} </span> xuất hiện`;
     resultDiv.insertAdjacentElement('afterend', countDiv);
 }
 /**
