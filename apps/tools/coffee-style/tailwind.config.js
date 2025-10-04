@@ -23,7 +23,7 @@ module.exports = {
         slideUp: 'slideUp 0.2s linear',
       },
       backgroundImage: {
-        'slider-bg': "url('/images/slider-bg.jpg')",
+        'slider-bg': "url('./images/slider-bg.jpg')",
       }
     },
   },
