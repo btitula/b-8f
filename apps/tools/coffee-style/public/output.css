@@ -486,10 +486,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 4rem;
 }
 
-.mb-6{
-  margin-bottom: 1.5rem;
-}
-
 .flex{
   display: flex;
 }
@@ -512,14 +508,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .max-w-screen-2xl{
   max-width: 1536px;
-}
-
-.max-w-xs{
-  max-width: 20rem;
-}
-
-.max-w-md{
-  max-width: 28rem;
 }
 
 .grow{
@@ -566,33 +554,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-content: space-between;
 }
 
-.gap-6{
-  gap: 1.5rem;
-}
-
-.gap-7{
-  gap: 1.75rem;
-}
-
 .gap-8{
   gap: 2rem;
 }
 
-.rounded-full{
-  border-radius: 9999px;
-}
-
 .rounded-sm{
   border-radius: 0.125rem;
-}
-
-.border-2{
-  border-width: 2px;
-}
-
-.bg-slate-200{
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .bg-gray-500{
@@ -600,14 +567,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
-.bg-black{
+.bg-\[\#050827\]{
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-white{
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(5 8 39 / var(--tw-bg-opacity));
 }
 
 .bg-gray-900{
@@ -615,21 +577,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#050827\]{
+.bg-white{
   --tw-bg-opacity: 1;
-  background-color: rgb(5 8 39 / var(--tw-bg-opacity));
-}
-
-.bg-opacity-25{
-  --tw-bg-opacity: 0.25;
-}
-
-.bg-opacity-30{
-  --tw-bg-opacity: 0.3;
-}
-
-.bg-opacity-40{
-  --tw-bg-opacity: 0.4;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-60{
@@ -637,39 +587,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .bg-slider-bg{
-  background-image: url('/images/slider-bg.jpg');
-}
-
-.bg-cover{
-  background-size: cover;
-}
-
-.bg-\[length\:70\%\]{
-  background-size: 70%;
-}
-
-.bg-\[length\:80\%\]{
-  background-size: 80%;
-}
-
-.bg-\[length\:90\%\]{
-  background-size: 90%;
-}
-
-.bg-\[length\:100\%\]{
-  background-size: 100%;
+  background-image: url('./images/slider-bg.jpg');
 }
 
 .bg-\[length\:200\%\]{
   background-size: 200%;
-}
-
-.bg-\[length\:150\%\]{
-  background-size: 150%;
-}
-
-.bg-center{
-  background-position: center;
 }
 
 .bg-bottom{
@@ -684,10 +606,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1.5rem;
 }
 
-.p-5{
-  padding: 1.25rem;
-}
-
 .px-8{
   padding-left: 2rem;
   padding-right: 2rem;
@@ -698,44 +616,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.5rem;
 }
 
-.px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.px-6{
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.py-6{
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.py-5{
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.py-8{
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.py-4{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
 
-.py-3{
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .text-center{
@@ -761,29 +649,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
-.text-2xl{
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-4xl{
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.text-6xl{
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
 .text-5xl{
   font-size: 3rem;
   line-height: 1;
-}
-
-.text-3xl{
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .font-semibold{
@@ -796,10 +664,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .font-light{
   font-weight: 300;
-}
-
-.font-bold{
-  font-weight: 700;
 }
 
 .font-normal{
@@ -827,22 +691,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-900{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.opacity-10{
-  opacity: 0.1;
-}
-
-.opacity-80{
-  opacity: 0.8;
-}
-
-.opacity-30{
-  opacity: 0.3;
-}
-
-.opacity-20{
-  opacity: 0.2;
 }
 
 .transition-all{
@@ -1037,19 +885,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 0.95;
 }
 
-.hover\:bg-opacity-90:hover{
-  --tw-bg-opacity: 0.9;
-}
-
 @media (min-width: 640px){
-  .sm\:max-w-md{
-    max-width: 28rem;
-  }
-
-  .sm\:bg-\[length\:90\%\]{
-    background-size: 90%;
-  }
-
   .sm\:bg-\[length\:100\%\]{
     background-size: 100%;
   }
@@ -1063,33 +899,11 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
-
-  .sm\:text-5xl{
-    font-size: 3rem;
-    line-height: 1;
-  }
 }
 
 @media (min-width: 768px){
-  .md\:max-w-md{
-    max-width: 28rem;
-  }
-
-  .md\:bg-\[length\:100\%\]{
-    background-size: 100%;
-  }
-
   .md\:bg-\[length\:90\%\]{
     background-size: 90%;
-  }
-
-  .md\:bg-\[length\:80\%\]{
-    background-size: 80%;
-  }
-
-  .md\:text-5xl{
-    font-size: 3rem;
-    line-height: 1;
   }
 }
 
@@ -1100,10 +914,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:hidden{
     display: none;
-  }
-
-  .lg\:max-w-md{
-    max-width: 28rem;
   }
 
   .lg\:basis-1\/6{
@@ -1126,23 +936,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     gap: 2rem;
   }
 
-  .lg\:bg-\[length\:70\%\]{
-    background-size: 70%;
-  }
-
-  .lg\:bg-\[length\:90\%\]{
-    background-size: 90%;
-  }
-
-  .lg\:bg-\[length\:100\%\]{
-    background-size: 100%;
-  }
-
   .lg\:bg-\[length\:80\%\]{
     background-size: 80%;
-  }
-
-  .lg\:bg-\[length\:10\%\]{
-    background-size: 10%;
   }
 }
