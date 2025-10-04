@@ -506,6 +506,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.w-\[100\%\]{
+  width: 100%;
+}
+
 .max-w-screen-2xl{
   max-width: 1536px;
 }
@@ -558,8 +562,25 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 2rem;
 }
 
+.gap-6{
+  gap: 1.5rem;
+}
+
+.gap-2{
+  gap: 0.5rem;
+}
+
 .rounded-sm{
   border-radius: 0.125rem;
+}
+
+.border-b-2{
+  border-bottom-width: 2px;
+}
+
+.border-coffee-100{
+  --tw-border-opacity: 1;
+  border-color: rgb(236 222 219 / var(--tw-border-opacity));
 }
 
 .bg-gray-500{
@@ -626,6 +647,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 1rem;
 }
 
+.py-28{
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.pb-28{
+  padding-bottom: 7rem;
+}
+
 .text-center{
   text-align: center;
 }
@@ -654,6 +689,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1;
 }
 
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .font-semibold{
   font-weight: 600;
 }
@@ -674,6 +714,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-transform: uppercase;
 }
 
+.leading-10{
+  line-height: 2.5rem;
+}
+
+.leading-7{
+  line-height: 1.75rem;
+}
+
 .tracking-wider{
   letter-spacing: 0.05em;
 }
@@ -691,6 +739,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-900{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.text-coffee-200{
+  --tw-text-opacity: 1;
+  color: rgb(162 95 75 / var(--tw-text-opacity));
 }
 
 .transition-all{
@@ -801,7 +854,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   .b-top-menu-item::after{
     content: var(--tw-content);
     --tw-bg-opacity: 1;
-    background-color: rgb(200 159 148 / var(--tw-bg-opacity));
+    background-color: rgb(236 222 219 / var(--tw-bg-opacity));
   }
 
   .b-top-menu-item::after{
@@ -862,7 +915,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   .b-top-menu-item-active::after{
     content: var(--tw-content);
     --tw-bg-opacity: 1;
-    background-color: rgb(200 159 148 / var(--tw-bg-opacity));
+    background-color: rgb(236 222 219 / var(--tw-bg-opacity));
   }
 }
 
@@ -879,6 +932,77 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-align: center;
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.b-subtitle{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-bottom: 7rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.b-subtitle::before{
+  height: 1px;
+  width: 1.75rem;
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 236 237 / var(--tw-bg-opacity));
+}
+
+.b-subtitle::after{
+  height: 1px;
+  width: 1.75rem;
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 236 237 / var(--tw-bg-opacity));
+}
+
+.before\:h-\[1px\]::before{
+  content: var(--tw-content);
+  height: 1px;
+}
+
+.before\:w-7::before{
+  content: var(--tw-content);
+  width: 1.75rem;
+}
+
+.before\:bg-\[\#ececed\]::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 236 237 / var(--tw-bg-opacity));
+}
+
+.after\:h-\[1px\]::after{
+  content: var(--tw-content);
+  height: 1px;
+}
+
+.after\:w-7::after{
+  content: var(--tw-content);
+  width: 1.75rem;
+}
+
+.after\:bg-\[\#ececed\]::after{
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 236 237 / var(--tw-bg-opacity));
+}
+
+.hover\:border-coffee-200:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(162 95 75 / var(--tw-border-opacity));
 }
 
 .hover\:bg-opacity-95:hover{
@@ -902,6 +1026,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 768px){
+  .md\:w-\[80\%\]{
+    width: 80%;
+  }
+
   .md\:bg-\[length\:90\%\]{
     background-size: 90%;
   }
@@ -914,6 +1042,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:hidden{
     display: none;
+  }
+
+  .lg\:w-\[60\%\]{
+    width: 60%;
   }
 
   .lg\:basis-1\/6{
