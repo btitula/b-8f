@@ -21,6 +21,9 @@ module.exports = {
       animation: {
         slideDown: 'slideDown 0.3s ease-in-out',
         slideUp: 'slideUp 0.2s linear',
+      },
+      backgroundImage: {
+        'slider-bg': "url('/images/slider-bg.jpg')",
       }
     },
   },
