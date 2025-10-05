@@ -14,6 +14,9 @@
 <body>
     <div class="" id="root">
         <div class="content-wrapper font-karla max-w-screen-2xl text-base mx-auto px-8">
+            <!-----------------------------------------------------------
+            Header Section
+            ------------------------------------------------------------>
             <header class="p-6 mx-auto">
                 <nav class="flex flex-row justify-between items-center relative">
                     <div class="logo basis-2/6 text-center text-xl font-semibold cursor-pointer">CoffeeStyle.</div>
@@ -55,6 +58,9 @@
                 </nav>
             </header>
             <main>
+                <!-----------------------------------------------------------
+                Slider Section
+                ------------------------------------------------------------>
                 <!-- <div class="slider h-[530px] bg-[#050827] bg-slider-bg bg-no-repeat bg-bottom"> -->
                 <div
                     class="slider h-[530px] bg-[#050827] bg-slider-bg bg-no-repeat bg-bottom bg-[length:200%] sm:bg-[length:100%] md:bg-[length:90%] lg:bg-[length:80%]">
@@ -73,6 +79,10 @@
                         </div>
                     </div>
                 </div>
+
+                <!-----------------------------------------------------------
+                Story Section
+                ------------------------------------------------------------>
                 <div class="story">
                     <div
                         class="w-[100%] md:w-[80%] lg:w-[60%] h-full flex flex-col justify-center items-center mx-auto">
@@ -94,6 +104,10 @@
                         </div>
                     </div>
                 </div>
+
+                <!-----------------------------------------------------------
+                Featured Mugs Section
+                ------------------------------------------------------------>
                 <div class="feature-mugs pb-28">
                     <div class="b-subtitle">
                         Featured Mugs
@@ -103,7 +117,7 @@
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                             <div class="b-featured-mugs-item">
                                 <div
-                                    class="h-[378px] sm:h-[432px] md:h-[480px] lg:h-[540px] bg-[#F3C3AD] bg-[url('./images/featured-mugs-01.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    class="h-[calc(0.7*540px)] sm:h-[calc(0.8*540px)] md:h-[calc(0.9*540px)] lg:h-[540px] bg-[#F3C3AD] bg-[url('./images/featured-mugs-01.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
                                     <a href="#">
                                         <div
                                             class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
@@ -136,7 +150,7 @@
 
                             <div class="b-featured-mugs-item">
                                 <div
-                                    class="h-[378px] sm:h-[432px] md:h-[480px] lg:h-[540px] bg-[#F1DAC3] bg-[url('./images/featured-mugs-02.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    class="h-[calc(0.7*540px)] sm:h-[calc(0.8*540px)] md:h-[calc(0.9*540px)] lg:h-[540px] bg-[#F1DAC3] bg-[url('./images/featured-mugs-02.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
                                     <a href="#">
                                         <div
                                             class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
@@ -163,14 +177,296 @@
                                     </div>
                                     <div class="text-base flex gap-3 items-center">
                                         <span class="text-xl text-coffee-200">$ 50.00 USD</span>
-                                        <span class="font-light text-gray-400 line-through	">$ 69.00 USD</span>
+                                        <span class="font-light text-gray-400 line-through">$ 69.00 USD</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="more-products">more-products</div>
+
+                <!-----------------------------------------------------------
+                More Products Section
+                ------------------------------------------------------------>
+                <div class="more-products pb-28">
+                    <div class="b-subtitle">
+                        More Products
+                    </div>
+                    <div class="w-[90%] lg:w-[70%] mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-01.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <div
+                                                class="absolute top-0 right-0 mx-2 my-2 bg-white text-coffee-200 text-base font-semibold px-4 py-2 rounded-sm">
+                                                On Sale.
+                                            </div>
+
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">Red Love Cup</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <span class="text-xl text-coffee-200">$ 25.00</span>
+                                        <span class="font-light text-gray-400 line-through">$ 37.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-02.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <div
+                                                class="absolute top-0 right-0 mx-2 my-2 bg-white text-coffee-200 text-base font-semibold px-4 py-2 rounded-sm">
+                                                On Sale.
+                                            </div>
+
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">Black Tea Cup</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <span class="text-xl text-coffee-200">$ 15.00 USD</span>
+                                        <span class="font-light text-gray-400 line-through	">$ 29.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-03.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">B&W Essentials Mug</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <!-- <span class="text-xl text-coffee-200">$ 50.00 USD</span> -->
+                                        <span class="font-light text-gray-800">$ 19.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-04.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">Winter Style Mug</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <!-- <span class="text-xl text-coffee-200">$ 50.00 USD</span> -->
+                                        <span class="font-light text-gray-800">$ 25.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-05.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">Ceramic Tea</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <!-- <span class="text-xl text-coffee-200">$ 50.00 USD</span> -->
+                                        <span class="font-light text-gray-800">$ 46.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-06.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">No Handle Bar Cup</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <!-- <span class="text-xl text-coffee-200">$ 50.00 USD</span> -->
+                                        <span class="font-light text-gray-800">$ 34.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-07.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">Espresso Cup by Mugs.co</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <!-- <span class="text-xl text-coffee-200">$ 50.00 USD</span> -->
+                                        <span class="font-light text-gray-800">$ 25.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-08.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">Pink Premium Ceramic</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <!-- <span class="text-xl text-coffee-200">$ 50.00 USD</span> -->
+                                        <span class="font-light text-gray-800">$ 99.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b-more-products-item mb-6">
+                                <div
+                                    class="h-[calc(0.7*380px)] sm:h-[calc(0.8*380px)] md:h-[calc(0.9*380px)] lg:h-[380px] bg-coffee-100 bg-[url('./images/products/product-09.jpg')] bg-cover bg-no-repeat bg-center rounded-sm overflow-hidden">
+                                    <a href="#">
+                                        <div
+                                            class="group w-full h-full hover:bg-gray-900 hover:bg-opacity-10 transition-all duration-300 ease-in-out relative overflow-hidden">
+
+                                            <!-- On Sale. -->
+                                            <!-- Make this visible only when parent `.group` is hovered -->
+                                            <div
+                                                class="mx-2 my-2 absolute bottom-0 left-0 right-0 hidden group-hover:block group-hover:animate-fadeIn">
+                                                <button type="button"
+                                                    class="uppercase text-sm font-medium text-gray-900 w-full py-4 bg-white tracking-wider cursor-pointer rounded-sm hover:bg-opacity-95 transition-all duration-300 ease-in-out shadow-[0_2px_8px_0_rgba(99,99,99,0.2)]">Explore
+                                                    Mug</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col justify-center items-center gap-3 mt-8">
+                                    <div class="text-xl">
+                                        <a href="#">Summer Designer Cup</a>
+                                    </div>
+                                    <div class="text-base flex gap-3 items-center">
+                                        <!-- <span class="text-xl text-coffee-200">$ 50.00 USD</span> -->
+                                        <span class="font-light text-gray-800">$ 29.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="premium-offer">premium-offer</div>
                 <div class="lifestyle-stories">lifestyle-stories</div>
                 <div class="subscribe">subscribe</div>
