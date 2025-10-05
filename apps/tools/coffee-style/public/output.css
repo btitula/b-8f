@@ -523,6 +523,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 2rem;
 }
 
+.mb-4{
+  margin-bottom: 1rem;
+}
+
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
 .flex{
   display: flex;
 }
@@ -561,6 +569,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[378px\]{
   height: 378px;
+}
+
+.h-\[calc\(0\.7\*540px\)\]{
+  height: calc(0.7 * 540px);
+}
+
+.h-\[calc\(0\.7\*380px\)\]{
+  height: calc(0.7 * 380px);
 }
 
 .w-full{
@@ -719,6 +735,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(241 218 195 / var(--tw-bg-opacity));
 }
 
+.bg-coffee-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 222 219 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-60{
   --tw-bg-opacity: 0.6;
 }
@@ -733,6 +754,46 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-\[url\(\'\.\/images\/featured-mugs-02\.jpg\'\)\]{
   background-image: url('./images/featured-mugs-02.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/more--01\.jpg\'\)\]{
+  background-image: url('./images/more--01.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-01\.jpg\'\)\]{
+  background-image: url('./images/products/product-01.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-02\.jpg\'\)\]{
+  background-image: url('./images/products/product-02.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-03\.jpg\'\)\]{
+  background-image: url('./images/products/product-03.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-04\.jpg\'\)\]{
+  background-image: url('./images/products/product-04.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-05\.jpg\'\)\]{
+  background-image: url('./images/products/product-05.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-06\.jpg\'\)\]{
+  background-image: url('./images/products/product-06.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-07\.jpg\'\)\]{
+  background-image: url('./images/products/product-07.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-08\.jpg\'\)\]{
+  background-image: url('./images/products/product-08.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-09\.jpg\'\)\]{
+  background-image: url('./images/products/product-09.jpg');
 }
 
 .bg-\[length\:200\%\]{
@@ -1190,6 +1251,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 432px;
   }
 
+  .sm\:h-\[calc\(0\.8\*540px\)\]{
+    height: calc(0.8 * 540px);
+  }
+
+  .sm\:h-\[calc\(0\.8\*380px\)\]{
+    height: calc(0.8 * 380px);
+  }
+
   .sm\:bg-\[length\:100\%\]{
     background-size: 100%;
   }
@@ -1214,8 +1283,24 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 480px;
   }
 
+  .md\:h-\[486px\]{
+    height: 486px;
+  }
+
+  .md\:h-\[calc\(0\.9\*540px\)\]{
+    height: calc(0.9 * 540px);
+  }
+
+  .md\:h-\[calc\(0\.9\*380px\)\]{
+    height: calc(0.9 * 380px);
+  }
+
   .md\:w-\[80\%\]{
     width: 80%;
+  }
+
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:bg-\[length\:90\%\]{
@@ -1236,6 +1321,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 540px;
   }
 
+  .lg\:h-\[381px\]{
+    height: 381px;
+  }
+
+  .lg\:h-\[380px\]{
+    height: 380px;
+  }
+
   .lg\:w-\[60\%\]{
     width: 60%;
   }
@@ -1250,6 +1343,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:items-center{
