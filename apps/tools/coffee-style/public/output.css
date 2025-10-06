@@ -527,6 +527,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.5rem;
 }
 
+.mt-6{
+  margin-top: 1.5rem;
+}
+
 .flex{
   display: flex;
 }
@@ -589,6 +593,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-\[100vw\]{
   width: 100vw;
+}
+
+.w-\[80\%\]{
+  width: 80%;
 }
 
 .grow{
@@ -892,6 +900,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-28{
   padding-top: 7rem;
+}
+
+.pt-6{
+  padding-top: 1.5rem;
+}
+
+.pb-6{
+  padding-bottom: 1.5rem;
 }
 
 .text-center{
@@ -1371,6 +1387,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 80%;
   }
 
+  .md\:w-\[90\%\]{
+    width: 90%;
+  }
+
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1411,6 +1431,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:w-\[70\%\]{
     width: 70%;
+  }
+
+  .lg\:w-\[90\%\]{
+    width: 90%;
+  }
+
+  .lg\:w-\[100\%\]{
+    width: 100%;
+  }
+
+  .lg\:w-\[95\%\]{
+    width: 95%;
   }
 
   .lg\:basis-1\/6{
@@ -1469,5 +1501,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:py-4{
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .lg\:text-center{
+    text-align: center;
   }
 }
