@@ -800,6 +800,66 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-image: url('/images/parallaxs/parallax-01.jpg');
 }
 
+.bg-\[url\(\'\.\/images\/products\/product-01\.jpg\'\)\]{
+  background-image: url('./images/products/product-01.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-02\.jpg\'\)\]{
+  background-image: url('./images/products/product-02.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-03\.jpg\'\)\]{
+  background-image: url('./images/products/product-03.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-04\.jpg\'\)\]{
+  background-image: url('./images/products/product-04.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-05\.jpg\'\)\]{
+  background-image: url('./images/products/product-05.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-06\.jpg\'\)\]{
+  background-image: url('./images/products/product-06.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-07\.jpg\'\)\]{
+  background-image: url('./images/products/product-07.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-08\.jpg\'\)\]{
+  background-image: url('./images/products/product-08.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/products\/product-09\.jpg\'\)\]{
+  background-image: url('./images/products/product-09.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/featured-mugs-01\.jpg\'\)\]{
+  background-image: url('./images/featured-mugs-01.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/featured-mugs-02\.jpg\'\)\]{
+  background-image: url('./images/featured-mugs-02.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/premium-offers\/premium-offer-01\.jpg\'\)\]{
+  background-image: url('./images/premium-offers/premium-offer-01.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/premium-offers\/premium-offer-02\.jpg\'\)\]{
+  background-image: url('./images/premium-offers/premium-offer-02.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/premium-offers\/premium-offer-03\.jpg\'\)\]{
+  background-image: url('./images/premium-offers/premium-offer-03.jpg');
+}
+
+.bg-\[url\(\'\.\/images\/parallaxs\/parallax-01\.jpg\'\)\]{
+  background-image: url('./images/parallaxs/parallax-01.jpg');
+}
+
 .bg-\[length\:200\%\]{
   background-size: 200%;
 }
