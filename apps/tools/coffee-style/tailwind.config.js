@@ -50,7 +50,7 @@ module.exports = {
         fadeOut: 'fadeOut 0.3s linear',
       },
       backgroundImage: {
-        'slider-bg': "url('./images/slider-bg.jpg')",
+        'slider-bg': "url('/images/slider-bg.jpg')",
       }
     },
   },

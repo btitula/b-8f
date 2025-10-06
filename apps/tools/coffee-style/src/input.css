@@ -32,5 +32,5 @@
 }
 
 .b-subtitle {
-  @apply flex flex-row justify-center items-center mx-auto uppercase gap-2 after:w-7 after:h-[1px] after:bg-[#ececed] before:w-7 before:h-[1px] before:bg-[#ececed] text-sm text-gray-500 font-medium tracking-wider pb-28;
+  @apply flex flex-row justify-center items-center text-center mx-auto uppercase gap-2 after:w-7 after:h-[1px] after:bg-[#ececed] before:w-7 before:h-[1px] before:bg-[#ececed] text-sm text-gray-500 font-medium tracking-wider pb-28;
 }
