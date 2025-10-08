@@ -41,3 +41,8 @@ function closeMenu() {
   
   isMenuOpen = false;
 }
+
+function a(...args) {
+  console.log(args);
+  
+}
