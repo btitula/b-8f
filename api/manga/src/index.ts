@@ -3,7 +3,6 @@ import healthcheckRouter from '~/routers/healthcheck.route'
 import userRouter from '~/routers/user.route'
 import loggingMiddleware from '~/middlewares/logging.middleware'
 import { sendError } from './utils/http'
-import { errorMiddleware } from './middlewares/error.middleware'
 
 const app = express()
 app.set('trust proxy', true) // IMPORTANT behind ALB/NGINX
