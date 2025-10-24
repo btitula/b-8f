@@ -41,8 +41,8 @@ addForm.addEventListener('submit', (e) => {
   newItem.innerHTML = `
     <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">${text}</div>
     <div class="flex gap-2">
-      <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#2b1c51] transition"></i>
-      <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#2b1c51] transition"></i>
+      <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#1A1A40] transition"></i>
+      <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#1A1A40] transition"></i>
     </div>
   `
   todoList.appendChild(newItem)
@@ -118,8 +118,8 @@ todoList.addEventListener('submit', (e) => {
   item.innerHTML = `
     <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">${newText}</div>
     <div class="flex gap-2">
-      <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#2b1c51]"></i>
-      <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#2b1c51] "></i>
+      <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#1A1A40]"></i>
+      <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#1A1A40] "></i>
     </div>
   `
 })
