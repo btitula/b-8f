@@ -2,14 +2,16 @@
  * This service is used to connect to the database MongoDB and perform CRUD operations.
  */
 
-import { MongoClient, Db } from 'mongodb'
+import { MongoClient, Db, Collection } from 'mongodb'
 import {
+  COLLECTION_NAME,
   DATABASE_CONNECTED_ERROR,
   DATABASE_CONNECTED_SUCCESS,
   DATABASE_DISCONNECT_FAILED,
   DATABASE_DISCONNECT_SUCCESS,
   HEALTHCHECK_TIMEOUT
 } from '~/constants/messages'
+import User from '~/models/schemas/user.schema'
 import { logError, logInfo } from '~/utils/logger'
 
 const uri = process.env.MONGODB_URI || ''
@@ -25,19 +27,24 @@ class DatabaseService {
       maxPoolSize: 10,
       connectTimeoutMS: timeout
     })
+    this.db = this.client.db(databaseName)
   }
 
   async connect() {
     try {
       await this.client.connect()
-      this.db = this.client.db(databaseName)
-      await this.db.command({ ping: 1 })
+      // this.db = this.client.db(databaseName)
+      // await this.db.command({ ping: 1 })
+
+      await this.db?.command({ ping: 1 })
       logInfo({ msg: DATABASE_CONNECTED_SUCCESS, database: databaseName })
     } catch (error) {
       logError({ msg: DATABASE_CONNECTED_ERROR, error })
       throw error // <– IMPORTANT: rethrow to let caller decide
     } finally {
-      await this.client.close()
+      // Note: We don't close the client here because we want to keep the connection open for the entire application lifecycle.
+      // If we close the client here, the application will not be able to connect to the database.
+      // await this.client.close()
     }
   }
 
@@ -48,6 +55,14 @@ class DatabaseService {
     } catch (error) {
       logError({ msg: DATABASE_DISCONNECT_FAILED, error })
     }
+  }
+
+  /**
+   * Getter for the `users` collection from the database
+   */
+  get usersCollection(): Collection<User> {
+    // Note: In this.db! is a TypeScript non-null assertion operator.
+    return this.db!.collection(COLLECTION_NAME.USERS)
   }
 }
 
