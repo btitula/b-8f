@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>HyHy - Exercise 24 - To Do List</title>
+  <style>
+    .done-item {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="m-0 p-0 bg-[#8758FF]">
+  <div class="flex justify-center py-20">
+    <div class="bg-[#1A1A40] py-10 w-120 rounded-md flex flex-col gap-10 justify-center items-center">
+      <h1 class="text-white text-3xl font-medium">Get Things Done!</h1>
+      <form id="add-form" class="w-full flex px-10">
+        <input type="text" placeholder="What is the task today?"
+          class="flex-grow px-3 py-3 border border-[#8758FF] text-slate-300 font-light text-sm rounded-l-sm outline-none">
+        <button type="submit"
+          class="bg-[#8758FF] text-white text-sm px-3 py-3 rounded-r-md hover:bg-[#6a3ee6] transition-all cursor-pointer">
+          Add Task
+        </button>
+      </form>
+
+      <div id="todo-list" class="todo-list w-full px-10 flex flex-col gap-2">
+        <!-- <div
+          class="todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa] transition-all">
+          <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">Task 1</div>
+          <div class="flex gap-2">
+            <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#2b1c51] transition"></i>
+            <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#2b1c51] transition"></i>
+          </div>
+        </div> -->
+
+        <!-- <div
+          class="todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa] transition-all">
+          <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">Task 1</div>
+          <div class="flex gap-2">
+            <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#2b1c51] transition"></i>
+            <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#2b1c51] transition"></i>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
