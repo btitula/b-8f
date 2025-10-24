@@ -70,7 +70,7 @@ todoList.addEventListener('click', (e) => {
     const currentText = textDiv.textContent.trim()
 
     const inputClass = 'flex-grow px-4 py-3 border border-[#8758FF] text-slate-300 font-light text-sm rounded-l-sm outline-none'
-    const buttonClass = 'bg-[#8758FF] text-white text-sm px-3 py-3 rounded-r-md hover:bg-[#6a3ee6] cursor-pointer'
+    const buttonClass = 'bg-[#8758FF] text-white text-sm px-3 py-3 rounded-r-md hover:bg-[#6a3ee6] cursor-pointer select-none'
 
     item.className = 'todo-item w-full flex flex-col justify-center'
     item.innerHTML = `
