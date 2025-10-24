@@ -1,6 +1,7 @@
 const addForm = document.getElementById('add-form')
 const addInput = addForm.querySelector('input[type="text"]')
 const todoList = document.getElementById('todo-list')
+let toastContainer;
 
 /**
  * Utils
@@ -11,6 +12,39 @@ function formatText(text) {
   console.log(formattedText)
   return formattedText
 }
+
+/**
+ * https://www.youtube.com/watch?v=EWveKYaX-P0&t=607s
+ */
+function generateToast({
+  message,
+  backgroundColor = '#00214d',
+  color = '#fffffe',
+  lifetime = '3000ms'
+}) {
+  toastContainer.insertAdjacentHTML('beforeend', `
+    <p class="toast" style="background-color: ${backgroundColor}; color: ${color}; animation-duration: ${lifetime};">
+      ${message}
+    </p>
+  `);
+
+  const toast = toastContainer.lastElementChild;
+  toast.addEventListener('animationend', () => {
+    toast.remove();
+  }, { once: true });
+}
+
+/**
+ * Init Toast
+ */
+(function initToast() {
+  document.body.insertAdjacentHTML('afterbegin', `
+    <div class="toast-container">
+    </div>
+  `);
+  toastContainer = document.querySelector('.toast-container');
+})();
+
 
 /**
  * Add new task
@@ -26,13 +60,11 @@ addForm.addEventListener('submit', (e) => {
       <i class="fa-solid fa-circle-exclamation"></i>
       <span>Text can not be empty</span>
     `
-
     addForm.insertAdjacentElement('afterend', warning)
     // Them hieu ung fade out sau 2s
     setTimeout(() => warning.remove(), 2000)
     return
   }
-
 
 
   const newItem = document.createElement('div')
@@ -47,6 +79,15 @@ addForm.addEventListener('submit', (e) => {
   `
   todoList.appendChild(newItem)
   addInput.value = ''
+
+  generateToast({
+    message: `
+      <i class="fa-solid fa-circle-plus"></i>
+      <span>Task added successfully</span>`,
+    backgroundColor: '#01EDC7',
+    color: '#191A40',
+    lifetime: '3000ms'
+  });
 })
 
 /**
@@ -62,6 +103,14 @@ todoList.addEventListener('click', (e) => {
       item.style.display = 'none',
       { once: true }
     )
+    generateToast({
+      message: `
+        <i class="fa-solid fa-circle-xmark"></i>
+        <span>Todo item deleted successfully</span>`,
+      backgroundColor: '#FE546E',
+      color: '#191A40',
+      lifetime: '3000ms'
+    });
     return
   }
 
@@ -122,4 +171,12 @@ todoList.addEventListener('submit', (e) => {
       <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#1A1A40] "></i>
     </div>
   `
+  generateToast({
+    message: `
+      <i class="fa-solid fa-circle-info"></i>
+      <span>Todo item updated successfully</span>`,
+    backgroundColor: '#FDE44C',
+    color: '#191A40',
+    lifetime: '3000ms'
+  });
 })
