@@ -37,7 +37,7 @@ addForm.addEventListener('submit', (e) => {
 
   const newItem = document.createElement('div')
   newItem.className =
-    'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa] transition-all'
+    'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#6a3ee6] transition-all'
   newItem.innerHTML = `
     <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">${text}</div>
     <div class="flex gap-2">
