@@ -39,7 +39,7 @@ addForm.addEventListener('submit', (e) => {
   newItem.className =
     'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#6a3ee6] transition-all'
   newItem.innerHTML = `
-    <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">${text}</div>
+    <div class="todo-item-content select-none text-slate-50 font-medium text-sm flex-1">${text}</div>
     <div class="flex gap-2">
       <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#1A1A40] transition"></i>
       <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#1A1A40] transition"></i>
@@ -116,7 +116,7 @@ todoList.addEventListener('submit', (e) => {
     'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa]'
 
   item.innerHTML = `
-    <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">${newText}</div>
+    <div class="todo-item-content select-none text-slate-50 font-medium text-sm flex-1">${newText}</div>
     <div class="flex gap-2">
       <i class="fa-solid fa-pen-to-square text-white cursor-pointer hover:text-[#1A1A40]"></i>
       <i class="fa-solid fa-trash text-white cursor-pointer hover:text-[#1A1A40] "></i>
