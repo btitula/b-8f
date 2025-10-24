@@ -19,16 +19,39 @@
   <div class="flex justify-center py-20">
     <div class="bg-[#1A1A40] py-10 w-120 rounded-md flex flex-col gap-10 justify-center items-center">
       <h1 class="text-white text-3xl font-medium">Get Things Done!</h1>
-      <form id="add-form" class="w-full flex px-10">
-        <input type="text" placeholder="What is the task today?"
-          class="flex-grow px-3 py-3 border border-[#8758FF] text-slate-300 font-light text-sm rounded-l-sm outline-none">
-        <button type="submit"
-          class="bg-[#8758FF] text-white text-sm px-3 py-3 rounded-r-md hover:bg-[#6a3ee6] transition-all cursor-pointer">
-          Add Task
-        </button>
-      </form>
+
+      <div class="w-full flex flex-col">
+        <form id="add-form" class="w-full flex px-10">
+          <input type="text" placeholder="What is the task today?"
+            class="flex-grow px-3 py-3 border border-[#8758FF] text-slate-300 font-light text-sm rounded-l-sm outline-none">
+          <button type="submit"
+            class="bg-[#8758FF] text-white text-sm px-3 py-3 rounded-r-md hover:bg-[#6a3ee6] transition-all cursor-pointer">
+            Add Task
+          </button>
+        </form>
+        <!-- <p class="text-red-400 opacity-80 text-xs mt-2 font-light flex items-center gap-1 w-full px-10">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span>Task cannot be empty</span>
+        </p> -->
+
+      </div>
 
       <div id="todo-list" class="todo-list w-full px-10 flex flex-col gap-2">
+        <!-- <div class="todo-item w-full flex flex-col justify-center">
+          <form class="edit-form w-full flex">
+            <input name="edit" type="text" value="Task 1"
+              class="flex-grow px-4 py-3 border border-[#8758FF] text-slate-300 font-light text-sm rounded-l-sm outline-none">
+            <button type="submit"
+              class="bg-[#8758FF] text-white text-sm px-3 py-3 rounded-r-md hover:bg-[#6a3ee6] cursor-pointer">
+              Save Task
+            </button>
+          </form>
+          <p class="text-red-400 opacity-50 text-xs mt-1 font-light">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Task cannot be empty</span>
+          </p>
+        </div> -->
+
         <!-- <div
           class="todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa] transition-all">
           <div class="todo-item-content text-slate-50 font-medium text-sm flex-1">Task 1</div>
