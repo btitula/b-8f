@@ -9,7 +9,7 @@ let toastContainer;
 function formatText(text) {
   // Lowercase and first letter uppercase and trim for each word  
   const formattedText = text.split(' ').map(word => word.toLowerCase().charAt(0).toUpperCase() + word.slice(1)).join(' ')
-  console.log(formattedText)
+  // console.log(formattedText)
   return formattedText
 }
 
@@ -66,7 +66,6 @@ addForm.addEventListener('submit', (e) => {
     return
   }
 
-
   const newItem = document.createElement('div')
   newItem.className =
     'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#6a3ee6] transition-all'
@@ -93,27 +92,82 @@ addForm.addEventListener('submit', (e) => {
 /**
  * Delete/Edit task
  */
+
+const deleteModal = document.getElementById('delete-modal');
+const modalButtonDelete = document.getElementById('button-delete');
+const modalButtonCancel = document.getElementById('button-cancel');
+const modalButtonClose = deleteModal.querySelector('.close-button, .fa-xmark');
+
+const showModal = () => {
+  deleteModal.classList.remove('hidden');
+}
+const hideModal = () => {
+  deleteModal.classList.add('hidden');
+  itemToDelete = null;
+};
+let itemToDelete = null;
+
 todoList.addEventListener('click', (e) => {
   const item = e.target.closest('.todo-item')
 
-  // Delete task
-  if (e.target.closest('.fa-trash')) {
-    item.classList.add('done-item')
-    item.addEventListener('transitionend', () =>
-      item.style.display = 'none',
-      { once: true }
-    )
+  /**
+   * mark item as done when click todo item
+   */
+  if (e.target.closest('.todo-item-content')) {
+    item.classList.toggle('completed-item')
+    let message = 'Todo item marked as not done'
+    if (item.classList.contains('completed-item')) {
+      message = 'Todo item marked as done'
+    }
     generateToast({
       message: `
-        <i class="fa-solid fa-circle-xmark"></i>
-        <span>Todo item deleted successfully</span>`,
-      backgroundColor: '#FE546E',
+      <i class="fa-solid fa-circle-check"></i>
+      <span>${message}</span>`,
+      backgroundColor: 'lightgray',
       color: '#191A40',
       lifetime: '3000ms'
     });
-    return
   }
 
+  // Delete task
+  if (e.target.closest('.fa-trash')) {
+    itemToDelete = e.target.closest('.todo-item');
+    // console.log(`item to delete: ${itemToDelete}`);
+    if (!itemToDelete) return;
+    showModal();
+
+    modalButtonClose.addEventListener('click', () => {
+      hideModal();
+    });
+
+    modalButtonCancel.addEventListener('click', () => {
+      hideModal();
+    });
+
+    modalButtonDelete.addEventListener('click', () => {
+      if (!itemToDelete) return;
+
+      // console.log("Item deleted!");
+      item.classList.add('done-item')
+      item.addEventListener('transitionend', () =>
+        item.style.display = 'none',
+        itemToDelete.remove(),
+        { once: true }
+      )
+      generateToast({
+        message: `
+        <i class="fa-solid fa-circle-xmark"></i>
+        <span>Todo item deleted successfully</span>`,
+        backgroundColor: '#FE546E',
+        color: '#191A40',
+        lifetime: '3000ms'
+      });
+      hideModal();
+      return
+    });
+  }
+
+  // Edit task
   if (e.target.closest('.fa-pen-to-square')) {
     const textDiv = item.querySelector('.todo-item-content')
     const currentText = textDiv.textContent.trim()
@@ -121,7 +175,16 @@ todoList.addEventListener('click', (e) => {
     const inputClass = 'flex-grow px-4 py-3 border border-[#8758FF] text-slate-300 font-light text-sm rounded-l-sm outline-none'
     const buttonClass = 'bg-[#8758FF] text-white text-sm px-3 py-3 rounded-r-md hover:bg-[#6a3ee6] cursor-pointer select-none'
 
-    item.className = 'todo-item w-full flex flex-col justify-center'
+
+    if (item.classList.contains('completed-item')) {
+      console.log('completed-item')
+      item.className = 'todo-item w-full flex flex-col justify-center completed-item'
+    } else {  
+      console.log('not completed-item')
+      item.className = 'todo-item w-full flex flex-col justify-center'
+    }
+
+    
     item.innerHTML = `
       <form class="edit-form w-full flex">
         <input name="edit"
@@ -144,7 +207,7 @@ todoList.addEventListener('submit', (e) => {
   const item = form.closest('.todo-item')
   const newText = formatText(form.elements.edit.value.trim())
 
-  console.log(newText)
+  // console.log(newText)
   if (!newText) {
     const warning = document.createElement('p')
     warning.className = 'text-red-400 opacity-50 text-xs mt-1 font-light'
@@ -161,8 +224,19 @@ todoList.addEventListener('submit', (e) => {
     return
   }
 
-  item.className =
-    'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa]'
+
+  if (item.classList.contains('completed-item')) {
+    console.log('completed-item')
+    item.className =
+      'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa] completed-item'
+  } else {  
+    console.log('not completed-item')
+    item.className =
+      'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa]'
+  }
+
+  // item.className =
+  //   'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa]'
 
   item.innerHTML = `
     <div class="todo-item-content select-none text-slate-50 font-medium text-sm flex-1">${newText}</div>
