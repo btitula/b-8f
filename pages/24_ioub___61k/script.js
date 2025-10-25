@@ -34,6 +34,15 @@ function generateToast({
   }, { once: true });
 }
 
+function isDuplicateTask(text) {
+  for (const el of todoList.querySelectorAll('.todo-item-content')) {
+    if (el.textContent.trim().toLowerCase() === text.trim().toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+}
+
 /**
  * Init Toast
  */
@@ -64,6 +73,17 @@ addForm.addEventListener('submit', (e) => {
     // Them hieu ung fade out sau 2s
     setTimeout(() => warning.remove(), 2000)
     return
+  }
+
+  if (isDuplicateTask(text)) {
+    generateToast({
+      message: `<i class="fa-solid fa-circle-exclamation"></i>
+              <span>Task already exists</span>`,
+      backgroundColor: 'lightgray',
+      color: '#191A40',
+      lifetime: '3000ms'
+    });
+    return;
   }
 
   const newItem = document.createElement('div')
@@ -179,12 +199,12 @@ todoList.addEventListener('click', (e) => {
     if (item.classList.contains('completed-item')) {
       console.log('completed-item')
       item.className = 'todo-item w-full flex flex-col justify-center completed-item'
-    } else {  
+    } else {
       console.log('not completed-item')
       item.className = 'todo-item w-full flex flex-col justify-center'
     }
 
-    
+
     item.innerHTML = `
       <form class="edit-form w-full flex">
         <input name="edit"
@@ -224,12 +244,11 @@ todoList.addEventListener('submit', (e) => {
     return
   }
 
-
   if (item.classList.contains('completed-item')) {
     console.log('completed-item')
     item.className =
       'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa] completed-item'
-  } else {  
+  } else {
     console.log('not completed-item')
     item.className =
       'todo-item opacity-100 flex justify-between items-center bg-[#8758FF] py-3 px-5 rounded-sm hover:bg-[#956dfa]'
