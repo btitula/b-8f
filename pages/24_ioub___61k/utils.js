@@ -14,7 +14,15 @@ const isDuplicateTask = (todoList, taskName) => {
   return false;
 }
 
+const createElementWithClass = (tag, className, textContent = '') => {
+  const element = document.createElement(tag);
+  element.className = className;
+  if (textContent) element.textContent = textContent;
+  return element;
+};
+
 export const UTILS = {
   formatText,
-  isDuplicateTask
+  isDuplicateTask,
+  createElementWithClass
 }
