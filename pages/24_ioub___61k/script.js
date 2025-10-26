@@ -255,6 +255,7 @@ todoList.addEventListener('submit', (e) => {
     return
   }
 
+  // Check if having duplicate task name while editing task
   if (isDuplicateTask(todoList, newText)) {
     createToast('info', MESSAGE.ADD_TASK_ERROR)
     return;
