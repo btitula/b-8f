@@ -1,8 +1,5 @@
 import { CONSTANT } from './constant.js';
-import { UTILS } from './utils.js';
-
 const { COLORS, MESSAGE, FONT_AWESOME_ICONS, TIMEOUT } = CONSTANT;
-const { formatText, isDuplicateTask } = UTILS;
 
 const addForm = document.getElementById('add-form')
 const addInput = addForm.querySelector('input[type="text"]')
@@ -12,8 +9,15 @@ let toastContainer;
 /**
  * Utils
  */
+function formatText(text) {
+  // Lowercase and first letter uppercase and trim for each word  
+  const formattedText = text.split(' ').map(word => word.toLowerCase().charAt(0).toUpperCase() + word.slice(1)).join(' ')
+  // console.log(formattedText)
+  return formattedText
+}
+
 // https://www.youtube.com/watch?v=EWveKYaX-P0&t=607s
-const generateToast = ({ message, backgroundColor, color = COLORS.TEXT_COLOR, lifetime = `${TIMEOUT.THREE_SECONDS}ms` }) => {
+function generateToast({ message, backgroundColor, color = COLORS.TEXT_COLOR, lifetime = `${TIMEOUT.THREE_SECONDS}ms` }) {
   toastContainer.insertAdjacentHTML('beforeend', `
     <p class="toast" style="background-color: ${backgroundColor}; color: ${color}; animation-duration: ${lifetime};">
       ${message}
@@ -24,6 +28,15 @@ const generateToast = ({ message, backgroundColor, color = COLORS.TEXT_COLOR, li
   toast.addEventListener('animationend', () => {
     toast.remove();
   }, { once: true });
+}
+
+function isDuplicateTask(text) {
+  for (const el of todoList.querySelectorAll('.todo-item-content')) {
+    if (el.textContent.trim().toLowerCase() === text.trim().toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -46,6 +59,8 @@ addForm.addEventListener('submit', (e) => {
 
   const text = formatText(addInput.value.trim())
   if (!text) {
+
+
     // Avoid XSS
     /**
       const warning = document.createElement('p');
@@ -76,17 +91,7 @@ addForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // if (isDuplicateTask(text)) {
-  //   generateToast({
-  //     message: `
-  //       <i class="fa-solid ${FONT_AWESOME_ICONS.FA_CIRCLE_EXCLAMATION}"></i>
-  //       <span>${MESSAGE.ADD_TASK_ERROR}</span>`,
-  //     backgroundColor: COLORS.GRAY
-  //   });
-  //   return;
-  // }
-
-  if (isDuplicateTask(todoList, text)) {
+  if (isDuplicateTask(text)) {
     generateToast({
       message: `
         <i class="fa-solid ${FONT_AWESOME_ICONS.FA_CIRCLE_EXCLAMATION}"></i>
