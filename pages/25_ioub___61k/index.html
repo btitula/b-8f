@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>HyHy - Exercise 25 - JavaScript</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <div class="container m-auto">
+    <div class="manga-new flex flex-col items-center justify-center pt-20">
+      <div class="manga-items-list flex flex-wrap gap-[20px]">
+        <div
+          class="manga-item group relative rounded-2xl border-[20px] border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] overflow-hidden transition-all duration-300">
+          <div class="bg-white/10 border-white/20 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)]">
+            <div class="relative flex flex-col items-center justify-center w-52 ">
+              <!-- <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-light px-2 py-1 rounded-md">
+                Sắp có hàng
+              </span> -->
+              <img class="w-full h-full object-cover rounded-t-2xl" src="./images/onepunch-man_31_jp_-648x1024.webp"
+                alt="manga-1">
+              <!-- <span class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-2 py-1 rounded-md text-sm">
+                Tập 01
+              </span> -->
+
+              <!-- <span class="absolute bottom-2 left-1/2 -translate-x-1/2 z-10
+                    px-3 py-1 text-xs text-slate-900 font-normal rounded-full
+                    bg-[rgba(59,130,246,0.28)] border border-[rgba(255,255,255,0.45)]
+                    backdrop-blur-md shadow-[inset_1px_1px_2px_rgba(255,255,255,0.35),0_6px_14px_rgba(0,0,0,0.25)]
+                    overflow-hidden
+                    before:content-[''] before:absolute before:inset-0 before:rounded-[inherit]
+                    before:bg-[radial-gradient(circle_at_30%_10%,rgba(255,255,255,0.9),transparent_20%)]">
+                Tập 01
+              </span> -->
+            </div>
+
+            <div class="flex flex-col p-3 gap-2 text-black rounded-b-2xl bg-white/76 backdrop-blur-xl">
+              <h2 class="text-lg font-bold">Tên manga</h2>
+              <ul class="flex items-center justify-between text-sm">
+                <li class="text-red-800 text-lg font-semibold">28.000 VNĐ</li>
+                <li class="text-slate-500 text-xs font-extralight">Đã bán 01</li>
+              </ul>
+            </div>
+          </div>
+          <div class="sale-badge" data-sale="25"></div>
+          <div
+            class="hover-buy-item absolute top-0 left-0 w-full h-full rounded-2xl border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <i
+              class="fa-solid fa-plus text-white/60 text-8xl hover:text-white/80 transition-all duration-300 cursor-pointer"></i>
+          </div>
+        </div>
+
+        <div
+          class="manga-item group relative rounded-2xl border-[20px] border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] overflow-hidden transition-all duration-300">
+          <div class="bg-white/10 border-white/20 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)]">
+            <div class="relative flex flex-col items-center justify-center w-52 ">
+              <!-- <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-light px-2 py-1 rounded-md">
+                Sắp có hàng
+              </span> -->
+              <img class="w-full h-full object-cover rounded-t-2xl" src="./images/one-punch-man-tap-32-jp-649x1024.webp"
+                alt="manga-1">
+            </div>
+
+            <div class="flex flex-col p-3 gap-2 text-black rounded-b-2xl bg-white/76 backdrop-blur-xl">
+              <h2 class="text-lg font-bold">Tên manga</h2>
+              <ul class="flex items-center justify-between text-sm">
+                <li class="text-red-800 text-lg font-semibold">28.000 VNĐ</li>
+                <li class="text-slate-500 text-xs font-extralight">Đã bán 01</li>
+              </ul>
+            </div>
+          </div>
+          <!-- <div class="sale-badge" data-sale="25"></div> -->
+          <div
+            class="hover-buy-item absolute top-0 left-0 w-full h-full rounded-2xl border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <i
+              class="fa-solid fa-plus text-white/60 text-8xl hover:text-white/80 transition-all duration-300 cursor-pointer"></i>
+          </div>
+        </div>
+
+        <div
+          class="manga-item group relative rounded-2xl border-[20px] border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] overflow-hidden transition-all duration-300">
+          <div class="bg-white/10 border-white/20 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)]">
+            <div class="relative flex flex-col items-center justify-center w-52 ">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-light px-2 py-1 rounded-md">
+                Sắp có hàng
+              </span>
+              <img class="w-full h-full object-cover rounded-t-2xl" src="./images/one-punch-man-tap-33-jp-647x1024.webp"
+                alt="manga-1">
+            </div>
+
+            <div class="flex flex-col p-3 gap-2 text-black rounded-b-2xl bg-white/76 backdrop-blur-xl">
+              <h2 class="text-lg font-bold">Tên manga</h2>
+              <ul class="flex items-center justify-between text-sm">
+                <li class="text-red-800 text-lg font-semibold">28.000 VNĐ</li>
+                <li class="text-slate-500 text-xs font-extralight">Đã bán 01</li>
+              </ul>
+            </div>
+          </div>
+          <!-- <div class="sale-badge" data-sale="25"></div> -->
+          <!-- Hover overlay -->
+          <div
+            class="hover-buy-item absolute top-0 left-0 w-full h-full rounded-2xl border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <i
+              class="fa-solid fa-plus text-white/60 text-8xl hover:text-white/80 transition-all duration-300 cursor-pointer"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manga-cart">
+      <button type="button" id="openCart"
+        class="fixed top-6 right-6 z-40 rounded-full px-3 py-2 text-white/60 bg-black/60 backdrop-blur-md hover:bg-black/80 hover:text-white/80 transition-all duration-300 cursor-pointer">
+        Cart <i class="fa-solid fa-bag-shopping"></i>
+      </button>
+
+      <div id="overlay"
+        class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+      </div>
+
+      <!-- Side menu (cart) trượt từ phải qua trái -->
+      <aside id="sidecart" class="fixed top-0 right-0 z-50 h-screen w-[50%] max-w-[90vw]
+               translate-x-full transition-transform duration-300 will-change-transform
+               bg-slate-900/40 backdrop-blur-xl border-l border-white/20
+               shadow-[-16px_0_48px_rgba(0,0,0,0.35)]">
+        <!-- <aside id="sidecart" class="fixed top-0 right-0 z-50 h-screen w-[50%] max-w-[90vw]
+                     duration-300 
+                     bg-slate-900/40 backdrop-blur-xl border-l border-white/20
+                     shadow-[-16px_0_48px_rgba(0,0,0,0.35)]"> -->
+        <div class="flex items-center justify-between p-4 border-b border-white/10 text-white">
+          <h3 class="text-lg font-semibold">Your Cart</h3>
+          <button type="button" id="closeCart"
+            class="rounded-full w-[32px] h-[32px] px-1 py-1 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <!-- nội dung -->
+        <div class="p-4 text-white/90 space-y-3">
+          <div class="item-info flex items-start justify-between gap-2 border-b-1 border-white/10 py-4">
+            <div class="item-cart-image basis-1/5 rounded-md overflow-hidden">
+              <img src="./images/onepunch-man_31_jp_-648x1024.webp" alt="manga-1">
+            </div>
+            <div class="item-cart-content basis-3/5 flex flex-col gap-5">
+              <ul class="flex flex-col gap-2">
+                <li class="text-base font-semibold">One Punch Man <i class="fa-solid fa-bookmark"></i> Tập 31</li>
+                <li class="text-sm font-normal">Luyện Ngục Vô Song Đế Vương Hỏa Thiêu Pháo</li>
+                <li
+                  class="text-sm font-thin overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical]">
+                  Đám quái nhân cấp cao lần lượt đốn hạ các anh hùng cấp S... Giữa cơn
+                  nguy khốn đó, King – người đàn ông mạnh nhất hành
+                  tinh đã đứng lên! Trong vòng vây quái nhân với sát khí trùng trùng, ông ta vẫn tỏ ra cực kì bình tĩnh
+                  và hiên ngang! Các
+                  anh hùng đồng loạt nín thở, chờ thời khắc King tung tuyệt chiêu tất sát</li>
+              </ul>
+
+              <ul class="flex items-center justify-between text-sm">
+                <li>
+                  <ul class="flex items-center justify-start text-sm gap-1">
+                    <li><i class="fa-solid fa-money-bill-1"></i></li>
+                    <li>28.000 VNĐ</li>
+                  </ul>
+                </li>
+                <li>
+                  <ul
+                    class="flex items-center justify-start text-sm gap-1 cursor-pointer hover:text-white/60 transition-all duration-300">
+                    <li><i class="fa-solid fa-trash"></i></li>
+                    <li>Xoá sản phẩm</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="item-cart-action basis-1/5">
+              <ul class="flex items-center justify-center gap-1">
+                <li
+                  class="cursor-pointer w-[24px] h-[24px] bg-white/10 hover:bg-white/20 hover:text-white/60 transition-all duration-300 border border-white/20 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-plus"></i>
+                </li>
+                <li
+                  class="w-[32px] h-[32px] bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+                  1</li>
+                <li
+                  class="cursor-pointer w-[24px] h-[24px] bg-white/10 hover:bg-white/20 hover:text-white/60 transition-all duration-300 border border-white/20 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-minus"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="item-info flex items-start justify-between gap-2 border-b-1 border-white/10 py-4">
+            <div class="item-cart-image basis-1/5 rounded-md overflow-hidden">
+              <img src="./images/one-punch-man-tap-32-jp-649x1024.webp" alt="manga-1">
+            </div>
+            <div class="item-cart-content basis-3/5 flex flex-col gap-5">
+              <ul class="flex flex-col gap-2">
+                <li class="text-base font-semibold">One Punch Man <i class="fa-solid fa-bookmark"></i> Tập 32</li>
+                <li class="text-sm font-normal">Ban Phước</li>
+                <li
+                  class="text-sm font-thin overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical]">
+                  Garo và Rết Đại Thủy Tổ lao vào cắn xé nhau dữ dội! Ngoài khơi xa, Nước Biển Thành Tinh vẫn đang rình thời cơ thích hợp
+                  để trả thù… Rết Đại Thủy Tổ định triệt hạ trực thăng cứu viện của Tareo và Sekingar, may sao Trẻ Trâu Chày Cối đã kịp
+                  thời xuất hiện! Đang đối đầu Garo, không biết từ lúc nào mà các anh hùng lại chuyển sang chiến đấu cùng hắn…</li>
+              </ul>
+              <ul class="flex items-center justify-between text-sm">
+                <li>
+                  <ul class="flex items-center justify-start text-sm gap-1">
+                    <li><i class="fa-solid fa-money-bill-1"></i></li>
+                    <li>28.000 VNĐ</li>
+                  </ul>
+                </li>
+                <li>
+                  <ul
+                    class="flex items-center justify-start text-sm gap-1 cursor-pointer hover:text-white/60 transition-all duration-300">
+                    <li><i class="fa-solid fa-trash"></i></li>
+                    <li>Xoá sản phẩm</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="item-cart-action basis-1/5">
+              <ul class="flex items-center justify-center gap-1">
+                <li
+                  class="cursor-pointer w-[24px] h-[24px] bg-white/10 hover:bg-white/20 hover:text-white/60 transition-all duration-300 border border-white/20 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-plus"></i>
+                </li>
+                <li class="w-[32px] h-[32px] bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+                  1</li>
+                <li
+                  class="cursor-pointer w-[24px] h-[24px] bg-white/10 hover:bg-white/20 hover:text-white/60 transition-all duration-300 border border-white/20 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-minus"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="item-info flex items-start justify-between gap-2 border-b-1 border-white/10 py-4">
+            <div class="item-cart-image basis-1/5 rounded-md overflow-hidden">
+              <img src="./images/one-punch-man-tap-33-jp-647x1024.webp" alt="manga-1">
+            </div>
+            <div class="item-cart-content basis-3/5 flex flex-col gap-5">
+              <ul class="flex flex-col gap-2">
+                <li class="text-base font-semibold">One Punch Man <i class="fa-solid fa-bookmark"></i> Tập 33</li>
+                <li class="text-sm font-normal">Công suất bình phương</li>
+                <li
+                  class="text-sm font-thin overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical]">
+                  Saitama và Garou cuối cùng cũng chạm trán. Saitama cố gắng thuyết phục Garou nghĩ đến cảm xúc của Tareo lúc nhỏ, nhưng
+                  Garou lại đẩy nhanh quá trình biến đổi thành quái vật. Ngay khi hắn chuẩn bị bị đánh bại bởi sức mạnh áp đảo của
+                  Saitama, một giọng nói vang lên, và Garou đạt được sức mạnh đáng kinh ngạc!
+                </li>
+              </ul>
+              <ul class="flex items-center justify-between text-sm">
+                <li>
+                  <ul class="flex items-center justify-start text-sm gap-1">
+                    <li><i class="fa-solid fa-money-bill-1"></i></li>
+                    <li>28.000 VNĐ</li>
+                  </ul>
+                </li>
+                <li>
+                  <ul
+                    class="flex items-center justify-start text-sm gap-1 cursor-pointer hover:text-white/60 transition-all duration-300">
+                    <li><i class="fa-solid fa-trash"></i></li>
+                    <li>Xoá sản phẩm</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="item-cart-action basis-1/5">
+              <ul class="flex items-center justify-center gap-1">
+                <li
+                  class="cursor-pointer w-[24px] h-[24px] bg-white/10 hover:bg-white/20 hover:text-white/60 transition-all duration-300 border border-white/20 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-plus"></i>
+                </li>
+                <li class="w-[32px] h-[32px] bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+                  1</li>
+                <li
+                  class="cursor-pointer w-[24px] h-[24px] bg-white/10 hover:bg-white/20 hover:text-white/60 transition-all duration-300 border border-white/20 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-minus"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cart-total rounded-lg p-2 bg-white/10 border border-white/20 ">
+            <div class="flex flex-col gap-4 border-b border-white/10 pb-4">
+              <div class="flex items-center justify-between">
+                <span>Tổng tiền</span>
+                <span class="font-extralight">28.000 VNĐ</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>Phí vận chuyển (Giao hàng tiêu chuẩn)</span>
+                <span class="font-extralight">20.000 VNĐ</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>Giảm giá</span>
+                <span class="font-extralight">28.000 VNĐ</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-4 pt-4">
+              <div class="flex items-center justify-between font-semibold rounded-lg p-2 
+  bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.15)_0%,transparent_70%),linear-gradient(135deg,#ffd600_0%,#ffb300_25%,#fb8c00_50%,#f4511e_75%,#d32f2f_100%)]
+  bg-cover bg-fixed backdrop-blur-xl">
+                <span>Tổng Số Tiền (gồm VAT)</span>
+                <span>20.000 VNĐ</span>
+              </div>
+              <button type="button"
+                class="w-full rounded-lg p-2 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer  hover:text-white">
+                <span>Thanh toán</span>
+                <i class="fa-solid fa-circle-check"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
