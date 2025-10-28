@@ -131,11 +131,26 @@
                      bg-slate-900/40 backdrop-blur-xl border-l border-white/20
                      shadow-[-16px_0_48px_rgba(0,0,0,0.35)]"> -->
         <div class="flex items-center justify-between p-4 border-b border-white/10 text-white">
-          <h3 class="text-lg font-semibold">Your Cart</h3>
-          <button type="button" id="closeCart"
-            class="rounded-full w-[32px] h-[32px] px-1 py-1 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+          <h3 class="text-lg font-semibold">
+            Giỏ hàng
+            <span class="font-extralight">
+              <sup>(3 sản phẩm)</sup>
+            </span>
+          </h3>
+
+          <div class="sort-by-price flex items-center gap-2">
+            <button type="button" id="sortByPrice"
+              class="rounded-full px-2 py-1 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer">
+              Sắp xếp theo giá
+              <i class="fa-solid fa-up-long"></i>
+            </button>
+            <button type="button" id="closeCart"
+              class="rounded-full w-[32px] h-[32px] px-1 py-1 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          
         </div>
         <!-- nội dung -->
         <div class="p-4 text-white/90 space-y-3">
