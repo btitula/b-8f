@@ -78,10 +78,10 @@ const renderMangaItemsList = (document) => {
             <div
                 id="blockMangaToCart"
                 data-id="${item.id}"
-                class="hover-buy-item absolute top-0 left-0 w-full h-full rounded-2xl border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
+                class="hover-buy-item absolute top-0 left-0 w-full h-full rounded-2xl border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-not-allowed">
                 <i
                   data-id="${item.id}"
-                  class="fa-solid fa-exclamation text-white/60 text-8xl hover:text-white/80 transition-all duration-300"></i>
+                  class="fa-solid fa-exclamation text-white/60 text-8xl hover:text-white/80 transition-all duration-300 cursor-not-allowed"></i>
                   <span class="text-white/60 text-sm font-light">Sắp có hàng. Vui lòng chờ</span>
               </div>`
           : `
