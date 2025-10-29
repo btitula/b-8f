@@ -1,14 +1,46 @@
 import { CONSTANT } from '../constant.js';
 import { UTILS } from './utils.js';
 import { MANGA_CARTS } from './mangaCarts.js';
-const { formatText } = UTILS;
+const { formatText, getCart } = UTILS;
+
 const { MANGA_ITEMS } = CONSTANT;
 const { addMangaItemToCart } = MANGA_CARTS;
+
+const updateSoldCount = (document) => {
+  const cart = getCart(); 
+  if (!Array.isArray(cart)) return;
+
+  const counts = {};
+  for (const item of cart) {
+    const id = Number(item.id);
+    const quantity = Number(item.quantity) || 1;
+
+    if (counts[id]) {
+      counts[id] += quantity;
+    } else {
+      counts[id] = quantity;
+    }
+  }
+
+  // Duyệt từng manga card có data-manga-id
+  document.querySelectorAll('[data-manga-id]').forEach(card => {
+    const id = Number(card.dataset.mangaId);
+    const eSoldCount = card.querySelector('.sold-count');
+    if (!eSoldCount) return;
+
+    const soldQty = counts[id] || 0;
+    eSoldCount.textContent = soldQty > 0 ? `Đã bán ${soldQty}` : 'Đã bán 0';
+  });
+};
+
+// Send event cart:updated khi có sự thay đổi trong giỏ hàng, bên mangaCart 
+// sẽ lắng nghe rồi rerender số lượng đã bán trên mangaItemsList
+document.addEventListener('cart:updated', () => updateSoldCount(document));
 
 const renderMangaItemsList = (document) => {
   const mangaItems = document.getElementById('manga-items');
 
-  MANGA_ITEMS.forEach(item => {
+  [...MANGA_ITEMS].reverse().forEach(item => {
     const mangaItem = document.createElement('div');
     mangaItem.classList.add('manga-item');
 
@@ -17,7 +49,9 @@ const renderMangaItemsList = (document) => {
 
     mangaItem.innerHTML = `
       <div
-        class="manga-item group relative rounded-2xl border-[20px] border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] overflow-hidden transition-all duration-300">
+        class="manga-item group relative rounded-2xl border-[20px] border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] overflow-hidden transition-all duration-300"
+        data-manga-id="${item.id}">
+
         <div class="bg-white/10 border-white/20 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)]">
           <div class="relative flex flex-col items-center justify-center w-52 ">
             ${!isPublished ? `<span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-light px-2 py-1 rounded-md">
@@ -31,7 +65,7 @@ const renderMangaItemsList = (document) => {
             <h2 class="text-lg font-bold">${formatText(name)}</h2>
             <ul class="flex items-center justify-between text-sm">
               <li class="text-red-800 text-lg font-semibold">${price} VNĐ</li>
-              <li class="text-slate-500 text-xs font-extralight">Đã bán 01</li>
+              <li class="text-slate-500 text-xs font-extralight sold-count">Đã bán 01</li>
             </ul>
           </div>
         </div>
@@ -58,6 +92,8 @@ const renderMangaItemsList = (document) => {
       addMangaItemToCart(document, mangaItemAddToCart);
     });
   });
+
+  updateSoldCount(document);
 }
 
 export const MANGA_ITEMS_LIST = {

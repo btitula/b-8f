@@ -237,7 +237,7 @@ const updateMangaCartBadgeCount = (document) => {
 }
 
 const addMangaItemToCart = (document, mangaItem) => {
-  let cart = deDuplicateCart(); // đảm bảo schema đúng
+  let cart = deDuplicateCart();
   const id = cart.findIndex(i => Number(i.id) === Number(mangaItem.id));
 
   if (id > -1) {
@@ -251,6 +251,10 @@ const addMangaItemToCart = (document, mangaItem) => {
   renderMangaCartController(document);
   renderMangaCartContent(document);
   renderMangaCartSummary(document);
+
+
+  // trigger event để cập nhật số lượng đã bán trên mangaItemsList
+  document.dispatchEvent(new CustomEvent('cart:updated'));
 };
 
 export const MANGA_CARTS = {
