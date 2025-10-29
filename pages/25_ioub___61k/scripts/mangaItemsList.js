@@ -6,6 +6,7 @@ const { formatText, getCart } = UTILS;
 const { MANGA_ITEMS } = CONSTANT;
 const { addMangaItemToCart } = MANGA_CARTS;
 
+
 const updateSoldCount = (document) => {
   const cart = getCart(); 
   if (!Array.isArray(cart)) return;
@@ -58,7 +59,9 @@ const renderMangaItemsList = (document) => {
               Sắp có hàng
             </span>` : ''}
             
-            <img class="w-full h-full object-cover rounded-t-2xl" src="${image}" alt="${name}">
+            <img
+              id="manga-item-image-${item.id}"
+              class="manga-item-image w-full h-full object-cover rounded-t-2xl" src="${image}" alt="${name}">
           </div>
 
           <div class="flex flex-col p-3 gap-2 text-black rounded-b-2xl bg-white/76 backdrop-blur-xl">

@@ -241,7 +241,61 @@ const updateMangaCartBadgeCount = (document) => {
   cartCount.classList.toggle('hidden', qty === 0);
 }
 
+/**
+ * Create flying animation from image to cart button
+ * https://www.youtube.com/watch?v=8dbhqsq-HKA
+ */
+const createFlyingAnimation = (originalImage) => {
+  const openCartBtn = document.getElementById('openCart');
+  if (!openCartBtn) return;
+
+  // Clone the image
+  const flyingImage = originalImage.cloneNode(true);
+  flyingImage.removeAttribute('id'); // Remove ID to avoid duplicates
+
+  // Get positions
+  const imageRect = originalImage.getBoundingClientRect();
+  const cartRect = openCartBtn.getBoundingClientRect();
+
+  // Calculate movement distance
+  const moveX = cartRect.left + (cartRect.width / 2) - (imageRect.left + imageRect.width / 2);
+  const moveY = cartRect.top + (cartRect.height / 2) - (imageRect.top + imageRect.height / 2);
+
+  // Set initial position and CSS variables
+  flyingImage.style.cssText = `
+    position: fixed !important;
+    left: ${imageRect.left}px;
+    top: ${imageRect.top}px;
+    width: ${imageRect.width}px;
+    height: ${imageRect.height}px;
+    --move-x: ${moveX}px;
+    --move-y: ${moveY}px;
+  `;
+
+  // Add flying class
+  flyingImage.classList.add('flying-img');
+
+  // Append to body
+  document.body.appendChild(flyingImage);
+
+  // Remove after animation completes
+  setTimeout(() => {
+    flyingImage.remove();
+  }, 1000);
+}
+
 const addMangaItemToCart = (document, mangaItem) => {
+  /**
+   * Create flying image clone and animate it
+   * https://www.youtube.com/watch?v=8dbhqsq-HKA
+   */
+  const originalImage = document.getElementById(`manga-item-image-${mangaItem.id}`);
+  if (!originalImage) {
+    console.warn(`Image not found: manga-item-image-${mangaItem.id}`);
+  } else {
+    createFlyingAnimation(originalImage);
+  }
+
   let cart = deDuplicateCart();
   const id = cart.findIndex(i => Number(i.id) === Number(mangaItem.id));
 
@@ -264,6 +318,7 @@ const addMangaItemToCart = (document, mangaItem) => {
 
 export const MANGA_CARTS = {
   addMangaItemToCart,
+  createFlyingAnimation,
   createMangaCartController,
   removeMangaItemFromCart,
   renderMangaCartContent,
