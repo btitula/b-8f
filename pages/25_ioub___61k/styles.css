@@ -20,6 +20,42 @@ body {
   -webkit-backdrop-filter: blur(8px) brightness(1.1) saturate(1.3);
 }
 
+/* Custom scrollbar for cart content */
+#cart-content {
+  scroll-behavior: smooth;
+}
+
+#cart-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+#cart-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+#cart-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+#cart-content::-webkit-scrollbar-thumb:hover {
+  /* background: rgba(255, 255, 255, 0.3); */
+  background: radial-gradient(
+      circle at 50% 25%,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 70%
+    ),
+    linear-gradient(
+      135deg,
+      #ffd600 0%,
+      #ffb300 25%,
+      #fb8c00 50%,
+      #f4511e 75%,
+      #d32f2f 100%
+    );;
+}
+
 /* ---- Reusable SALE badge ---- */
 .sale-badge {
   position: absolute;
