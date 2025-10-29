@@ -13,7 +13,7 @@
 <body class="min-h-screen bg-gradient-to-b from-[#ffd600] via-[#fb8c00] to-[#d32f2f] bg-fixed">
 
   <div class="container m-auto">
-    <div class="manga-new flex flex-col items-center justify-center pt-20">
+    <div class="manga-new flex flex-col items-center justify-center pt-20 pb-20">
       <div id="manga-items" class="manga-items-list flex flex-wrap gap-[20px]">
         <!-- manga-items will be rendered here -->
       </div>
@@ -31,9 +31,7 @@
           aria-label="Open cart (0 items)">
           <i class="fa-solid fa-bag-shopping mr-1"></i>
           Cart
-          <span
-            id="cartCount" 
-            class="
+          <span id="cartCount" class="
               absolute -top-2 -right-2 min-w-5 h-5 px-1
               flex items-center justify-center rounded-full
               bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.15)_0%,transparent_70%),linear-gradient(45deg,#ffd600_0%,#ffb300_25%,#fb8c00_50%,#f4511e_75%,#d32f2f_100%)] 
@@ -49,10 +47,14 @@
         class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
       </div>
 
-      <aside id="sidecart" class="fixed hidden top-0 right-0 z-50 h-screen w-[50%] max-w-[90vw]
+      <!-- <aside id="sidecart" class="fixed hidden top-0 right-0 z-50 h-screen w-[50%] max-w-[90vw]
                translate-x-full transition-transform duration-300 will-change-transform
                bg-slate-900/40 backdrop-blur-xl border-l border-white/20
-               shadow-[-16px_0_48px_rgba(0,0,0,0.35)]">
+               shadow-[-16px_0_48px_rgba(0,0,0,0.35)]"> -->
+      <aside id="sidecart" class="fixed hidden top-0 right-0 z-50 h-[100%] w-[50%] max-w-[90vw]
+         translate-x-full transition-transform duration-300 will-change-transform
+         overflow-hidden border-l border-white/20">
+        <div class="absolute inset-0 -z-10 bg-black/40 backdrop-blur-xl"></div>
         <div class="flex items-center justify-between p-4 border-b border-white/10 text-white">
           <h3 class="text-lg font-semibold">
             Giỏ hàng
