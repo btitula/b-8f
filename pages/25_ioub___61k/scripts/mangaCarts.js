@@ -111,11 +111,76 @@ const updateMangaCartItemQuantity = (document, mangaId, delta) => {
   }
 };
 
+// Get current sort order from icon class
+const getSortOrderFromIcon = (document) => {
+  const sortBtn = document.getElementById('sortByPrice');
+  if (!sortBtn) return null;
+
+  const icon = sortBtn.querySelector('i');
+  if (!icon) return null;
+
+  if (icon.classList.contains('fa-arrow-up')) {
+    return 'asc';
+  } else if (icon.classList.contains('fa-arrow-down')) {
+    return 'desc';
+  }
+  return null;
+};
+
+// Toggle sort icon between ASC and DESC
+const toggleSortIcon = (document) => {
+  const sortBtn = document.getElementById('sortByPrice');
+  if (!sortBtn) return;
+
+  const icon = sortBtn.querySelector('i');
+  if (!icon) return;
+
+  const currentOrder = getSortOrderFromIcon(document);
+
+  if (currentOrder === 'asc') {
+    icon.className = 'fa-solid fa-arrow-down';
+  } else {
+    icon.className = 'fa-solid fa-arrow-up';
+  }
+};
+
+
+// Sort cart items by total price (quantity * price)
+const sortCartByPrice = (cart, order) => {
+  if (!order) return cart;
+
+  return [...cart].sort((a, b) => {
+    const totalA = (a.quantity || 1) * a.price;
+    const totalB = (b.quantity || 1) * b.price;
+
+    return order === 'asc' ? totalA - totalB : totalB - totalA;
+  });
+};
+
+// Toggle sort button visibility based on cart content
+const toggleSortButtonVisibility = (document, isEmpty) => {
+  const sortBtn = document.getElementById('sortByPrice');
+  if (!sortBtn) return;
+
+  if (isEmpty) {
+    sortBtn.classList.add('hidden');
+  } else {
+    sortBtn.classList.remove('hidden');
+  }
+};
+
 const renderMangaCartContent = (document) => {
   const cartContent = document.getElementById('cart-content');
   if (!cartContent) return;
 
-  const cart = deDuplicateCart();
+  let cart = deDuplicateCart();
+
+  // Toggle sort button visibility based on cart content
+  toggleSortButtonVisibility(document, cart.length === 0);
+
+  // Apply sorting based on icon state
+  const currentSortOrder = getSortOrderFromIcon(document);
+  cart = sortCartByPrice(cart, currentSortOrder);
   cartContent.innerHTML = `
       <div class="flex items-center justify-center gap-2 m-auto text-white/60 opacity-50 mt-5">
         <i class="fa-solid fa-face-frown-open text-2xl"></i>
@@ -219,6 +284,18 @@ const renderMangaCartContent = (document) => {
     if (e.target.closest('.js-remove-item')) return removeMangaItemFromCart(document, id);
   };
 
+  const sortBtn = document.getElementById('sortByPrice');
+  if (sortBtn) {
+    const newSortBtn = sortBtn.cloneNode(true);
+    sortBtn.parentNode.replaceChild(newSortBtn, sortBtn);
+
+    newSortBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleSortIcon(document);
+      renderMangaCartContent(document);
+    });
+  }
+
   renderMangaCartSummary(document);
 }
 
@@ -320,11 +397,15 @@ export const MANGA_CARTS = {
   addMangaItemToCart,
   createFlyingAnimation,
   createMangaCartController,
+  getSortOrderFromIcon,
   removeMangaItemFromCart,
   renderMangaCartContent,
   renderMangaCartController,
   renderMangaCartSummary,
   showMangaCartCount,
+  sortCartByPrice,
+  toggleSortButtonVisibility,
+  toggleSortIcon,
   updateMangaCartBadgeCount,
   updateMangaCartItemQuantity,
 }
