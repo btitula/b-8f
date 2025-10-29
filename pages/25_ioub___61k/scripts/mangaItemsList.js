@@ -71,9 +71,10 @@ const renderMangaItemsList = (document) => {
         </div>
         <!-- ${isSaled ? `<div class="sale-badge" data-sale="${salePercent}"></div>` : ''} -->
         <div
-          class="hover-buy-item absolute top-0 left-0 w-full h-full rounded-2xl border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          id="addMangaToCart"
+          data-id="${item.id}"
+          class="hover-buy-item absolute top-0 left-0 w-full h-full rounded-2xl border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.1)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
           <i
-            id="addMangaToCart"
             data-id="${item.id}"
             class="fa-solid fa-plus text-white/60 text-8xl hover:text-white/80 transition-all duration-300 cursor-pointer"></i>
         </div>

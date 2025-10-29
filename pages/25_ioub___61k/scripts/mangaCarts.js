@@ -116,7 +116,12 @@ const renderMangaCartContent = (document) => {
   if (!cartContent) return;
 
   const cart = deDuplicateCart();
-  cartContent.innerHTML = ''
+  cartContent.innerHTML = `
+      <div class="flex items-center justify-center gap-2 m-auto text-white/60 opacity-50 mt-5">
+        <i class="fa-solid fa-face-frown-open text-2xl"></i>
+        <span>Giỏ hàng trống</span>
+      </div>
+  `
 
   if (cart.length > 0) {
     cartContent.innerHTML = `
