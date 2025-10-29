@@ -174,7 +174,7 @@ const renderMangaCartContent = (document) => {
             <li>
               <ul class="flex items-center justify-start text-sm gap-1">
                 <li><i class="fa-solid fa-money-bill-1"></i></li>
-                <li>28.000 VNĐ</li>
+                <li>${formatPrice(item.price)} VNĐ</li>
               </ul>
             </li>
             <li>
