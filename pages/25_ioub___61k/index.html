@@ -13,8 +13,8 @@
 <body class="min-h-screen bg-gradient-to-b from-[#ffd600] via-[#fb8c00] to-[#d32f2f] bg-fixed">
 
   <div class="container m-auto">
-    <div class="manga-new flex flex-col items-center justify-center min-h-screen py-20">
-      <div id="manga-items" class="manga-items-list grid grid-cols-3 gap-[20px]">
+    <div class="manga-new flex flex-col items-center justify-center min-h-screen py-20 lg:">
+      <div id="manga-items" class="manga-items-list grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[20px]">
         <!-- manga-items will be rendered here -->
       </div>
     </div>
@@ -51,7 +51,7 @@
                translate-x-full transition-transform duration-300 will-change-transform
                bg-slate-900/40 backdrop-blur-xl border-l border-white/20
                shadow-[-16px_0_48px_rgba(0,0,0,0.35)]"> -->
-      <aside id="sidecart" class="fixed hidden top-0 right-0 z-50 h-screen w-[50%] max-w-[90vw]
+      <aside id="sidecart" class="fixed hidden top-0 right-0 z-50 h-screen w-full lg:w-[50%] lg:max-w-[90vw] md:max-w-[80vw]
          translate-x-full transition-transform duration-300 will-change-transform
          flex flex-col border-l border-white/20">
         <div class="absolute inset-0 -z-10 bg-black/40 backdrop-blur-xl"></div>
