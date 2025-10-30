@@ -68,7 +68,7 @@ const removeMangaItemFromCart = (document, mangaId) => {
   // Show spinner on the item being removed
   const row = document.querySelector(`.item-info[data-id="${mangaId}"]`);
   if (row) {
-    row.style.opacity = '0.5'; // 0.5 second
+    row.style.opacity = '0.5';
     row.style.pointerEvents = 'none';
 
     // Add spinner overlay
@@ -273,7 +273,8 @@ const renderMangaCartContent = (document) => {
             </li>
             <li>
               <ul
-                class="js-remove-item flex items-center justify-start text-sm gap-1 cursor-pointer hover:text-white/60 transition-all duration-300 data-id="${item.id}">
+                class="js-remove-item flex items-center justify-start text-sm gap-1 cursor-pointer hover:text-white/60 transition-all duration-300"
+                data-id="${item.id}">
                 <li><i class="fa-solid fa-trash" data-id="${item.id}"></i></li>
                 <li>Xoá sản phẩm</li>
               </ul>
