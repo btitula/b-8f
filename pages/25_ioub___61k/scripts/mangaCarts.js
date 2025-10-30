@@ -237,7 +237,7 @@ const renderMangaCartContent = (document) => {
             <span id="js-final-price">0 VNĐ</span>
           </div>
           <button type="button"
-            class="w-full rounded-lg p-2 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer hover:text-white">
+            class="w-full rounded-lg p-2 bg-white/10 hover:bg-white/20 border border-white/20 cursor-not-allowed hover:text-white">
             <span>Thanh toán</span>
             <i class="fa-solid fa-circle-check"></i>
           </button>
