@@ -65,16 +65,33 @@ const renderMangaCartSummary = (document) => {
 };
 
 const removeMangaItemFromCart = (document, mangaId) => {
-  const cart = getCart();
-  const id = cart.findIndex(i => Number(i.id) === Number(mangaId));
-  if (id > -1) {
-    cart.splice(id, 1);
+  // Show spinner on the item being removed
+  const row = document.querySelector(`.item-info[data-id="${mangaId}"]`);
+  if (row) {
+    row.style.opacity = '0.5'; // 0.5 second
+    row.style.pointerEvents = 'none';
+
+    // Add spinner overlay
+    const spinner = document.createElement('div');
+    spinner.className = 'absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm rounded-lg';
+    spinner.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-white text-2xl"></i>';
+    row.style.position = 'relative';
+    row.appendChild(spinner);
   }
-  setCart(cart);
-  updateMangaCartBadgeCount(document);
-  renderMangaCartController(document);
-  renderMangaCartContent(document);
-  renderMangaCartSummary(document);
+
+  // Wait 0.5 seconds before removing
+  setTimeout(() => {
+    const cart = getCart();
+    const id = cart.findIndex(i => Number(i.id) === Number(mangaId));
+    if (id > -1) {
+      cart.splice(id, 1);
+    }
+    setCart(cart);
+    updateMangaCartBadgeCount(document);
+    renderMangaCartController(document);
+    renderMangaCartContent(document);
+    renderMangaCartSummary(document);
+  }, 500);
 }
 
 const updateMangaCartItemQuantity = (document, mangaId, delta) => {
@@ -103,8 +120,16 @@ const updateMangaCartItemQuantity = (document, mangaId, delta) => {
 
   if (cart.find(i => Number(i.id) === Number(mangaId))) {
     const quantityEl = row.querySelector('.js-qty');
-    const currentQuantity = cart.find(i => Number(i.id) === Number(mangaId))?.quantity || 0;
+    
+    // Add total quantity: 28.000VND x 5
+    const priceQuantityEl = row.querySelector('.js-price-quantity');
+    const currentItem = cart.find(i => Number(i.id) === Number(mangaId));
+    const currentQuantity = currentItem?.quantity;
+
     if (quantityEl) quantityEl.textContent = currentQuantity;
+    if (priceQuantityEl) {
+      priceQuantityEl.textContent = `${formatPrice(currentItem.price)} VNĐ x ${currentQuantity}`;
+    }
   } else {
     // already removed from cart, remove node from HTML
     row.remove();
@@ -144,7 +169,6 @@ const toggleSortIcon = (document) => {
   }
 };
 
-
 // Sort cart items by total price (quantity * price)
 const sortCartByPrice = (cart, order) => {
   if (!order) return cart;
@@ -182,44 +206,44 @@ const renderMangaCartContent = (document) => {
   const currentSortOrder = getSortOrderFromIcon(document);
   cart = sortCartByPrice(cart, currentSortOrder);
   cartContent.innerHTML = `
-      <div class="flex items-center justify-center gap-2 m-auto text-white/60 opacity-50 mt-5">
-        <i class="fa-solid fa-face-frown-open text-2xl"></i>
-        <span>Giỏ hàng trống</span>
-      </div>
+    <div class="flex items-center justify-center gap-2 m-auto text-white/60 opacity-50 mt-5">
+      <i class="fa-solid fa-face-frown-open text-2xl"></i>
+      <span>Giỏ hàng trống</span>
+    </div>
   `
 
   if (cart.length > 0) {
     cartContent.innerHTML = `
-    <div class="cart-total rounded-lg p-2 bg-white/10 border border-white/20 ">
-      <div class="flex flex-col gap-4 border-b border-white/10 pb-4">
-        <div class="flex items-center justify-between">
-          <span>Tổng tiền</span>
-          <span id="js-sub-price" class="font-extralight">0 VNĐ</span>
+      <div class="cart-total rounded-lg p-2 bg-white/10 border border-white/20 ">
+        <div class="flex flex-col gap-4 border-b border-white/10 pb-4">
+          <div class="flex items-center justify-between">
+            <span>Tổng tiền</span>
+            <span id="js-sub-price" class="font-extralight">0 VNĐ</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span>Phí vận chuyển (Giao hàng tiêu chuẩn)</span>
+            <span id="js-ship-price" class="font-extralight">0 VNĐ</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span>Giảm giá</span>
+            <span id="js-discount-price" class="font-extralight">0 VNĐ</span>
+          </div>
         </div>
-        <div class="flex items-center justify-between">
-          <span>Phí vận chuyển (Giao hàng tiêu chuẩn)</span>
-          <span id="js-ship-price" class="font-extralight">0 VNĐ</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span>Giảm giá</span>
-          <span id="js-discount-price" class="font-extralight">0 VNĐ</span>
+        <div class="flex flex-col gap-4 pt-4">
+          <div class="flex items-center justify-between font-semibold rounded-lg p-2
+                      bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.15)_0%,transparent_70%),linear-gradient(135deg,#ffd600_0%,#ffb300_25%,#fb8c00_50%,#f4511e_75%,#d32f2f_100%)]
+                      bg-cover bg-fixed backdrop-blur-xl">
+            <span>Tổng Số Tiền (gồm VAT)</span>
+            <span id="js-final-price">0 VNĐ</span>
+          </div>
+          <button type="button"
+            class="w-full rounded-lg p-2 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer hover:text-white">
+            <span>Thanh toán</span>
+            <i class="fa-solid fa-circle-check"></i>
+          </button>
         </div>
       </div>
-      <div class="flex flex-col gap-4 pt-4">
-        <div class="flex items-center justify-between font-semibold rounded-lg p-2
-                    bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.15)_0%,transparent_70%),linear-gradient(135deg,#ffd600_0%,#ffb300_25%,#fb8c00_50%,#f4511e_75%,#d32f2f_100%)]
-                    bg-cover bg-fixed backdrop-blur-xl">
-          <span>Tổng Số Tiền (gồm VAT)</span>
-          <span id="js-final-price">0 VNĐ</span>
-        </div>
-        <button type="button"
-          class="w-full rounded-lg p-2 bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer hover:text-white">
-          <span>Thanh toán</span>
-          <i class="fa-solid fa-circle-check"></i>
-        </button>
-      </div>
-    </div>
-  `;
+    `;
   }
 
   cart.forEach(item => {
@@ -244,7 +268,7 @@ const renderMangaCartContent = (document) => {
             <li>
               <ul class="flex items-center justify-start text-sm gap-1">
                 <li><i class="fa-solid fa-money-bill-1"></i></li>
-                <li>${formatPrice(item.price)} VNĐ</li>
+                <li class="js-price-quantity">${formatPrice(item.price)} VNĐ x ${item.quantity}</li>
               </ul>
             </li>
             <li>
