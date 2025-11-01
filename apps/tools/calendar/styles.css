@@ -229,9 +229,10 @@ body {
   margin-top: 10px;
 }
 
+
+
 .day.disabled {
   pointer-events: none;
-  /* background-color: #dedbf2; */
   opacity: 0.5;
 }
 
@@ -242,7 +243,7 @@ body {
   border-radius: 5px;
   background-color: #eaeaea;
   cursor: pointer;
-  overflow: hidden; /* Ensure polygon shapes don't overflow */
+  overflow: hidden;
 }
 
 .day span {
@@ -251,7 +252,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 14px;
-  z-index: 2; /* Ensure text stays on top */
+  z-index: 2; 
   pointer-events: none;
   user-select: none;
 }
@@ -285,6 +286,7 @@ body {
   background-color: #dedbf2;
   z-index: 0;
 }
+
 button {
   padding: 10px 15px;
   font-size: 16px;
@@ -363,6 +365,8 @@ dialog.hide {
 
 .selected {
   background-color: red;
+  display: flex;
+  flex-direction: column;
 }
 
 .checkbox-wrapper-47 input[type="checkbox"] {
@@ -436,10 +440,13 @@ dialog.hide {
 
 .calendar.lines .day {
   height: 40px;
-  padding-top: 0; /* cancel square sizing */
+  padding-top: 0;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  line-height: 40px;
+  /* justify-content: flex-start; */
 }
 
 .calendar.lines .day span {
@@ -458,8 +465,6 @@ dialog.hide {
 .calendar.lines .updated {
   height: 40px;
   background-color: darkgray;
-  /* width: 100%; */
-  /* padding-top: 100%; */
   border-radius: 5px;
-  overflow: hidden; 
+  overflow: hidden;
 }

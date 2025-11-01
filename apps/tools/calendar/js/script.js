@@ -1,119 +1,215 @@
 import { CONSTANTS } from "./constants.js";
 import { UTILS } from "./utils.js";
-const { PUPILS } = CONSTANTS;
 
-const LS_PUPILS_KEY = 'pupils';
-
-
-const { getCurrenntDate, initElements, handleDayClick } = UTILS;
+const { PUPILS, LOCAL_STORAGE_KEY } = CONSTANTS;
+const { getCurrentDate, initElements, handleDayClick } = UTILS;
 const { calendar, currentMonthYear, prevMonthBtn, nextMonthBtn, dialog, openModalBtn, closeDialogBtn } = initElements();
-const { currentMonth, currentYear } = getCurrenntDate();
 
+let { currentMonth, currentYear } = getCurrentDate();
+
+// ============================================================================
+// INITIALIZATION & STORAGE HELPERS
+// ============================================================================
+
+/**
+ * Initialize localStorage with default pupils data if not exists
+ */
 (function bootstrapPupils() {
-  const hasPupils = localStorage.getItem(LS_PUPILS_KEY);
-  if (!hasPupils) localStorage.setItem(LS_PUPILS_KEY, JSON.stringify(PUPILS));
+  const hasPupils = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (!hasPupils) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(PUPILS));
+  }
 })();
 
-const loadPupils = () => JSON.parse(localStorage.getItem(LS_PUPILS_KEY) || '[]');
-const savePupils = (arr) => localStorage.setItem(LS_PUPILS_KEY, JSON.stringify(arr));
+/**
+ * Load pupils data from localStorage
+ * @returns {Array} Array of pupil objects
+ */
+const loadPupils = () => JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
 
+/**
+ * Save pupils data to localStorage
+ * @param {Array} pupils - Array of pupil objects to save
+ */
+const savePupils = (pupils) => localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(pupils));
 
-const addTracking = (pupilId, dateISO) => {
+/**
+ * Check if a pupil has a specific date in their tracking status
+ * @param {Object} pupil - Pupil object
+ * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
+ * @returns {boolean}
+ */
+const hasDate = (pupil, dateISO) => {
+  return Array.isArray(pupil.trackingStatus) && pupil.trackingStatus.some(t => t.date === dateISO);
+};
+
+/**
+ * Add a date to pupil's tracking status
+ * @param {Object} pupil - Pupil object
+ * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
+ */
+const addDate = (pupil, dateISO) => {
+  if (!Array.isArray(pupil.trackingStatus)) {
+    pupil.trackingStatus = [];
+  }
+  if (!hasDate(pupil, dateISO)) {
+    pupil.trackingStatus.push({ date: dateISO });
+  }
+};
+
+/**
+ * Remove a date from pupil's tracking status
+ * @param {Object} pupil - Pupil object
+ * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
+ */
+const removeDate = (pupil, dateISO) => {
+  if (!Array.isArray(pupil.trackingStatus)) return;
+  pupil.trackingStatus = pupil.trackingStatus.filter(t => t.date !== dateISO);
+};
+
+// ============================================================================
+// DATA MANIPULATION FUNCTIONS
+// ============================================================================
+
+/**
+ * Set tracking status for a specific date
+ * Updates pupils who should be tracked and removes tracking from others
+ * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
+ * @param {number[]} pupilIds - Array of pupil IDs to track for this date
+ */
+const setTrackingForDate = (dateISO, pupilIds) => {
   const pupils = loadPupils();
-  const i = pupils.findIndex(p => p.id === Number(pupilId));
-  if (i === -1) return;
 
-  if (!Array.isArray(pupils[i].trackingStatus)) pupils[i].trackingStatus = [];
-  const exists = pupils[i].trackingStatus.some(t => t.date === dateISO);
-  if (!exists) pupils[i].trackingStatus.push({ date: dateISO });
+  // Add date to selected pupils
+  pupilIds.forEach(id => {
+    const pupil = pupils.find(p => p.id === Number(id));
+    if (pupil) {
+      addDate(pupil, dateISO);
+    }
+  });
+
+  // Remove date from unselected pupils
+  pupils.forEach(pupil => {
+    if (!pupilIds.includes(pupil.id)) {
+      removeDate(pupil, dateISO);
+    }
+  });
 
   savePupils(pupils);
 };
 
-const removeTracking = (pupilId, dateISO) => {
-  const pupils = loadPupils();
-  const i = pupils.findIndex(p => p.id === pupilId);
-  if (i === -1 || !Array.isArray(pupils[i].trackingStatus)) return;
-
-  pupils[i].trackingStatus = pupils[i].trackingStatus.filter(t => t.date !== dateISO);
-  savePupils(pupils);
-};
-
+/**
+ * Get all pupils who have tracking status for a specific date
+ * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
+ * @returns {Array} Array of pupil objects tracked on this date
+ */
 const getPupilsByDate = (dateISO) => {
   const pupils = loadPupils();
-  return pupils.filter(p => (p.trackingStatus || []).some(t => t.date === dateISO));
+  return pupils.filter(pupil => {
+    return (pupil.trackingStatus || []).some(t => t.date === dateISO);
+  });
 };
 
 
-const renderDayFromStorage = (dateISO) => {
+// ============================================================================
+// RENDERING FUNCTIONS
+// ============================================================================
+
+/**
+ * Render calendar day with pupils' tracking data from localStorage
+ * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
+ */
+const renderCalendarDataFromStorage = (dateISO) => {
   const dayEl = document.querySelector(`[data-date="${dateISO}"]`);
-  console.log('dayEl', dayEl);
   if (!dayEl) return;
 
-  const list = getPupilsByDate(dateISO);
-  if (!list.length) {
-    // không có ai -> trả giao diện mặc định: chỉ số ngày
-    const dd = new Date(`${dateISO}T00:00:00Z`).getUTCDate();
-    dayEl.classList.remove('updated');
-    dayEl.innerHTML = `<span>${dd}</span>`;
+  const trackedPupils = getPupilsByDate(dateISO);
+  const dateNumber = new Date(`${dateISO}T00:00:00Z`).getUTCDate();
+
+  // If no pupils tracked for this date, show simple date number
+  if (!trackedPupils.length) {
+    dayEl.classList = "day";
+    dayEl.innerHTML = `<span>${dateNumber}</span>`;
     return;
   }
 
-  const dd = new Date(`${dateISO}T00:00:00Z`).getUTCDate();
-  console.log('dd', dd);
-  const first = `
-    <li class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 ring-2 ring-white/80">
-      ${dd}
+  // Build date number element
+  const dateElement = `
+      <li class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 ring-2 ring-white/80 hover:z-10">
+
+      ${dateNumber}
     </li>`;
 
-  const peers = list.map(p => `
-    <li class="px-2 py-2 h-8 rounded-full flex items-center justify-center text-xs font-normal ring-2 ring-white/80 hover:z-10"
-        style="background:${p.color}" title="${p.name}">
-      ${p.name}
+  // Build pupil badges
+  const pupilBadges = trackedPupils.map(pupil => `
+    <li class="px-2 py-2 h-8 rounded-full flex items-center justify-center text-sm font-normal ring-2 ring-white/80 hover:z-10"
+        style="background:${pupil.color}" 
+        title="${pupil.name}">
+      ${pupil.name}
     </li>
   `).join('');
 
-  dayEl.classList.add('updated');
+  // Update day element with tracked pupils
+  dayEl.classList = 'updated';
   dayEl.innerHTML = `
-    <ul class="mt-1 flex items-center justify-end [&>li:not(:first-child)]:-ml-2">
-      ${first}${peers}
+    <ul class="mt-1 flex items-center justify-end [&>li:not(:first-child)]:-ml-2 pr-1">
+      ${dateElement}${pupilBadges}
     </ul>
   `;
 };
 
-const rehydrateCurrentMonth = () => {
-  // Gọi render cho từng ô trong tháng hiện tại
+/**
+ * Render all days in the current month with tracking data
+ */
+const renderCurrentMonthDaysOnCalendar = () => {
   document.querySelectorAll('.calendar .day').forEach(dayEl => {
-    renderDayFromStorage(dayEl.dataset.date);
+    renderCalendarDataFromStorage(dayEl.dataset.date);
   });
 };
 
+/**
+ * Update calendar display for current month
+ * Clears existing calendar and generates new day elements
+ */
 const updateCalendar = () => {
   calendar.innerHTML = "";
+
   const firstDay = new Date(currentYear, currentMonth, 1);
   const lastDay = new Date(currentYear, currentMonth + 1, 0);
-  const daysInMonth = lastDay.getUTCDate();
+  const daysInMonth = lastDay.getDate();
 
-  currentMonthYear.textContent = `${firstDay.toLocaleString('default', { month: 'long', year: 'numeric' })}`;
+  // Update month/year display
+  currentMonthYear.textContent = firstDay.toLocaleString('default', {
+    month: 'long',
+    year: 'numeric'
+  });
 
-  for (let i = 1; i <= daysInMonth + 1; i++) {
-    const day = document.createElement("div");
-    day.className = "day";
+  // Generate day elements
+  for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
+    const dayEl = document.createElement("div");
+    dayEl.className = "day";
+
     const span = document.createElement("span");
-    span.textContent = i;
+    span.textContent = dayNumber;
 
-    // Set data-date for div day element
-    // Example: <div class="day" data-date="2025-10-01"><span>1</span></div>
-    const dateString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-    day.dataset.date = dateString;
+    // Set ISO date format (YYYY-MM-DD)
+    const dateString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(dayNumber).padStart(2, '0')}`;
+    dayEl.dataset.date = dateString;
 
-    day.appendChild(span);
-    day.addEventListener("click", () => handleDayClick(day));
-    calendar.appendChild(day);
+    dayEl.appendChild(span);
+    dayEl.addEventListener("click", () => handleDayClick(dayEl));
+    calendar.appendChild(dayEl);
   }
 }
 
 
+// ============================================================================
+// EVENT LISTENERS - NAVIGATION
+// ============================================================================
+
+/**
+ * Navigate to previous month
+ */
 prevMonthBtn.addEventListener("click", () => {
   currentMonth--;
   if (currentMonth < 0) {
@@ -121,8 +217,12 @@ prevMonthBtn.addEventListener("click", () => {
     currentYear--;
   }
   updateCalendar();
+  renderCurrentMonthDaysOnCalendar();
 });
 
+/**
+ * Navigate to next month
+ */
 nextMonthBtn.addEventListener("click", () => {
   currentMonth++;
   if (currentMonth > 11) {
@@ -130,11 +230,20 @@ nextMonthBtn.addEventListener("click", () => {
     currentYear++;
   }
   updateCalendar();
+  renderCurrentMonthDaysOnCalendar();
 });
 
+// Initialize calendar on page load
 updateCalendar();
-rehydrateCurrentMonth();
+renderCurrentMonthDaysOnCalendar();
 
+// ============================================================================
+// EVENT LISTENERS - MODAL/DIALOG
+// ============================================================================
+
+/**
+ * Open modal to update tracking status for selected day
+ */
 openModalBtn.addEventListener("click", () => {
   const selectedDay = document.querySelector(".selected");
   if (!selectedDay) {
@@ -145,18 +254,26 @@ openModalBtn.addEventListener("click", () => {
   dialog.showModal();
   dialog.classList.add("hide");
 
+  // Display selected date in modal
   const currentDate = document.getElementById("currentDate");
-  currentDate.textContent = `${selectedDay.dataset.date}`;
+  currentDate.textContent = selectedDay.dataset.date;
 
+  // Build form with pupil checkboxes
   bookingForm.innerHTML = "";
   PUPILS.forEach((pupil) => {
     bookingForm.insertAdjacentHTML('beforeend', `
       <div class="checkbox-wrapper-47">
-        <input type="checkbox" name="${pupil.name}" value="${pupil.id}" data-color="${pupil.color}" id="cb-${pupil.id}" />
+        <input type="checkbox" 
+               name="${pupil.name}" 
+               value="${pupil.id}" 
+               data-color="${pupil.color}" 
+               id="cb-${pupil.id}" />
         <label for="cb-${pupil.id}">${pupil.name}</label>
       </div>
     `);
   });
+
+  // Add submit button
   bookingForm.insertAdjacentHTML('beforeend', `
     <button 
       id="button-submit-tracking-status"
@@ -166,65 +283,56 @@ openModalBtn.addEventListener("click", () => {
       Send Tracking Status
     </button>
   `);
+
+  // Animate modal appearance
   setTimeout(() => {
     dialog.classList.remove("hide");
     dialog.classList.add("show");
   }, 10);
 });
 
+/**
+ * Close modal with animation
+ */
 closeDialogBtn.addEventListener("click", () => {
   dialog.classList.remove("show");
   dialog.classList.add("hide");
   setTimeout(() => {
     dialog.close();
-  }, 300); // Match the transition duration
+  }, 300);
 });
 
+/**
+ * Close modal when clicking outside (backdrop click)
+ */
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) {
     closeDialogBtn.click();
   }
 });
 
+/**
+ * Handle form submission - update tracking status for selected pupils
+ */
 bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // Get all selected dates
   const selectedDates = document.querySelectorAll(".selected");
-  const selectedDatesArray = Array.from(selectedDates).map((date) => date.dataset.date);
 
-  selectedDatesArray.forEach((date) => {
-    const thisDay = document.querySelector(`[data-date="${date}"]`);
-    const dateString = new Date(`${date}T00:00:00Z`).toLocaleDateString('default', { day: 'numeric' });
-    console.log(`${thisDay} is updated`);
-    thisDay.classList = 'updated';
+  console.log('selectedDates', selectedDates);
+  const selectedDatesArray = Array.from(selectedDates).map(dayEl => dayEl.dataset.date);
 
-    thisDay.innerHTML = `
-      <ul class="mt-1 flex items-center justify-end [&>li:not(:first-child)]:-ml-2">
-        <li class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 ring-2 ring-white/80 hover:z-10">
-          ${dateString}
-        </li>
-      </ul>
-    `;
-    const selectedPupils = document.querySelectorAll(".checkbox-wrapper-47 input[type='checkbox']:checked");
-    const ul = thisDay.querySelector('ul');
-    let insertAfterLi = ul.querySelector('li'); // The first li
+  // Get selected pupils from checkboxes
+  const selectedPupilCheckboxes = document.querySelectorAll(".checkbox-wrapper-47 input[type='checkbox']:checked");
+  const selectedPupilIds = Array.from(selectedPupilCheckboxes).map(checkbox => Number(checkbox.value));
 
-    selectedPupils.forEach((pupil) => {
-      const li = document.createElement('li');
-      li.className = "px-2 py-2 h-8 rounded-full flex items-center justify-center text-sm font-normal ring-2 ring-white/80 hover:z-10";
-      li.style.backgroundColor = pupil.dataset.color;
-      li.textContent = pupil.name;
-
-      // Insert directly after the first <li>
-      insertAfterLi.insertAdjacentElement('afterend', li);
-      insertAfterLi = li; // Ensure next is inserted after the last inserted
-
-      addTracking(pupil.value, date)
-    });
+  // Update tracking status for each selected date
+  selectedDatesArray.forEach(dateISO => {
+    setTrackingForDate(dateISO, selectedPupilIds);
+    renderCalendarDataFromStorage(dateISO);
   });
 
-  selectedDatesArray.forEach(renderDayFromStorage);
-
-
+  // Close modal
   closeDialogBtn.click();
 });
