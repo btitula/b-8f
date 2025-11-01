@@ -1,5 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Style+Script&family=Tangerine:wght@400;700&display=swap");
 
+/* #region Custom Scrollbar */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4a00e0 transparent;
+}
+/* #endregion */
+
 body {
   width: 100%;
   height: 100vh;
@@ -53,7 +82,8 @@ body {
   display: flex;
   justify-content: left;
   align-items: center;
-  background-image: url("Chalet.png");
+  /* background-image: url("Chalet.png"); */
+  background-image: url("./wallpapersden.com_k-beautiful-landscape-digital-art_3840x2160.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -169,7 +199,7 @@ body {
   text-align: center;
   background-color: white;
   padding: 20px 50px;
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 0 0 10px rgb(80, 77, 77);
   position: relative;
   z-index: 3;
@@ -177,8 +207,8 @@ body {
   /* NEW */
   display: flex;
   flex-direction: column;
-  max-height: 90vh;      /* hoặc: calc(100vh - 40px) nếu muốn trừ navbar */
-  overflow: hidden;      /* ẩn tràn, phần con sẽ cuộn */
+  max-height: 90vh; /* hoặc: calc(100vh - 40px) nếu muốn trừ navbar */
+  overflow: hidden; /* ẩn tràn, phần con sẽ cuộn */
 }
 
 .calendar-header,
@@ -209,7 +239,9 @@ body {
   /* line-height: 40px; */
 }
 .calendar-nav button:hover {
-  background-color: #dedbf2;
+  /* background-color: #dedbf2; */
+  background-color: #4a00e0;
+  color: #dedbf2;
 }
 .calendar-nav button span {
   width: 100%;
@@ -219,17 +251,15 @@ body {
 }
 
 .calendar {
-  flex: 1 1 auto;     /* chiếm phần còn lại */
-  min-height: 0;      /* QUAN TRỌNG để flex-child cuộn đúng */
-  overflow-y: auto;   /* bật scroll dọc khi dài */
+  flex: 1 1 auto; /* chiếm phần còn lại */
+  min-height: 0; /* QUAN TRỌNG để flex-child cuộn đúng */
+  overflow-y: auto; /* bật scroll dọc khi dài */
 
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   margin-top: 10px;
 }
-
-
 
 .day.disabled {
   pointer-events: none;
@@ -252,7 +282,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 14px;
-  z-index: 2; 
+  z-index: 2;
   pointer-events: none;
   user-select: none;
 }
@@ -399,15 +429,18 @@ dialog.hide {
 
 .checkbox-wrapper-47 input[type="checkbox"]:checked + label {
   padding-left: 1em;
-  color: #0f5229;
+  color: #4a00e0;
 }
 
 .checkbox-wrapper-47 input[type="checkbox"]:checked + label:before {
   top: 0;
   width: 100%;
   height: 2em;
-  background: #b7e6c9;
-  border-color: #2cbc63;
+  /* background: #b7e6c9;
+  border-color: #2cbc63; */
+  border-color: #4a00e0;
+  background-color: #dedbf2;
+  color: #dedbf2;
 }
 
 .checkbox-wrapper-47 label,
