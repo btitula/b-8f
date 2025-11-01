@@ -3,7 +3,7 @@ import { UTILS } from "./utils.js";
 
 const { PUPILS, LOCAL_STORAGE_KEY } = CONSTANTS;
 const { getCurrentDate, initElements, handleDayClick } = UTILS;
-const { calendar, currentMonthYear, prevMonthBtn, nextMonthBtn, dialog, openModalBtn, closeDialogBtn } = initElements();
+const { calendar, currentMonthYear, prevMonthBtn, nextMonthBtn, dialog, openModalBtn, generateReportBtn, closeDialogBtn } = initElements();
 
 let { currentMonth, currentYear } = getCurrentDate();
 
@@ -110,6 +110,26 @@ const getPupilsByDate = (dateISO) => {
   });
 };
 
+/**
+ * Get total price of pupils tracked on a specific date
+ * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
+ * @returns {number} Total price of pupils tracked on this date
+ */
+const getTotalPriceByDate = (dateISO) => {
+  const totalPrice = getPupilsByDate(dateISO).reduce((total, pupil) => total + pupil.price, 0);
+  return totalPrice;
+};
+
+const generateReportTotalPriceEachPupilInMonth = (month) => {
+  const pupils = loadPupils();
+  const totalPrice = pupils.reduce((total, pupil) => total + pupil.price, 0);
+  return {
+    totalPrice: totalPrice,
+    pupils: pupils,
+  }
+}
+
+// console.log('generateReportTotalPriceEachPupilInMonth', generateReportTotalPriceEachPupilInMonth(currentMonth));
 
 // ============================================================================
 // RENDERING FUNCTIONS
@@ -256,18 +276,27 @@ openModalBtn.addEventListener("click", () => {
 
   // Display selected date in modal
   const currentDate = document.getElementById("currentDate");
-  currentDate.textContent = selectedDay.dataset.date;
+  const selectedDate = selectedDay.dataset.date;
+  currentDate.textContent = selectedDate;
+
+  // Get pupils already tracked for this date
+  const trackedPupils = getPupilsByDate(selectedDate);
+  const trackedPupilIds = trackedPupils.map(p => p.id);
 
   // Build form with pupil checkboxes
   bookingForm.innerHTML = "";
   PUPILS.forEach((pupil) => {
+    // Check if this pupil is already tracked for the selected date
+    const isChecked = trackedPupilIds.includes(pupil.id) ? 'checked' : '';
+
     bookingForm.insertAdjacentHTML('beforeend', `
       <div class="checkbox-wrapper-47">
-        <input type="checkbox" 
-               name="${pupil.name}" 
-               value="${pupil.id}" 
-               data-color="${pupil.color}" 
-               id="cb-${pupil.id}" />
+        <input type="checkbox"
+               name="${pupil.name}"
+               value="${pupil.id}"
+               data-color="${pupil.color}"
+               id="cb-${pupil.id}"
+               ${isChecked} />
         <label for="cb-${pupil.id}">${pupil.name}</label>
       </div>
     `);
@@ -275,7 +304,7 @@ openModalBtn.addEventListener("click", () => {
 
   // Add submit button
   bookingForm.insertAdjacentHTML('beforeend', `
-    <button 
+    <button
       id="button-submit-tracking-status"
       type="submit"
       class="bg-[#4a00e0] text-white px-4 py-2 border-0 rounded cursor-pointer text-base hover:bg-[#3a00b3] transition-colors"
@@ -335,4 +364,19 @@ bookingForm.addEventListener("submit", (e) => {
 
   // Close modal
   closeDialogBtn.click();
+});
+
+// ============================================================================
+// EVENT LISTENERS - REPORT
+// ============================================================================
+
+/**
+ * Navigate to report page with current month parameter
+ */
+generateReportBtn.addEventListener("click", () => {
+  // Format current month as YYYY-MM
+  const monthParam = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}`;
+
+  // Navigate to report.html with month parameter
+  window.location.href = `report.html?month=${monthParam}`;
 });

@@ -364,7 +364,7 @@ dialog.hide {
 /* #endregion */
 
 .selected {
-  background-color: red;
+  background-color: #cfc9f6;
   display: flex;
   flex-direction: column;
 }
