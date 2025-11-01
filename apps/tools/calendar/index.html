@@ -2,93 +2,57 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Booking UI</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
-  <!-- #region Navbar -->
-  <div class="navbar">
-    <div class="logo">CHALET</div>
-    <div class="nav-links">
-      <a href="#">Locations</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
-  <!-- #endregion -->
-
   <div class="landing">
-    <div class="cta">
-      <h1>Book the best trip of your life</h1>
-      <h4>Award-winning resorts in Swiss alps.</h4>
-      <button>Explore & Book</button>
-    </div>
-
-    <!-- #region Calendar & Booking -->
     <div class="calendar-container hidden">
       <div class="calendar-nav">
-        <button id="prevMonthBtn">
+        <button id="button-previous-month" type="button" aria-label="Previous Month">
           <i class="fa-solid fa-angle-left"></i>
         </button>
-        <div id="currentMonthYear"></div>
-        <button id="nextMonthBtn">
+        <div id="current-month-year"></div>
+        <button id="button-next-month" type="button" aria-label="Next Month">
           <i class="fa-solid fa-angle-right"></i>
         </button>
       </div>
-      <div class="calendar-header">Book Your Stay</div>
+      <div class="calendar-header">Track Working Status</div>
       <div class="calendar lines"></div>
-      <button class="open-modal-btn">Book Selected</button>
+      <button id="button-open-modal-update-working-day"
+        class="flex-none mt-2 bg-[#4a00e0] text-white px-5 py-2.5 border-0 rounded cursor-pointer text-base my-8 hover:bg-[#3a00b3] transition-colors"
+        type="button" aria-label="Update Working Day">Update Working Day</button>
 
-      <dialog id="bookingDialog">
-        <button class="close-btn" id="closeDialog">&times;</button>
-        <div class="modal-content">
-          <h2>Book your stay</h2>
-          <div class="date-price">
-            <div class="dates" id="currentDate"></div>
+      <dialog id="booking-dialog"
+        class="mx-auto mt-20 border-0 rounded-lg shadow-md w-[400px] p-5 box-border opacity-0 -translate-y-5 pointer-events-none transition-opacity duration-300 ease-in-out">
+
+        <div class="modal-content flex items-center justify-between border-b border-gray-200 pb-1">
+          <div class="">
+            <ul class="flex items-center justify-start gap-1">
+              <li>Track Working Status</li>
+              <li><i class="fa-solid fa-caret-right"></i></li>
+              <li class="dates" id="currentDate"></li>
+            </ul>
           </div>
-
-          <form class="booking-form" id="bookingForm">
-            <!-- <div class="checkbox-wrapper-47">
-              <input type="checkbox" name="cb-foo" id="cb-foo" />
-              <label for="cb-foo">Foo</label>
-            </div>
-            <div class="checkbox-wrapper-47">
-              <input type="checkbox" name="cb-bar" id="cb-bar" />
-              <label for="cb-bar">Bar</label>
-            </div>
-            <button class="submit-btn-test" type="submit">
-              Send booking request
-            </button> -->
-          </form>
-
-          <!-- <form class="booking-form">
-            <label for="name">Name<span>*</span></label>
-            <input type="text" id="name" required />
-
-            <label for="email">Email<span>*</span></label>
-            <input type="email" id="email" required />
-
-            <label for="phone">Phone number<span>*</span></label>
-            <input type="tel" id="phone" required />
-
-            <div class="price-summary">
-              <div class="nights"><span>3</span> Nights</div>
-              <div class="total">Total <span>998.00$</span></div>
-            </div>
-
-            <button class="submit-btn" type="submit">
-              Send booking request
-            </button>
-          </form> -->
+          <button id="button-close-dialog"
+            class="w-8 h-8 flex items-center justify-center bg-[#cfc9f6] rounded-full hover:bg-[#dedbf2] transition-colors"
+            type="button" aria-label="Close Dialog Month">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
-      </dialog>
+
+        <form 
+          class="booking-form mt-4 flex flex-col gap-2 items-start"
+          id="bookingForm">
+        </form>
     </div>
-    <!-- #endregion -->
+    </dialog>
+  </div>
   </div>
   <script type="module" src="./js/script.js"></script>
 
