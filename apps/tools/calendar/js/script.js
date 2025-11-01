@@ -1,13 +1,43 @@
 import { CONSTANTS } from "./constants.js";
 import { UTILS } from "./utils.js";
-
-const { getCurrenntDate, initElements, handleDayClick } = UTILS;
 const { PUPILS } = CONSTANTS;
 
+const LS_PUPILS_KEY = 'pupils';
 
+
+const { getCurrenntDate, initElements, handleDayClick } = UTILS;
 const { calendar, currentMonthYear, prevMonthBtn, nextMonthBtn, dialog, openModalBtn, closeDialogBtn } = initElements();
 const { currentMonth, currentYear } = getCurrenntDate();
 
+(function bootstrapPupils() {
+  const hasPupils = localStorage.getItem(LS_PUPILS_KEY);
+  if (!hasPupils) localStorage.setItem(LS_PUPILS_KEY, JSON.stringify(PUPILS));
+})();
+
+const loadPupils = () => JSON.parse(localStorage.getItem(LS_PUPILS_KEY) || '[]');
+const savePupils = (arr) => localStorage.setItem(LS_PUPILS_KEY, JSON.stringify(arr));
+
+
+const addTracking = (pupilId, dateISO) => {
+  const pupils = loadPupils();
+  const i = pupils.findIndex(p => p.id === Number(pupilId));
+  if (i === -1) return;
+
+  if (!Array.isArray(pupils[i].trackingStatus)) pupils[i].trackingStatus = [];
+  const exists = pupils[i].trackingStatus.some(t => t.date === dateISO);
+  if (!exists) pupils[i].trackingStatus.push({ date: dateISO });
+
+  savePupils(pupils);
+};
+
+const removeTracking = (pupilId, dateISO) => {
+  const pupils = loadPupils();
+  const i = pupils.findIndex(p => p.id === pupilId);
+  if (i === -1 || !Array.isArray(pupils[i].trackingStatus)) return;
+
+  pupils[i].trackingStatus = pupils[i].trackingStatus.filter(t => t.date !== dateISO);
+  savePupils(pupils);
+};
 
 const updateCalendar = () => {
   calendar.innerHTML = "";
@@ -73,7 +103,7 @@ openModalBtn.addEventListener("click", () => {
   PUPILS.forEach((pupil) => {
     bookingForm.insertAdjacentHTML('beforeend', `
       <div class="checkbox-wrapper-47">
-        <input type="checkbox" name="${pupil.name}" data-color="${pupil.color}" id="cb-${pupil.id}" />
+        <input type="checkbox" name="${pupil.name}" value="${pupil.id}" data-color="${pupil.color}" id="cb-${pupil.id}" />
         <label for="cb-${pupil.id}">${pupil.name}</label>
       </div>
     `);
@@ -109,7 +139,6 @@ dialog.addEventListener("click", (event) => {
 
 bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("bookingForm submitted");
 
   const selectedDates = document.querySelectorAll(".selected");
   const selectedDatesArray = Array.from(selectedDates).map((date) => date.dataset.date);
@@ -119,15 +148,6 @@ bookingForm.addEventListener("submit", (e) => {
     const dateString = new Date(`${date}T00:00:00Z`).toLocaleDateString('default', { day: 'numeric' });
     console.log(`${thisDay} is updated`);
     thisDay.classList = 'updated';
-
-    /**
-     * <ul class="mt-1 flex flex-wrap items-center [&>li:not(:first-child)]:-ml-2">
-          <li
-            class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium bg-red-300 ring-2 ring-white hover:z-10">
-            Foo
-          </li>
-     */
-
 
     thisDay.innerHTML = `
       <ul class="mt-1 flex items-center justify-end [&>li:not(:first-child)]:-ml-2">
@@ -149,8 +169,9 @@ bookingForm.addEventListener("submit", (e) => {
       // Insert directly after the first <li>
       insertAfterLi.insertAdjacentElement('afterend', li);
       insertAfterLi = li; // Ensure next is inserted after the last inserted
-    });
 
+      addTracking(pupil.value, date)
+    });
   });
   closeDialogBtn.click();
 });
