@@ -9,6 +9,7 @@ const initElements = () => {
   const nextMonthBtn = document.getElementById("button-next-month");
   const dialog = document.getElementById("booking-dialog");
   const openModalBtn = document.getElementById("button-open-modal-update-working-day");
+  const generateReportBtn = document.getElementById("button-generate-report-total-price-each-pupil-in-month");
   const closeDialogBtn = document.getElementById("button-close-dialog");
 
   return { 
@@ -18,6 +19,7 @@ const initElements = () => {
     nextMonthBtn, 
     dialog, 
     openModalBtn, 
+    generateReportBtn,
     closeDialogBtn 
   };
 };

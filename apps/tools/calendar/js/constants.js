@@ -17,8 +17,9 @@
 const PUPILS = [
   {
     id: 1,
-    name: 'John Doe',
+    name: 'HiHi Teo',
     birthDateYear: 2025,
+    price: 150000,
     gender: 'male',
     avatar: '',
     color: '#FE546E',
@@ -26,11 +27,22 @@ const PUPILS = [
   },
   {
     id: 2,
-    name: 'Jane Mike',
+    name: 'Haha Tom',
     birthDateYear: 2025,
+    price: 200000,
     gender: 'female',
     avatar: '',
     color: '#01EDC7',
+    trackingStatus: [],
+  },
+  {
+    id: 3,
+    name: 'HoHo Ti',
+    birthDateYear: 2022,
+    price: 100000,
+    gender: 'female',
+    avatar: '',
+    color: '#FFA500',
     trackingStatus: [],
   }
 ];
