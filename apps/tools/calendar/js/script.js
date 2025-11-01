@@ -39,6 +39,55 @@ const removeTracking = (pupilId, dateISO) => {
   savePupils(pupils);
 };
 
+const getPupilsByDate = (dateISO) => {
+  const pupils = loadPupils();
+  return pupils.filter(p => (p.trackingStatus || []).some(t => t.date === dateISO));
+};
+
+
+const renderDayFromStorage = (dateISO) => {
+  const dayEl = document.querySelector(`[data-date="${dateISO}"]`);
+  console.log('dayEl', dayEl);
+  if (!dayEl) return;
+
+  const list = getPupilsByDate(dateISO);
+  if (!list.length) {
+    // không có ai -> trả giao diện mặc định: chỉ số ngày
+    const dd = new Date(`${dateISO}T00:00:00Z`).getUTCDate();
+    dayEl.classList.remove('updated');
+    dayEl.innerHTML = `<span>${dd}</span>`;
+    return;
+  }
+
+  const dd = new Date(`${dateISO}T00:00:00Z`).getUTCDate();
+  console.log('dd', dd);
+  const first = `
+    <li class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 ring-2 ring-white/80">
+      ${dd}
+    </li>`;
+
+  const peers = list.map(p => `
+    <li class="px-2 py-2 h-8 rounded-full flex items-center justify-center text-xs font-normal ring-2 ring-white/80 hover:z-10"
+        style="background:${p.color}" title="${p.name}">
+      ${p.name}
+    </li>
+  `).join('');
+
+  dayEl.classList.add('updated');
+  dayEl.innerHTML = `
+    <ul class="mt-1 flex items-center justify-end [&>li:not(:first-child)]:-ml-2">
+      ${first}${peers}
+    </ul>
+  `;
+};
+
+const rehydrateCurrentMonth = () => {
+  // Gọi render cho từng ô trong tháng hiện tại
+  document.querySelectorAll('.calendar .day').forEach(dayEl => {
+    renderDayFromStorage(dayEl.dataset.date);
+  });
+};
+
 const updateCalendar = () => {
   calendar.innerHTML = "";
   const firstDay = new Date(currentYear, currentMonth, 1);
@@ -84,7 +133,7 @@ nextMonthBtn.addEventListener("click", () => {
 });
 
 updateCalendar();
-
+rehydrateCurrentMonth();
 
 openModalBtn.addEventListener("click", () => {
   const selectedDay = document.querySelector(".selected");
@@ -173,5 +222,9 @@ bookingForm.addEventListener("submit", (e) => {
       addTracking(pupil.value, date)
     });
   });
+
+  selectedDatesArray.forEach(renderDayFromStorage);
+
+
   closeDialogBtn.click();
 });
