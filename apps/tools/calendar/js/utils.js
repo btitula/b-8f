@@ -1,44 +1,72 @@
+/**
+ * Initialize and return references to all DOM elements
+ * @returns {Object} Object containing all DOM element references
+ */
 const initElements = () => {
   const calendar = document.querySelector(".calendar");
   const currentMonthYear = document.getElementById("current-month-year");
   const prevMonthBtn = document.getElementById("button-previous-month");
   const nextMonthBtn = document.getElementById("button-next-month");
-
   const dialog = document.getElementById("booking-dialog");
   const openModalBtn = document.getElementById("button-open-modal-update-working-day");
   const closeDialogBtn = document.getElementById("button-close-dialog");
 
-  return { calendar, currentMonthYear, prevMonthBtn, nextMonthBtn, dialog, openModalBtn, closeDialogBtn };
-}
+  return { 
+    calendar, 
+    currentMonthYear, 
+    prevMonthBtn, 
+    nextMonthBtn, 
+    dialog, 
+    openModalBtn, 
+    closeDialogBtn 
+  };
+};
 
-const getCurrenntDate = () => {
-  let today = new Date(
+/**
+ * Get current date information in UTC
+ * @returns {Object} Object with currentMonth and currentYear
+ */
+const getCurrentDate = () => {
+  const now = new Date();
+  const today = new Date(
     Date.UTC(
-      new Date().getUTCFullYear(),
-      new Date().getUTCMonth(),
-      new Date().getUTCDate()
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate()
     )
   );
-  let currentMonth = today.getUTCMonth();
-  let currentYear = today.getUTCFullYear();
+  
+  return { 
+    currentMonth: today.getUTCMonth(),
+    currentYear: today.getUTCFullYear()
+  };
+};
 
-  return { currentMonth, currentYear };
-}
+/**
+ * Handle day click event - mark day as selected and deselect others
+ * @param {HTMLElement} dayEl - The day element that was clicked
+ */
+const handleDayClick = (dayEl) => {
+  console.log('dayEl', dayEl);
+  // Reset classes and mark as selected
+  dayEl.classList = 'day';
+  dayEl.classList.add("selected");
 
-const handleDayClick = (day) => {
-  const thisDay = document.querySelector(`[data-date="${day.dataset.date}"]`);
-  thisDay.classList.add("selected");
+  const haveUl = dayEl.querySelector('ul') ? true : false;
+  if (haveUl) {
+    dayEl.classList.remove("updated");
+  }
 
-  // check and remove .selected from another day
-  document.querySelectorAll(".day").forEach((day) => {
-    if (day.dataset.date !== thisDay.dataset.date) {
-      day.classList.remove("selected");
+  // Remove 'selected' class from all other days
+  document.querySelectorAll(".day").forEach((otherDay) => {
+    if (otherDay.dataset.date !== dayEl.dataset.date) {
+      otherDay.classList.remove("selected");
     }
   });
-}
+};
 
 export const UTILS = {
-  getCurrenntDate,
+  getCurrentDate,
   initElements,
   handleDayClick
-}
+};
