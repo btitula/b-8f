@@ -6,6 +6,7 @@ const PUPILS = [
     gender: 'male',
     avatar: '',
     color: '#FE546E',
+    trackingStatus: [],
   },
   {
     id: 2,
@@ -14,8 +15,13 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#01EDC7',
+    trackingStatus: [],
   }
 ]
+
+const LOCAL_STORAGE_KEY = {
+  SELECTED_DATES: "selectedDates",
+}
 
 export const CONSTANTS = {
   PUPILS,
