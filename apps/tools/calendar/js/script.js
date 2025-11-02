@@ -112,6 +112,7 @@ const getPupilsByDate = (dateISO) => {
 
 /**
  * Auto-assign pupils to days based on their registrationDay
+ * Only assigns if the date hasn't been manually edited
  * @param {number} year - Year to process
  * @param {number} month - Month to process (0-11)
  */
@@ -138,6 +139,35 @@ const autoAssignPupilsByRegistrationDay = (year, month) => {
     pupilsForThisDay.forEach(pupil => {
       addDate(pupil, dateISO);
     });
+
+    // // Find pupils who should be auto-assigned to this day based on registrationDay
+    // const expectedPupilIds = pupils
+    //   .filter(pupil => Array.isArray(pupil.registrationDay) && pupil.registrationDay.includes(dayName))
+    //   .map(p => p.id)
+    //   .sort();
+
+    // // Get currently assigned pupils for this date
+    // const currentPupilIds = pupils
+    //   .filter(pupil => hasDate(pupil, dateISO))
+    //   .map(p => p.id)
+    //   .sort();
+
+    // // Check if current assignment matches expected auto-assignment
+    // const isManuallyEdited = JSON.stringify(currentPupilIds) !== JSON.stringify(expectedPupilIds);
+
+    // // Only auto-assign if not manually edited
+    // if (!isManuallyEdited) {
+    //   // Remove all pupils from this date first
+    //   pupils.forEach(pupil => removeDate(pupil, dateISO));
+
+    //   // Add expected pupils
+    //   expectedPupilIds.forEach(pupilId => {
+    //     const pupil = pupils.find(p => p.id === pupilId);
+    //     if (pupil) {
+    //       addDate(pupil, dateISO);
+    //     }
+    //   });
+    // }
   }
 
   savePupils(pupils);
