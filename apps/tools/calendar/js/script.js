@@ -416,8 +416,8 @@ bookingForm.addEventListener("submit", (e) => {
  */
 generateReportBtn.addEventListener("click", () => {
   // Format current month as YYYY-MM
-  const monthParam = `${currentYear} -${String(currentMonth + 1).padStart(2, '0')} `;
+  const monthParam = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}`;
 
   // Navigate to report.html with month parameter
-  window.location.href = `report.html ? month = ${monthParam} `;
+  window.location.href = `./report.html?month=${monthParam}`;
 });
