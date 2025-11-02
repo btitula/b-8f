@@ -192,24 +192,23 @@ body {
   z-index: 3;
 } */
 
-.calendar-container {
+/* .calendar-container {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
   background-color: white;
-  padding: 20px 50px;
+  padding: 10px 50px;
   border-radius: 6px;
   box-shadow: 0 0 10px rgb(80, 77, 77);
   position: relative;
   z-index: 3;
 
-  /* NEW */
   display: flex;
   flex-direction: column;
-  max-height: 90vh; /* hoặc: calc(100vh - 40px) nếu muốn trừ navbar */
-  overflow: hidden; /* ẩn tràn, phần con sẽ cuộn */
-}
+  max-height: 90vh;
+  overflow: hidden;
+} */
 
 .calendar-header,
 .calendar-nav {
