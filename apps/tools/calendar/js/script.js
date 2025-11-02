@@ -111,25 +111,38 @@ const getPupilsByDate = (dateISO) => {
 };
 
 /**
- * Get total price of pupils tracked on a specific date
- * @param {string} dateISO - Date in ISO format (YYYY-MM-DD)
- * @returns {number} Total price of pupils tracked on this date
+ * Auto-assign pupils to days based on their registrationDay
+ * @param {number} year - Year to process
+ * @param {number} month - Month to process (0-11)
  */
-const getTotalPriceByDate = (dateISO) => {
-  const totalPrice = getPupilsByDate(dateISO).reduce((total, pupil) => total + pupil.price, 0);
-  return totalPrice;
+const autoAssignPupilsByRegistrationDay = (year, month) => {
+  const pupils = loadPupils();
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  // Get the number of days in the month
+  const lastDay = new Date(year, month + 1, 0);
+  const daysInMonth = lastDay.getDate();
+
+  // Process each day in the month
+  for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
+    const date = new Date(year, month, dayNumber);
+    const dayName = dayNames[date.getDay()];
+    const dateISO = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayNumber).padStart(2, '0')}`;
+
+    // Find pupils who should be on this day
+    const pupilsForThisDay = pupils.filter(pupil => {
+      return Array.isArray(pupil.registrationDay) && pupil.registrationDay.includes(dayName);
+    });
+
+    // Auto-assign these pupils to this date
+    pupilsForThisDay.forEach(pupil => {
+      addDate(pupil, dateISO);
+    });
+  }
+
+  savePupils(pupils);
 };
 
-const generateReportTotalPriceEachPupilInMonth = (month) => {
-  const pupils = loadPupils();
-  const totalPrice = pupils.reduce((total, pupil) => total + pupil.price, 0);
-  return {
-    totalPrice: totalPrice,
-    pupils: pupils,
-  }
-}
-
-// console.log('generateReportTotalPriceEachPupilInMonth', generateReportTotalPriceEachPupilInMonth(currentMonth));
 
 // ============================================================================
 // RENDERING FUNCTIONS
@@ -145,20 +158,33 @@ const renderCalendarDataFromStorage = (dateISO) => {
 
   const trackedPupils = getPupilsByDate(dateISO);
   const dateNumber = new Date(`${dateISO}T00:00:00Z`).getUTCDate();
+  const dayName = dayEl.dataset.dayName || ''; // Get stored day name
 
-  // If no pupils tracked for this date, show simple date number
+  // If no pupils tracked for this date, show day name with date number in badge format
   if (!trackedPupils.length) {
     dayEl.classList = "day";
-    dayEl.innerHTML = `<span>${dateNumber}</span>`;
+    dayEl.innerHTML = `
+      <ul class="mt-1 flex items-center justify-start [&>li:not(:first-child)]:-ml-2 pr-1">
+        <li class="px-2 py-2 h-8 rounded-full flex items-center justify-center gap-1 text-sm font-medium bg-gray-200 ring-1 ring-slate-300/60 hover:z-10">
+          <span>${dayName}</span>
+          <span class="w-6 h-6 rounded-full bg-slate-300/40 flex items-center justify-center text-sm font-medium">
+            ${dateNumber}
+          </span>
+        </li>
+      </ul>
+    `;
     return;
   }
 
   // Build date number element
   const dateElement = `
-      <li class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 ring-2 ring-white/80 hover:z-10">
-
-      ${dateNumber}
-    </li>`;
+    <li class="px-2 py-2 h-8 rounded-full flex items-center justify-center gap-2 text-sm font-medium bg-gray-300 ring-2 ring-white/80 hover:z-10">
+      <span>${dayName}</span> 
+      <span class="w-6 h-6 rounded-full bg-gray-400/30 flex items-center justify-center text-sm font-medium">
+        ${dateNumber}
+      </span>
+    </li>
+  `;
 
   // Build pupil badges
   const pupilBadges = trackedPupils.map(pupil => `
@@ -192,6 +218,9 @@ const renderCurrentMonthDaysOnCalendar = () => {
  * Clears existing calendar and generates new day elements
  */
 const updateCalendar = () => {
+  // Auto-assign pupils based on their registration days for the current month
+  autoAssignPupilsByRegistrationDay(currentYear, currentMonth);
+
   calendar.innerHTML = "";
 
   const firstDay = new Date(currentYear, currentMonth, 1);
@@ -205,18 +234,31 @@ const updateCalendar = () => {
   });
 
   // Generate day elements
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
+    const date = new Date(currentYear, currentMonth, dayNumber);
+    const dayName = dayNames[date.getDay()]; // Monday, Tuesday, ...
+
     const dayEl = document.createElement("div");
     dayEl.className = "day";
-
-    const span = document.createElement("span");
-    span.textContent = dayNumber;
 
     // Set ISO date format (YYYY-MM-DD)
     const dateString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(dayNumber).padStart(2, '0')}`;
     dayEl.dataset.date = dateString;
+    dayEl.dataset.dayName = dayName; // Store only the day name string
 
-    dayEl.appendChild(span);
+    // Set initial display with day name and number
+    dayEl.innerHTML = `
+      <ul class="mt-1 flex items-center justify-start [&>li:not(:first-child)]:-ml-2 pr-1">
+        <li class="px-2 py-2 h-8 rounded-full flex items-center justify-center gap-1 text-sm font-medium bg-gray-200 ring-2 ring-white/80 hover:z-10">
+          <span>${dayName}</span>
+          <span class="w-6 h-6 rounded-full bg-gray-400/30 flex items-center justify-center text-sm font-medium">
+            ${dayNumber}
+          </span>
+        </li>
+      </ul>
+    `;
+
     dayEl.addEventListener("click", () => handleDayClick(dayEl));
     calendar.appendChild(dayEl);
   }
@@ -304,13 +346,12 @@ openModalBtn.addEventListener("click", () => {
 
   // Add submit button
   bookingForm.insertAdjacentHTML('beforeend', `
-    <button
-      id="button-submit-tracking-status"
-      type="submit"
-      class="bg-[#4a00e0] text-white px-4 py-2 border-0 rounded cursor-pointer text-base hover:bg-[#3a00b3] transition-colors"
-    >
-      Send Tracking Status
-    </button>
+    <button class="flex-none mt-2 mb-2  bg-[#4a00e0] text-white px-5 py-1 border-0 rounded cursor-pointer text-basehover:bg-[#3a00b3] transition-colors hover:bg-[#3a00b3]"
+      id = "button-submit-tracking-status"
+      type = "submit"
+      class="bg-[#4a00e0] text-white px-4 py-2 border-0 rounded cursor-pointer text-base hover:bg-[#3a00b3] transition-colors">
+        Send Tracking Status
+    </button >
   `);
 
   // Animate modal appearance
@@ -375,8 +416,8 @@ bookingForm.addEventListener("submit", (e) => {
  */
 generateReportBtn.addEventListener("click", () => {
   // Format current month as YYYY-MM
-  const monthParam = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}`;
+  const monthParam = `${currentYear} -${String(currentMonth + 1).padStart(2, '0')} `;
 
   // Navigate to report.html with month parameter
-  window.location.href = `report.html?month=${monthParam}`;
+  window.location.href = `report.html ? month = ${monthParam} `;
 });
