@@ -83,7 +83,7 @@ body {
   justify-content: left;
   align-items: center;
   /* background-image: url("Chalet.png"); */
-  background-image: url("./wallpapersden.com_k-beautiful-landscape-digital-art_3840x2160.jpg");
+  background-image: url("./../images/wallpapersden.com_k-beautiful-landscape-digital-art_3840x2160.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -479,7 +479,8 @@ dialog.hide {
   align-items: left;
   text-align: left;
   line-height: 40px;
-  /* justify-content: flex-start; */
+  justify-content: flex-start;
+  padding-left: 5px;
 }
 
 .calendar.lines .day span {

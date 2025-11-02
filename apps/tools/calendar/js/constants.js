@@ -23,6 +23,11 @@ const PUPILS = [
     gender: 'male',
     avatar: '',
     color: '#ff595e',
+    registrationDay: [
+      'Wednesday',
+      'Friday',
+      'Sunday'
+    ],
     trackingStatus: [],
   },
   {
@@ -33,6 +38,13 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#ff924c',
+    registrationDay: [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday'
+    ],
     trackingStatus: [],
   },
   {
@@ -43,6 +55,11 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#ffca3a',
+    registrationDay: [
+      'Monday',
+      'Tuesday',
+      'Thursday',
+    ],
     trackingStatus: [],
   },
   {
@@ -53,6 +70,10 @@ const PUPILS = [
     gender: 'male',
     avatar: '',
     color: '#c5ca30',
+    registrationDay: [
+      'Wednesday',
+      'Friday'
+    ],
     trackingStatus: [],
   },
   {
@@ -63,6 +84,10 @@ const PUPILS = [
     gender: 'male',
     avatar: '',
     color: '#8ac926',
+    registrationDay: [
+      'Wednesday',
+      'Friday'
+    ],
     trackingStatus: [],
   },
   {
@@ -73,6 +98,10 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#52a675',
+    registrationDay: [
+      'Wednesday',
+      'Friday'
+    ],
     trackingStatus: [],
   },
   {
@@ -83,6 +112,9 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#1982c4',
+    registrationDay: [
+      'Thursday',
+    ],
     trackingStatus: [],
   },
   {
@@ -93,6 +125,9 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#4267ac',
+    registrationDay: [
+      'Saturday',
+    ],
     trackingStatus: [],
   },
   {
@@ -103,6 +138,9 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#6a4c93',
+    registrationDay: [
+      'Saturday',
+    ],
     trackingStatus: [],
   },
   {
@@ -113,6 +151,9 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#b5a6c9',
+    registrationDay: [
+      'Sunday',
+    ],
     trackingStatus: [],
   },
   {
@@ -123,6 +164,12 @@ const PUPILS = [
     gender: 'male',
     avatar: '',
     color: '#56a14f',
+    registrationDay: [
+      'Monday',
+      'Wednesday',
+      'Friday',
+      'Saturday',
+    ],
     trackingStatus: [],
   },
   {
@@ -133,6 +180,9 @@ const PUPILS = [
     gender: 'female',
     avatar: '',
     color: '#9378d1',
+    registrationDay: [
+      'Saturday',
+    ],
     trackingStatus: [],
   },
 ];
