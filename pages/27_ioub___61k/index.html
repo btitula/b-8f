@@ -28,7 +28,7 @@
       </button>
     </form>
 
-    <div id="postLists" class="post-lists px-10 py-10 grid grid-cols-3 gap-4">
+    <div id="postLists" class="post-lists px-10 py-10 grid grid-cols-3 gap-4 relative">
       <!-- <div
         class="post-card min-h-[300px] border border-gray-200 rounded-md p-4 relative hover:shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] transition-all duration-300">
         <ul class="post-tags flex gap-1 absolute top-1 right-1">
@@ -129,6 +129,125 @@
           </ul>
         </div>
       </div> -->
+    </div>
+
+    <div id="postContent" class="hidden fixed inset-0 z-50 ">
+      <!-- <div class="absolute inset-0 bg-black/40 opacity-80 backdrop-blur-sm" data-close></div>
+
+      <div id="postContentInformation" class="post-content-information mx-auto h-full grid place-items-center ">
+        <div
+          class="w-[min(90vw,900px)] max-h-[85vh] overflow-auto bg-white rounded-md shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] relative">
+
+          <div class="title bg-green-600 text-green-100 p-2 flex justify-between items-center">
+            <h2 class="post-title text-xl font-semibold">Post Title</h2>
+            <button
+              class="w-8 h-8 rounded-full bg-green-100 text-green-600 border-1 border-green-600 flex items-center justify-center hover:bg-green-600 hover:text-green-100 hover:border-green-100 cursor-pointer transition-all duration-300"
+              type="button" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="post-content p-8 flex flex-col gap-4">
+            <ul class="flex flex-col gap-4">
+              <li class="flex justify-between">
+                <ul class="post-author flex gap-1">
+                  <li
+                    class="text-green-600 p-[4px] rounded-md text-sm font-normal border border-green-600 hover:bg-green-600 hover:text-green-100 cursor-pointer transition-all duration-300">
+                    <i class="fa-solid fa-user"></i>
+                    <span>John Doe</span>
+                  </li>
+                </ul>
+                <ul class="post-reactions flex gap-1">
+                  <li class="text-gray-600 p-[4px] rounded-md text-sm font-normal border border-gray-600 ">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>10</span>
+                  </li>
+                  <li
+                    class="text-blue-500 p-[4px] rounded-md text-sm font-normal border border-blue-600 hover:bg-blue-600 hover:text-blue-100 cursor-pointer transition-all duration-300">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <span>10</span>
+                  </li>
+                  <li
+                    class="text-red-500 p-[4px] rounded-md text-sm font-normal border border-red-600 hover:bg-red-600 hover:text-red-100 cursor-pointer transition-all duration-300">
+                    <i class="fa-solid fa-thumbs-down"></i>
+                    <span>10</span>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="text-base text-gray-500 text-left font-normal"> Lorem ipsum dolor sit
+                amet
+                consectetur adipisicing elit. Nihil eius repellendus, ex aliquid eligendi aut
+                officia corporis, minus officiis suscipit magnam sapiente et illum libero, atque dolore ut at odit
+                cumque
+                ab eveniet laudantium sit autem fugiat. Omnis neque aspernatur ut, delectus sed fuga quia animi? Odio
+                non
+                atque mollitia quia assumenda suscipit, vitae excepturi tempore dolorem, quaerat eum voluptates rerum?
+                Autem in delectus inventore cupiditate minus officiis expedita laudantium quae? Adipisci aliquid ex
+                labore
+                sed iure eligendi reiciendis sint quas doloremque, autem commodi tempora amet provident, repudiandae
+                accusamus vel quidem repellendus nisi neque. Nostrum, illum, quo labore voluptates alias eligendi
+                laboriosam doloremque corporis magnam esse molestiae. Culpa, illum. Dolorem cumque est, officia
+                explicabo
+                optio modi, autem provident sed dolore ipsa ducimus ipsam odio maxime soluta possimus necessitatibus
+                eveniet illo dolorum? Blanditiis esse voluptate animi dicta ullam sed illo? Repudiandae modi ipsum
+                tenetur
+                vitae molestiae illo, porro similique atque incidunt eos recusandae reprehenderit tempora saepe.
+                Consectetur autem ut officiis sunt, fugiat, eaque aliquid provident, neque vel officia nam voluptate a
+                iste quo voluptatem. Pariatur corrupti fugit incidunt est, placeat, nihil alias quod laboriosam odio,
+                dolore aperiam optio accusantium iste? Aut deserunt quos quaerat tenetur eum officia labore consequuntur
+                dolorum nisi nulla ipsam, est asperiores et possimus perspiciatis ut! Dolores aliquid ab a assumenda
+                illum, mollitia illo distinctio eum, natus, aliquam veritatis sequi saepe. Quis, suscipit! Modi dolorem
+                architecto neque, expedita corporis, omnis quae aperiam perferendis harum dignissimos, nam recusandae!
+                Repellendus ex sed cumque eum omnis molestiae doloremque vero autem enim aperiam voluptatum
+                necessitatibus
+                repellat maiores asperiores quo consectetur, excepturi est, aliquam accusamus ipsam. Libero iusto veniam
+                non dolor quidem fugit odio hic molestiae odit, porro et minima! Id repudiandae earum quod, blanditiis
+                velit sequi nam alias in ab sit facere tenetur, est quasi at aspernatur iste harum voluptatibus quo
+                ipsum
+                illo. Vel hic consequuntur illum. Similique nostrum accusantium omnis cum molestias expedita delectus.
+                Dolorum ipsa deleniti libero nam error expedita, eum perferendis! Eius quod, odio eum minus illum nisi
+                sequi tempora enim molestiae autem animi ullam nesciunt doloribus reiciendis nemo. Molestias et rerum
+                quidem nostrum animi aspernatur minus minima quasi eos a quos aliquid atque architecto dolor natus
+                consequuntur blanditiis ullam eveniet, reprehenderit, aperiam iure, ad dolorum vel esse. Quod doloribus
+                recusandae totam nihil ex illum magnam delectus repudiandae ut neque. Ea ipsa enim at eveniet autem. Et,
+                doloribus culpa enim tempora reprehenderit repellendus dolor, saepe quam deleniti veritatis modi esse
+                perspiciatis, nemo pariatur corporis delectus! At aliquid ratione culpa corporis vero eum reiciendis
+                quas
+                dolores! Quam necessitatibus exercitationem maxime minus dolorum porro ipsum mollitia temporibus
+                consequuntur, impedit ducimus, maiores possimus laboriosam explicabo obcaecati at facilis rem soluta in
+                dicta illum ullam quia hic distinctio. Error autem eveniet unde repellendus alias quam minus beatae
+                mollitia quasi, quibusdam distinctio tenetur commodi veritatis inventore aperiam pariatur odit doloribus
+                voluptatem consectetur rem dignissimos fugiat, quisquam rerum? Magni fugit deleniti ipsa, laboriosam
+                architecto laborum odio, eveniet expedita molestiae temporibus, consectetur quisquam dolore nostrum
+                mollitia quasi iusto voluptate? Aliquam, ex in vitae reprehenderit esse corrupti!
+              </li>
+            </ul>
+            <div class="post-related text-xl font-semibold mb-2 border-t border-gray-200 pt-2 flex items-center gap-1">
+              <span>
+                <i class="fa-solid fa-tags text-gray-500 "></i>
+              </span>
+              <ul class="post-tags flex gap-1">
+                <li
+                  class=" text-gray-600 p-[4px] text-sm font-normal border-b border-gray-600 cursor-pointer hover:text-gray-500">
+                  history
+                </li>
+                <li
+                  class=" text-gray-600 p-[4px] text-sm font-normal border-b-1 border-gray-600 cursor-pointer hover:text-gray-500">
+                  american</li>
+                <li
+                  class=" text-gray-600 p-[4px] text-sm font-normal border-b-1 border-gray-600 cursor-pointer hover:text-gray-500">
+                  crime</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div id="postLoading"
+      class="post-loading hidden flex justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <i class="fa-solid fa-spinner fa-spin text-gray-500 text-6xl"></i>
     </div>
   </div>
   <script type="module" src="./js/script.js"></script>
