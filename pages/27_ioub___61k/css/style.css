@@ -1,0 +1,41 @@
+.done-item {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  display: grid;
+  justify-items: end;
+  gap: 0.5rem;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 1rem;
+  font-weight: semibold;
+  line-height: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: lightblue;
+  animation: toastIt 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@keyframes toastIt {
+  0%,
+  100% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+
+  10%,
+  90% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
