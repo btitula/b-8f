@@ -5,11 +5,15 @@ const { COLORS, FONT_AWESOME_ICONS, TIMEOUT } = CONSTANT;
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
+const sortPostsByIdButton = document.getElementById('button-sort-posts-by-id');
+const sortIcon = document.getElementById('sortIcon');
 const postLists = document.getElementById('postLists');
 const postLoading = document.getElementById('postLoading');
 const postContent = document.getElementById('postContent');
 
 let toastContainer;
+let sortAsc = true;
+let userCache = {}; // Cache for user info to avoid repeated API calls
 
 /**
  * Utils
@@ -65,23 +69,36 @@ searchInput.addEventListener('input', (e) => {
 searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const query = e.target.query.value;
-  console.log(`searchForm: ${query}`);
-  const posts = await searchPosts(query);
-  console.log(posts);
-  if (Number(posts.total) === 0) {
+  // console.log(`searchForm: ${query}`);
+  const foundPosts = await searchPosts(query);
+  console.log(foundPosts);
+  if (Number(foundPosts.total) === 0) {
     createToast('error', 'No posts found');
+  } else {
+    createToast('success', `${foundPosts.total} posts found`);
+    posts = foundPosts.posts; // Update posts variable so sort works correctly
+    // Apply current sort order to search results
+    const sortedPosts = sortPostsById(posts, sortAsc);
+    await renderPostLists(sortedPosts);
   }
 });
+
 /**
- * 
+ *
  * @returns User
  */
 const getUserInfo = async (userId) => {
+  if (userCache[userId]) {
+    return userCache[userId];
+  }
+
   let url = `https://dummyjson.com/users/${userId}`
   try {
     const response = await fetch(url);
     const data = await response.json();
     const userFullname = `${data.firstName} ${data.lastName}`;
+
+    userCache[userId] = userFullname; // Avoid calling API again when sorting posts, use `userCache` to store user info
     return userFullname;
   } catch (error) {
     throw new Error(error);
@@ -118,7 +135,8 @@ const getPostListsWithLimit = async (limit, skip = 0) => {
 }
 
 const renderPostLists = async (posts) => {
-  posts.forEach(async (post) => {
+  postLists.innerHTML = '';
+  for (const post of posts) {
     let postReactionLikeCount = 0;
     let postReactionDislikeCount = 0;
 
@@ -134,10 +152,9 @@ const renderPostLists = async (posts) => {
     const postUserId = post.userId;
     const postUserFullName = await getUserInfo(postUserId);
     const postViewsCount = post.views;
-    console.log(post);
+    // console.log(post);
 
-    const postCard = document.createElement('div');
-    postCard.innerHTML = `
+    postLists.insertAdjacentHTML('beforeend', `
       <div class="post-card min-h-[300px] border border-gray-200 rounded-md p-4 hover:shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] transition-all duration-300 relative">
         <ul class="post-tags flex gap-1 absolute top-1 right-1">
           ${postTags.map(tag => `
@@ -161,6 +178,10 @@ const renderPostLists = async (posts) => {
                 </li>
               </ul>
               <ul class="post-reactions flex gap-1">
+                <li class="text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100 hover:bg-gray-100 cursor-pointer transition-all duration-300">
+                  <i class="fa-solid fa-hashtag"></i>
+                  <span>${postId}</span>
+                </li>
                 <li class="text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100 ">
                   <i class="fa-solid fa-eye"></i>
                   <span>${postViewsCount}</span>
@@ -181,7 +202,6 @@ const renderPostLists = async (posts) => {
               <button
                 type="button"
                 data-post-id="${postId}"
-                id="button-read-more"
                 class="button-read-more hover:bg-green-600 hover:rounded-md hover:text-green-100 text-sm font-light p-1 border-t border-gray-200 cursor-pointer transition-all duration-300">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Read More</span>
@@ -200,9 +220,8 @@ const renderPostLists = async (posts) => {
           </ul>
         </div>
       </div>
-    `;
-    postLists.appendChild(postCard);
-  });
+    `);
+  }
 }
 
 const getPostContent = async (postId) => {
@@ -227,6 +246,16 @@ const searchPosts = async (searchTerm) => {
   }
 }
 
+
+const sortPostsById = (posts, sortAsc) => {
+  if (sortAsc) {
+    posts.sort((a, b) => a.id - b.id);
+  } else {
+    posts.sort((a, b) => b.id - a.id);
+  }
+  return posts;
+}
+
 /**
  * Init Toast
  */
@@ -239,12 +268,26 @@ const searchPosts = async (searchTerm) => {
 })();
 
 
-const posts = await getPostListsWithLimit(1);
+let posts = await getPostListsWithLimit(2);
 await renderPostLists(posts);
+
+sortPostsByIdButton.addEventListener('click', async () => {
+  sortAsc = !sortAsc; // toggle
+  if (sortAsc) {
+    sortIcon.classList.remove('fa-arrow-up-wide-short');
+    sortIcon.classList.add('fa-arrow-down-wide-short');
+  } else {
+    sortIcon.classList.remove('fa-arrow-down-wide-short');
+    sortIcon.classList.add('fa-arrow-up-wide-short');
+  }
+  console.log(sortAsc);
+  const sortedPosts = sortPostsById(posts, sortAsc);
+  await renderPostLists(sortedPosts);
+});
 
 
 postLists.addEventListener('click', async (e) => {
-  const readMoreButton = e.target.closest('#button-read-more');
+  const readMoreButton = e.target.closest('.button-read-more');
   if (!readMoreButton) return;
 
   postContent.innerHTML = '';
