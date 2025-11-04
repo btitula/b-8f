@@ -13,11 +13,22 @@
 <body>
   <div class="container mx-auto">
     <form id="searchForm" class="search-form px-10 py-10 flex flex-col items-start gap-1">
-      <div class="relative w-full">
-        <input id="searchInput" type="text" placeholder="Search Posts..."
-          class="w-full p-2 pl-10 rounded-md border border-gray-300 placeholder:text-gray-300 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
-          name="query">
-        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+      <div class="relative w-full flex gap-1">
+        <div class="basis-[calc(100%-80px)]">
+          <input id="searchInput" type="text" placeholder="Search Posts..."
+            class="w-full p-2 pl-10 rounded-md border border-gray-300 placeholder:text-gray-300 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
+            name="query">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+        </div>
+        <div
+          class="basis-[80px] flex items-center justify-center rounded-md border-2 border-green-600 bg-green-600 text-green-100 cursor-pointer hover:bg-green-100 hover:text-green-600 hover:border-green-600 transition-all duration-300">
+          <button type="button" id="button-sort-posts-by-id" class="button-sort-posts-by-id cursor-pointer">
+            <span>Sort</span>
+            <span>
+              <i id="sortIcon" class="fa-solid fa-arrow-up-wide-short"></i>
+            </span>
+          </button>
+        </div>
       </div>
       <button id="searchButton" type="submit" class="hidden mt-1 text-xs text-gray-400 cursor-pointer">
         Press
