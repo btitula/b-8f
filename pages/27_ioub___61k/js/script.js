@@ -10,10 +10,14 @@ const sortIcon = document.getElementById('sortIcon');
 const postLists = document.getElementById('postLists');
 const postLoading = document.getElementById('postLoading');
 const postContent = document.getElementById('postContent');
+const postPagination = document.getElementById('postPagination');
+const pageNumbers = document.getElementById('pageNumbers');
+const buttonPreviousPage = document.getElementById('button-previous-page');
+const buttonNextPage = document.getElementById('button-next-page');
 
 let toastContainer;
 let sortAsc = true;
-let userCache = {}; // Cache for user info to avoid repeated API calls
+let userCache = {}; // Avoid calling API again when sorting posts, use `userCache` to store user info
 
 /**
  * Utils
@@ -256,6 +260,24 @@ const sortPostsById = (posts, sortAsc) => {
   return posts;
 }
 
+
+const renderPageNumbers = async (activePageNumber = 1) => {
+  postPagination.classList.add('hidden');
+  const totalPostsCount = await getTotalPostsCount();
+  const postsPerPage = 10
+  const pagesNumberCount = Math.ceil(totalPostsCount / postsPerPage);
+
+  let content = '';
+  for (let i = 1; i <= pagesNumberCount; i++) {
+    if (i === Number(activePageNumber)) {
+      content += `<span data-page-number="${i}" class="page-number active cursor-pointer">${i}</span>`;
+    } else {
+      content += `<span data-page-number="${i}" class="page-number cursor-pointer transition-all duration-300 hover:text-green-800">${i}</span>`;
+    }
+  }
+  pageNumbers.innerHTML = content;
+  postPagination.classList.remove('hidden');
+}
 /**
  * Init Toast
  */
@@ -268,8 +290,9 @@ const sortPostsById = (posts, sortAsc) => {
 })();
 
 
-let posts = await getPostListsWithLimit(2);
+let posts = await getPostListsWithLimit(10);
 await renderPostLists(posts);
+await renderPageNumbers();
 
 sortPostsByIdButton.addEventListener('click', async () => {
   sortAsc = !sortAsc; // toggle
@@ -285,7 +308,7 @@ sortPostsByIdButton.addEventListener('click', async () => {
   await renderPostLists(sortedPosts);
 });
 
-
+``
 postLists.addEventListener('click', async (e) => {
   const readMoreButton = e.target.closest('.button-read-more');
   if (!readMoreButton) return;
@@ -384,4 +407,41 @@ postContent.addEventListener('click', (e) => {
   const closeButton = e.target.closest('.fa-xmark');
   if (!closeButton) return;
   postContent.classList.add('hidden');
+});
+
+pageNumbers.addEventListener('click', (e) => {
+  const pageNumber = e.target.closest('.page-number');
+  if (!pageNumber) return;
+  const pageNumberValue = pageNumber.dataset.pageNumber;
+  console.log(pageNumberValue);
+
+  (async () => {
+    const posts = await getPostListsWithLimit(10, (pageNumberValue - 1) * 10);
+    await renderPostLists(posts);
+    await renderPageNumbers(pageNumberValue);
+  })();
+});
+
+buttonPreviousPage.addEventListener('click', async () => {
+  const activePageNumber = pageNumbers.querySelector('.page-number.active').dataset.pageNumber;
+  console.log(activePageNumber);
+  if (activePageNumber > 1) {
+    (async () => {
+      const posts = await getPostListsWithLimit(10, (activePageNumber - 1) * 10);
+      await renderPostLists(posts);
+      await renderPageNumbers(activePageNumber - 1);
+    })();
+  }
+});
+
+buttonNextPage.addEventListener('click', async () => {
+  const activePageNumber = pageNumbers.querySelector('.page-number.active').dataset.pageNumber;
+  console.log(activePageNumber);
+  if (activePageNumber < 26) {
+    (async () => {
+      const posts = await getPostListsWithLimit(10, (activePageNumber + 1) * 10);
+      await renderPostLists(posts);
+      await renderPageNumbers(activePageNumber + 1);
+    })();
+  }
 });
