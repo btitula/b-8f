@@ -13,6 +13,7 @@ const postContent = document.getElementById('postContent');
 
 let toastContainer;
 let sortAsc = true;
+let userCache = {}; // Cache for user info to avoid repeated API calls
 
 /**
  * Utils
@@ -83,15 +84,21 @@ searchForm.addEventListener('submit', async (e) => {
 });
 
 /**
- * 
+ *
  * @returns User
  */
 const getUserInfo = async (userId) => {
+  if (userCache[userId]) {
+    return userCache[userId];
+  }
+
   let url = `https://dummyjson.com/users/${userId}`
   try {
     const response = await fetch(url);
     const data = await response.json();
     const userFullname = `${data.firstName} ${data.lastName}`;
+
+    userCache[userId] = userFullname; // Avoid calling API again when sorting posts, use `userCache` to store user info
     return userFullname;
   } catch (error) {
     throw new Error(error);
@@ -195,7 +202,6 @@ const renderPostLists = async (posts) => {
               <button
                 type="button"
                 data-post-id="${postId}"
-                id="button-read-more"
                 class="button-read-more hover:bg-green-600 hover:rounded-md hover:text-green-100 text-sm font-light p-1 border-t border-gray-200 cursor-pointer transition-all duration-300">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Read More</span>
@@ -281,7 +287,7 @@ sortPostsByIdButton.addEventListener('click', async () => {
 
 
 postLists.addEventListener('click', async (e) => {
-  const readMoreButton = e.target.closest('#button-read-more');
+  const readMoreButton = e.target.closest('.button-read-more');
   if (!readMoreButton) return;
 
   postContent.innerHTML = '';
