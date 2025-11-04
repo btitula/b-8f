@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyHy - Exercise 27 - JavaScript</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="container mx-auto">
+    <form id="searchForm" class="search-form px-10 py-10 flex flex-col items-start gap-1">
+      <div class="relative w-full">
+        <input id="searchInput" type="text" placeholder="Search Posts..."
+          class="w-full p-2 pl-10 rounded-md border border-gray-300 placeholder:text-gray-300 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
+          name="query">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+      </div>
+      <button id="searchButton" type="submit" class="hidden mt-1 text-xs text-gray-400 cursor-pointer">
+        Press
+        <span class="font-normal text-green-600 bg-green-200 mx-0.5 px-1.5 py-0.5 rounded-md ">
+          Enter <i class="fa-solid fa-circle-arrow-left"></i>
+        </span>
+        to search
+      </button>
+    </form>
+
+    <div id="postLists" class="post-lists px-10 py-10 grid grid-cols-3 gap-4">
+      <!-- <div
+        class="post-card min-h-[300px] border border-gray-200 rounded-md p-4 relative hover:shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] transition-all duration-300">
+        <ul class="post-tags flex gap-1 absolute top-1 right-1">
+          <li class="bg-gray-200 text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100">
+            history
+          </li>
+          <li class="bg-gray-200 text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100">
+            american</li>
+          <li class="bg-gray-200 text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100">
+            crime</li>
+        </ul>
+        <div class="post-content">
+          <ul class="flex flex-col gap-2">
+            <li class="text-base font-semibold w-full border-b border-gray-200 pb-2">Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Accusantium unde placeat nobis pariatur ad impedit hic, temporibus ut autem
+              saepe.</li>
+            <li class="text-base text-gray-500 text-left font-normal line-clamp-5"> Lorem ipsum dolor sit
+              amet
+              consectetur adipisicing elit. Nihil eius repellendus, ex aliquid eligendi aut
+              officia corporis, minus officiis suscipit magnam sapiente et illum libero, atque dolore ut at odit cumque
+              ab eveniet laudantium sit autem fugiat. Omnis neque aspernatur ut, delectus sed fuga quia animi? Odio non
+              atque mollitia quia assumenda suscipit, vitae excepturi tempore dolorem, quaerat eum voluptates rerum?
+              Autem in delectus inventore cupiditate minus officiis expedita laudantium quae? Adipisci aliquid ex labore
+              sed iure eligendi reiciendis sint quas doloremque, autem commodi tempora amet provident, repudiandae
+              accusamus vel quidem repellendus nisi neque. Nostrum, illum, quo labore voluptates alias eligendi
+              laboriosam doloremque corporis magnam esse molestiae. Culpa, illum. Dolorem cumque est, officia explicabo
+              optio modi, autem provident sed dolore ipsa ducimus ipsam odio maxime soluta possimus necessitatibus
+              eveniet illo dolorum? Blanditiis esse voluptate animi dicta ullam sed illo? Repudiandae modi ipsum tenetur
+              vitae molestiae illo, porro similique atque incidunt eos recusandae reprehenderit tempora saepe.
+              Consectetur autem ut officiis sunt, fugiat, eaque aliquid provident, neque vel officia nam voluptate a
+              iste quo voluptatem. Pariatur corrupti fugit incidunt est, placeat, nihil alias quod laboriosam odio,
+              dolore aperiam optio accusantium iste? Aut deserunt quos quaerat tenetur eum officia labore consequuntur
+              dolorum nisi nulla ipsam, est asperiores et possimus perspiciatis ut! Dolores aliquid ab a assumenda
+              illum, mollitia illo distinctio eum, natus, aliquam veritatis sequi saepe. Quis, suscipit! Modi dolorem
+              architecto neque, expedita corporis, omnis quae aperiam perferendis harum dignissimos, nam recusandae!
+              Repellendus ex sed cumque eum omnis molestiae doloremque vero autem enim aperiam voluptatum necessitatibus
+              repellat maiores asperiores quo consectetur, excepturi est, aliquam accusamus ipsam. Libero iusto veniam
+              non dolor quidem fugit odio hic molestiae odit, porro et minima! Id repudiandae earum quod, blanditiis
+              velit sequi nam alias in ab sit facere tenetur, est quasi at aspernatur iste harum voluptatibus quo ipsum
+              illo. Vel hic consequuntur illum. Similique nostrum accusantium omnis cum molestias expedita delectus.
+              Dolorum ipsa deleniti libero nam error expedita, eum perferendis! Eius quod, odio eum minus illum nisi
+              sequi tempora enim molestiae autem animi ullam nesciunt doloribus reiciendis nemo. Molestias et rerum
+              quidem nostrum animi aspernatur minus minima quasi eos a quos aliquid atque architecto dolor natus
+              consequuntur blanditiis ullam eveniet, reprehenderit, aperiam iure, ad dolorum vel esse. Quod doloribus
+              recusandae totam nihil ex illum magnam delectus repudiandae ut neque. Ea ipsa enim at eveniet autem. Et,
+              doloribus culpa enim tempora reprehenderit repellendus dolor, saepe quam deleniti veritatis modi esse
+              perspiciatis, nemo pariatur corporis delectus! At aliquid ratione culpa corporis vero eum reiciendis quas
+              dolores! Quam necessitatibus exercitationem maxime minus dolorum porro ipsum mollitia temporibus
+              consequuntur, impedit ducimus, maiores possimus laboriosam explicabo obcaecati at facilis rem soluta in
+              dicta illum ullam quia hic distinctio. Error autem eveniet unde repellendus alias quam minus beatae
+              mollitia quasi, quibusdam distinctio tenetur commodi veritatis inventore aperiam pariatur odit doloribus
+              voluptatem consectetur rem dignissimos fugiat, quisquam rerum? Magni fugit deleniti ipsa, laboriosam
+              architecto laborum odio, eveniet expedita molestiae temporibus, consectetur quisquam dolore nostrum
+              mollitia quasi iusto voluptate? Aliquam, ex in vitae reprehenderit esse corrupti!
+            </li>
+            <li class="flex justify-between">
+              <ul class="post-author flex gap-1">
+                <li
+                  class="text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100 hover:bg-gray-100 cursor-pointer transition-all duration-300">
+                  <i class="fa-solid fa-user"></i>
+                  <span>John Doe</span>
+                </li>
+              </ul>
+              <ul class="post-reactions flex gap-1">
+                <li class="text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100 ">
+                  <i class="fa-solid fa-eye"></i>
+                  <span>10</span>
+                </li>
+                <li
+                  class="text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100 hover:bg-gray-100 cursor-pointer transition-all duration-300">
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <span>10</span>
+                </li>
+                <li
+                  class="text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100 hover:bg-gray-100 cursor-pointer transition-all duration-300">
+                  <i class="fa-solid fa-thumbs-down"></i>
+                  <span>10</span>
+                </li>
+              </ul>
+            </li>
+            <li class="mt-4 flex justify-between">
+              <button type="button"
+                class="button-read-more-post hover:bg-green-600 hover:rounded-md hover:text-green-100 text-sm font-light p-1 border-t border-gray-200 cursor-pointer transition-all duration-300">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Read More</span>
+              </button>
+              <button type="button"
+                class="button-edit-post text-sm font-light p-1 border-t border-gray-200 cursor-not-allowed transition-all duration-300">
+                <i class="fa-solid fa-pen"></i>
+                <span>Edit</span>
+              </button>
+              <button type="button"
+                class="button-remove-post text-sm font-light p-1 border-t border-gray-200 cursor-not-allowed transition-all duration-300">
+                <i class="fa-solid fa-trash-can"></i>
+                <span>Remove</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>
