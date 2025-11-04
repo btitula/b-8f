@@ -1,3 +1,7 @@
+import { CONSTANT } from './constant.js';
+
+const { COLORS, FONT_AWESOME_ICONS, TIMEOUT } = CONSTANT;
+
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
@@ -5,18 +9,69 @@ const postLists = document.getElementById('postLists');
 const postLoading = document.getElementById('postLoading');
 const postContent = document.getElementById('postContent');
 
+let toastContainer;
+
+/**
+ * Utils
+ */
+// https://www.youtube.com/watch?v=EWveKYaX-P0&t=607s
+const generateToast = ({ message, backgroundColor, color = COLORS.TEXT_COLOR, lifetime = `${TIMEOUT.THREE_SECONDS}ms` }) => {
+  toastContainer.insertAdjacentHTML('beforeend', `
+    <p class="toast" style="background-color: ${backgroundColor}; color: ${color}; animation-duration: ${lifetime};">
+      ${message}
+    </p>
+  `);
+
+  const toast = toastContainer.lastElementChild;
+  toast.addEventListener('animationend', () => {
+    toast.remove();
+  }, { once: true });
+}
+
+const createToast = (type, message) => {
+  const toastConfig = {
+    success: {
+      icon: FONT_AWESOME_ICONS.FA_CIRCLE_CHECK,
+      backgroundColor: COLORS.GREEN
+    },
+    error: {
+      icon: FONT_AWESOME_ICONS.FA_CIRCLE_EXCLAMATION,
+      backgroundColor: COLORS.RED
+    },
+    info: {
+      icon: FONT_AWESOME_ICONS.FA_CIRCLE_INFO,
+      backgroundColor: COLORS.GRAY
+    },
+    warning: {
+      icon: FONT_AWESOME_ICONS.FA_CIRCLE_EXCLAMATION,
+      backgroundColor: COLORS.YELLOW
+    }
+  };
+
+  const config = toastConfig[type]
+
+  generateToast({
+    message: `<i class="fa-solid ${config.icon}"></i><span>${message}</span>`,
+    backgroundColor: config.backgroundColor,
+    lifetime: `${TIMEOUT.THREE_SECONDS}ms`
+  });
+};
+
 searchInput.addEventListener('input', (e) => {
   const query = e.target.value;
   query.length > 0 ? searchButton.classList.remove('hidden') : searchButton.classList.add('hidden');
 });
 
-searchForm.addEventListener('submit', (e) => {
+searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const query = e.target.query.value;
   console.log(`searchForm: ${query}`);
+  const posts = await searchPosts(query);
+  console.log(posts);
+  if (Number(posts.total) === 0) {
+    createToast('error', 'No posts found');
+  }
 });
-
-
 /**
  * 
  * @returns User
@@ -61,7 +116,6 @@ const getPostListsWithLimit = async (limit, skip = 0) => {
     postLoading.classList.add('hidden');
   }
 }
-
 
 const renderPostLists = async (posts) => {
   posts.forEach(async (post) => {
@@ -162,13 +216,38 @@ const getPostContent = async (postId) => {
   }
 }
 
-const posts = await getPostListsWithLimit(10);
+const searchPosts = async (searchTerm) => {
+  let url = `https://dummyjson.com/posts/search?q=${searchTerm}`
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+/**
+ * Init Toast
+ */
+(function initToast() {
+  document.body.insertAdjacentHTML('afterbegin', `
+    <div class="toast-container">
+    </div>
+  `);
+  toastContainer = document.querySelector('.toast-container');
+})();
+
+
+const posts = await getPostListsWithLimit(1);
 await renderPostLists(posts);
 
 
 postLists.addEventListener('click', async (e) => {
   const readMoreButton = e.target.closest('#button-read-more');
   if (!readMoreButton) return;
+
+  postContent.innerHTML = '';
 
   const postId = readMoreButton.dataset.postId;
   postContent.classList.remove('hidden');
@@ -192,7 +271,7 @@ postLists.addEventListener('click', async (e) => {
   }
 
   postContent.innerHTML = `
-      <div class="absolute inset-0 bg-black/40 opacity-80 backdrop-blur-sm" data-close></div>
+      <div class="absolute inset-0 bg-black/80 opacity-80 backdrop-blur-xl" data-close></div>
 
       <div id="postContentInformation" class="post-content-information mx-auto h-full grid place-items-center ">
         <div
