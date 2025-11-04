@@ -40,7 +40,7 @@
     </form>
 
     <div id="postLists" class="post-lists px-10 py-10 grid grid-cols-3 gap-4 relative">
-      <!-- <div
+      <div
         class="post-card min-h-[300px] border border-gray-200 rounded-md p-4 relative hover:shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] transition-all duration-300">
         <ul class="post-tags flex gap-1 absolute top-1 right-1">
           <li class="bg-gray-200 text-gray-500 p-[4px] rounded-md text-[8px] font-extralight border border-gray-100">
@@ -139,7 +139,35 @@
             </li>
           </ul>
         </div>
-      </div> -->
+      </div>
+    </div>
+
+    <div id="postPagination"
+      class="post-pagination hidden flex justify-center items-center gap-2 font-light text-gray-400">
+      <button type="button" id="button-previous-page"
+        class="button-previous-page w-8 h-8 rounded-full bg-green-600 text-green-100 border-1 border-green-600 flex items-center justify-center hover:bg-green-100 hover:text-green-600 hover:border-green-600 cursor-pointer transition-all duration-300"
+        aria-label="Previous Page">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div id="pageNumbers" class="flex justify-center items-center gap-1">
+        <!-- <span class="page-number active">1</span>
+        <span class="page-number">2</span>
+        <span class="page-number">3</span>
+        <span class="page-number">4</span>
+        <span class="page-number">5</span>
+        <span class="page-number">6</span>
+        <span class="page-number">7</span>
+        <span class="page-number">8</span>
+        <span class="page-number">9</span>
+        <span class="page-number">10</span> -->
+      </div>
+
+      <button type="button" id="button-next-page"
+        class="button-next-page w-8 h-8 rounded-full bg-green-600 text-green-100 border-1 border-green-600 flex items-center justify-center hover:bg-green-100 hover:text-green-600 hover:border-green-600 cursor-pointer transition-all duration-300"
+        aria-label="Next Page">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </div>
 
     <div id="postContent" class="hidden fixed inset-0 z-50 ">
