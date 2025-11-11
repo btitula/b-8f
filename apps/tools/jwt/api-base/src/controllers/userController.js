@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes'
 import ms from 'ms'
-
+import { jwtProvider } from '~/providers/JwtProvider'
 /**
  * Mock nhanh thông tin user thay vì phải tạo Database rồi query.
  * Nếu muốn học kỹ và chuẩn chỉnh đầy đủ hơn thì xem Playlist này nhé:
@@ -21,8 +21,8 @@ const MOCK_DATABASE = {
  * Ở đây mình làm Demo thôi nên mới đặt biến const và giá trị random ngẫu nhiên trong code nhé.
  * Xem thêm về biến môi trường: https://youtu.be/Vgr3MWb7aOw
  */
-const ACCESS_TOKEN_SECRET_SIGNATURE = '' // pragma: allowlist secret
-const REFRESH_TOKEN_SECRET_SIGNATURE = '' // pragma: allowlist secret
+const ACCESS_TOKEN_SECRET_SIGNATURE = 'sample-access-token-secret' // pragma: allowlist secret
+const REFRESH_TOKEN_SECRET_SIGNATURE = 'sample-refresh-token-secret' // pragma: allowlist secret
 
 const login = async (req, res) => {
   try {
@@ -32,8 +32,22 @@ const login = async (req, res) => {
     }
 
     // Trường hợp nhập đúng thông tin tài khoản, tạo token và trả về cho phía Client
+    const userInfo = {
+      id: MOCK_DATABASE.USER.ID,
+      email: MOCK_DATABASE.USER.EMAIL
+    }
+    const accessToken = await jwtProvider.generateToken(userInfo, ACCESS_TOKEN_SECRET_SIGNATURE, ms('1h'))
+    const refreshToken = await jwtProvider.generateToken(userInfo, REFRESH_TOKEN_SECRET_SIGNATURE, ms('7 days'))
 
-    res.status(StatusCodes.OK).json({ message: 'Login API success!' })
+
+    res.cookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'none', maxAge: ms('14 days') })
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'none', maxAge: ms('14 days') })
+
+    res.status(StatusCodes.OK).json({
+      ...userInfo,
+      accessToken,
+      refreshToken
+    })
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error)
   }

@@ -2,8 +2,7 @@ import { StatusCodes } from 'http-status-codes'
 
 const access = async (req, res) => {
   try {
-    const user = { email: 'trungquandev.official@gmail.com' }
-
+    const user = { email: 'foo.official@gmail.com' }
     res.status(StatusCodes.OK).json(user)
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error)
