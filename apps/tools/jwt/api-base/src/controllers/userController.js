@@ -21,8 +21,8 @@ const MOCK_DATABASE = {
  * Ở đây mình làm Demo thôi nên mới đặt biến const và giá trị random ngẫu nhiên trong code nhé.
  * Xem thêm về biến môi trường: https://youtu.be/Vgr3MWb7aOw
  */
-const ACCESS_TOKEN_SECRET_SIGNATURE = 'sample-access-token-secret' // pragma: allowlist secret
-const REFRESH_TOKEN_SECRET_SIGNATURE = 'sample-refresh-token-secret' // pragma: allowlist secret
+// const ACCESS_TOKEN_SECRET_SIGNATURE = 'sample-access-token-secret' // pragma: allowlist secret
+// const REFRESH_TOKEN_SECRET_SIGNATURE = 'sample-refresh-token-secret' // pragma: allowlist secret
 
 const login = async (req, res) => {
   try {

@@ -26,6 +26,9 @@ const verifyToken = async (token, secretSignature) => {
   }
 }
 
+export const ACCESS_TOKEN_SECRET_SIGNATURE = 'sample-access-token-secret' // pragma: allowlist secret
+export const REFRESH_TOKEN_SECRET_SIGNATURE = 'sample-refresh-token-secret' // pragma: allowlist secret
+
 export const jwtProvider = {
   generateToken,
   verifyToken
