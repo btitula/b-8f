@@ -7,6 +7,9 @@ const render = async () => {
   document.querySelector("#app").innerHTML = await app();
 };
 
-await render();
-initHeaderScroll();
-await initRouter();
+// Wrap in async IIFE to avoid top-level await issues during build
+(async () => {
+  await render();
+  initHeaderScroll();
+  await initRouter();
+})();
