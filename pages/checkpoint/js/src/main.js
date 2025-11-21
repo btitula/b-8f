@@ -1,14 +1,10 @@
-import "./style.css";
-
-import app from "./app";
-import initRouter from "./route/router";
-
-// mọi người khai báo async func để xử lý bất đồng bộ
+import "@/style.css";
+import app from "@/app";
+import initRouter from "@/route/router";
 
 const render = async () => {
-    document.querySelector("#app").innerHTML = await app();
+  document.querySelector("#app").innerHTML = await app();
 };
 
 await render();
-
 await initRouter();

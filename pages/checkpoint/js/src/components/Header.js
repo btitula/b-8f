@@ -1,12 +1,13 @@
 // import screenCast from "../assets/icons/screenCast.svg?raw";
-import SideBar from "./SideBar";
+// import SideBar from "./sideBar/sideBar";
+import sideBar from "./sideBar/SideBar";
 
 async function Header() {
   return `
-    ${SideBar()}  
+    ${sideBar()}  
 
+    <!--
     <div class="flex items-center h-[64px] ">
-
      <div class="container mx-auto flex items-center">
         <label class="group flex items-center ml-[218px] w-[480px] h-[41.6px] border border-[#ffffff26] rounded-[8px]  bg-[#292929]">
           <span class="cursor-pointer ml-4 mr-4 ">
@@ -39,6 +40,7 @@ async function Header() {
         </div>
      </div>
     </div>
+    -->
     `;
 }
 
