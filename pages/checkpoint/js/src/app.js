@@ -1,11 +1,14 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const app = async () => {
-    return `
+  return `
     ${await Header()}
+    
+    <!--
     <main id="js-body"></main>
     ${Footer()}
+    -->
   `
 }
 

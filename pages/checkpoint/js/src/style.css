@@ -1,2 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .sidebar-menu-item {
+    @apply flex items-center pl-4 gap-4 text-base font-light text-white py-3 rounded-md cursor-pointer hover:bg-[#414141] transition-all duration-300;
+  }
+
+  .sidebar-menu-item.active {
+    @apply bg-[#232323] font-bold;
+  }
+
+  .button-signin {
+    @apply cursor-pointer bg-[#232323] text-white px-4 py-2 rounded-full w-full text-sm;
+  }
+
+  .button-signin:hover {
+    @apply bg-[#414141] transition-all duration-300;
+  }
+
+  .button-new-playlist {
+    @apply cursor-pointer bg-[#232323] text-white px-4 py-2 rounded-full w-full text-sm;
+  }
+
+  .button-new-playlist:hover {
+    @apply bg-[#414141] transition-all duration-300;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}

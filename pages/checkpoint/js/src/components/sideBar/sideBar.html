@@ -1,0 +1,67 @@
+<div class="fixed w-60 h-full border-r border-r-[#292929] flex flex-col gap-2">
+  <div class="flex pl-6 items-center gap-4 h-16">
+    <button class="cursor-pointer">
+      <i class="fa-solid fa-bars dark:text-white size-full text-xl"></i>
+    </button>
+    <a href="#">
+      <img src="{{logoYoutubeMusic}}" alt="Logo Youtube Music">
+    </a>
+  </div>
+
+  <div>
+    <ul class="flex flex-col px-2 gap-1">
+      <li class="sidebar-menu-item active">
+        <i class="fa-solid fa-house size-full text-xl"></i>
+        <a href="/">Home</a>
+      </li>
+      <li class="sidebar-menu-item">
+        <i class="fa-regular fa-compass size-full text-xl"></i>
+        <a href="/explore">Explore</a>
+      </li>
+      <li class="sidebar-menu-item">
+        <i class="fa-regular fa-bookmark size-full text-xl"></i>
+        <a href="/library">Library</a>
+      </li>
+
+      <!-- Will be shown when user logged in -->
+      <!-- <li class="sidebar-menu-item">
+        <i class="fa-regular fa-circle-play size-full text-xl"></i>
+        <a href="/radio">Upgrade</a>
+      </li> -->
+    </ul>
+  </div>
+
+  <div class="bg-[#414141] h-[0.5px] px-5 m-5">
+  </div>
+
+  <div>
+    <!-- Signin button -->
+    <div id="signin" class="flex flex-col justify-center items-center px-5 gap-2">
+      <button type="button" id="signin-button" class="button-signin">
+        Sign in
+      </button>
+      <p class="text-white/50 text-xs ">
+        Sign in to create & share playlists, get personalized recommendations, and more.
+      </p>
+    </div>
+
+    <!-- New Playlist button -->
+    <!-- <div id="new-playlist" class="flex flex-col px-5 gap-7">
+      <button type="button" id="new-playlist-button" class="button-signin">
+        <i class="fa-solid fa-plus"></i>
+        <span>New Playlist</span>
+      </button>
+
+      <div
+        class="text-white/50 flex items-center justify-between cursor-pointer hover:bg-[#414141] rounded-md p-2 group">
+        <ul class="flex flex-col justify-start gap-1">
+          <li class="text-sm text-white">Episodes for Later</li>
+          <li class="text-xs">Auto playlist</li>
+        </ul>
+        <div>
+          <i
+            class="fa-solid fa-circle-play text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+        </div>
+      </div>
+    </div> -->
+  </div>
