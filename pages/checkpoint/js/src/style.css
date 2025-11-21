@@ -23,6 +23,14 @@
     @apply cursor-pointer bg-white text-black px-4 py-2 rounded-full w-full text-sm;
   }
 
+  .button-lets-go-home {
+    @apply cursor-pointer bg-white text-black px-4 py-2 rounded-full text-sm;
+  }
+
+  .button-lets-go-home:hover {
+    @apply bg-white/80 transition-all duration-300;
+  }
+
   .button-new-playlist {
     @apply cursor-pointer bg-[#232323] text-white px-4 py-2 rounded-full w-full text-sm;
   }
@@ -79,6 +87,29 @@ body {
 
 .carousel-item {
   scroll-snap-align: start;
+}
+
+/* Quick picks specific - disable snap for smoother scrolling */
+#carousel-quick-picks {
+  scroll-snap-type: none;
+}
+
+/* Quick picks page - each page shows 3 columns × 4 rows = 12 items */
+.quick-picks-page {
+  min-width: 100%; /* Each page takes full width of container */
+}
+
+/* Limit Today's hits and Albums for you to show exactly 5 items */
+#carousel-today-hits,
+#carousel-albums-for-you {
+  max-width: 1064px; /* 5 items × 200px + 4 gaps × 16px = 1064px */
+}
+
+/* Ensure carousel items have consistent width */
+#carousel-today-hits .carousel-item,
+#carousel-albums-for-you .carousel-item {
+  min-width: 200px;
+  max-width: 200px;
 }
 
 /* Optional: Add fade effect on edges */
