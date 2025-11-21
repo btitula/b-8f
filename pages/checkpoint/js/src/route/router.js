@@ -1,7 +1,7 @@
 import Navigo from "navigo";
 import Explore from "../pages/Explore";
 import Library from "../pages/Library";
-import Home, { initCarouselTodayHits } from "@/pages/home/Home";
+import Home, { initCarouselTodayHits } from "@/pages/home/home";
 import ChannelDetail from "../pages/ChannelDetail";
 
 const router = new Navigo("/", {
