@@ -19,12 +19,32 @@
     @apply bg-[#414141] transition-all duration-300;
   }
 
+  .button-signin-header {
+    @apply cursor-pointer bg-white text-black px-4 py-2 rounded-full w-full text-sm;
+  }
+
   .button-new-playlist {
     @apply cursor-pointer bg-[#232323] text-white px-4 py-2 rounded-full w-full text-sm;
   }
 
   .button-new-playlist:hover {
     @apply bg-[#414141] transition-all duration-300;
+  }
+
+  .playlist-tag {
+    @apply px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full whitespace-nowrap transition-all duration-300 backdrop-blur-sm border border-white/10;
+  }
+
+  .playlist-tag.active {
+    @apply bg-white text-black;
+  }
+
+  .header-scrolled {
+    @apply bg-[#020202] transition-all duration-300 border-b-[0.5px] border-white/20;
+  }
+
+  .header-transparent {
+    @apply bg-transparent transition-all duration-300 backdrop-blur-sm;
   }
 }
 
@@ -33,4 +53,52 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "wdth" 100;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Smooth scroll behavior */
+#js-body {
+  scroll-behavior: smooth;
+}
+
+/* Carousel container */
+.carousel-container {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+}
+
+/* Optional: Add fade effect on edges */
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carousel-container::before {
+  left: 0;
+  /* background: linear-gradient(to right, rgba(2, 2, 2, 0.8), transparent); */
+}
+
+.carousel-container::after {
+  right: 0;
+  /* background: linear-gradient(to left, rgba(2, 2, 2, 0.8), transparent); */
 }
