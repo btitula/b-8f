@@ -60,6 +60,18 @@ import trendingCommunityPlaylistImageDotOne from "@/assets/images/home/trendingC
 import trendingCommunityPlaylistImageDotTwo from "@/assets/images/home/trendingCommunityPlaylists/dot_2.jpg"
 import trendingCommunityPlaylistImageDotThree from "@/assets/images/home/trendingCommunityPlaylists/dot_3.jpg"
 
+
+import newMusicVideoImageOne from "@/assets/images/home/newMusicVideosForYou/unnamed_1.jpg"
+import newMusicVideoImageTwo from "@/assets/images/home/newMusicVideosForYou/unnamed_2.jpg"
+import newMusicVideoImageThree from "@/assets/images/home/newMusicVideosForYou/unnamed_3.jpg"
+import newMusicVideoImageFour from "@/assets/images/home/newMusicVideosForYou/unnamed_4.jpg"
+import newMusicVideoImageFive from "@/assets/images/home/newMusicVideosForYou/unnamed_5.jpg"
+import newMusicVideoImageSix from "@/assets/images/home/newMusicVideosForYou/unnamed_6.jpg"
+import newMusicVideoImageSeven from "@/assets/images/home/newMusicVideosForYou/unnamed_7.jpg"
+import newMusicVideoImageEight from "@/assets/images/home/newMusicVideosForYou/unnamed_8.jpg"
+import newMusicVideoImageNine from "@/assets/images/home/newMusicVideosForYou/unnamed_9.jpg"
+import newMusicVideoImageTen from "@/assets/images/home/newMusicVideosForYou/unnamed_10.jpg"
+
 const PlaylistTagsName = [
   {
     name: "Energize",
@@ -388,6 +400,99 @@ function generateTrendingCommunityPlaylists() {
   `).join('');
 }
 
+function generateNewMusicVideosForYou() {
+  const newMusicVideosForYou = [
+    {
+      title: "Timeless",
+      artist: "The Weeknd & Playboi Carti",
+      views: "185M views",
+      image: newMusicVideoImageOne
+    },
+    {
+      title: "We Don't Talk Anymore (feat. Selena Gomez)",
+      artist: "Charlie Puth",
+      views: "3.4B views",
+      image: newMusicVideoImageTwo
+    },
+    {
+      title: "Hngle - KHÔNG BUÔNG ft.Ari",
+      artist: "Hngle",
+      views: "16M views",
+      image: newMusicVideoImageThree
+    },
+    {
+      title: "Peaches(feat.Daniel Caesar & Giveon)",
+      artist: "Justin Bieber",
+      views: "825M views",
+      image: newMusicVideoImageFour
+    },
+    {
+      title: "Phép Màu(Đàn Cá Gỗ OST)",
+      artist: "MAYDAYs",
+      views: "63M views",
+      image: newMusicVideoImageFive
+    },
+    {
+      title: "Better",
+      artist: "Khalid",
+      views: "1.2B views",
+      image: newMusicVideoImageSix
+    },
+    {
+      title: "luther",
+      artist: "Kendrick Lamar & SZA",
+      views: "46M views",
+      image: newMusicVideoImageSeven
+    },
+    {
+      title: "Circles(Official Music Video)",
+      artist: "Post Malone",
+      views: "766M views",
+      image: newMusicVideoImageEight
+    },
+    {
+      title: "Counting Stars",
+      artist: "OneRepublic",
+      views: "4.3B views",
+      image: newMusicVideoImageNine
+    },
+    {
+      title: "Dusk Till Dawn(Official Video) (feat.Sia)",
+      artist: "ZAYN",
+      views: "2.3B views",
+      image: newMusicVideoImageTen
+    }
+  ];
+
+  return newMusicVideosForYou.map(musicVideo => `
+    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group">
+      <div class="aspect-square w-[320px] h-[180px] rounded mb-4 relative overflow-hidden">
+        <img src="${musicVideo.image}" alt="${musicVideo.title}" class="w-full h-full object-fill">
+
+        <!-- Hover Overlay -->
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300"></div>
+
+        <!-- Centered Play Button -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <button class="w-16 h-16 bg-black/40 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-black/80 hover:scale-110 transition-all duration-300">
+            <i class="fa-solid fa-play text-white text-2xl ml-1"></i>
+          </button>
+
+          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300">
+            <i class="fa-solid fa-ellipsis-vertical text-white text-md"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <h3 class="text-white text-base font-semibold truncate cursor-pointer hover:underline">${musicVideo.title}</h3>
+        <p class="text-white/60 text-base font-light truncate">${musicVideo.artist}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+
 function generateTodayHits() {
   const albums = [
     {
@@ -644,6 +749,65 @@ export function initCarouselTodayHits() {
   updateButtonStates(); // Initial state
 }
 
+export function initCarouselNewMusicVideosForYou() {
+  const carousel = document.getElementById('carousel-new-music-videos-for-you');
+  const prevNewMusicVideosForYouButton = document.getElementById('carousel-prev-new-music-videos-for-you');
+  const nextNewMusicVideosForYouButton = document.getElementById('carousel-next-new-music-videos-for-you');
+
+  if (!carousel || !prevNewMusicVideosForYouButton || !nextNewMusicVideosForYouButton) return;
+
+  // Calculate exact width of one item (including gap)
+  const getItemWidth = () => {
+    const items = carousel.querySelectorAll('.carousel-item');
+    if (items.length < 2) return carousel.clientWidth / 5;
+
+    // Get position of first and second items
+    const firstItem = items[0];
+    const secondItem = items[1];
+
+    if (firstItem && secondItem) {
+      const firstRect = firstItem.getBoundingClientRect();
+      const secondRect = secondItem.getBoundingClientRect();
+      // Distance between start of item 1 and start of item 2 (includes gap)
+      return Math.abs(secondRect.left - firstRect.left);
+    }
+
+    // Fallback: divide visible width by 5
+    return carousel.clientWidth / 5;
+  };
+
+  prevNewMusicVideosForYouButton.addEventListener('click', () => {
+    const scrollAmount = getItemWidth();
+    carousel.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+
+  nextNewMusicVideosForYouButton.addEventListener('click', () => {
+    const scrollAmount = getItemWidth();
+    carousel.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+
+  // Update button states based on scroll position
+  const updateButtonStates = () => {
+    const isAtStart = carousel.scrollLeft === 0;
+    const isAtEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1;
+
+    prevNewMusicVideosForYouButton.style.opacity = isAtStart ? '0.3' : '1';
+    prevNewMusicVideosForYouButton.style.cursor = isAtStart ? 'not-allowed' : 'pointer';
+
+    nextNewMusicVideosForYouButton.style.opacity = isAtEnd ? '0.3' : '1';
+    nextNewMusicVideosForYouButton.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
+  };
+
+  carousel.addEventListener('scroll', updateButtonStates);
+  updateButtonStates(); // Initial state
+}
+
 export function initCarouselQuickPicks() {
   const carousel = document.getElementById('carousel-quick-picks');
   const prevButton = document.getElementById('carousel-prev-quick-picks');
@@ -761,6 +925,7 @@ const Home = async () => {
     'generateListenAgain',
     'getHelloMessage',
     'tellUsWhichArtistsYouLikeImage',
+    'generateNewMusicVideosForYou',
     `return \`${homeHtml}\`;`
   );
 
@@ -773,6 +938,7 @@ const Home = async () => {
     generateListenAgain,
     getHelloMessage,
     tellUsWhichArtistsYouLikeImage,
+    generateNewMusicVideosForYou,
   );
 }
 
