@@ -110,7 +110,7 @@
 
   <section class="mb-24">
     <h2 class="text-3xl font-bold text-white mb-6">Trending community playlists</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" id="trending-community-playlists">
       ${generateTrendingCommunityPlaylists()}
     </div>
   </section>
@@ -136,4 +136,8 @@
       </div>
     </div>
   </section>
+
+  <div id="context-menu" class="fixed w-64 rounded-sm text-white font-light hidden z-50">
+    ${generateMenuRightClick()}
+  </div>
 </div>

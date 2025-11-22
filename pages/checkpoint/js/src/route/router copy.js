@@ -2,7 +2,6 @@ import Navigo from "navigo";
 import Explore from "../pages/Explore";
 import Library from "../pages/Library";
 import Home, { initCarouselTodayHits, initCarouselQuickPicks, initCarouselAlbumsForYou, initCarouselNewMusicVideosForYou } from "@/pages/home/home";
-import { initHomeEvents } from "@/pages/home/home-events";
 import ChannelDetail from "../pages/ChannelDetail";
 
 const router = new Navigo("/", {
@@ -16,13 +15,12 @@ const initRouter = async () => {
     router
         .on("/", async () => {
             page.innerHTML = await Home();
-            // Initialize carousels and event handlers after rendering
+            // Initialize carousels after rendering
             setTimeout(() => {
                 initCarouselTodayHits();
                 initCarouselQuickPicks();
                 initCarouselAlbumsForYou();
                 initCarouselNewMusicVideosForYou();
-                initHomeEvents();
             }, 0);
         })
         .on("/explore", () => {
