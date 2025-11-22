@@ -53,6 +53,13 @@ import quickPicksImageTwentyFour from "@/assets/images/home/quickPicks/unnamed_3
 import quickPicksImageTwentyFive from "@/assets/images/home/quickPicks/unnamed_31.jpg"
 import quickPicksImageTwentySix from "@/assets/images/home/quickPicks/unnamed_32.jpg"
 
+import trendingCommunityPlaylistImageOne from "@/assets/images/home/trendingCommunityPlaylists/unnamed_1.jpg"
+import trendingCommunityPlaylistImageTwo from "@/assets/images/home/trendingCommunityPlaylists/unnamed_2.jpg"
+import trendingCommunityPlaylistImageThree from "@/assets/images/home/trendingCommunityPlaylists/unnamed_3.jpg"
+import trendingCommunityPlaylistImageDotOne from "@/assets/images/home/trendingCommunityPlaylists/dot_1.jpg"
+import trendingCommunityPlaylistImageDotTwo from "@/assets/images/home/trendingCommunityPlaylists/dot_2.jpg"
+import trendingCommunityPlaylistImageDotThree from "@/assets/images/home/trendingCommunityPlaylists/dot_3.jpg"
+
 const PlaylistTagsName = [
   {
     name: "Energize",
@@ -291,14 +298,16 @@ function generateQuickPicks() {
           </div>
         </div>
 
-
         <div class="flex-1 min-w-0">
-          <div class=" w-full relative hover:bg-black">
+          <div class=" w-full relative hover:bg-black transition-all duration-300">
             <h3 class="text-white text-base font-medium truncate mb-1">${pick.title}</h3>
             <div class="flex items-center gap-2 text-sm text-white/60">
               <span class="truncate">${pick.artist}</span>
             </div>  
           </div>
+
+          <!-- Hover Overlay -->
+          <!-- <div class="absolute inset-0 group-hover:bg-black/10 transition-all duration-300"></div> -->
 
           <div class="absolute right-2 top-2 hidden group-hover:flex items-center gap-1 hover:bg-black/90 px-2">
             <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
@@ -325,25 +334,57 @@ function generateQuickPicks() {
   return html;
 }
 
-function generateAlbums() {
-  const albums = [
-    { title: "Midnight Dreams", artist: "The Weeknd" },
-    { title: "Summer Vibes", artist: "Calvin Harris" },
-    { title: "Neon Lights", artist: "Dua Lipa" },
-    { title: "Golden Hour", artist: "JVKE" },
-    { title: "Starboy", artist: "The Weeknd" },
+function generateTrendingCommunityPlaylists() {
+  const trendingCommunityPlaylists = [
+    {
+      title: "VN mUSIC",
+      artist: "Nguyễn Minh Hoàng",
+      image: trendingCommunityPlaylistImageOne,
+      dot: trendingCommunityPlaylistImageDotOne
+    },
+    {
+      title: "nhạc",
+      artist: "Hằng Hoàng",
+      image: trendingCommunityPlaylistImageTwo,
+      dot: trendingCommunityPlaylistImageDotTwo
+    },
+    {
+      title: "Loáy coay kyem moai đồa",
+      artist: "Lộc Thành",
+      image: trendingCommunityPlaylistImageThree,
+      dot: trendingCommunityPlaylistImageDotThree
+    }
   ];
 
-  return albums.map(album => `
-    <div class="bg-white/5 hover:bg-white/10 rounded-lg p-4 cursor-pointer transition-all duration-300 group">
-      <div class="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 rounded mb-4 relative overflow-hidden">
-        <button class="absolute bottom-2 right-2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-          <i class="fa-solid fa-play text-black"></i>
-        </button>
+  return trendingCommunityPlaylists.map(trending => `
+    <div class="carousel-item flex-shrink-0 w-[150px] rounded-md p-1 cursor-pointer transition-all duration-300 group">
+      <div class="aspect-square rounded mb-4 relative overflow-hidden">
+        <img src="${trending.image}" alt="${trending.title}" class="w-full h-full object-cover">
+
+        <!-- Hover Overlay -->
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+
+        <div>
+          <button class="absolute bottom-2 right-2 w-12 h-12 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg cursor-pointer hover:bg-black/80 hover:scale-110 transition-all duration-300">
+            <i class="fa-solid fa-play text-white text-xl"></i>
+          </button>
+
+          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300">
+            <i class="fa-solid fa-ellipsis-vertical text-white text-md"></i>
+          </button>
+        </div>
+
+        <div class="absolute bottom-2 left-2 w-6 h-6 rounded-full overflow-hidden border border-white/80">
+          <img src="${trending.dot}" class="w-full h-full object-cover" />
+        </div>
       </div>
-      <h3 class="text-white font-semibold truncate">${album.title}</h3>
-      <p class="text-white/60 text-sm truncate">${album.artist}</p>
+
+      <div class="flex flex-col gap-1">
+        <h3 class="text-white text-base font-semibold truncate cursor-pointer hover:underline">${trending.title}</h3>
+        <p class="text-white/60 text-base font-light truncate">${trending.artist}</p>
+      </div>
     </div>
+
   `).join('');
 }
 
@@ -414,7 +455,7 @@ function generateTodayHits() {
             <i class="fa-solid fa-play text-white text-xl"></i>
           </button>
 
-          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-whiteopacity-0 group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300">
+          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300">
             <i class="fa-solid fa-ellipsis-vertical text-white text-md"></i>
           </button>
         </div>
@@ -491,7 +532,7 @@ function generateAlbumsForYou() {
             <i class="fa-solid fa-play text-white text-xl"></i>
           </button>
 
-          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-whiteopacity-0 group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300">
+          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300">
             <i class="fa-solid fa-ellipsis-vertical text-white text-md"></i>
           </button>
         </div>
@@ -714,7 +755,7 @@ const Home = async () => {
   const templateFunction = new Function(
     'PlaylistTagsName',
     'generateQuickPicks',
-    'generateAlbums',
+    'generateTrendingCommunityPlaylists',
     'generateTodayHits',
     'generateAlbumsForYou',
     'generateListenAgain',
@@ -726,7 +767,7 @@ const Home = async () => {
   return templateFunction(
     PlaylistTagsName,
     generateQuickPicks,
-    generateAlbums,
+    generateTrendingCommunityPlaylists,
     generateTodayHits,
     generateAlbumsForYou,
     generateListenAgain,
