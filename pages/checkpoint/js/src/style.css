@@ -89,14 +89,24 @@ body {
   scroll-snap-align: start;
 }
 
-/* Quick picks specific - disable snap for smoother scrolling */
+/* Quick picks specific - disable snap for smoother scrolling (moved below) */
+
+/* Quick picks page - each page shows 3 columns × 4 rows = 12 items */
+.quick-picks-page {
+  width: 100%; /* Each page takes full width of container */
+  min-width: 1000px; /* Minimum width to ensure 3 columns fit properly */
+}
+
 #carousel-quick-picks {
   scroll-snap-type: none;
 }
 
-/* Quick picks page - each page shows 3 columns × 4 rows = 12 items */
-.quick-picks-page {
-  min-width: 100%; /* Each page takes full width of container */
+/* Performance optimization for Quick picks hover */
+.quick-picks-page .group {
+  will-change: background-color;
+  transform: translateZ(0); /* Force hardware acceleration */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Limit Today's hits and Albums for you to show exactly 5 items */

@@ -26,6 +26,33 @@ import albumsForYouImageTen from "@/assets/images/home/albumsForYou/unnamed_10.j
 
 import tellUsWhichArtistsYouLikeImageOne from "@/assets/images/home/tellUsWhichArtistsYouLike/US_992_X_304.png";
 
+import quickPicksImageOne from "@/assets/images/home/quickPicks/unnamed_7.jpg"
+import quickPicksImageTwo from "@/assets/images/home/quickPicks/unnamed_8.jpg"
+import quickPicksImageThree from "@/assets/images/home/quickPicks/unnamed_9.jpg"
+import quickPicksImageFour from "@/assets/images/home/quickPicks/unnamed_10.jpg"
+import quickPicksImageFive from "@/assets/images/home/quickPicks/unnamed_11.jpg"
+import quickPicksImageSix from "@/assets/images/home/quickPicks/unnamed_12.jpg"
+import quickPicksImageSeven from "@/assets/images/home/quickPicks/unnamed_13.jpg"
+import quickPicksImageEight from "@/assets/images/home/quickPicks/unnamed_14.jpg"
+import quickPicksImageNine from "@/assets/images/home/quickPicks/unnamed_15.jpg"
+import quickPicksImageTen from "@/assets/images/home/quickPicks/unnamed_16.jpg"
+import quickPicksImageEleven from "@/assets/images/home/quickPicks/unnamed_17.jpg"
+import quickPicksImageTwelve from "@/assets/images/home/quickPicks/unnamed_18.jpg"
+import quickPicksImageThirteen from "@/assets/images/home/quickPicks/unnamed_19.jpg"
+import quickPicksImageFourteen from "@/assets/images/home/quickPicks/unnamed_20.jpg"
+import quickPicksImageFifteen from "@/assets/images/home/quickPicks/unnamed_21.jpg"
+import quickPicksImageSixteen from "@/assets/images/home/quickPicks/unnamed_22.jpg"
+import quickPicksImageSeventeen from "@/assets/images/home/quickPicks/unnamed_23.jpg"
+import quickPicksImageEighteen from "@/assets/images/home/quickPicks/unnamed_24.jpg"
+import quickPicksImageNineteen from "@/assets/images/home/quickPicks/unnamed_25.jpg"
+import quickPicksImageTwenty from "@/assets/images/home/quickPicks/unnamed_26.jpg"
+import quickPicksImageTwentyOne from "@/assets/images/home/quickPicks/unnamed_27.jpg"
+import quickPicksImageTwentyTwo from "@/assets/images/home/quickPicks/unnamed_28.jpg"
+import quickPicksImageTwentyThree from "@/assets/images/home/quickPicks/unnamed_29.jpg"
+import quickPicksImageTwentyFour from "@/assets/images/home/quickPicks/unnamed_30.jpg"
+import quickPicksImageTwentyFive from "@/assets/images/home/quickPicks/unnamed_31.jpg"
+import quickPicksImageTwentySix from "@/assets/images/home/quickPicks/unnamed_32.jpg"
+
 const PlaylistTagsName = [
   {
     name: "Energize",
@@ -67,64 +94,56 @@ function generateQuickPicks() {
       artist: "Justin Bieber",
       plays: "1.2B plays",
       album: "Justice",
-      explicit: true,
-      image: "from-yellow-400 to-green-400"
+      image: quickPicksImageOne
     },
     {
       title: "Swim",
       artist: "Chase Atlantic",
       plays: "534M plays",
       album: "Chase Atlantic",
-      explicit: true,
-      image: "from-red-600 to-black"
+      image: quickPicksImageTwo
     },
     {
       title: "Lose My Mind [From F1® The Movie] (feat. Doja Cat)",
       artist: "Don Toliver",
       plays: "137M plays",
       album: "Lose My Mind [From F1® ...]",
-      explicit: false,
-      image: "from-orange-500 to-yellow-600"
+      image: quickPicksImageThree
     },
     {
       title: "Hà Nội",
       artist: "Obito, Shiki & VSTRA",
       plays: "49M plays",
       album: "Đánh Đổi",
-      explicit: false,
-      image: "from-blue-400 to-cyan-300"
+      image: quickPicksImageFour
     },
     {
       title: "Moth To A Flame",
       artist: "Swedish House Mafia & Th...",
       plays: "",
       album: "Dawn FM (Alternate Wo...",
-      explicit: false,
-      image: "from-blue-900 to-purple-900"
+      image: quickPicksImageFive
     },
     {
       title: "Still With You",
       artist: "Jung Kook",
       plays: "141M plays",
       album: "Still With You",
-      explicit: false,
-      image: "from-blue-500 to-indigo-600"
+      image: quickPicksImageSix
     },
     {
       title: "CHANEL",
       artist: "Tyla",
       plays: "19M plays",
       album: "CHANEL",
-      explicit: true,
-      image: "from-pink-300 to-white"
+      image: quickPicksImageSeven
     },
     {
       title: "Agora Hills",
       artist: "Doja Cat",
       plays: "388M plays",
       album: "Scarlet",
-      explicit: true,
-      image: "from-gray-100 to-gray-300"
+      image: quickPicksImageEight
     },
     // Additional items for carousel demonstration
     {
@@ -132,123 +151,173 @@ function generateQuickPicks() {
       artist: "Taylor Swift",
       plays: "900M plays",
       album: "Midnights",
-      explicit: false,
-      image: "from-purple-400 to-pink-400"
+      image: quickPicksImageNine
     },
     {
       title: "Flowers",
       artist: "Miley Cyrus",
       plays: "1.5B plays",
       album: "Endless Summer Vacation",
-      explicit: false,
-      image: "from-pink-500 to-rose-500"
+      image: quickPicksImageTen
     },
     {
       title: "As It Was",
       artist: "Harry Styles",
       plays: "2.1B plays",
       album: "Harry's House",
-      explicit: false,
-      image: "from-sky-400 to-blue-500"
+      image: quickPicksImageEleven
     },
     {
       title: "Calm Down",
       artist: "Rema & Selena Gomez",
       plays: "800M plays",
       album: "Rave & Roses",
-      explicit: false,
-      image: "from-green-400 to-teal-400"
+      image: quickPicksImageTwelve
     },
     {
       title: "Kill Bill",
       artist: "SZA",
       plays: "950M plays",
       album: "SOS",
-      explicit: true,
-      image: "from-red-400 to-orange-400"
+      image: quickPicksImageThirteen
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      explicit: true,
-      image: "from-gray-800 to-gray-900"
+      image: quickPicksImageFourteen
     },
     {
-      title: "Unholy",
-      artist: "Sam Smith & Kim Petras",
-      plays: "700M plays",
-      album: "Gloria",
-      explicit: true,
-      image: "from-red-500 to-black"
+      title: "As It Was",
+      artist: "Harry Styles",
+      plays: "2.1B plays",
+      album: "Harry's House",
+      image: quickPicksImageFifteen
     },
     {
-      title: "Snooze",
+      title: "Calm Down",
+      artist: "Rema & Selena Gomez",
+      plays: "800M plays",
+      album: "Rave & Roses",
+      image: quickPicksImageSixteen
+    },
+    {
+      title: "Kill Bill",
       artist: "SZA",
-      plays: "450M plays",
+      plays: "950M plays",
       album: "SOS",
-      explicit: false,
-      image: "from-blue-300 to-indigo-400"
+      image: quickPicksImageSeventeen
     },
     {
-      title: "vampire",
-      artist: "Olivia Rodrigo",
-      plays: "650M plays",
-      album: "GUTS",
-      explicit: false,
-      image: "from-purple-600 to-indigo-700"
+      title: "Creepin'",
+      artist: "Metro Boomin, The Weeknd",
+      plays: "600M plays",
+      album: "Heroes & Villains",
+      image: quickPicksImageEighteen
     },
     {
-      title: "greedy",
-      artist: "Tate McRae",
-      plays: "400M plays",
-      album: "THINK LATER",
-      explicit: false,
-      image: "from-emerald-400 to-teal-500"
+      title: "As It Was",
+      artist: "Harry Styles",
+      plays: "2.1B plays",
+      album: "Harry's House",
+      image: quickPicksImageNineteen
     },
     {
-      title: "Paint The Town Red",
-      artist: "Doja Cat",
-      plays: "850M plays",
-      album: "Scarlet",
-      explicit: true,
-      image: "from-red-600 to-rose-700"
+      title: "Calm Down",
+      artist: "Rema & Selena Gomez",
+      plays: "800M plays",
+      album: "Rave & Roses",
+      image: quickPicksImageTwenty
     },
     {
-      title: "cruel summer",
-      artist: "Taylor Swift",
-      plays: "1.8B plays",
-      album: "Lover",
-      explicit: false,
-      image: "from-pink-400 to-blue-400"
+      title: "Kill Bill",
+      artist: "SZA",
+      plays: "950M plays",
+      album: "SOS",
+      image: quickPicksImageTwentyOne
     },
-
+    {
+      title: "Creepin'",
+      artist: "Metro Boomin, The Weeknd",
+      plays: "600M plays",
+      album: "Heroes & Villains",
+      image: quickPicksImageTwentyTwo
+    },
+    {
+      title: "Creepin'",
+      artist: "Metro Boomin, The Weeknd",
+      plays: "600M plays",
+      album: "Heroes & Villains",
+      image: quickPicksImageTwentyThree
+    },
+    {
+      title: "Creepin'",
+      artist: "Metro Boomin, The Weeknd",
+      plays: "600M plays",
+      album: "Heroes & Villains",
+      image: quickPicksImageTwentyFour
+    },
+    {
+      title: "Creepin'",
+      artist: "Metro Boomin, The Weeknd",
+      plays: "600M plays",
+      album: "Heroes & Villains",
+      image: quickPicksImageTwentyFive
+    },
+    {
+      title: "Creepin'",
+      artist: "Metro Boomin, The Weeknd",
+      plays: "600M plays",
+      album: "Heroes & Villains",
+      image: quickPicksImageTwentySix
+    },
   ];
 
   // Group items column by column (4 items per column)
-  let html = '<div class="quick-picks-page flex-shrink-0 grid grid-rows-4 gap-x-4 gap-y-2" style="grid-auto-flow: column;">';
+  let html = '<div class="quick-picks-page flex-shrink-0 grid grid-rows-4 gap-x-6 gap-y-3" style="grid-auto-flow: column;">';
 
   picks.forEach((pick, index) => {
     html += `
-      <div class="flex items-center gap-3 p-2 rounded hover:bg-white/10 cursor-pointer transition-all duration-300 group">
-        <div class="w-16 h-16 bg-gradient-to-br ${pick.image} rounded flex-shrink-0"></div>
-        <div class="flex-1 min-w-0">
-          <h3 class="text-white text-base font-normal truncate mb-1">${pick.title}</h3>
-          <div class="flex items-center gap-2 text-sm text-white/60">
-            ${pick.explicit ? '<span class="bg-white/60 text-black text-xs font-bold px-1 rounded">E</span>' : ''}
-            <span class="truncate">${pick.artist}${pick.plays ? ' • ' + pick.plays : ''}${pick.album ? ' • ' + pick.album : ''}</span>
+      <div class="max-w-64 text-white flex items-center gap-4 rounded-md cursor-pointer group relative hover:bg-white/5 transition-colors duration-200">
+        <div class="w-14 h-14 rounded flex-shrink-0 relative overflow-hidden">
+          <img src="${pick.image}" alt="${pick.title}" class="w-full h-full object-cover rounded">
+
+          <!-- Play button overlay on image -->
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-200 flex items-center justify-center">
+            <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+              <i class="fa-solid fa-play text-black text-base ml-0.5"></i>
+            </button>
           </div>
         </div>
-        <button class="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
-          <i class="fa-solid fa-play text-white text-xl"></i>
-        </button>
+
+
+        <div class="flex-1 min-w-0">
+          <div class=" w-full relative hover:bg-black">
+            <h3 class="text-white text-base font-medium truncate mb-1">${pick.title}</h3>
+            <div class="flex items-center gap-2 text-sm text-white/60">
+              <span class="truncate">${pick.artist}</span>
+            </div>  
+          </div>
+
+          <div class="absolute right-2 top-2 hidden group-hover:flex items-center gap-1 hover:bg-black/90 px-2">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
+              <i class="fa-regular fa-thumbs-up text-white text-lg"></i>
+            </button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
+              <i class="fa-regular fa-thumbs-down text-white text-lg"></i>
+            </button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
+              <i class="fa-solid fa-ellipsis-vertical text-white text-lg"></i>
+            </button>
+          </div>
+        </div>
       </div>
     `;
 
     // After every 12 items (3 cols × 4 rows), start a new grid page
     if ((index + 1) % 12 === 0 && index !== picks.length - 1) {
-      html += '</div><div class="quick-picks-page flex-shrink-0 grid grid-rows-4 gap-x-4 gap-y-2 ml-4" style="grid-auto-flow: column;">';
+      html += '</div><div class="quick-picks-page flex-shrink-0 grid grid-rows-4 gap-x-6 gap-y-3 ml-6" style="grid-auto-flow: column;">';
     }
   });
 
@@ -333,7 +402,7 @@ function generateTodayHits() {
   ];
 
   return albums.map(album => `
-    <div class="carousel-item flex-shrink-0 w-[200px] rounded-md p-1 cursor-pointer transition-all duration-300 group">
+    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group">
       <div class="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 rounded mb-4 relative overflow-hidden">
         <img src="${album.image}" alt="${album.title}" class="w-full h-full object-cover">
 
@@ -541,23 +610,10 @@ export function initCarouselQuickPicks() {
 
   if (!carousel || !prevButton || !nextButton) return;
 
-  // Calculate exact width of one column (including gap)
+  // Calculate width of one column (1/3 of visible container width)
+  // Since we show 3 columns at a time, each column takes 1/3 of the space
   const getColumnWidth = () => {
-    const items = carousel.querySelectorAll('.quick-picks-page > div');
-    if (items.length < 4) return carousel.clientWidth / 3;
-
-    // Get position of first item in column 1 and first item in column 2
-    const firstItem = items[0];
-    const fifthItem = items[4]; // First item of second column (after 4 rows)
-
-    if (firstItem && fifthItem) {
-      const firstRect = firstItem.getBoundingClientRect();
-      const fifthRect = fifthItem.getBoundingClientRect();
-      // Distance between start of column 1 and start of column 2
-      return Math.abs(fifthRect.left - firstRect.left);
-    }
-
-    // Fallback: divide by 3
+    // Divide container width by 3 to get width of one column
     return carousel.clientWidth / 3;
   };
 
