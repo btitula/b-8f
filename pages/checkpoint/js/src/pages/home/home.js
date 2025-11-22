@@ -291,24 +291,26 @@ function generateQuickPicks() {
           </div>
         </div>
 
-        <div class="flex-1 min-w-0">
-          <h3 class="text-white text-base font-medium truncate mb-1">${pick.title}</h3>
-          <div class="flex items-center gap-2 text-sm text-white/60">
-            <span class="truncate">${pick.artist}</span>
-          </div>
-        </div>
 
-        <!-- Action buttons on the right -->
-        <div class="hidden group-hover:flex items-center gap-1 flex-shrink-0">
-          <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
-            <i class="fa-regular fa-thumbs-up text-white text-lg"></i>
-          </button>
-          <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
-            <i class="fa-regular fa-thumbs-down text-white text-lg"></i>
-          </button>
-          <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
-            <i class="fa-solid fa-ellipsis-vertical text-white text-lg"></i>
-          </button>
+        <div class="flex-1 min-w-0">
+          <div class=" w-full relative hover:bg-black">
+            <h3 class="text-white text-base font-medium truncate mb-1">${pick.title}</h3>
+            <div class="flex items-center gap-2 text-sm text-white/60">
+              <span class="truncate">${pick.artist}</span>
+            </div>  
+          </div>
+
+          <div class="absolute right-2 top-2 hidden group-hover:flex items-center gap-1 hover:bg-black/90 px-2">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
+              <i class="fa-regular fa-thumbs-up text-white text-lg"></i>
+            </button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
+              <i class="fa-regular fa-thumbs-down text-white text-lg"></i>
+            </button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-150">
+              <i class="fa-solid fa-ellipsis-vertical text-white text-lg"></i>
+            </button>
+          </div>
         </div>
       </div>
     `;
