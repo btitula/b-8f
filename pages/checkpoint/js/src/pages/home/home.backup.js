@@ -120,208 +120,183 @@ function generateQuickPicks() {
       artist: "Justin Bieber",
       plays: "1.2B plays",
       album: "Justice",
-      image: quickPicksImageOne,
-      id: 1
+      image: quickPicksImageOne
     },
     {
       title: "Swim",
       artist: "Chase Atlantic",
       plays: "534M plays",
       album: "Chase Atlantic",
-      image: quickPicksImageTwo,
-      id: 2
+      image: quickPicksImageTwo
     },
     {
       title: "Lose My Mind [From F1® The Movie] (feat. Doja Cat)",
       artist: "Don Toliver",
       plays: "137M plays",
       album: "Lose My Mind [From F1® ...]",
-      image: quickPicksImageThree,
-      id: 3
+      image: quickPicksImageThree
     },
     {
       title: "Hà Nội",
       artist: "Obito, Shiki & VSTRA",
       plays: "49M plays",
       album: "Đánh Đổi",
-      image: quickPicksImageFour,
-      id: 4
+      image: quickPicksImageFour
     },
     {
       title: "Moth To A Flame",
       artist: "Swedish House Mafia & Th...",
       plays: "",
       album: "Dawn FM (Alternate Wo...",
-      image: quickPicksImageFive,
-      id: 5
+      image: quickPicksImageFive
     },
     {
       title: "Still With You",
       artist: "Jung Kook",
       plays: "141M plays",
       album: "Still With You",
-      image: quickPicksImageSix,
-      id: 6
+      image: quickPicksImageSix
     },
     {
       title: "CHANEL",
       artist: "Tyla",
       plays: "19M plays",
       album: "CHANEL",
-      image: quickPicksImageSeven,
-      id: 7
+      image: quickPicksImageSeven
     },
     {
       title: "Agora Hills",
       artist: "Doja Cat",
       plays: "388M plays",
       album: "Scarlet",
-      image: quickPicksImageEight,
-      id: 8
+      image: quickPicksImageEight
     },
+    // Additional items for carousel demonstration
     {
       title: "Anti-Hero",
       artist: "Taylor Swift",
       plays: "900M plays",
       album: "Midnights",
-      image: quickPicksImageNine,
-      id: 9
+      image: quickPicksImageNine
     },
     {
       title: "Flowers",
       artist: "Miley Cyrus",
       plays: "1.5B plays",
       album: "Endless Summer Vacation",
-      image: quickPicksImageTen,
-      id: 10
+      image: quickPicksImageTen
     },
     {
       title: "As It Was",
       artist: "Harry Styles",
       plays: "2.1B plays",
       album: "Harry's House",
-      image: quickPicksImageEleven,
-      id: 11
+      image: quickPicksImageEleven
     },
     {
       title: "Calm Down",
       artist: "Rema & Selena Gomez",
       plays: "800M plays",
       album: "Rave & Roses",
-      image: quickPicksImageTwelve,
-      id: 12
+      image: quickPicksImageTwelve
     },
     {
       title: "Kill Bill",
       artist: "SZA",
       plays: "950M plays",
       album: "SOS",
-      image: quickPicksImageThirteen,
-      id: 13
+      image: quickPicksImageThirteen
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      image: quickPicksImageFourteen,
-      id: 14
+      image: quickPicksImageFourteen
     },
     {
       title: "As It Was",
       artist: "Harry Styles",
       plays: "2.1B plays",
       album: "Harry's House",
-      image: quickPicksImageFifteen,
-      id: 15
+      image: quickPicksImageFifteen
     },
     {
       title: "Calm Down",
       artist: "Rema & Selena Gomez",
       plays: "800M plays",
       album: "Rave & Roses",
-      image: quickPicksImageSixteen,
-      id: 16
+      image: quickPicksImageSixteen
     },
     {
       title: "Kill Bill",
       artist: "SZA",
       plays: "950M plays",
       album: "SOS",
-      image: quickPicksImageSeventeen,
-      id: 17
+      image: quickPicksImageSeventeen
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      image: quickPicksImageEighteen,
-      id: 18
+      image: quickPicksImageEighteen
     },
     {
       title: "As It Was",
       artist: "Harry Styles",
       plays: "2.1B plays",
       album: "Harry's House",
-      image: quickPicksImageNineteen,
-      id: 19
+      image: quickPicksImageNineteen
     },
     {
       title: "Calm Down",
       artist: "Rema & Selena Gomez",
       plays: "800M plays",
       album: "Rave & Roses",
-      image: quickPicksImageTwenty,
-      id: 20
+      image: quickPicksImageTwenty
     },
     {
       title: "Kill Bill",
       artist: "SZA",
       plays: "950M plays",
       album: "SOS",
-      image: quickPicksImageTwentyOne,
-      id: 21
+      image: quickPicksImageTwentyOne
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      image: quickPicksImageTwentyTwo,
-      id: 22
+      image: quickPicksImageTwentyTwo
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      image: quickPicksImageTwentyThree,
-      id: 23
+      image: quickPicksImageTwentyThree
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      image: quickPicksImageTwentyFour,
-      id: 24
+      image: quickPicksImageTwentyFour
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      image: quickPicksImageTwentyFive,
-      id: 25
+      image: quickPicksImageTwentyFive
     },
     {
       title: "Creepin'",
       artist: "Metro Boomin, The Weeknd",
       plays: "600M plays",
       album: "Heroes & Villains",
-      image: quickPicksImageTwentySix,
-      id: 26
+      image: quickPicksImageTwentySix
     },
   ];
 
@@ -330,7 +305,7 @@ function generateQuickPicks() {
 
   picks.forEach((pick, index) => {
     html += `
-      <div class="max-w-64 text-white flex items-center gap-4 rounded-md cursor-pointer group relative hover:bg-white/5 transition-colors duration-200" id="quick-pick-${pick.id}">
+      <div class="max-w-64 text-white flex items-center gap-4 rounded-md cursor-pointer group relative hover:bg-white/5 transition-colors duration-200">
         <div class="w-14 h-14 rounded flex-shrink-0 relative overflow-hidden">
           <img src="${pick.image}" alt="${pick.title}" class="w-full h-full object-cover rounded">
 
@@ -384,27 +359,24 @@ function generateTrendingCommunityPlaylists() {
       title: "VN mUSIC",
       artist: "Nguyễn Minh Hoàng",
       image: trendingCommunityPlaylistImageOne,
-      dot: trendingCommunityPlaylistImageDotOne,
-      id: 1
+      dot: trendingCommunityPlaylistImageDotOne
     },
     {
       title: "nhạc",
       artist: "Hằng Hoàng",
       image: trendingCommunityPlaylistImageTwo,
-      dot: trendingCommunityPlaylistImageDotTwo,
-      id: 2
+      dot: trendingCommunityPlaylistImageDotTwo
     },
     {
       title: "Loáy coay kyem moai đồa",
       artist: "Lộc Thành",
       image: trendingCommunityPlaylistImageThree,
-      dot: trendingCommunityPlaylistImageDotThree,
-      id: 3
+      dot: trendingCommunityPlaylistImageDotThree
     }
   ];
 
   return trendingCommunityPlaylists.map(trending => `
-    <div class="carousel-item flex-shrink-0 w-[150px] rounded-md p-1 cursor-pointer transition-all duration-300 group" id="trending-community-playlist-${trending.id}">
+    <div class="carousel-item flex-shrink-0 w-[150px] rounded-md p-1 cursor-pointer transition-all duration-300 group">
       <div class="aspect-square rounded mb-4 relative overflow-hidden">
         <img src="${trending.image}" alt="${trending.title}" class="w-full h-full object-cover">
 
@@ -537,72 +509,63 @@ function generateNewMusicVideosForYou() {
   `).join('');
 }
 
+
 function generateTodayHits() {
   const albums = [
     {
       title: "The Hit List",
       subTitle: "KPop Demon Hunters Cast, Tate McRae, Sabrina Carpenter, Morgan Wallen",
-      image: todayHitImageOne,
-      id: 1
+      image: todayHitImageOne
     },
     {
       title: "K-HITLIST",
       subTitle: "IVE, aespa, BABYMONSTER, i-dle",
-      image: todayHitImageTwo,
-      id: 2
+      image: todayHitImageTwo
     },
     {
       title: "Bollywood Hitlist",
       subTitle: "Amitabh Bhattacharya, Arijit Singh, Sachin-Jigar, Tanishk Bagchi",
-      image: todayHitImageThree,
-      id: 3
+      image: todayHitImageThree
     },
     {
       title: "NEON: Pop Hits",
       subTitle: "Tate McRae, Taylor Swift, Zara Larsson, Demi Lovato",
-      image: todayHitImageFour,
-      id: 4
+      image: todayHitImageFour
     },
     {
       title: "Tollywood Hitlist",
       subTitle: "Anirudh Ravichander, Thaman S, Krishna Kanth, M. M. Keeravaani",
-      image: todayHitImageFive,
-      id: 5
+      image: todayHitImageFive
     },
     {
       title: "K.ING",
       subTitle: "aespa, IVE, LE SSERAFIM, NewJeans",
-      image: todayHitImageSix,
-      id: 6
+      image: todayHitImageSix
     },
     {
       title: "Chroma: Today's Dance Hits",
       subTitle: "David Guetta, Tiësto, Martin Garrix, Hayla",
-      image: todayHitImageSeven,
-      id: 7
+      image: todayHitImageSeven
     },
     {
       title: "Noise Riot: Rock Hits",
       subTitle: "Falling In Reverse, YUNGBLUD, Bad Omens, Poppy",
-      image: todayHitImageEight,
-      id: 8
+      image: todayHitImageEight
     },
     {
       title: "J-Hits!",
       subTitle: "Mrs. GREEN APPLE, Kenshi Yonezu, HANA, natori",
-      image: todayHitImageNine,
-      id: 9
+      image: todayHitImageNine
     },
     {
       title: "Heavy Stereo: Indie Rock",
       subTitle: "Sam Fender, The Charlatans, Wolf Alice, Mumford & Sons",
-      image: todayHitImageTen,
-      id: 10
+      image: todayHitImageTen
     },
   ];
 
   return albums.map(album => `
-    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group" id="today-hit-${album.id}">
+    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group">
       <div class="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 rounded mb-4 relative overflow-hidden">
         <img src="${album.image}" alt="${album.title}" class="w-full h-full object-cover">
 
@@ -633,56 +596,48 @@ function generateAlbumsForYou() {
     {
       title: "Ruby",
       subTitle: "Album • JENNIE",
-      image: albumsForYouImageOne,
-      id: 1
+      image: albumsForYouImageOne
     },
+
     {
       title: "KPop Demon Hunters(Soundtrack from the Netflix Film)",
       subTitle: "Album • KPop Demon",
-      image: albumsForYouImageTwo,
-      id: 2
+      image: albumsForYouImageTwo
     },
     {
       title: "Dear Min",
       subTitle: "Album • MIN",
-      image: albumsForYouImageThree,
-      id: 3
+      image: albumsForYouImageThree
     },
     {
       title: "Nine Track Mind(Japan Special Edition)",
       subTitle: "Album • Charlie Puth",
-      image: albumsForYouImageFour,
-      id: 4
+      image: albumsForYouImageFour
     },
     {
       title: "Starboy",
       subTitle: "Album • The Weeknd",
-      image: albumsForYouImageFive,
-      id: 5
+      image: albumsForYouImageFive
     },
     {
       title: "KPop Demon Hunters(Soundtrack from the Netflix Film)",
       subTitle: "Album • KPop Demon",
-      image: albumsForYouImageSeven,
-      id: 7
+      image: albumsForYouImageSeven
     },
     {
       title: "Gieo",
       subTitle: "Album • Ngọt",
-      image: albumsForYouImageEight,
-      id: 8
+      image: albumsForYouImageEight
     },
     {
       title: "m-tp M-TP",
       subTitle: "Album • Sơn Tùng M-TP",
-      image: albumsForYouImageNine,
-      id: 9
+      image: albumsForYouImageNine
     },
     {
       title: "YOSHO HAI MONTAGEM",
       subTitle: "Album • Torbahed, ZODIVK & BLOK3",
-      image: albumsForYouImageTen,
-      id: 10
+      image: albumsForYouImageTen
     },
   ];
 
@@ -712,6 +667,7 @@ function generateAlbumsForYou() {
     </div>
   `).join('');
 }
+
 
 function generateListenAgain() {
   const items = [
@@ -749,11 +705,17 @@ function tellUsWhichArtistsYouLikeImage() {
   `;
 }
 
+/**
+ * 
+ * @returns     <button class="flex items-center gap-2 text-white hover:text-blue-500 [&_svg]:w-5 [&_svg]:h-5">
+      ${menuRightClickStartMixSvg}
+    </button>
+ */
 
 function generateMenuRightClick() {
   return `
     <ul class="py-2 text-[15px] bg-[#232323] border-[0.5px] border-white/20 text-white font-light shadow-xl ring-1 ring-black/10 role="menu" aria-orientation="vertical">
-      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-start-mix"
+      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="remove"
         role="menuitem">
         <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickStartMixSvg}
@@ -761,7 +723,7 @@ function generateMenuRightClick() {
         </span>
       </li>
 
-      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-play-next"
+      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="remove"
         role="menuitem">
         <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickPlayNextSvg}
@@ -769,7 +731,7 @@ function generateMenuRightClick() {
         </span>
       </li>
 
-      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-add-to-queue"
+      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="remove"
         role="menuitem">
         <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickAddToQueueSvg}
@@ -777,7 +739,7 @@ function generateMenuRightClick() {
         </span>
       </li>
 
-      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-add-to-liked-songs"
+      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="remove"
         role="menuitem">
         <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickAddToLikedSongsSvg}
@@ -785,7 +747,7 @@ function generateMenuRightClick() {
         </span>
       </li>
 
-      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-save-to-playlist"
+      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="remove"
         role="menuitem">
         <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickSaveToPlaylistSvg}
@@ -793,7 +755,7 @@ function generateMenuRightClick() {
         </span>
       </li>
 
-      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-share"
+      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="remove"
         role="menuitem">
         <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickShareSvg}
@@ -801,7 +763,7 @@ function generateMenuRightClick() {
         </span>
       </li>
 
-      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-not-interested"
+      <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="remove"
         role="menuitem">
         <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickNotInterestedSvg}
@@ -1035,6 +997,20 @@ export function initCarouselAlbumsForYou() {
   carousel.addEventListener('scroll', updateButtonStates);
   updateButtonStates(); // Initial state
 }
+
+
+const hideMenu = (contextMenu, contextTarget) => {
+  contextMenu.classList.add('hidden');
+  contextTarget?.classList.remove('bg-[#6a3ee6]');
+  contextTarget = null;
+}
+
+const placeMenu = (contextMenu, x, y) => {
+  // Đặt toạ độ ban đầu theo vị trí chuột
+  contextMenu.style.left = x + 'px';
+  contextMenu.style.top = y + 'px';
+  contextMenu.classList.remove('hidden');
+};
 
 
 const Home = async () => {
