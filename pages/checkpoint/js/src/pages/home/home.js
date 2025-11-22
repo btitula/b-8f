@@ -752,10 +752,10 @@ function tellUsWhichArtistsYouLikeImage() {
 
 function generateMenuRightClick() {
   return `
-    <ul class="py-2 text-[15px] bg-[#232323] border-[0.5px] border-white/20 text-white font-light shadow-xl ring-1 ring-black/10 role="menu" aria-orientation="vertical">
+    <ul class="py-2 text-sm rounded-md bg-[#232323] border-[0.5px] border-white/20 text-white font-light shadow-xl ring-1 ring-black/10 role="menu" aria-orientation="vertical">
       <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-start-mix"
         role="menuitem">
-        <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
+        <span class="flex items-center gap-3 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickStartMixSvg}
           <p>Start mix</p>
         </span>
@@ -763,7 +763,7 @@ function generateMenuRightClick() {
 
       <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-play-next"
         role="menuitem">
-        <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
+        <span class="flex items-center gap-3 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickPlayNextSvg}
           <p>Play next</p>
         </span>
@@ -771,7 +771,7 @@ function generateMenuRightClick() {
 
       <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-add-to-queue"
         role="menuitem">
-        <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
+        <span class="flex items-center gap-3 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickAddToQueueSvg}
           <p>Add to queue</p>
         </span>
@@ -779,7 +779,7 @@ function generateMenuRightClick() {
 
       <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-add-to-liked-songs"
         role="menuitem">
-        <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
+        <span class="flex items-center gap-3 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickAddToLikedSongsSvg}
           <p>Add to liked songs</p>
         </span>
@@ -787,7 +787,7 @@ function generateMenuRightClick() {
 
       <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-save-to-playlist"
         role="menuitem">
-        <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
+        <span class="flex items-center gap-3 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickSaveToPlaylistSvg}
           <p>Save to playlist</p>
         </span>
@@ -795,7 +795,7 @@ function generateMenuRightClick() {
 
       <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-share"
         role="menuitem">
-        <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
+        <span class="flex items-center gap-3 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickShareSvg}
           <p>Share</p>
         </span>
@@ -803,7 +803,7 @@ function generateMenuRightClick() {
 
       <li class="px-3 py-2 hover:bg-[#414141]/40 transition-all duration-100 flex items-center gap-3 cursor-pointer" data-action="right-click-not-interested"
         role="menuitem">
-        <span class="flex items-center gap-2 text-white [&_svg]:w-5 [&_svg]:h-5">
+        <span class="flex items-center gap-3 text-white [&_svg]:w-5 [&_svg]:h-5">
           ${menuRightClickNotInterestedSvg}
           <p>Not interested</p>
         </span>
