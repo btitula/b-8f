@@ -1,4 +1,5 @@
 import headerHtml from "./header.html?raw";
+import Login from "@/components/login/login.js";
 
 import menuRightClickGetMusicPremiumSvg from "@/assets/images/header/menuRightClick/getMusicPremium.svg?raw";
 import menuRightClickSettingsSvg from "@/assets/images/header/menuRightClick/settings.svg?raw";
@@ -10,6 +11,89 @@ import menuRightClickSwitchAccountSvg from "@/assets/images/header/menuRightClic
 import menuRightClickSignOutSvg from "@/assets/images/header/menuRightClickAuthenticated/signOut.svg?raw";
 import menuRightClickUploadMusicSvg from "@/assets/images/header/menuRightClickAuthenticated/uploadMusic.svg?raw";
 import menuRightClickHistorySvg from "@/assets/images/header/menuRightClickAuthenticated/history.svg?raw";
+
+// Shared function to open login modal
+export async function openLoginModal() {
+  // Check if modal already exists
+  let modalOverlay = document.getElementById('modal-login-overlay');
+
+  if (!modalOverlay) {
+    // Create modal overlay
+    modalOverlay = document.createElement('div');
+    modalOverlay.id = 'modal-login-overlay';
+    modalOverlay.className = 'fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center opacity-0 transition-opacity duration-300';
+
+    // Get login HTML
+    const loginContent = await Login();
+
+    // Set the modal content directly
+    modalOverlay.innerHTML = `
+      <button class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors z-[10000]" id="close-login-modal">
+        &times;
+      </button>
+      ${loginContent}
+    `;
+
+    document.body.appendChild(modalOverlay);
+
+    // Execute scripts from login.html
+    const signUpButton = document.getElementById('signUp');
+    const signInButtonLogin = document.getElementById('signIn');
+    const container = document.getElementById('container-login');
+
+    signUpButton?.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+
+    signInButtonLogin?.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+
+    // Add close button handler
+    const closeButton = document.getElementById('close-login-modal');
+    closeButton?.addEventListener('click', () => {
+      modalOverlay.classList.remove('opacity-100');
+      modalOverlay.classList.add('opacity-0');
+      setTimeout(() => {
+        modalOverlay.remove();
+      }, 300);
+    });
+
+    // Close on overlay click (outside modal)
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.classList.remove('opacity-100');
+        modalOverlay.classList.add('opacity-0');
+        setTimeout(() => {
+          modalOverlay.remove();
+        }, 300);
+      }
+    });
+
+    // Close on ESC key
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        modalOverlay.classList.remove('opacity-100');
+        modalOverlay.classList.add('opacity-0');
+        setTimeout(() => {
+          modalOverlay.remove();
+          document.removeEventListener('keydown', handleEscape);
+        }, 300);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+
+    // Trigger animation
+    setTimeout(() => {
+      modalOverlay.classList.remove('opacity-0');
+      modalOverlay.classList.add('opacity-100');
+    }, 10);
+  } else {
+    // Show existing modal
+    modalOverlay.classList.remove('opacity-0');
+    modalOverlay.classList.add('opacity-100');
+  }
+}
 
 function generateMenuRightClick() {
   return `
@@ -238,6 +322,15 @@ export function initHeaderAuthenticatedPopup() {
       popup.classList.remove('pointer-events-auto');
       popup.classList.add('pointer-events-none');
     }
+  });
+}
+
+export async function initSignInButton() {
+  const signInButton = document.querySelector('.button-signin-header');
+
+  signInButton?.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await openLoginModal();
   });
 }
 
