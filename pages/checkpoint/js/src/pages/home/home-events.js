@@ -166,8 +166,56 @@ export function initContextMenus() {
   });
 }
 
+/**
+ * Initialize "Let's go" button popup
+ */
+function initLetsGoPopup() {
+  const button = document.getElementById('button-lets-go-home');
+  const popup = document.getElementById('signin-popup');
+
+  if (!button || !popup) {
+    console.error('Lets go button not found');
+    return;
+  }
+
+  // Helper function to show popup
+  const showPopup = () => {
+    popup.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+    popup.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+  };
+
+  // Helper function to hide popup
+  const hidePopup = () => {
+    popup.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+    popup.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+  };
+
+  // Toggle popup when clicking the button
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    // Check if popup is currently visible
+    const isVisible = popup.classList.contains('opacity-100');
+
+    if (isVisible) {
+      hidePopup();
+    } else {
+      showPopup();
+    }
+  });
+
+  // Hide popup when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!popup.contains(e.target) && !button.contains(e.target)) {
+      hidePopup();
+    }
+  });
+
+}
+
 export function initHomeEvents() {
   initContextMenus();
+  initLetsGoPopup();
 
   // Add other event initializers here
   // initPlayButtons();
