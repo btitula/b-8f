@@ -10,7 +10,11 @@
       </form>
     </div>
 
-    <ul class=" flex items-center gap-4 text-white">
+    <!--
+      Unauthenticated header
+    -->
+
+    <!-- <ul class=" flex items-center gap-4 text-white">
       <li>
         <a href="#">
           <i class="fa-brands fa-chromecast text-2xl"></i>
@@ -31,6 +35,29 @@
           Sign in
         </button>
       </li>
+    </ul> -->
+
+    <!--
+      Authenticated header
+    -->
+    <ul class=" flex items-center gap-4 text-white">
+      <li>
+        <a href="#">
+          <i class="fa-brands fa-chromecast text-2xl"></i>
+        </a>
+      </li>
+      <li class="relative">
+        <a href="#">
+          <span id="header-authenticated-user"
+            class="text-sm p-2 bg-pink-400 rounded-full border border-white/80">US</span>
+        </a>
+
+        <div id="header-authenticated-popup"
+          class="w-72 rounded-sm absolute top-full right-0 mt-2 z-10 opacity-0 scale-0 pointer-events-none transition-all duration-300 ease-out origin-top-right">
+          ${generateMenuRightClickAuthenticated()}
+        </div>
+      </li>
     </ul>
+
   </div>
 </div>

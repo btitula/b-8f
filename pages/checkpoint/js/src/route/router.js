@@ -1,6 +1,7 @@
 import Navigo from "navigo";
 import Explore from "../pages/Explore";
 import Library from "../pages/Library";
+import Login from "@/components/login/login";
 import Home, { initCarouselTodayHits, initCarouselQuickPicks, initCarouselAlbumsForYou, initCarouselNewMusicVideosForYou } from "@/pages/home/home";
 import { initHomeEvents } from "@/pages/home/home-events";
 import ChannelDetail from "../pages/ChannelDetail";
