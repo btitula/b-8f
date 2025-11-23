@@ -725,7 +725,8 @@ function generateAlbumsForYou() {
 }
 
 function generateListenAgain() {
-  const items = [    { title: "Indie Mix", artist: "Your personal mix" },
+  const items = [
+    { title: "Indie Mix", artist: "Your personal mix" },
     { title: "Daily Mix 1", artist: "Pop & Rock" },
     { title: "Daily Mix 2", artist: "Electronic" },
     { title: "Discover Weekly", artist: "Your weekly mixtape" },
@@ -746,8 +747,8 @@ function generateListenAgain() {
   `).join('');
 }
 
-function getHelloMessage() {
-  const helloMessage = dateTimeUtils.getHelloMessage();
+async function getHelloMessage() {
+  const helloMessage = await dateTimeUtils.getHelloMessage();
   console.log(`helloMessage: ${helloMessage}`);
   return helloMessage;
 }
