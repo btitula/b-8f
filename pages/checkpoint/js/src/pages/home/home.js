@@ -615,9 +615,18 @@ function generateTodayHits() {
   ];
 
   return albums.map(album => `
-    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group" id="today-hit-${album.id}">
+    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group" id="today-hit-${album.id}" data-album-id="${album.id}">
       <div class="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 rounded mb-4 relative overflow-hidden">
         <img src="${album.image}" alt="${album.title}" class="w-full h-full object-cover">
+
+        <!-- Audio Wave Bars (shows when playing) -->
+        <div class="audio-wave">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
         <!-- Hover Overlay -->
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
@@ -1077,15 +1086,17 @@ export function initTodayHitsPlayButtons() {
         const title = card.querySelector('h3').textContent;
         const image = card.querySelector('img').src;
 
-        // Hide all play buttons and show all stop buttons (reset other cards)
+        // Remove playing state from all cards
         document.querySelectorAll('[id^="today-hit-"]').forEach(otherCard => {
           otherCard.querySelector('.play-button')?.classList.remove('hidden');
           otherCard.querySelector('.stop-button')?.classList.add('hidden');
+          otherCard.classList.remove('today-hit-playing');
         });
 
         // Hide this play button and show stop button
         playButton.classList.add('hidden');
         stopButton.classList.remove('hidden');
+        card.classList.add('today-hit-playing');
 
         // Load and play the song
         musicPlayer.loadSong({
@@ -1104,6 +1115,7 @@ export function initTodayHitsPlayButtons() {
         // Show play button and hide stop button
         playButton.classList.remove('hidden');
         stopButton.classList.add('hidden');
+        card.classList.remove('today-hit-playing');
 
         // Pause the music
         musicPlayer.pause();
