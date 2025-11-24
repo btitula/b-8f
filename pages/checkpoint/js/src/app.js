@@ -2,6 +2,7 @@
 import SideBar from "@/components/sideBar/sideBar";
 import Header from "@/components/header/header";
 import Footer from "@/components/Footer";
+import MusicBar from "@/components/musicBar/musicBar";
 
 const app = async () => {
   return `
@@ -12,6 +13,7 @@ const app = async () => {
         <main id="js-body" class="p-4 h-full overflow-auto"></main>
       </div>
     </div>
+    ${await MusicBar()}
   `
 }
 

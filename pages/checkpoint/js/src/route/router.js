@@ -2,7 +2,11 @@ import Navigo from "navigo";
 import Explore from "../pages/Explore";
 import Library from "../pages/Library";
 import Login from "@/components/login/login";
-import Home, { initCarouselTodayHits, initCarouselQuickPicks, initCarouselAlbumsForYou, initCarouselNewMusicVideosForYou } from "@/pages/home/home";
+import Home, {
+    initCarouselTodayHits, initCarouselQuickPicks, initCarouselAlbumsForYou,
+    initCarouselNewMusicVideosForYou, initTodayHitsPlayButtons
+} from "@/pages/home/home";
+import musicPlayer from "@/utils/musicPlayer";
 import { initHomeEvents } from "@/pages/home/home-events";
 import ChannelDetail from "../pages/ChannelDetail";
 
@@ -24,6 +28,9 @@ const initRouter = async () => {
                 initCarouselAlbumsForYou();
                 initCarouselNewMusicVideosForYou();
                 initHomeEvents();
+                // Initialize music player
+                musicPlayer.init();
+                initTodayHitsPlayButtons();
             }, 0);
         })
         .on("/explore", () => {

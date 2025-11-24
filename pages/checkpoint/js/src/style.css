@@ -192,3 +192,44 @@ body {
   right: 0;
   /* background: linear-gradient(to left, rgba(2, 2, 2, 0.8), transparent); */
 }
+
+.progress-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  height: 2px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-container:hover {
+  height: 4px;
+}
+
+.progress {
+  background-color: #ff0000;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.progress-container:hover .progress::after {
+  opacity: 1;
+}

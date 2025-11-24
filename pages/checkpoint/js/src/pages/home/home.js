@@ -1,4 +1,5 @@
 import { dateTimeUtils } from "@/utils/dateTime";
+import musicPlayer from "@/utils/musicPlayer";
 import homeHtml from "./home.html?raw";
 
 
@@ -725,11 +726,11 @@ function generateAlbumsForYou() {
 }
 
 function generateListenAgain() {
-  const items = [    { title: "Indie Mix", artist: "Your personal mix" },
-    { title: "Daily Mix 1", artist: "Pop & Rock" },
-    { title: "Daily Mix 2", artist: "Electronic" },
-    { title: "Discover Weekly", artist: "Your weekly mixtape" },
-    { title: "Release Radar", artist: "New music friday" },
+  const items = [{ title: "Indie Mix", artist: "Your personal mix" },
+  { title: "Daily Mix 1", artist: "Pop & Rock" },
+  { title: "Daily Mix 2", artist: "Electronic" },
+  { title: "Discover Weekly", artist: "Your weekly mixtape" },
+  { title: "Release Radar", artist: "New music friday" },
   ];
 
   return items.map(item => `
@@ -1048,6 +1049,34 @@ export function initCarouselAlbumsForYou() {
   updateButtonStates(); // Initial state
 }
 
+export function initTodayHitsPlayButtons() {
+  // Get all today hit cards
+  const todayHitCards = document.querySelectorAll('[id^="today-hit-"]');
+
+  todayHitCards.forEach((card) => {
+    // Find the play button within each card
+    const playButton = card.querySelector('.fa-play').closest('button');
+
+    if (playButton) {
+      playButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent card click event
+
+        // Get the album title from the card
+        const title = card.querySelector('h3').textContent;
+        const image = card.querySelector('img').src;
+
+        // Load and play the song
+        musicPlayer.loadSong({
+          title: title,
+          image: image,
+          file: '/src/assets/music/cay.mp3' // Your music file path
+        });
+
+        musicPlayer.play();
+      });
+    }
+  });
+}
 
 const Home = async () => {
   // Convert the HTML string to a template by evaluating it
