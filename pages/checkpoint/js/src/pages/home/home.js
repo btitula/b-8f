@@ -2,6 +2,7 @@ import { dateTimeUtils } from "@/utils/dateTime";
 import musicPlayer from "@/utils/musicPlayer";
 import homeHtml from "./home.html?raw";
 
+import musicSongCay from "@/assets/music/cay.mp3";
 
 import menuRightClickPlayNextSvg from "@/assets/images/home/menuRightClick/playNext.svg?raw";
 import menuRightClickAddToQueueSvg from "@/assets/images/home/menuRightClick/addToQueue.svg?raw";
@@ -1069,7 +1070,7 @@ export function initTodayHitsPlayButtons() {
         musicPlayer.loadSong({
           title: title,
           image: image,
-          file: '/src/assets/music/cay.mp3' // Your music file path
+          file: musicSongCay
         });
 
         musicPlayer.play();
