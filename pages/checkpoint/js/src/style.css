@@ -233,3 +233,34 @@ body {
 .progress-container:hover .progress::after {
   opacity: 1;
 }
+
+/* Music bar song cover animation */
+#song-cover {
+  transition: transform 0.3s ease;
+}
+
+#song-cover.rotating {
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Today Hits Play/Stop Button States */
+.play-button.hidden {
+  display: none !important;
+}
+
+.stop-button.hidden {
+  display: none !important;
+}
+
+.stop-button:not(.hidden) {
+  display: flex !important;
+}

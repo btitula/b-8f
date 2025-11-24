@@ -82,6 +82,10 @@ class MusicPlayer {
     this.audio.play();
     this.isPlaying = true;
     this.updatePlayButton();
+
+    if (this.songCoverEl) {
+      this.songCoverEl.classList.add('rotating');
+    }
   }
 
   // Pause the song
@@ -89,6 +93,10 @@ class MusicPlayer {
     this.audio.pause();
     this.isPlaying = false;
     this.updatePlayButton();
+
+    if (this.songCoverEl) {
+      this.songCoverEl.classList.remove('rotating');
+    }
   }
 
   // Update play/pause button icon
