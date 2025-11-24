@@ -1098,6 +1098,9 @@ export function initTodayHitsPlayButtons() {
         stopButton.classList.remove('hidden');
         card.classList.add('today-hit-playing');
 
+        // Track the currently playing card
+        musicPlayer.currentPlayingCard = card;
+
         // Load and play the song
         musicPlayer.loadSong({
           title: title,
@@ -1118,7 +1121,7 @@ export function initTodayHitsPlayButtons() {
         card.classList.remove('today-hit-playing');
 
         // Pause the music
-        musicPlayer.pause();
+        musicPlayer.stop();
       });
     }
   });

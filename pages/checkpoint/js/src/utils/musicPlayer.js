@@ -13,6 +13,7 @@ class MusicPlayer {
     this.musicBar = null;
     this.isPlaying = false;
     this.currentSong = null;
+    this.currentPlayingCard = null;
   }
 
   // Initialize the player with DOM elements
@@ -86,6 +87,20 @@ class MusicPlayer {
     if (this.songCoverEl) {
       this.songCoverEl.classList.add('rotating');
     }
+
+    // Re-add animation to the currently playing card
+    if (this.currentPlayingCard) {
+      this.currentPlayingCard.classList.add('today-hit-playing');
+
+      // Show stop button and hide play button
+      const playButton = this.currentPlayingCard.querySelector('.play-button');
+      const stopButton = this.currentPlayingCard.querySelector('.stop-button');
+
+      if (playButton && stopButton) {
+        playButton.classList.add('hidden');
+        stopButton.classList.remove('hidden');
+      }
+    }
   }
 
   // Pause the song
@@ -96,6 +111,20 @@ class MusicPlayer {
 
     if (this.songCoverEl) {
       this.songCoverEl.classList.remove('rotating');
+    }
+
+    // Remove animation from the currently playing card
+    if (this.currentPlayingCard) {
+      this.currentPlayingCard.classList.remove('today-hit-playing');
+
+      // Reset play/stop buttons
+      const playButton = this.currentPlayingCard.querySelector('.play-button');
+      const stopButton = this.currentPlayingCard.querySelector('.stop-button');
+
+      if (playButton && stopButton) {
+        playButton.classList.remove('hidden');
+        stopButton.classList.add('hidden');
+      }
     }
   }
 
