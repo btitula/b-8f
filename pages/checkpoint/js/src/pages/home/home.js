@@ -615,19 +615,37 @@ function generateTodayHits() {
   ];
 
   return albums.map(album => `
-    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group" id="today-hit-${album.id}">
+    <div class="carousel-item flex-shrink-0 rounded-md p-1 cursor-pointer transition-all duration-300 group" id="today-hit-${album.id}" data-album-id="${album.id}">
       <div class="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 rounded mb-4 relative overflow-hidden">
         <img src="${album.image}" alt="${album.title}" class="w-full h-full object-cover">
+
+        <!-- Audio Wave Bars (shows when playing) -->
+        <div class="audio-wave">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
         <!-- Hover Overlay -->
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
 
         <div>
-          <button class="absolute bottom-2 right-2 w-12 h-12 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg cursor-pointer hover:bg-black/80 hover:scale-110 transition-all duration-300">
+          <button class="play-button absolute bottom-2 right-2 w-12 h-12 bg-black/40 rounded-full flex items-center 
+        justify-center opacity-0 group-hover:opacity-100 shadow-lg cursor-pointer hover:bg-black/80 hover:scale-110 
+        transition-all duration-300">
             <i class="fa-solid fa-play text-white text-xl"></i>
           </button>
 
-          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300">
+          <button class="stop-button hidden absolute bottom-2 right-2 w-12 h-12 bg-black/40 rounded-full flex items-center 
+        justify-center opacity-100 shadow-lg cursor-pointer hover:bg-black/80 hover:scale-110 transition-all duration-300">
+            <i class="fa-solid fa-stop text-white text-xl"></i>
+          </button>
+
+          <button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-white opacity-0 
+        group-hover:opacity-100 shadow-lg rounded-full cursor-pointer hover:bg-white/30 hover:scale-110 transition-all 
+        duration-300">
             <i class="fa-solid fa-ellipsis-vertical text-white text-md"></i>
           </button>
         </div>
@@ -1055,16 +1073,30 @@ export function initTodayHitsPlayButtons() {
   const todayHitCards = document.querySelectorAll('[id^="today-hit-"]');
 
   todayHitCards.forEach((card) => {
-    // Find the play button within each card
-    const playButton = card.querySelector('.fa-play').closest('button');
+    // Find the play and stop buttons within each card
+    const playButton = card.querySelector('.play-button');
+    const stopButton = card.querySelector('.stop-button');
 
-    if (playButton) {
+    if (playButton && stopButton) {
+      // Play button click handler
       playButton.addEventListener('click', (e) => {
         e.stopPropagation(); // Prevent card click event
 
-        // Get the album title from the card
+        // Get the album title and image from the card
         const title = card.querySelector('h3').textContent;
         const image = card.querySelector('img').src;
+
+        // Remove playing state from all cards
+        document.querySelectorAll('[id^="today-hit-"]').forEach(otherCard => {
+          otherCard.querySelector('.play-button')?.classList.remove('hidden');
+          otherCard.querySelector('.stop-button')?.classList.add('hidden');
+          otherCard.classList.remove('today-hit-playing');
+        });
+
+        // Hide this play button and show stop button
+        playButton.classList.add('hidden');
+        stopButton.classList.remove('hidden');
+        card.classList.add('today-hit-playing');
 
         // Load and play the song
         musicPlayer.loadSong({
@@ -1074,6 +1106,19 @@ export function initTodayHitsPlayButtons() {
         });
 
         musicPlayer.play();
+      });
+
+      // Stop button click handler
+      stopButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent card click event
+
+        // Show play button and hide stop button
+        playButton.classList.remove('hidden');
+        stopButton.classList.add('hidden');
+        card.classList.remove('today-hit-playing');
+
+        // Pause the music
+        musicPlayer.pause();
       });
     }
   });
