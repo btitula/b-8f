@@ -135,7 +135,7 @@ export default function Modal({ isOpen, onClose, post }) {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-[#B0A8B9] hover:text-[#4B4453] transition-colors z-20"
+              className="cursor-pointer absolute top-4 right-4 text-[#B0A8B9] hover:text-[#4B4453] transition-colors z-20"
               aria-label="Close modal"
             >
               <i className="fa-solid fa-xmark text-2xl"></i>
@@ -162,7 +162,7 @@ export default function Modal({ isOpen, onClose, post }) {
               {/* Author Info - Clickable */}
               <div
                 onClick={toggleAuthorPanel}
-                className="flex items-center mb-6 pb-6 border-b border-[#B0A8B9]/30 cursor-pointer hover:bg-[#FEF6FF] p-4 -mx-4 transition-colors group"
+                className="flex items-center mb-6 pb-6 cursor-pointer hover:bg-[#FEF6FF] p-4 -mx-4 transition-colors group"
               >
                 {post.author.avatar ? (
                   <img
@@ -198,7 +198,7 @@ export default function Modal({ isOpen, onClose, post }) {
               </div>
 
               {/* Reactions */}
-              <div className="flex items-center gap-6 pt-6 border-t border-[#B0A8B9]/30 mb-8">
+              <div className="flex items-center gap-6 pt-6 mb-8">
                 <button className="flex items-center gap-2 text-[#B0A8B9] hover:text-[#845EC2] transition-colors">
                   <i className="fa-regular fa-heart text-xl"></i>
                   <span className="font-medium">{post.reactions.likes} Likes</span>
@@ -229,7 +229,7 @@ export default function Modal({ isOpen, onClose, post }) {
                     {comments.map((comment) => (
                       <div
                         key={comment.id}
-                        className="bg-[#FEF6FF] rounded-lg p-4 hover:bg-white border border-[#B0A8B9]/20 transition-colors"
+                        className="bg-[#B0A8B9]/5 rounded-lg p-4 hover:bg-white border border-[#B0A8B9]/20 transition-colors"
                       >
                         {/* Comment Header */}
                         <div className="flex items-start justify-between mb-2">
