@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../utils/axios';
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 export default function Modal({ isOpen, onClose, post }) {
   const [comments, setComments] = useState([]);
@@ -174,7 +175,7 @@ export default function Modal({ isOpen, onClose, post }) {
                     {post.author.fullName.charAt(0).toUpperCase()}
                   </div>
                 )}
-                <div className="flex-1">
+                <div data-tooltip-id="user-info-tooltip" className="flex-1">
                   <p className="text-[#4B4453] font-semibold text-lg group-hover:text-[#845EC2] transition-colors">
                     {post.author.fullName}
                   </p>
@@ -184,6 +185,10 @@ export default function Modal({ isOpen, onClose, post }) {
                 </div>
                 <i className={`fa-solid ${showAuthorPanel ? 'fa-circle-chevron-left' : 'fa-circle-chevron-right'} text-[#B0A8B9] group-hover:text-[#845EC2] transition-all duration-300`}></i>
               </div>
+
+              {
+                <ReactTooltip id="user-info-tooltip" place="top" content={showAuthorPanel ? 'Click to close author information' : 'Click to view author information'} />
+              }
 
               {/* Post Content */}
               <div className="prose max-w-none mb-6">
