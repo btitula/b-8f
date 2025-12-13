@@ -2,15 +2,23 @@ import React from 'react';
 
 export default function PostCard({ post, onOpenModal }) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300 cursor-pointer">
-      <div className="mb-4">
+    <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer relative border border-[#B0A8B9]/20">
+      {/* Post ID Badge */}
+      <div className="absolute top-4 right-4">
+        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#845EC2] text-white shadow-md">
+          <i className="fa-solid fa-hashtag mr-1 text-xs"></i>
+          {post.id}
+        </span>
+      </div>
+
+      <div className="mb-4 pr-16">
         <h2
-          className="text-2xl font-bold text-gray-800 mb-2 hover:text-blue-600"
+          className="text-2xl font-bold text-[#4B4453] mb-2 hover:text-[#845EC2] transition-colors"
           onClick={() => onOpenModal(post)}
         >
           {post.title}
         </h2>
-        <p className="text-gray-600 line-clamp-3">{post.description}</p>
+        <p className="text-[#B0A8B9] line-clamp-3">{post.description}</p>
       </div>
 
       {/* Tags */}
@@ -18,7 +26,7 @@ export default function PostCard({ post, onOpenModal }) {
         {post.tags.map((tag, index) => (
           <span
             key={index}
-            className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
+            className="px-3 py-1 bg-[#00896F] text-white text-sm rounded-full shadow-sm"
           >
             #{tag}
           </span>
@@ -26,33 +34,33 @@ export default function PostCard({ post, onOpenModal }) {
       </div>
 
       {/* Author and Reactions */}
-      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+      <div className="flex items-center justify-between pt-4 border-t border-[#B0A8B9]/30">
         <div className="flex items-center">
           {post.author.avatar ? (
             <img
               src={post.author.avatar}
               alt={post.author.fullName}
-              className="w-8 h-8 rounded-full mr-2 object-cover"
+              className="w-8 h-8 rounded-full mr-2 object-cover border-2 border-[#845EC2]/30"
             />
           ) : (
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold mr-2">
+            <div className="w-8 h-8 bg-[#845EC2] rounded-full flex items-center justify-center text-white font-semibold mr-2 shadow-md">
               {post.author.fullName.charAt(0).toUpperCase()}
             </div>
           )}
-          <span className="text-sm text-gray-700 font-medium">{post.author.fullName}</span>
+          <span className="text-sm text-[#4B4453] font-medium">{post.author.fullName}</span>
         </div>
 
         {/* Reaction Icons */}
         <div className="flex items-center gap-4">
-          <button className="flex items-center gap-1 text-gray-600 hover:text-red-500 transition-colors">
+          <button className="flex items-center gap-1 text-[#B0A8B9] hover:text-[#845EC2] transition-colors">
             <i className="fa-regular fa-heart"></i>
             <span className="text-sm">{post.reactions.likes}</span>
           </button>
-          <button className="flex items-center gap-1 text-gray-600 hover:text-blue-500 transition-colors">
+          <button className="flex items-center gap-1 text-[#B0A8B9] hover:text-[#845EC2] transition-colors">
             <i className="fa-regular fa-thumbs-down"></i>
             <span className="text-sm">{post.reactions.dislikes}</span>
           </button>
-          <div className="flex items-center gap-1 text-gray-600">
+          <div className="flex items-center gap-1 text-[#B0A8B9]">
             <i className="fa-regular fa-eye"></i>
             <span className="text-sm">{post.reactions.views}</span>
           </div>
