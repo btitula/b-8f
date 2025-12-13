@@ -30,7 +30,19 @@ export default function Modal({ isOpen, onClose, post }) {
         try {
           setLoadingComments(true);
           const response = await axiosInstance.get(`/comments/post/${post.id}`);
-          setComments(response.data.comments);
+          const commentsWithUserInfo = await Promise.all(response.data.comments.map(async (comment) => {
+            const userInfo = await getCommentUserInfo(comment.user.id);
+            console.log(userInfo);
+            return {
+              ...comment,
+              user: {
+                fullName: userInfo?.firstName + ' ' + userInfo?.lastName,
+                username: userInfo?.username,
+                avatar: userInfo?.image,
+              }
+            };
+          }));
+          setComments(commentsWithUserInfo);
         } catch (error) {
           console.error('Error fetching comments:', error);
           setComments([]);
@@ -42,6 +54,16 @@ export default function Modal({ isOpen, onClose, post }) {
 
     fetchComments();
   }, [isOpen, post]);
+
+  const getCommentUserInfo = async (userId) => {
+    try {
+      const response = await axiosInstance.get(`/users/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching comment user info:', error);
+      return null;
+    }
+  }
 
   // Toggle author details panel
   const toggleAuthorPanel = async () => {
@@ -207,9 +229,20 @@ export default function Modal({ isOpen, onClose, post }) {
                         {/* Comment Header */}
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
+                            {/* <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
                               {comment.user.fullName.charAt(0).toUpperCase()}
-                            </div>
+                            </div> */}
+                            {comment.user.avatar ? (
+                              <img
+                                src={comment.user.avatar}
+                                alt={comment.user.fullName}
+                                className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 group-hover:border-blue-400 transition-colors"
+                              />
+                            ) : (
+                              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                {comment.user.fullName.charAt(0).toUpperCase()}
+                              </div>
+                            )}
                             <div>
                               <p className="font-semibold text-gray-800">
                                 {comment.user.fullName}

@@ -85,9 +85,6 @@ export default function Main() {
           <h1 className="text-4xl font-bold text-gray-800 mb-3">
             Blog Posts
           </h1>
-          <p className="text-gray-600 text-lg">
-            Explore interesting articles about history, crime, and more
-          </p>
         </div>
 
         {/* Error Message */}
