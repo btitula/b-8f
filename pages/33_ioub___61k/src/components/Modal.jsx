@@ -134,7 +134,7 @@ export default function Modal({ isOpen, onClose, post }) {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors z-20"
+              className="absolute top-4 right-4 text-[#B0A8B9] hover:text-[#4B4453] transition-colors z-20"
               aria-label="Close modal"
             >
               <i className="fa-solid fa-xmark text-2xl"></i>
@@ -142,7 +142,7 @@ export default function Modal({ isOpen, onClose, post }) {
 
             {/* Modal Body */}
             <div className="p-8">
-              <h1 className="text-3xl font-bold text-gray-800 mb-4 pr-8">
+              <h1 className="text-3xl font-bold text-[#4B4453] mb-4 pr-8">
                 {post.title}
               </h1>
 
@@ -151,7 +151,7 @@ export default function Modal({ isOpen, onClose, post }) {
                 {post.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
+                    className="px-3 py-1 bg-[#00896F] text-white text-sm rounded-full"
                   >
                     #{tag}
                   </span>
@@ -161,105 +161,102 @@ export default function Modal({ isOpen, onClose, post }) {
               {/* Author Info - Clickable */}
               <div
                 onClick={toggleAuthorPanel}
-                className="flex items-center mb-6 pb-6 border-b border-gray-200 cursor-pointer hover:bg-gray-50 p-4 -mx-4 transition-colors group"
+                className="flex items-center mb-6 pb-6 border-b border-[#B0A8B9]/30 cursor-pointer hover:bg-[#FEF6FF] p-4 -mx-4 transition-colors group"
               >
                 {post.author.avatar ? (
                   <img
                     src={post.author.avatar}
                     alt={post.author.fullName}
-                    className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-gray-200 group-hover:border-blue-400 transition-colors"
+                    className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-[#B0A8B9] group-hover:border-[#845EC2] transition-colors"
                   />
                 ) : (
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-xl mr-4">
+                  <div className="w-16 h-16 bg-[#845EC2] rounded-full flex items-center justify-center text-white font-semibold text-xl mr-4">
                     {post.author.fullName.charAt(0).toUpperCase()}
                   </div>
                 )}
                 <div className="flex-1">
-                  <p className="text-gray-800 font-semibold text-lg group-hover:text-blue-600 transition-colors">
+                  <p className="text-[#4B4453] font-semibold text-lg group-hover:text-[#845EC2] transition-colors">
                     {post.author.fullName}
                   </p>
-                  <p className="text-sm text-gray-600 mb-1">
+                  <p className="text-sm text-[#B0A8B9] mb-1">
                     @{post.author.username}
                   </p>
                 </div>
-                <i className={`fa-solid ${showAuthorPanel ? 'fa-chevron-left' : 'fa-chevron-right'} text-gray-400 group-hover:text-blue-600 transition-all duration-300`}></i>
+                <i className={`fa-solid ${showAuthorPanel ? 'fa-circle-chevron-left' : 'fa-circle-chevron-right'} text-[#B0A8B9] group-hover:text-[#845EC2] transition-all duration-300`}></i>
               </div>
 
               {/* Post Content */}
               <div className="prose max-w-none mb-6">
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                <p className="text-[#4B4453] leading-relaxed whitespace-pre-line">
                   {post.description}
                 </p>
               </div>
 
               {/* Reactions */}
-              <div className="flex items-center gap-6 pt-6 border-t border-gray-200 mb-8">
-                <button className="flex items-center gap-2 text-gray-600 hover:text-red-500 transition-colors">
+              <div className="flex items-center gap-6 pt-6 border-t border-[#B0A8B9]/30 mb-8">
+                <button className="flex items-center gap-2 text-[#B0A8B9] hover:text-[#845EC2] transition-colors">
                   <i className="fa-regular fa-heart text-xl"></i>
                   <span className="font-medium">{post.reactions.likes} Likes</span>
                 </button>
-                <button className="flex items-center gap-2 text-gray-600 hover:text-blue-500 transition-colors">
+                <button className="flex items-center gap-2 text-[#B0A8B9] hover:text-[#845EC2] transition-colors">
                   <i className="fa-regular fa-thumbs-down text-xl"></i>
                   <span className="font-medium">{post.reactions.dislikes} Dislikes</span>
                 </button>
-                <div className="flex items-center gap-2 text-gray-600">
+                <div className="flex items-center gap-2 text-[#B0A8B9]">
                   <i className="fa-regular fa-eye text-xl"></i>
                   <span className="font-medium">{post.reactions.views} Views</span>
                 </div>
               </div>
 
               {/* Comments Section */}
-              <div className="border-t border-gray-200 pt-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                  <i className="fa-regular fa-comments"></i>
+              <div className="border-t border-[#B0A8B9]/30 pt-6">
+                <h2 className="text-2xl font-bold text-[#4B4453] mb-4 flex items-center gap-2">
+                  <i className="fa-regular fa-comments text-[#845EC2]"></i>
                   Comments {comments.length > 0 && `(${comments.length})`}
                 </h2>
 
                 {loadingComments ? (
                   <div className="flex justify-center py-8">
-                    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                    <i className="fa-solid fa-spinner fa-spin text-4xl text-[#845EC2]"></i>
                   </div>
                 ) : comments.length > 0 ? (
                   <div className="space-y-4">
                     {comments.map((comment) => (
                       <div
                         key={comment.id}
-                        className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors"
+                        className="bg-[#FEF6FF] rounded-lg p-4 hover:bg-white border border-[#B0A8B9]/20 transition-colors"
                       >
                         {/* Comment Header */}
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-3">
-                            {/* <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
-                              {comment.user.fullName.charAt(0).toUpperCase()}
-                            </div> */}
                             {comment.user.avatar ? (
                               <img
                                 src={comment.user.avatar}
                                 alt={comment.user.fullName}
-                                className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 group-hover:border-blue-400 transition-colors"
+                                className="w-10 h-10 rounded-full object-cover border-2 border-[#B0A8B9]"
                               />
                             ) : (
-                              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                              <div className="w-10 h-10 bg-[#845EC2] rounded-full flex items-center justify-center text-white font-semibold">
                                 {comment.user.fullName.charAt(0).toUpperCase()}
                               </div>
                             )}
                             <div>
-                              <p className="font-semibold text-gray-800">
+                              <p className="font-semibold text-[#4B4453]">
                                 {comment.user.fullName}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-[#B0A8B9]">
                                 @{comment.user.username}
                               </p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-1 text-gray-600">
-                            <i className="fa-solid fa-heart text-red-500 text-sm"></i>
+                          <div className="flex items-center gap-1 text-[#845EC2]">
+                            <i className="fa-solid fa-heart text-sm"></i>
                             <span className="text-sm font-medium">{comment.likes}</span>
                           </div>
                         </div>
 
                         {/* Comment Body */}
-                        <p className="text-gray-700 leading-relaxed pl-13">
+                        <p className="text-[#4B4453] leading-relaxed pl-13">
                           {comment.body}
                         </p>
                       </div>
@@ -267,8 +264,8 @@ export default function Modal({ isOpen, onClose, post }) {
                   </div>
                 ) : (
                   <div className="text-center py-8">
-                    <i className="fa-regular fa-comment-dots text-4xl text-gray-300 mb-2"></i>
-                    <p className="text-gray-500">No comments yet. Be the first to comment!</p>
+                    <i className="fa-regular fa-comment-dots text-4xl text-[#B0A8B9] mb-2"></i>
+                    <p className="text-[#B0A8B9]">No comments yet. Be the first to comment!</p>
                   </div>
                 )}
               </div>
@@ -277,13 +274,13 @@ export default function Modal({ isOpen, onClose, post }) {
 
           {/* Author Details Panel - Slide in from right */}
           <div
-            className={`w-96 bg-gradient-to-b from-blue-50 to-white border-l border-gray-200 overflow-y-auto transition-all duration-300 ease-in-out ${showAuthorPanel ? 'translate-x-0' : 'translate-x-full'
+            className={`w-96 bg-[#FEF6FF] border-l border-[#B0A8B9] overflow-y-auto transition-all duration-300 ease-in-out ${showAuthorPanel ? 'translate-x-0' : 'translate-x-full'
               }`}
             style={{ position: showAuthorPanel ? 'relative' : 'absolute', right: 0 }}
           >
             {loadingAuthor ? (
               <div className="flex justify-center items-center h-full">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
+                <i className="fa-solid fa-spinner fa-spin text-5xl text-[#845EC2]"></i>
               </div>
             ) : authorDetails ? (
               <div className="p-6">
@@ -296,101 +293,101 @@ export default function Modal({ isOpen, onClose, post }) {
                       className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-lg"
                     />
                   ) : (
-                    <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-3xl shadow-lg">
+                    <div className="w-24 h-24 bg-[#845EC2] rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-3xl shadow-lg">
                       {authorDetails.firstName.charAt(0).toUpperCase()}
                     </div>
                   )}
-                  <h2 className="text-2xl font-bold text-gray-800">
+                  <h2 className="text-2xl font-bold text-[#4B4453]">
                     {authorDetails.firstName} {authorDetails.lastName}
                   </h2>
-                  <p className="text-gray-600">@{authorDetails.username}</p>
+                  <p className="text-[#845EC2] font-medium">@{authorDetails.username}</p>
                 </div>
 
                 {/* Author Stats */}
                 <div className="grid grid-cols-3 gap-3 mb-6">
-                  <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-                    <i className="fa-solid fa-file-lines text-xl mb-1"></i>
-                    <p className="text-xs text-gray-500">Posts</p>
-                    <p className="text-lg font-bold text-gray-800">{Math.floor(Math.random() * 50) + 10}</p>
+                  <div className="bg-white rounded-lg p-3 text-center shadow-sm border border-[#B0A8B9]/20">
+                    <i className="fa-solid fa-file-lines text-xl mb-1 text-[#845EC2]"></i>
+                    <p className="text-xs text-[#B0A8B9]">Posts</p>
+                    <p className="text-lg font-bold text-[#4B4453]">{Math.floor(Math.random() * 50) + 10}</p>
                   </div>
-                  <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-                    <i className="fa-solid fa-users text-xl mb-1"></i>
-                    <p className="text-xs text-gray-500">Followers</p>
-                    <p className="text-lg font-bold text-gray-800">{Math.floor(Math.random() * 1000) + 100}</p>
+                  <div className="bg-white rounded-lg p-3 text-center shadow-sm border border-[#B0A8B9]/20">
+                    <i className="fa-solid fa-users text-xl mb-1 text-[#00896F]"></i>
+                    <p className="text-xs text-[#B0A8B9]">Followers</p>
+                    <p className="text-lg font-bold text-[#4B4453]">{Math.floor(Math.random() * 1000) + 100}</p>
                   </div>
-                  <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-                    <i className="fa-solid fa-heart text-xl mb-1"></i>
-                    <p className="text-xs text-gray-500">Likes</p>
-                    <p className="text-lg font-bold text-gray-800">{Math.floor(Math.random() * 5000) + 500}</p>
+                  <div className="bg-white rounded-lg p-3 text-center shadow-sm border border-[#B0A8B9]/20">
+                    <i className="fa-solid fa-heart text-xl mb-1 text-[#845EC2]"></i>
+                    <p className="text-xs text-[#B0A8B9]">Likes</p>
+                    <p className="text-lg font-bold text-[#4B4453]">{Math.floor(Math.random() * 5000) + 500}</p>
                   </div>
                 </div>
 
                 {/* Author Details */}
                 <div className="space-y-4">
-                  <div className="bg-white rounded-lg p-4 shadow-sm">
-                    <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-circle-info"></i>
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
+                    <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
+                      <i className="fa-solid fa-circle-info text-[#845EC2]"></i>
                       Personal Information
                     </h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center gap-2">
-                        <i className="fa-regular fa-envelope text-gray-400 w-5"></i>
-                        <span className="text-gray-600">{authorDetails.email}</span>
+                        <i className="fa-regular fa-envelope text-[#B0A8B9] w-5"></i>
+                        <span className="text-[#4B4453]">{authorDetails.email}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <i className="fa-solid fa-phone text-gray-400 w-5"></i>
-                        <span className="text-gray-600">{authorDetails.phone}</span>
+                        <i className="fa-solid fa-phone text-[#B0A8B9] w-5"></i>
+                        <span className="text-[#4B4453]">{authorDetails.phone}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <i className="fa-solid fa-calendar text-gray-400 w-5"></i>
-                        <span className="text-gray-600">Age: {authorDetails.age}</span>
+                        <i className="fa-solid fa-calendar text-[#B0A8B9] w-5"></i>
+                        <span className="text-[#4B4453]">Age: {authorDetails.age}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <i className="fa-solid fa-venus-mars text-gray-400 w-5"></i>
-                        <span className="text-gray-600 capitalize">{authorDetails.gender}</span>
+                        <i className="fa-solid fa-venus-mars text-[#B0A8B9] w-5"></i>
+                        <span className="text-[#4B4453] capitalize">{authorDetails.gender}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white rounded-lg p-4 shadow-sm">
-                    <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-location-dot"></i>
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
+                    <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
+                      <i className="fa-solid fa-location-dot text-[#00896F]"></i>
                       Location
                     </h3>
                     <div className="space-y-2 text-sm">
-                      <p className="text-gray-600">{authorDetails.address?.address}</p>
-                      <p className="text-gray-600">{authorDetails.address?.city}, {authorDetails.address?.state}</p>
-                      <p className="text-gray-600">{authorDetails.address?.country}</p>
+                      <p className="text-[#4B4453]">{authorDetails.address?.address}</p>
+                      <p className="text-[#4B4453]">{authorDetails.address?.city}, {authorDetails.address?.state}</p>
+                      <p className="text-[#4B4453]">{authorDetails.address?.country}</p>
                     </div>
                   </div>
 
-                  <div className="bg-white rounded-lg p-4 shadow-sm">
-                    <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-briefcase"></i>
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
+                    <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
+                      <i className="fa-solid fa-briefcase text-[#845EC2]"></i>
                       Professional
                     </h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center gap-2">
-                        <i className="fa-solid fa-building text-gray-400 w-5"></i>
-                        <span className="text-gray-600">{authorDetails.company?.name}</span>
+                        <i className="fa-solid fa-building text-[#B0A8B9] w-5"></i>
+                        <span className="text-[#4B4453]">{authorDetails.company?.name}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <i className="fa-solid fa-user-tie text-gray-400 w-5"></i>
-                        <span className="text-gray-600">{authorDetails.company?.title}</span>
+                        <i className="fa-solid fa-user-tie text-[#B0A8B9] w-5"></i>
+                        <span className="text-[#4B4453]">{authorDetails.company?.title}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <i className="fa-solid fa-building-columns text-gray-400 w-5"></i>
-                        <span className="text-gray-600">{authorDetails.company?.department}</span>
+                        <i className="fa-solid fa-building-columns text-[#B0A8B9] w-5"></i>
+                        <span className="text-[#4B4453]">{authorDetails.company?.department}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white rounded-lg p-4 shadow-sm">
-                    <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-graduation-cap"></i>
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
+                    <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
+                      <i className="fa-solid fa-graduation-cap text-[#00896F]"></i>
                       Education
                     </h3>
-                    <p className="text-sm text-gray-600">{authorDetails.university}</p>
+                    <p className="text-sm text-[#4B4453]">{authorDetails.university}</p>
                   </div>
                 </div>
               </div>
