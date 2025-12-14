@@ -203,6 +203,56 @@ export default function Main() {
     return readPosts.includes(postId);
   }, [readPosts]);
 
+  // Switch to another post without closing modal
+  const handleSwitchPost = useCallback(async (newPostId) => {
+    // Try to find the post in current posts array first
+    let newPost = posts.find(p => p.id === newPostId);
+
+    if (newPost) {
+      // Post found in current list
+      setSelectedPost(newPost);
+      // Mark as read
+      if (!readPosts.includes(newPostId)) {
+        setReadPosts(prev => [...prev, newPostId]);
+      }
+    } else {
+      // Post not in current list, fetch it
+      try {
+        const response = await axiosInstance.get(`/posts/${newPostId}`);
+        const userInfo = await getUserInfo(response.data.userId);
+
+        // Transform the post data
+        newPost = {
+          id: response.data.id,
+          title: response.data.title,
+          description: response.data.body,
+          tags: response.data.tags || ['general'],
+          author: {
+            fullName: userInfo?.fullName || `User ${response.data.userId}`,
+            userId: response.data.userId,
+            username: userInfo?.username || null,
+            avatar: userInfo?.avatar || null,
+            email: userInfo?.email || null,
+          },
+          reactions: {
+            likes: response.data.reactions?.likes || 0,
+            dislikes: response.data.reactions?.dislikes || 0,
+            views: response.data.views || 0
+          }
+        };
+
+        setSelectedPost(newPost);
+        // Mark as read
+        if (!readPosts.includes(newPostId)) {
+          setReadPosts(prev => [...prev, newPostId]);
+        }
+      } catch (error) {
+        console.error('Error fetching post:', error);
+        alert('Failed to load post. Please try again.');
+      }
+    }
+  }, [posts, getUserInfo, readPosts]);
+
   // Handle page change
   const handlePageChange = (page) => {
     if (searchQuery) {
@@ -363,6 +413,7 @@ export default function Main() {
         post={selectedPost}
         isRead={selectedPost ? isPostRead(selectedPost.id) : false}
         onToggleRead={() => selectedPost && toggleReadStatus(selectedPost.id)}
+        onSwitchPost={handleSwitchPost}
       />
     </div>
   );
