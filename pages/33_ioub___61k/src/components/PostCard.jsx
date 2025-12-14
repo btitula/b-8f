@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 
-export default function PostCard({ post, onOpenModal, isSelected = false, onEdit, onDelete }) {
+export default function PostCard({ post, onOpenModal, isSelected = false, isRead = false, onEdit, onDelete }) {
   const handleOpen = (e) => {
     e.stopPropagation();
     onOpenModal(post);
@@ -42,11 +42,13 @@ export default function PostCard({ post, onOpenModal, isSelected = false, onEdit
       }}
       role="button"
       tabIndex={0}
-      aria-label={`Read post: ${post.title}`}
+      aria-label={`Read post: ${post.title}${isRead ? ' (Read)' : ''}`}
       aria-pressed={isSelected}
       className={`post-card-wrapper group rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer relative ${isSelected
         ? 'bg-[#FEF6FF] border-2 border-[#845EC2] ring-2 ring-[#845EC2]/30'
-        : 'bg-white border border-[#B0A8B9]/20'
+        : isRead
+          ? 'bg-gray-50 border border-[#B0A8B9]/20 opacity-75'
+          : 'bg-white border border-[#B0A8B9]/20'
         }`}
     >
       {/* Hover Action Menu */}
@@ -99,7 +101,13 @@ export default function PostCard({ post, onOpenModal, isSelected = false, onEdit
             Viewing
           </span>
         )}
-        <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium shadow-md ${isSelected ? 'bg-[#845EC2] text-white' : 'bg-[#845EC2] text-white'
+        {isRead && !isSelected && (
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#B0A8B9] text-white shadow-md">
+            <i className="fa-solid fa-check mr-1"></i>
+            Read
+          </span>
+        )}
+        <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium shadow-md ${isRead && !isSelected ? 'bg-[#B0A8B9] text-white' : 'bg-[#845EC2] text-white'
           }`}>
           <i className="fa-solid fa-hashtag mr-1 text-xs"></i>
           {post.id}
@@ -107,7 +115,8 @@ export default function PostCard({ post, onOpenModal, isSelected = false, onEdit
       </div>
 
       <div className="mb-4 pr-16">
-        <h2 className="text-2xl font-bold text-[#4B4453] mb-2 hover:text-[#845EC2] transition-colors">
+        <h2 className={`text-2xl font-bold mb-2 hover:text-[#845EC2] transition-colors ${isRead ? 'text-[#B0A8B9]' : 'text-[#4B4453]'
+          }`}>
           {post.title}
         </h2>
         <p className="text-[#B0A8B9] line-clamp-3">{post.description}</p>

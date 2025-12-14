@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from '../utils/axios';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 
-export default function Modal({ isOpen, onClose, post }) {
+export default function Modal({ isOpen, onClose, post, isRead = false, onToggleRead }) {
   const [comments, setComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(false);
   const [showAuthorPanel, setShowAuthorPanel] = useState(false);
@@ -146,20 +146,50 @@ export default function Modal({ isOpen, onClose, post }) {
         <div className="flex h-full max-h-[90vh]">
           {/* Main Content Area */}
           <div className="flex-1 overflow-y-auto">
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="cursor-pointer absolute top-4 right-4 text-[#B0A8B9] hover:text-[#4B4453] transition-colors z-20"
-              aria-label="Close modal"
-            >
-              <i className="fa-solid fa-xmark text-2xl"></i>
-            </button>
+            {/* Header Actions */}
+            <div className="absolute top-4 right-4 flex items-center gap-3 z-20">
+              {/* Read/Unread Toggle Button */}
+              <button
+                onClick={onToggleRead}
+                data-tooltip-id="read-status-tooltip"
+                className={`cursor-pointer flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 ${isRead
+                  ? 'bg-[#B0A8B9] hover:bg-[#4B4453] text-white'
+                  : 'bg-[#845EC2] hover:bg-[#9B89B3] text-white'
+                  }`}
+                aria-label={isRead ? 'Mark as unread' : 'Mark as read'}
+              >
+                <i className={`fa-solid ${isRead ? 'fa-eye-slash' : 'fa-check'}`}></i>
+                <span className="hidden sm:inline">{isRead ? 'Mark Unread' : 'Mark Read'}</span>
+              </button>
+              <ReactTooltip
+                id="read-status-tooltip"
+                place="bottom"
+                content={isRead ? 'Mark as unread' : 'Mark as read'}
+              />
+
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                className="cursor-pointer text-[#B0A8B9] hover:text-[#4B4453] transition-colors"
+                aria-label="Close modal"
+              >
+                <i className="fa-solid fa-xmark text-2xl"></i>
+              </button>
+            </div>
 
             {/* Modal Body */}
             <div className="p-8">
-              <h1 id="modal-title" className="text-3xl font-bold text-[#4B4453] mb-4 pr-8">
-                {post.title}
-              </h1>
+              <div className="flex items-start gap-3 mb-4 pr-24">
+                <h1 id="modal-title" className="text-3xl font-bold text-[#4B4453] flex-1">
+                  {post.title}
+                </h1>
+                {/* {isRead && (
+                  <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#B0A8B9] text-white shadow-md mt-1">
+                    <i className="fa-solid fa-check mr-1.5"></i>
+                    Read
+                  </span>
+                )} */}
+              </div>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-6">

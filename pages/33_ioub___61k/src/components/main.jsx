@@ -23,6 +23,26 @@ export default function Main() {
   // Sort state
   const [sortBy, setSortBy] = useState('id-desc'); // Default: Latest first
 
+  // Read posts tracking - Load from localStorage
+  const [readPosts, setReadPosts] = useState(() => {
+    try {
+      const saved = localStorage.getItem('readPosts');
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.error('Error loading read posts:', error);
+      return [];
+    }
+  });
+
+  // Save read posts to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('readPosts', JSON.stringify(readPosts));
+    } catch (error) {
+      console.error('Error saving read posts:', error);
+    }
+  }, [readPosts]);
+
   // Get user info helper function
   // useCallback: Memoizes this function to maintain the same reference across re-renders
   // Why needed: This function is used as a dependency in transformPosts
@@ -149,15 +169,39 @@ export default function Main() {
     }
   }, [fetchPosts, sortBy, currentPage, searchQuery]);
 
+  // Mark post as read when opening modal
   const handleOpenModal = (post) => {
     setSelectedPost(post);
     setIsModalOpen(true);
+
+    // Mark as read
+    if (!readPosts.includes(post.id)) {
+      setReadPosts(prev => [...prev, post.id]);
+    }
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedPost(null);
   };
+
+  // Toggle read/unread status
+  const toggleReadStatus = useCallback((postId) => {
+    setReadPosts(prev => {
+      if (prev.includes(postId)) {
+        // Remove from read posts (mark as unread)
+        return prev.filter(id => id !== postId);
+      } else {
+        // Add to read posts (mark as read)
+        return [...prev, postId];
+      }
+    });
+  }, []);
+
+  // Check if post is read
+  const isPostRead = useCallback((postId) => {
+    return readPosts.includes(postId);
+  }, [readPosts]);
 
   // Handle page change
   const handlePageChange = (page) => {
@@ -282,6 +326,7 @@ export default function Main() {
                   post={post}
                   onOpenModal={handleOpenModal}
                   isSelected={selectedPost?.id === post.id}
+                  isRead={isPostRead(post.id)}
                 />
               ))}
             </div>
@@ -316,6 +361,8 @@ export default function Main() {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         post={selectedPost}
+        isRead={selectedPost ? isPostRead(selectedPost.id) : false}
+        onToggleRead={() => selectedPost && toggleReadStatus(selectedPost.id)}
       />
     </div>
   );
