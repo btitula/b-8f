@@ -94,7 +94,7 @@ export default function Modal({ isOpen, onClose, post }) {
     }
   };
 
-  // Close modal on Escape key press
+  // Close modal on Escape key press and manage focus
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
@@ -109,6 +109,14 @@ export default function Modal({ isOpen, onClose, post }) {
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+      // Focus the modal when it opens (accessibility)
+      setTimeout(() => {
+        const modalElement = document.querySelector('[role="dialog"]');
+        if (modalElement) {
+          modalElement.focus();
+        }
+      }, 100);
     }
 
     return () => {
@@ -123,12 +131,18 @@ export default function Modal({ isOpen, onClose, post }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Overlay with 80% opacity black background */}
       <div
-        className="absolute inset-0 bg-black opacity-80"
+        className="modal-overlay absolute inset-0 bg-black opacity-80"
         onClick={onClose}
       ></div>
 
       {/* Modal Content */}
-      <div className={`relative bg-white rounded-lg shadow-2xl w-full max-h-[90vh] overflow-hidden z-10 transition-all duration-300 ${showAuthorPanel ? 'max-w-6xl' : 'max-w-3xl'}`}>
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        tabIndex={-1}
+        className={`modal-content relative bg-white rounded-lg shadow-2xl w-full max-h-[90vh] overflow-hidden z-10 transition-all duration-300 ${showAuthorPanel ? 'max-w-6xl' : 'max-w-3xl'}`}
+      >
         <div className="flex h-full max-h-[90vh]">
           {/* Main Content Area */}
           <div className="flex-1 overflow-y-auto">
@@ -143,7 +157,7 @@ export default function Modal({ isOpen, onClose, post }) {
 
             {/* Modal Body */}
             <div className="p-8">
-              <h1 className="text-3xl font-bold text-[#4B4453] mb-4 pr-8">
+              <h1 id="modal-title" className="text-3xl font-bold text-[#4B4453] mb-4 pr-8">
                 {post.title}
               </h1>
 
@@ -162,7 +176,17 @@ export default function Modal({ isOpen, onClose, post }) {
               {/* Author Info - Clickable */}
               <div
                 onClick={toggleAuthorPanel}
-                className="flex items-center mb-6 pb-6 cursor-pointer hover:bg-[#FEF6FF] p-4 -mx-4 transition-colors group"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleAuthorPanel();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={showAuthorPanel ? 'Hide author information' : 'Show author information'}
+                aria-expanded={showAuthorPanel}
+                className="flex items-center mb-6 pb-6 border-b border-[#B0A8B9]/30 cursor-pointer hover:bg-[#FEF6FF] p-4 -mx-4 transition-colors group"
               >
                 {post.author.avatar ? (
                   <img
@@ -199,15 +223,24 @@ export default function Modal({ isOpen, onClose, post }) {
 
               {/* Reactions */}
               <div className="flex items-center gap-6 pt-6 mb-8">
-                <button className="flex items-center gap-2 text-[#B0A8B9] hover:text-[#845EC2] transition-colors">
+                <button
+                  className="flex items-center gap-2 text-[#B0A8B9] hover:text-[#845EC2] transition-colors"
+                  aria-label={`${post.reactions.likes} likes`}
+                >
                   <i className="fa-regular fa-heart text-xl"></i>
                   <span className="font-medium">{post.reactions.likes} Likes</span>
                 </button>
-                <button className="flex items-center gap-2 text-[#B0A8B9] hover:text-[#845EC2] transition-colors">
+                <button
+                  className="flex items-center gap-2 text-[#B0A8B9] hover:text-[#845EC2] transition-colors"
+                  aria-label={`${post.reactions.dislikes} dislikes`}
+                >
                   <i className="fa-regular fa-thumbs-down text-xl"></i>
                   <span className="font-medium">{post.reactions.dislikes} Dislikes</span>
                 </button>
-                <div className="flex items-center gap-2 text-[#B0A8B9]">
+                <div
+                  className="flex items-center gap-2 text-[#B0A8B9]"
+                  aria-label={`${post.reactions.views} views`}
+                >
                   <i className="fa-regular fa-eye text-xl"></i>
                   <span className="font-medium">{post.reactions.views} Views</span>
                 </div>
@@ -295,7 +328,7 @@ export default function Modal({ isOpen, onClose, post }) {
                     <img
                       src={authorDetails.image}
                       alt={`${authorDetails.firstName} ${authorDetails.lastName}`}
-                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-lg"
+                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-lg bg-white"
                     />
                   ) : (
                     <div className="w-24 h-24 bg-[#845EC2] rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-3xl shadow-lg">
@@ -316,7 +349,7 @@ export default function Modal({ isOpen, onClose, post }) {
                     <p className="text-lg font-bold text-[#4B4453]">{Math.floor(Math.random() * 50) + 10}</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center shadow-sm border border-[#B0A8B9]/20">
-                    <i className="fa-solid fa-users text-xl mb-1 text-[#00896F]"></i>
+                    <i className="fa-solid fa-users text-xl mb-1 text-[#845EC2]"></i>
                     <p className="text-xs text-[#B0A8B9]">Followers</p>
                     <p className="text-lg font-bold text-[#4B4453]">{Math.floor(Math.random() * 1000) + 100}</p>
                   </div>
@@ -331,7 +364,7 @@ export default function Modal({ isOpen, onClose, post }) {
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
                     <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-circle-info text-[#845EC2]"></i>
+                      <i className="fa-solid fa-circle-info"></i>
                       Personal Information
                     </h3>
                     <div className="space-y-2 text-sm">
@@ -356,7 +389,7 @@ export default function Modal({ isOpen, onClose, post }) {
 
                   <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
                     <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-location-dot text-[#00896F]"></i>
+                      <i className="fa-solid fa-location-dot"></i>
                       Location
                     </h3>
                     <div className="space-y-2 text-sm">
@@ -368,7 +401,7 @@ export default function Modal({ isOpen, onClose, post }) {
 
                   <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
                     <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-briefcase text-[#845EC2]"></i>
+                      <i className="fa-solid fa-briefcase"></i>
                       Professional
                     </h3>
                     <div className="space-y-2 text-sm">
@@ -389,7 +422,7 @@ export default function Modal({ isOpen, onClose, post }) {
 
                   <div className="bg-white rounded-lg p-4 shadow-sm border border-[#B0A8B9]/20">
                     <h3 className="font-semibold text-[#4B4453] mb-3 flex items-center gap-2">
-                      <i className="fa-solid fa-graduation-cap text-[#00896F]"></i>
+                      <i className="fa-solid fa-graduation-cap"></i>
                       Education
                     </h3>
                     <p className="text-sm text-[#4B4453]">{authorDetails.university}</p>
