@@ -67,26 +67,40 @@
 }
 
 /* Apply fade in animation to post cards */
-.post-card {
+.post-card-wrapper {
   animation: fadeInUp 0.6s ease-out;
 }
 
 /* Hover effect - scale up slightly */
-.post-card:hover {
+.post-card-wrapper:hover {
   transform: scale(1.02);
   transition: transform 0.3s ease;
   box-shadow: 0 10px 25px rgba(132, 94, 194, 0.15);
 }
 
 /* Selected post card - extra glow effect */
-.post-card[aria-pressed="true"] {
-  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.1),
-    0 10px 30px rgba(132, 94, 194, 0.2);
+.post-card-wrapper[aria-pressed="true"] {
+  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.1), 
+              0 10px 30px rgba(132, 94, 194, 0.2);
 }
 
-.post-card[aria-pressed="true"]:hover {
-  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.15),
-    0 15px 35px rgba(132, 94, 194, 0.25);
+.post-card-wrapper[aria-pressed="true"]:hover {
+  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.15), 
+              0 15px 35px rgba(132, 94, 194, 0.25);
+}
+
+/* Action menu hover effect */
+.action-menu {
+  pointer-events: none;
+}
+
+.post-card-wrapper:hover .action-menu {
+  pointer-events: auto;
+}
+
+/* Smooth button hover animations */
+.action-menu button {
+  transform-origin: center;
 }
 
 /* Modal fade in */
