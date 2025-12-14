@@ -35,8 +35,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange, load
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1 || loading}
+        aria-label="Go to previous page"
         className="cursor-pointer w-8 h-8 rounded-full border border-[#B0A8B9] bg-white text-[#4B4453] hover:bg-[#FEF6FF] hover:border-[#845EC2] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium shadow-sm"
-        aria-label="Previous page"
       >
         <i className="fa-solid fa-chevron-left"></i>
       </button>
@@ -57,6 +57,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange, load
               key={page}
               onClick={() => onPageChange(page)}
               disabled={loading}
+              aria-label={`Go to page ${page}`}
+              aria-current={currentPage === page ? 'page' : undefined}
               className={`cursor-pointer min-w-[40px] px-2 py-2 rounded-full font-medium transition-all duration-200 ${currentPage === page
                 ? 'bg-[#845EC2] text-white shadow-lg'
                 : 'bg-white text-[#4B4453] border border-[#B0A8B9] hover:bg-[#FEF6FF] hover:border-[#845EC2]'
@@ -72,8 +74,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange, load
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages || loading}
+        aria-label="Go to next page"
         className="cursor-pointer w-8 h-8 rounded-full border border-[#B0A8B9] bg-white text-[#4B4453] hover:bg-[#FEF6FF] hover:border-[#845EC2] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium shadow-sm"
-        aria-label="Next page"
       >
         <i className="fa-solid fa-chevron-right"></i>
       </button>

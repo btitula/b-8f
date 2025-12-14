@@ -23,6 +23,8 @@ export default function SortButtons({ onSortChange, currentSort }) {
           <button
             key={option.value}
             onClick={() => onSortChange(option.value)}
+            aria-label={`Sort by ${option.label}`}
+            aria-pressed={currentSort === option.value}
             className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-2 ${currentSort === option.value
               ? 'bg-[#845EC2] text-white shadow-lg'
               : 'bg-white text-[#4B4453] border border-[#B0A8B9] hover:border-[#845EC2] hover:bg-[#FEF6FF]'
@@ -37,6 +39,7 @@ export default function SortButtons({ onSortChange, currentSort }) {
         {!isDefaultSort && (
           <button
             onClick={handleClearSort}
+            aria-label="Clear sort filter"
             className="cursor-pointer px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-2 bg-[#4B4453] text-white border border-[#4B4453] hover:bg-[#845EC2] hover:border-[#845EC2] shadow-md"
           >
             <i className="fa-solid fa-xmark"></i>

@@ -25,7 +25,7 @@ export default function Main() {
 
   // Get user info helper function
   // useCallback: Memoizes this function to maintain the same reference across re-renders
-  // Why needed: This function is used as a dependency in transformPosts (line 57)
+  // Why needed: This function is used as a dependency in transformPosts
   // Without useCallback, getUserInfo would be recreated on every render, causing
   // transformPosts to also recreate, leading to unnecessary API calls and infinite loops
   const getUserInfo = useCallback(async (userId) => {
@@ -46,8 +46,8 @@ export default function Main() {
 
   // Transform posts helper function
   // useCallback: Prevents this function from being recreated on every render
-  // Why needed: Used as dependency in useEffect (line 60) and handleSearch (line 112)
-  // [getUserInfo] dependency means it only recreates if getUserInfo changes (which it won't)
+  // Why needed: Used as dependency in useEffect and handleSearch
+  // [getUserInfo] dependency means it only recreates if getUserInfo changes
   const transformPosts = useCallback(async (postsData) => {
     return await Promise.all(postsData.map(async (post) => {
       const userInfo = await getUserInfo(post.userId);
@@ -67,7 +67,7 @@ export default function Main() {
         reactions: {
           likes: post.reactions?.likes || 0,
           dislikes: post.reactions?.dislikes || 0,
-          views: post.views || Math.floor(Math.random() * 1000) + 100
+          views: post.views || 0
         }
       };
     }));
@@ -258,7 +258,7 @@ export default function Main() {
         ) : posts.length > 0 ? (
           <>
             {/* Results Count */}
-            {/* <div className="mb-4 text-center">
+            <div className="mb-4 text-center">
               <p className="text-[#B0A8B9]">
                 {searchQuery ? (
                   <>
@@ -268,19 +268,20 @@ export default function Main() {
                 ) : (
                   <>
                     Showing <span className="font-semibold text-[#4B4453]">{posts.length}</span> of{' '}
-                    <span className="font-semibold text-[#4B4453]">{totalPosts}</span> posts
+                    <span className="font-semibold text-[#4B4453]">{totalPages}</span> pages
                   </>
                 )}
               </p>
-            </div> */}
+            </div>
 
             {/* Posts Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {posts.map((post) => (
                 <PostCard
                   key={post.id}
                   post={post}
                   onOpenModal={handleOpenModal}
+                  isSelected={selectedPost?.id === post.id}
                 />
               ))}
             </div>

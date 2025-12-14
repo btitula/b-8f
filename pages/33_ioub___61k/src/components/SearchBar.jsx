@@ -34,6 +34,7 @@ export default function SearchBar({ onSearch, loading }) {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search posts by title or content..."
+          aria-label="Search posts"
           className="w-full pl-12 pr-12 py-4 text-[#4B4453] bg-white border-2 border-[#B0A8B9] rounded-full focus:outline-none focus:border-[#845EC2] focus:ring-2 focus:ring-[#845EC2]/30 transition-all duration-300 shadow-md hover:shadow-lg placeholder-[#B0A8B9]"
         />
 
