@@ -80,13 +80,13 @@
 
 /* Selected post card - extra glow effect */
 .post-card-wrapper[aria-pressed="true"] {
-  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.1), 
-              0 10px 30px rgba(132, 94, 194, 0.2);
+  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.1),
+    0 10px 30px rgba(132, 94, 194, 0.2);
 }
 
 .post-card-wrapper[aria-pressed="true"]:hover {
-  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.15), 
-              0 15px 35px rgba(132, 94, 194, 0.25);
+  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.15),
+    0 15px 35px rgba(132, 94, 194, 0.25);
 }
 
 /* Action menu hover effect */
@@ -101,6 +101,37 @@
 /* Smooth button hover animations */
 .action-menu button {
   transform-origin: center;
+}
+
+/* ===================================
+   READ POSTS STYLING
+   =================================== */
+
+/* Read post card styling */
+.post-card-wrapper[aria-label*="(Read)"] {
+  position: relative;
+}
+
+/* Subtle read indicator effect */
+.post-card-wrapper[aria-label*="(Read)"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(176, 168, 185, 0.05) 100%
+  );
+  border-radius: 1rem;
+  pointer-events: none;
+}
+
+/* Read post hover effect - less dramatic than unread */
+.post-card-wrapper[aria-label*="(Read)"]:hover {
+  transform: scale(1.01);
 }
 
 /* Modal fade in */
