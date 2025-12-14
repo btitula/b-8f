@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from '../utils/axios';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 
-export default function Modal({ isOpen, onClose, post, isRead = false, onToggleRead }) {
+export default function Modal({ isOpen, onClose, post, isRead = false, onToggleRead, onSwitchPost }) {
   const [comments, setComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(false);
   const [showAuthorPanel, setShowAuthorPanel] = useState(false);
   const [authorDetails, setAuthorDetails] = useState(null);
   const [loadingAuthor, setLoadingAuthor] = useState(false);
+  const [authorPosts, setAuthorPosts] = useState([]);
+  const [loadingAuthorPosts, setLoadingAuthorPosts] = useState(false);
   // Reset author panel when post changes or modal closes
   useEffect(() => {
     if (!isOpen) {
@@ -15,6 +17,7 @@ export default function Modal({ isOpen, onClose, post, isRead = false, onToggleR
       setShowAuthorPanel(false);
       setAuthorDetails(null);
       setComments([]);
+      setAuthorPosts([]);
     }
   }, [isOpen]);
 
@@ -54,6 +57,38 @@ export default function Modal({ isOpen, onClose, post, isRead = false, onToggleR
     };
 
     fetchComments();
+  }, [isOpen, post]);
+
+  // Fetch author's other posts
+  useEffect(() => {
+    const fetchAuthorPosts = async () => {
+      if (isOpen && post) {
+        try {
+          setLoadingAuthorPosts(true);
+          const response = await axiosInstance.get(`/posts/user/${post.author.userId}`);
+
+          // Filter out current post and get 3 latest posts
+          const otherPosts = response.data.posts
+            .filter(p => p.id !== post.id) // Exclude current post
+            .sort((a, b) => b.id - a.id) // Sort by ID descending (latest first)
+            .slice(0, 3); // Take only 3 posts
+
+          // Only show section if author has more than 3 total posts
+          if (response.data.total > 3) {
+            setAuthorPosts(otherPosts);
+          } else {
+            setAuthorPosts([]);
+          }
+        } catch (error) {
+          console.error('Error fetching author posts:', error);
+          setAuthorPosts([]);
+        } finally {
+          setLoadingAuthorPosts(false);
+        }
+      }
+    };
+
+    fetchAuthorPosts();
   }, [isOpen, post]);
 
   const getCommentUserInfo = async (userId) => {
@@ -275,6 +310,63 @@ export default function Modal({ isOpen, onClose, post, isRead = false, onToggleR
                   <span className="font-medium">{post.reactions.views} Views</span>
                 </div>
               </div>
+
+              {/* More from this Author */}
+              {(loadingAuthorPosts || authorPosts.length > 0) && (
+                <div className="border-t border-[#B0A8B9]/30 pt-6 mb-8">
+                  <h2 className="text-2xl font-bold text-[#4B4453] mb-4 flex items-center gap-2">
+                    <i className="fa-solid fa-user-pen text-[#845EC2]"></i>
+                    More from {post.author.fullName}
+                  </h2>
+
+                  {loadingAuthorPosts ? (
+                    <div className="flex justify-center py-8">
+                      <i className="fa-solid fa-spinner fa-spin text-4xl text-[#845EC2]"></i>
+                    </div>
+                  ) : authorPosts.length > 0 ? (
+                    <div className="grid gap-4">
+                      {authorPosts.map((authorPost) => (
+                        <div
+                          key={authorPost.id}
+                          onClick={() => {
+                            if (onSwitchPost) {
+                              onSwitchPost(authorPost.id);
+                            }
+                          }}
+                          className="group hover:bg-white border border-[#B0A8B9]/20 hover:border-[#845EC2] rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md"
+                        >
+                          <div className="flex items-start justify-between gap-3 mb-2">
+                            <h3 className="text-lg font-semibold text-[#4B4453] group-hover:text-[#845EC2] transition-colors line-clamp-2 flex-1">
+                              {authorPost.title}
+                            </h3>
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#845EC2] text-white shadow-sm flex-shrink-0">
+                              #{authorPost.id}
+                            </span>
+                          </div>
+                          <p className="text-[#B0A8B9] text-sm line-clamp-2 mb-3">
+                            {authorPost.body}
+                          </p>
+                          <div className="flex items-center gap-4 text-xs text-[#B0A8B9]">
+                            <span className="flex items-center gap-1">
+                              <i className="fa-regular fa-heart"></i>
+                              {authorPost.reactions.likes}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <i className="fa-regular fa-eye"></i>
+                              {authorPost.views}
+                            </span>
+                            <div className="flex-1"></div>
+                            <span className="text-[#845EC2] group-hover:underline flex items-center gap-1">
+                              Read more
+                              <i className="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              )}
 
               {/* Comments Section */}
               <div className="border-t border-[#B0A8B9]/30 pt-6">
