@@ -113,22 +113,20 @@ const Sidebar = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 bg-white p-6 overflow-auto">
-        {/* Hamburger menu - shows when sidebar is collapsed */}
-        {isCollapsed && (
-          <button
-            onClick={toggleSidebar}
-            className="mb-4 p-2 hover:bg-gray-100 rounded transition-colors"
-            aria-label="Show sidebar"
-          >
-            <i className="fas fa-bars text-gray-700 text-xl"></i>
-          </button>
-        )}
-
+      <div className="bg-white p-6 overflow-auto">
         <div className="flex items-center gap-2 mb-4">
-          {/* {!isCollapsed && (
-            <span className="text-2xl">«</span>
-          )} */}
+          {isCollapsed && (
+            <div>
+              <button
+                onClick={toggleSidebar}
+                className="p-2 hover:bg-gray-100 rounded transition-colors"
+                aria-label="Show sidebar"
+              >
+                <i className="fas fa-bars text-gray-700 text-xl"></i>
+              </button>
+            </div>
+          )}
+
           <h1 className="text-2xl font-bold">Notion</h1>
         </div>
         <p className="text-gray-700">
