@@ -1,0 +1,166 @@
+#root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+/* Fade in animation for post cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply fade in animation to post cards */
+.post-card-wrapper {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Hover effect - scale up slightly */
+.post-card-wrapper:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 25px rgba(132, 94, 194, 0.15);
+}
+
+/* Selected post card - extra glow effect */
+.post-card-wrapper[aria-pressed="true"] {
+  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.1),
+    0 10px 30px rgba(132, 94, 194, 0.2);
+}
+
+.post-card-wrapper[aria-pressed="true"]:hover {
+  box-shadow: 0 0 0 4px rgba(132, 94, 194, 0.15),
+    0 15px 35px rgba(132, 94, 194, 0.25);
+}
+
+/* Action menu hover effect */
+.action-menu {
+  pointer-events: none;
+}
+
+.post-card-wrapper:hover .action-menu {
+  pointer-events: auto;
+}
+
+/* Smooth button hover animations */
+.action-menu button {
+  transform-origin: center;
+}
+
+/* ===================================
+   READ POSTS STYLING
+   =================================== */
+
+/* Read post card styling */
+.post-card-wrapper[aria-label*="(Read)"] {
+  position: relative;
+}
+
+/* Subtle read indicator effect */
+.post-card-wrapper[aria-label*="(Read)"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(176, 168, 185, 0.05) 100%
+  );
+  border-radius: 1rem;
+  pointer-events: none;
+}
+
+/* Read post hover effect - less dramatic than unread */
+.post-card-wrapper[aria-label*="(Read)"]:hover {
+  transform: scale(1.01);
+}
+
+/* Modal fade in */
+.modal-overlay {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a,
+.clickable {
+  transition: all 0.2s ease;
+}
+
+/* Loading spinner pulse */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-spinner {
+  animation: pulse 1.5s ease-in-out infinite;
+}
