@@ -142,7 +142,7 @@ function LoginForm({ onSuccess }) {
       {/* Submit Button */}
       <Button
         type="submit"
-        className="w-full bg-orange-500 hover:bg-orange-600"
+        className="w-full bg-[#FC8A06] hover:bg-orange-600"
         disabled={loading} // Disable during API call
       >
         {loading ? 'Logging in...' : 'Login'}

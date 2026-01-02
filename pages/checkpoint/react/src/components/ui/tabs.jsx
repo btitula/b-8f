@@ -28,7 +28,7 @@ const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => (
       // Disabled styles
       "disabled:pointer-events-none disabled:opacity-50",
       // Active state - Orange underline using box-shadow
-      "data-[state=active]:text-orange-500 data-[state=active]:font-semibold",
+      "data-[state=active]:text-[#FC8A06] data-[state=active]:font-semibold",
       "data-[state=active]:shadow-[inset_0_-2px_0_0_#f97316]", // Orange bottom border using box-shadow
       // Inactive state
       "data-[state=inactive]:text-gray-600",
