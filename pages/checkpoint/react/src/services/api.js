@@ -11,7 +11,7 @@ import axios from 'axios'
 
 // Create axios instance with base configuration
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL, // Get base URL from .env file
+  baseURL: import.meta.env.VITE_API_BASE_URL || "https://api.escuelajs.co", // Get base URL from .env file
   headers: {
     'Content-Type': 'application/json',
   },
