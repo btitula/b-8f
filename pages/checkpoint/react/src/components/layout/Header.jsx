@@ -28,7 +28,7 @@ function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-2xl font-bold">
-            Order<span className="text-orange-500">.uk</span>
+            <img src="/logo.png" alt="Order.uk" className="w-36" />
           </div>
 
           {/* Navigation - Desktop */}
@@ -37,22 +37,22 @@ function Header() {
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? 'bg-orange-500 text-white px-6 py-2 rounded-full'
-                  : 'text-gray-700 hover:text-orange-500 px-6 py-2'
+                  ? 'bg-[#FC8A06] text-white px-6 py-2 rounded-full'
+                  : 'text-gray-700 hover:text-[#FC8A06] px-6 py-2'
               }
             >
               Home
             </NavLink>
-            <button className="text-gray-700 hover:text-orange-500">
+            <button className="cursor-pointer text-gray-700 hover:text-[#FC8A06]">
               Browse Menu
             </button>
-            <button className="text-gray-700 hover:text-orange-500">
+            <button className="cursor-pointer text-gray-700 hover:text-[#FC8A06]">
               Special Offers
             </button>
-            <button className="text-gray-700 hover:text-orange-500">
+            <button className="cursor-pointer text-gray-700 hover:text-[#FC8A06]">
               Restaurants
             </button>
-            <button className="text-gray-700 hover:text-orange-500">
+            <button className="cursor-pointer text-gray-700 hover:text-[#FC8A06]">
               Track Order
             </button>
           </nav>
@@ -65,10 +65,10 @@ function Header() {
             // Show login button when not logged in
             <button
               onClick={() => setIsAuthDialogOpen(true)}
-              className="bg-gray-900 text-white px-6 py-2 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-colors"
+              className="cursor-pointer bg-gray-900 text-white px-6 py-2 rounded-full flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
             >
-              <span>👤</span>
-              Login/Signup
+              <img src="/male_user_login.png" alt="User" className="w-8" />
+              <span>Login/Signup</span>
             </button>
           )}
         </div>

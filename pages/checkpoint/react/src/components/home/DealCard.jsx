@@ -10,7 +10,7 @@ function DealCard({ discount, restaurantName, city, image }) {
         }}
       >
         {/* Discount Badge */}
-        <div className="absolute top-4 right-4 bg-gray-900 text-white px-4 py-2 rounded-md font-bold">
+        <div className="absolute top-0 right-4 bg-gray-900 text-white px-4 py-3 rounded-b-md font-bold">
           {discount}
         </div>
 

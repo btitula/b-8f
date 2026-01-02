@@ -40,13 +40,13 @@ function AuthDialog({ open, onOpenChange }) {
         {/* Tabbed interface for Login/Signup */}
         <Tabs defaultValue="login" className="w-full">
           {/* Tab selector buttons */}
-          <TabsList className="grid w-full grid-cols-2 mb-4">
-            <TabsTrigger value="login">Login</TabsTrigger>
-            <TabsTrigger value="signup">Sign Up</TabsTrigger>
+          <TabsList className="grid w-full mx-auto grid-cols-2 mb-4 gap-1">
+            <TabsTrigger value="login" className="w-full">Login</TabsTrigger>
+            <TabsTrigger value="signup" className="w-full">Sign Up</TabsTrigger>
           </TabsList>
 
           {/* Login Tab Content */}
-          <TabsContent value="login" className="space-y-4">
+          <TabsContent value="login" className="space-y-4 w-full">
             <div className="text-center mb-4">
               <h3 className="text-lg font-semibold">Welcome Back!</h3>
               <p className="text-sm text-gray-500">
@@ -58,7 +58,7 @@ function AuthDialog({ open, onOpenChange }) {
           </TabsContent>
 
           {/* Signup Tab Content */}
-          <TabsContent value="signup" className="space-y-4">
+          <TabsContent value="signup" className="space-y-4 w-full">
             <div className="text-center mb-4">
               <h3 className="text-lg font-semibold">Create Account</h3>
               <p className="text-sm text-gray-500">
