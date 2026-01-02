@@ -32,8 +32,9 @@ function AuthDialog({ open, onOpenChange }) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md bg-white">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">
-            Welcome to Order.uk
+          <DialogTitle className="text-xl font-light text-center flex items-center justify-center gap-1">
+            <span>Welcome to</span>
+            <img src="/logo.png" alt="Order.uk" className="w-24" />
           </DialogTitle>
         </DialogHeader>
 
