@@ -61,7 +61,7 @@ export const SignupPage = () => {
         }
       >
         <img
-          src="/src/assets/landingPageLogo.png"
+          src="/landingPageLogo.png"
           alt="Instagram"
           className="mb-4 w-44"
         />

@@ -44,7 +44,7 @@ export const ForgotPasswordPage = () => {
       <header className="w-full border-b border-gray-300 px-6 py-3 bg-white">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <img
-            src="/src/assets/landingPageLogo.png"
+            src="/landingPageLogo.png"
             alt="Instagram"
             className="w-32"
           />

@@ -59,7 +59,7 @@ export const LoginPage = () => {
       leftSlot={
         <div className="w-full max-w-md">
           <img
-            src="/src/assets/landingPageLeft.png"
+            src="/landingPageLeft.png"
             alt="Instagram app preview"
             className="w-full h-auto"
           />
@@ -78,7 +78,7 @@ export const LoginPage = () => {
         }
       >
         <img
-          src="/src/assets/landingPageLogo.png"
+          src="/landingPageLogo.png"
           alt="Instagram"
           className="mb-8 w-44"
         />
