@@ -1,16 +1,97 @@
-# React + Vite
+# React + TypeScript Base Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-ready React + TypeScript base project with modern tooling and best practices.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Fast build tool with HMR
+- **TailwindCSS** - Utility-first CSS framework
+- **Shadcn UI** - Re-usable components built with Radix UI
+- **Redux Toolkit** - State management
+- **React Router** - Client-side routing
+- **React Hook Form** - Form handling
+- **Zod** - Schema validation
 
-## React Compiler
+## Project Structure
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+```
+src/
+├── components/        # React components
+│   ├── ui/           # Shadcn UI components
+│   ├── layout/       # Layout components
+│   └── auth/         # Auth-related components
+├── pages/            # Page components
+├── store/            # Redux store
+│   └── slices/       # Redux slices
+├── services/         # API services
+├── hooks/            # Custom hooks
+├── types/            # TypeScript types
+├── constants/        # Constants and config
+├── lib/              # Utility functions
+└── index.css         # Global styles
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+```bash
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```bash
+cp .env.example .env
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview
+
+```bash
+npm preview
+```
+
+## Code Guidelines
+
+Following the cursor rules defined in `.cursor/rules/project-overview.mdc`:
+
+- Use early returns for better readability
+- Use TailwindCSS for all styling
+- Descriptive naming with "handle" prefix for event handlers
+- Implement accessibility features
+- Use consts instead of functions
+- Follow DRY principle
+- No TODOs or placeholders
+
+## Path Aliases
+
+Use `@/` prefix for imports:
+
+```typescript
+import { Button } from '@/components/ui/button'
+import { useAppSelector } from '@/store/hooks'
+```
+
+## Adding Shadcn Components
+
+```bash
+npx shadcn@latest add button
+npx shadcn@latest add dialog
+npx shadcn@latest add input
+```
