@@ -57,7 +57,7 @@ export const login = async (
     }
   }
 
-  throw new Error('Invalid credentials. Try demo@test.com / password123')
+  throw new Error('Invalid credentials. Try test@local.host / abc@123!')
 }
 
 // Mock signup function
