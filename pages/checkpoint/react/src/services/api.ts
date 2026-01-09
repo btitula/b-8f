@@ -1,51 +1,95 @@
+import axios from 'axios'
+import type { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
 
-interface RequestOptions extends RequestInit {
-  headers?: Record<string, string>
-}
-
-const fetchWithAuth = async (url: string, options: RequestOptions = {}) => {
-  const token = localStorage.getItem('token')
-
-  const headers: Record<string, string> = {
+// Create axios instance with default config
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
     'Content-Type': 'application/json',
-    ...options.headers,
+  },
+  timeout: 10000, // 10 seconds
+})
+
+// Request interceptor - Add auth token to requests
+axiosInstance.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
+    const token = localStorage.getItem('token')
+
+    if (token && config.headers) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+
+    return config
+  },
+  (error: AxiosError) => {
+    return Promise.reject(error)
   }
+)
 
-  if (token) {
-    headers.Authorization = `Bearer ${token}`
+// Response interceptor - Handle responses and errors globally
+axiosInstance.interceptors.response.use(
+  (response: AxiosResponse) => {
+    // Return response data directly
+    return response.data
+  },
+  (error: AxiosError) => {
+    // Handle common error scenarios
+    if (error.response) {
+      // Server responded with error status
+      const status = error.response.status
+
+      switch (status) {
+        case 401:
+          // Unauthorized - clear token and redirect to login
+          localStorage.removeItem('token')
+          window.location.href = '/login'
+          break
+        case 403:
+          // Forbidden
+          console.error('Access forbidden')
+          break
+        case 404:
+          // Not found
+          console.error('Resource not found')
+          break
+        case 500:
+          // Server error
+          console.error('Server error')
+          break
+        default:
+          console.error(`Error: ${status}`)
+      }
+    } else if (error.request) {
+      // Request made but no response received
+      console.error('Network error - no response received')
+    } else {
+      // Something else happened
+      console.error('Error:', error.message)
+    }
+
+    return Promise.reject(error)
   }
+)
 
-  const response = await fetch(`${API_BASE_URL}${url}`, {
-    ...options,
-    headers,
-  })
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`)
-  }
-
-  return response.json()
-}
-
+// Export API methods
 export const api = {
-  get: (url: string, options?: RequestOptions) =>
-    fetchWithAuth(url, { ...options, method: 'GET' }),
+  get: <T = unknown>(url: string) =>
+    axiosInstance.get<T, T>(url),
 
-  post: (url: string, data?: unknown, options?: RequestOptions) =>
-    fetchWithAuth(url, {
-      ...options,
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
+  post: <T = unknown>(url: string, data?: unknown) =>
+    axiosInstance.post<T, T>(url, data),
 
-  put: (url: string, data?: unknown, options?: RequestOptions) =>
-    fetchWithAuth(url, {
-      ...options,
-      method: 'PUT',
-      body: JSON.stringify(data),
-    }),
+  put: <T = unknown>(url: string, data?: unknown) =>
+    axiosInstance.put<T, T>(url, data),
 
-  delete: (url: string, options?: RequestOptions) =>
-    fetchWithAuth(url, { ...options, method: 'DELETE' }),
+  delete: <T = unknown>(url: string) =>
+    axiosInstance.delete<T, T>(url),
+
+  patch: <T = unknown>(url: string, data?: unknown) =>
+    axiosInstance.patch<T, T>(url, data),
 }
+
+// Export axios instance for custom configurations if needed
+export default axiosInstance
