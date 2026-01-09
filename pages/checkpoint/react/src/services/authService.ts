@@ -84,8 +84,8 @@ export const signup = async (
 }
 
 // Mock forgot password function
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const forgotPassword = async (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _data: ForgotPasswordFormData
 ): Promise<MessageResponse> => {
   await delay(1000) // Simulate network delay
