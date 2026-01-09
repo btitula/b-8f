@@ -84,12 +84,14 @@ export const signup = async (
 }
 
 // Mock forgot password function
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const forgotPassword = async (
-  data: ForgotPasswordFormData
+  _data: ForgotPasswordFormData
 ): Promise<MessageResponse> => {
   await delay(1000) // Simulate network delay
 
   // Always return neutral message to prevent account enumeration
+  // TODO: Use _data when implementing real API call
   return {
     message:
       'If an account exists with this information, a password reset link will be sent.',

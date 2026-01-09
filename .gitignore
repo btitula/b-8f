@@ -143,6 +143,11 @@ vite.config.ts.timestamp-*
 
 CLAUDE.md
 
+.claude
+.claude/*
+.cursor
+.cursor/*
+
 node_modules/
 dist/
 
