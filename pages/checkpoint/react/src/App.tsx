@@ -5,6 +5,7 @@ import { LoginPage } from '@/pages/auth/LoginPage'
 import { SignupPage } from '@/pages/auth/SignupPage'
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage'
 import { AppShell } from '@/layouts/AppShell'
+import { ProfilePage } from '@/pages/profile/ProfilePage'
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
           <Route path="explore" element={<div className="p-8">Explore (placeholder)</div>} />
           <Route path="reels" element={<div className="p-8">Reels (placeholder)</div>} />
           <Route path="messages" element={<div className="p-8">Messages (placeholder)</div>} />
-          <Route path="profile" element={<div className="p-8">Profile (placeholder)</div>} />
+          <Route path="profile" element={<ProfilePage />} />
         </Route>
 
         {/* Legacy /home redirect for backward compatibility */}
