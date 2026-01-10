@@ -13,6 +13,7 @@ import {
   faBars,
   faTableCells,
 } from '@fortawesome/free-solid-svg-icons'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { cn } from '@/lib/utils'
 
 interface NavItem {
@@ -101,13 +102,15 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
       aria-label="Main navigation"
     >
       {/* Logo */}
-      <div className={cn('px-6 py-8', mode === 'collapsed' && 'px-3 flex justify-center')}>
+      <div className={cn('px-6 py-4 flex items-center justify-center', mode === 'collapsed' && 'px-3 flex justify-center')}>
         {mode === 'full' ? (
-          <h1 className="text-3xl font-bold font-['Billabong',cursive]">Instagram</h1>
+          <img
+            src="/landingPageLogo.png"
+            alt="Instagram"
+            className="h-12 w-auto"
+          />
         ) : (
-          <div className="w-6 h-6 border-2 border-black rounded-md flex items-center justify-center">
-            <div className="w-3 h-3 border border-black rounded-full" />
-          </div>
+          <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
         )}
       </div>
 
