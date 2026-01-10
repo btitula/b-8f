@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 import { LeftNav } from '@/components/nav/LeftNav'
 import { SearchPanel } from '@/components/nav/SearchPanel'
+import { MessagesFloatingButton } from '@/components/messages/MessagesFloatingButton'
+import { MessagesPopup } from '@/components/messages/MessagesPopup'
 import { useAppSelector } from '@/store/hooks'
 
 export const AppShell = () => {
   const { isAuthenticated } = useAppSelector((state) => state.auth)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isMessagesOpen, setIsMessagesOpen] = useState(false)
 
   // Handle search toggle
   const handleSearchToggle = () => {
@@ -16,6 +19,16 @@ export const AppShell = () => {
   // Handle search close
   const handleSearchClose = () => {
     setIsSearchOpen(false)
+  }
+
+  // Handle messages toggle
+  const handleMessagesToggle = () => {
+    setIsMessagesOpen((prev) => !prev)
+  }
+
+  // Handle messages close
+  const handleMessagesClose = () => {
+    setIsMessagesOpen(false)
   }
 
   // Handle nav item clicks
@@ -77,6 +90,16 @@ export const AppShell = () => {
       >
         <Outlet />
       </main>
+
+      {/* Messages Feature */}
+      <MessagesFloatingButton
+        isOpen={isMessagesOpen}
+        onToggle={handleMessagesToggle}
+      />
+      <MessagesPopup
+        open={isMessagesOpen}
+        onClose={handleMessagesClose}
+      />
     </div>
   )
 }
