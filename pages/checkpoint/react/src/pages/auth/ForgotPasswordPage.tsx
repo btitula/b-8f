@@ -71,7 +71,7 @@ export const ForgotPasswordPage = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center px-4 py-8">
-        <AuthCard>
+        <AuthCard className="border-0">
           <div className="w-24 h-24 rounded-full border-2 border-black flex items-center justify-center mb-4">
             <FontAwesomeIcon icon={faLock} className="h-12 w-12" />
           </div>

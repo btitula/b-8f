@@ -51,6 +51,7 @@ export const SignupPage = () => {
   return (
     <AuthLayout>
       <AuthCard
+        className="border-0"
         footer={
           <p className="text-sm">
             Have an account?{' '}
