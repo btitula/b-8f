@@ -14,8 +14,15 @@ import {
   faBars,
   faTableCells,
   faCircleDot,
+  faGear,
+  faChartLine,
+  faBookmark,
+  faSun,
+  faCircleExclamation,
+  faUserGroup,
+  faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons'
-import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faWhatsapp, faThreads } from '@fortawesome/free-brands-svg-icons'
 import { cn } from '@/lib/utils'
 
 interface NavItem {
@@ -44,6 +51,13 @@ interface MetaMenuItem {
   icon: IconDefinition
 }
 
+interface MoreMenuItem {
+  key: string
+  label: string
+  icon: IconDefinition
+  section?: 'top' | 'bottom'
+}
+
 const mainNavItems: NavItem[] = [
   { key: 'home', label: 'Home', icon: faHouse, path: '/app/home' },
   { key: 'search', label: 'Search', icon: faMagnifyingGlass },
@@ -55,14 +69,20 @@ const mainNavItems: NavItem[] = [
   { key: 'profile', label: 'Profile', icon: faUser, path: '/app/profile' },
 ]
 
-const bottomNavItems: NavItem[] = [
-  { key: 'more', label: 'More', icon: faBars },
-]
-
 const metaMenuItems: MetaMenuItem[] = [
   { key: 'meta-ai', label: 'Meta AI', icon: faCircleDot },
   { key: 'whatsapp', label: 'WhatsApp', icon: faWhatsapp },
-  { key: 'threads', label: 'Threads', icon: faCircleDot },
+  { key: 'threads', label: 'Threads', icon: faThreads },
+]
+
+const moreMenuItems: MoreMenuItem[] = [
+  { key: 'settings', label: 'Settings', icon: faGear, section: 'top' },
+  { key: 'your-activity', label: 'Your activity', icon: faChartLine, section: 'top' },
+  { key: 'saved', label: 'Saved', icon: faBookmark, section: 'top' },
+  { key: 'switch-appearance', label: 'Switch appearance', icon: faSun, section: 'top' },
+  { key: 'report-problem', label: 'Report a problem', icon: faCircleExclamation, section: 'top' },
+  { key: 'switch-accounts', label: 'Switch accounts', icon: faUserGroup, section: 'bottom' },
+  { key: 'log-out', label: 'Log out', icon: faRightFromBracket, section: 'bottom' },
 ]
 
 const NavItemButton = ({ item, mode, isActive, onClick }: NavItemButtonProps) => {
@@ -105,14 +125,43 @@ const NavItemButton = ({ item, mode, isActive, onClick }: NavItemButtonProps) =>
 }
 
 export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
+  // More menu state
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false)
+  const moreTriggerRef = useRef<HTMLDivElement>(null)
+  const moreMenuRef = useRef<HTMLDivElement>(null)
+
   // Meta menu state
   const [isMetaMenuOpen, setIsMetaMenuOpen] = useState(false)
   const metaTriggerRef = useRef<HTMLDivElement>(null)
   const metaMenuRef = useRef<HTMLDivElement>(null)
 
+  // Handle more menu toggle
+  const handleMoreMenuToggle = () => {
+    setIsMoreMenuOpen((prev) => !prev)
+    // Close meta menu when opening more menu
+    if (!isMoreMenuOpen) {
+      setIsMetaMenuOpen(false)
+    }
+  }
+
+  // Handle more menu close
+  const handleMoreMenuClose = () => {
+    setIsMoreMenuOpen(false)
+  }
+
+  // Handle more item click
+  const handleMoreItemClick = (item: string) => {
+    console.log(`Clicked: ${item}`)
+    handleMoreMenuClose()
+  }
+
   // Handle meta menu toggle
   const handleMetaMenuToggle = () => {
     setIsMetaMenuOpen((prev) => !prev)
+    // Close more menu when opening meta menu
+    if (!isMetaMenuOpen) {
+      setIsMoreMenuOpen(false)
+    }
   }
 
   // Handle meta menu close
@@ -126,14 +175,27 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
     handleMetaMenuClose()
   }
 
-  // Outside click handler
+  // Outside click handler for both menus
   useEffect(() => {
-    if (!isMetaMenuOpen) return
+    if (!isMoreMenuOpen && !isMetaMenuOpen) return
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node
 
+      // Handle More menu
       if (
+        isMoreMenuOpen &&
+        moreTriggerRef.current &&
+        !moreTriggerRef.current.contains(target) &&
+        moreMenuRef.current &&
+        !moreMenuRef.current.contains(target)
+      ) {
+        handleMoreMenuClose()
+      }
+
+      // Handle Meta menu
+      if (
+        isMetaMenuOpen &&
         metaTriggerRef.current &&
         !metaTriggerRef.current.contains(target) &&
         metaMenuRef.current &&
@@ -145,21 +207,22 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
 
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [isMetaMenuOpen])
+  }, [isMoreMenuOpen, isMetaMenuOpen])
 
-  // ESC key handler
+  // ESC key handler for both menus
   useEffect(() => {
-    if (!isMetaMenuOpen) return
+    if (!isMoreMenuOpen && !isMetaMenuOpen) return
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        handleMetaMenuClose()
+        if (isMoreMenuOpen) handleMoreMenuClose()
+        if (isMetaMenuOpen) handleMetaMenuClose()
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isMetaMenuOpen])
+  }, [isMoreMenuOpen, isMetaMenuOpen])
 
   return (
     <nav
@@ -198,16 +261,106 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
 
       {/* Bottom items */}
       <div className="mt-auto border-t border-gray-200 pt-4 px-2 pb-4 relative">
-        {/* More button */}
-        {bottomNavItems.map((item) => (
-          <NavItemButton
-            key={item.key}
-            item={item}
-            mode={mode}
-            isActive={false}
-            onClick={() => onItemClick(item.key)}
-          />
-        ))}
+        {/* More button with trigger ref */}
+        <div ref={moreTriggerRef}>
+          <div
+            className={cn(
+              'flex items-center gap-4 px-3 py-3 my-1 rounded-lg cursor-pointer',
+              'transition-colors duration-150',
+              'hover:bg-gray-100',
+              isMoreMenuOpen && 'bg-gray-100',
+              mode === 'collapsed' && 'justify-center'
+            )}
+            role="button"
+            tabIndex={0}
+            aria-label="More"
+            aria-expanded={isMoreMenuOpen}
+            onClick={handleMoreMenuToggle}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                handleMoreMenuToggle()
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faBars} className="text-2xl" />
+            {mode === 'full' && (
+              <span className="text-base">More</span>
+            )}
+          </div>
+        </div>
+
+        {/* More Menu Popup */}
+        {isMoreMenuOpen && (
+          <div
+            ref={moreMenuRef}
+            className={cn(
+              'absolute bottom-[116px] mb-2',
+              mode === 'full' ? 'left-0 right-0 mx-2' : 'left-full ml-2',
+              mode === 'collapsed' && 'w-[240px]',
+              'bg-white rounded-2xl py-1 z-50',
+              '[box-shadow:0_12px_32px_0px_rgba(16,24,40,0.24),0_1.5px_5px_0px_rgba(16,24,40,0.11)] backdrop-blur-sm'
+            )}
+            role="menu"
+          >
+            {/* Top section items */}
+            <div className="py-1">
+              {moreMenuItems
+                .filter((item) => item.section === 'top')
+                .map((item) => (
+                  <div
+                    key={item.key}
+                    className={cn(
+                      'flex items-center gap-4 px-4 py-3',
+                      'hover:bg-gray-100 cursor-pointer transition-colors'
+                    )}
+                    role="menuitem"
+                    tabIndex={0}
+                    onClick={() => handleMoreItemClick(item.label)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        handleMoreItemClick(item.label)
+                      }
+                    }}
+                  >
+                    <FontAwesomeIcon icon={item.icon} className="text-lg" />
+                    <span className="text-base">{item.label}</span>
+                  </div>
+                ))}
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-4 border-gray-200 my-1" />
+
+            {/* Bottom section items */}
+            <div className="py-1">
+              {moreMenuItems
+                .filter((item) => item.section === 'bottom')
+                .map((item) => (
+                  <div
+                    key={item.key}
+                    className={cn(
+                      'flex items-center gap-4 px-4 py-3',
+                      'hover:bg-gray-100 cursor-pointer transition-colors'
+                    )}
+                    role="menuitem"
+                    tabIndex={0}
+                    onClick={() => handleMoreItemClick(item.label)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        handleMoreItemClick(item.label)
+                      }
+                    }}
+                  >
+                    <FontAwesomeIcon icon={item.icon} className="text-lg" />
+                    <span className="text-base">{item.label}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
 
         {/* Also from Meta button with trigger ref */}
         <div ref={metaTriggerRef}>
@@ -246,8 +399,10 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
               'absolute bottom-16 mb-2',
               mode === 'full' ? 'left-0 right-0 mx-2' : 'left-full ml-2',
               mode === 'collapsed' && 'w-[240px]',
-              'bg-white rounded-xl shadow-lg border border-gray-200',
-              'py-2 z-50'
+              // 'bg-white rounded-xl shadow-lg border border-gray-200',
+              // 'py-2 z-50'
+              'bg-white rounded-2xl py-1 z-50',
+              '[box-shadow:0_12px_32px_0px_rgba(16,24,40,0.24),0_1.5px_5px_0px_rgba(16,24,40,0.11)] backdrop-blur-sm'
             )}
             role="menu"
           >
