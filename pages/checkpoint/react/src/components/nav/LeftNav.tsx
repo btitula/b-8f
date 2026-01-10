@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { useAppDispatch } from '@/store/hooks'
+import { clearUser } from '@/store/slices/authSlice'
 import {
   faHouse,
   faMagnifyingGlass,
@@ -24,6 +26,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faWhatsapp, faThreads } from '@fortawesome/free-brands-svg-icons'
 import { cn } from '@/lib/utils'
+import { LogoutDialog } from '@/components/auth/LogoutDialog'
 
 interface NavItem {
   key: string
@@ -125,6 +128,12 @@ const NavItemButton = ({ item, mode, isActive, onClick }: NavItemButtonProps) =>
 }
 
 export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  // Logout dialog state
+  const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false)
+
   // More menu state
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false)
   const moreTriggerRef = useRef<HTMLDivElement>(null)
@@ -149,9 +158,30 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
     setIsMoreMenuOpen(false)
   }
 
+  // Handle logout - show dialog and auto-navigate after delay
+  const handleLogout = () => {
+    // Close the More menu
+    handleMoreMenuClose()
+    // Show logout dialog
+    setIsLogoutDialogOpen(true)
+
+    // Auto-navigate after 750ms delay
+    setTimeout(() => {
+      console.log('Timeout executed - clearing auth and navigating')
+      // Clear auth state and localStorage
+      dispatch(clearUser())
+      // Navigate to login
+      navigate('/login')
+    }, 750) // 0.75 seconds delay
+  }
+
   // Handle more item click
-  const handleMoreItemClick = (item: string) => {
-    console.log(`Clicked: ${item}`)
+  const handleMoreItemClick = (key: string) => {
+    if (key === 'log-out') {
+      handleLogout()
+      return
+    }
+    console.log(`Clicked: ${key}`)
     handleMoreMenuClose()
   }
 
@@ -225,6 +255,7 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
   }, [isMoreMenuOpen, isMetaMenuOpen])
 
   return (
+    <>
     <nav
       className={cn(
         'fixed left-0 top-0 h-screen bg-white border-r border-gray-200 z-50',
@@ -316,11 +347,11 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
                     )}
                     role="menuitem"
                     tabIndex={0}
-                    onClick={() => handleMoreItemClick(item.label)}
+                    onClick={() => handleMoreItemClick(item.key)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault()
-                        handleMoreItemClick(item.label)
+                        handleMoreItemClick(item.key)
                       }
                     }}
                   >
@@ -346,11 +377,11 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
                     )}
                     role="menuitem"
                     tabIndex={0}
-                    onClick={() => handleMoreItemClick(item.label)}
+                    onClick={() => handleMoreItemClick(item.key)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault()
-                        handleMoreItemClick(item.label)
+                        handleMoreItemClick(item.key)
                       }
                     }}
                   >
@@ -431,5 +462,9 @@ export const LeftNav = ({ mode, activeKey, onItemClick }: LeftNavProps) => {
         )}
       </div>
     </nav>
+
+    {/* Logout Dialog */}
+    <LogoutDialog open={isLogoutDialogOpen} />
+  </>
   )
 }
