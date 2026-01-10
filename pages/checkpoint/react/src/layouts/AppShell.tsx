@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, Navigate, useLocation } from 'react-router-dom'
 import { LeftNav } from '@/components/nav/LeftNav'
 import { SearchPanel } from '@/components/nav/SearchPanel'
 import { MessagesFloatingButton } from '@/components/messages/MessagesFloatingButton'
@@ -8,8 +8,24 @@ import { useAppSelector } from '@/store/hooks'
 
 export const AppShell = () => {
   const { isAuthenticated } = useAppSelector((state) => state.auth)
+  const location = useLocation()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMessagesOpen, setIsMessagesOpen] = useState(false)
+
+  // Determine active nav key from current route and search state
+  const getActiveKey = () => {
+    // If search panel is open, search is active
+    if (isSearchOpen) return 'search'
+
+    // Otherwise, check current route
+    const path = location.pathname
+    if (path.includes('/app/home')) return 'home'
+    if (path.includes('/app/explore')) return 'explore'
+    if (path.includes('/app/reels')) return 'reels'
+    if (path.includes('/app/messages')) return 'messages'
+    if (path.includes('/app/profile')) return 'profile'
+    return 'home' // default
+  }
 
   // Handle search toggle
   const handleSearchToggle = () => {
@@ -66,7 +82,7 @@ export const AppShell = () => {
       {/* Left Navbar */}
       <LeftNav
         mode={isSearchOpen ? 'collapsed' : 'full'}
-        activeKey="home"
+        activeKey={getActiveKey()}
         onItemClick={handleNavItemClick}
       />
 
