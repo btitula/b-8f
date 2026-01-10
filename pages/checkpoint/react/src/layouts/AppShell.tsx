@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom'
 import { LeftNav } from '@/components/nav/LeftNav'
 import { SearchPanel } from '@/components/nav/SearchPanel'
+import { useAppSelector } from '@/store/hooks'
 
 export const AppShell = () => {
+  const { isAuthenticated } = useAppSelector((state) => state.auth)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   // Handle search toggle
@@ -40,6 +42,11 @@ export const AppShell = () => {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [isSearchOpen])
+
+  // Redirect to login if not authenticated (after all hooks)
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />
+  }
 
   return (
     <div className="flex h-screen bg-white">
